@@ -1,6 +1,6 @@
 # Poly Convergence
 
-Community-driven education and accountability in relationship advice.
+Community-driven education and accountability in relationship advice. 
 
 ## About
 
