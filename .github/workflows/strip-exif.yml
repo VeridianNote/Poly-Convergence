@@ -1,0 +1,57 @@
+name: Strip EXIF Data
+
+on:
+  pull_request:
+    paths:
+      - 'static/img/**'
+      - 'blog/**'
+      - 'docs/**'
+
+permissions:
+  contents: write
+
+jobs:
+  strip-exif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install ExifTool
+        run: sudo apt-get update && sudo apt-get install -y libimage-exiftool-perl
+
+      - name: Strip EXIF data from images
+        run: |
+          # Find all image files that were added or modified in this PR
+          IMAGES=$(find static/img blog docs -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.gif" \) 2>/dev/null)
+
+          if [ -z "$IMAGES" ]; then
+            echo "No images found to process."
+            exit 0
+          fi
+
+          echo "Stripping EXIF data from images..."
+          echo "$IMAGES" | while read -r img; do
+            echo "  Processing: $img"
+            exiftool -all= -overwrite_original "$img"
+          done
+
+      - name: Check for changes
+        id: check
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit cleaned images
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Strip EXIF data from images (automated)"
+          git push
