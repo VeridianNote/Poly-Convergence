@@ -8,9 +8,6 @@ publish_mode: editorial_workflow
 
 media_folder: "static/img/uploads"
 public_folder: "/img/uploads"
-media_library:
-  name: upload
-  max_file_size: 2097152  # 2MB in bytes
 
 slug:
   encoding: "ascii"
