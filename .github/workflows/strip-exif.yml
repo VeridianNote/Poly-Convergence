@@ -1,11 +1,13 @@
 name: Strip EXIF Data
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'static/img/**'
   pull_request:
     paths:
       - 'static/img/**'
-      - 'blog/**'
-      - 'docs/**'
 
 permissions:
   contents: write
@@ -16,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install ExifTool
@@ -24,8 +26,7 @@ jobs:
 
       - name: Strip EXIF data from images
         run: |
-          # Find all image files that were added or modified in this PR
-          IMAGES=$(find static/img blog docs -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.gif" \) 2>/dev/null)
+          IMAGES=$(find static/img -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.tiff" -o -iname "*.gif" \) 2>/dev/null)
 
           if [ -z "$IMAGES" ]; then
             echo "No images found to process."
