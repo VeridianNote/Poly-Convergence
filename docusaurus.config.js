@@ -12,8 +12,8 @@ const config = {
     v4: true,
   },
 
-  url: 'https://veridiannote.github.io',
-  baseUrl: '/Poly-Convergence/',
+  url: 'https://polyconvergence.com',
+  baseUrl: '/',
 
   organizationName: 'VeridianNote',
   projectName: 'Poly-Convergence',
