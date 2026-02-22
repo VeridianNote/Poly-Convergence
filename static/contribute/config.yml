@@ -1,0 +1,128 @@
+backend:
+  name: github
+  repo: VeridianNote/Poly-Convergence
+  branch: main
+  base_url: https://poly-convergence-auth.veridiannote.workers.dev
+
+publish_mode: editorial_workflow
+
+media_folder: "static/img/uploads"
+public_folder: "/img/uploads"
+media_library:
+  max_file_size: 2097152  # 2MB in bytes
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{year}}-{{month}}-{{day}})"
+    sortable_fields: ["title", "date"]
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Short URL-friendly name (e.g., examining-the-soulmate-myth)"
+      - label: "Authors"
+        name: "authors"
+        widget: "list"
+        default: ["editors"]
+        hint: "Leave as 'editors' for anonymous submissions"
+      - label: "Tags"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Debunking", value: "debunking" }
+          - { label: "Education", value: "education" }
+          - { label: "Community", value: "community" }
+          - { label: "Research", value: "research" }
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Tip: Add <!-- truncate --> on its own line where you want the preview to cut off on the blog listing page."
+
+  - name: "foundational-concepts"
+    label: "Wiki — Foundational Concepts"
+    label_singular: "Page"
+    folder: "docs/foundational-concepts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        default: 10
+        hint: "Controls ordering in the sidebar (lower numbers appear first)"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  - name: "common-myths"
+    label: "Wiki — Common Myths"
+    label_singular: "Page"
+    folder: "docs/common-myths"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        default: 10
+        hint: "Controls ordering in the sidebar (lower numbers appear first)"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  - name: "research-and-sources"
+    label: "Wiki — Research & Sources"
+    label_singular: "Page"
+    folder: "docs/research-and-sources"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        default: 10
+        hint: "Controls ordering in the sidebar (lower numbers appear first)"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  - name: "community-stories"
+    label: "Community Stories"
+    label_singular: "Story"
+    folder: "docs/community-stories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        default: 10
+        hint: "Controls ordering in the sidebar (lower numbers appear first)"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"

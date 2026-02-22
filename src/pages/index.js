@@ -24,6 +24,11 @@ function HomepageHeader() {
             to="/docs/intro">
             Browse the Wiki
           </Link>
+          <a
+            className="button button--secondary button--lg"
+            href="/contribute/">
+            Contribute
+          </a>
         </div>
       </div>
     </header>
@@ -47,11 +52,11 @@ export default function Home() {
               </div>
               <div className="col col--4" style={{marginBottom: '2rem'}}>
                 <Heading as="h3">Community-Driven</Heading>
-                <p>Anyone can contribute through GitHub. Content is reviewed before publishing to maintain quality and accuracy.</p>
+                <p>Anyone can contribute through our online editor or via GitHub. Content is reviewed before publishing to maintain quality and accuracy.</p>
               </div>
               <div className="col col--4" style={{marginBottom: '2rem'}}>
                 <Heading as="h3">Privacy-First</Heading>
-                <p>Contributors can remain anonymous. All images must have EXIF data stripped. No personally identifying information is published.</p>
+                <p>Contributors can remain anonymous. All images have EXIF data stripped automatically. No personally identifying information is published.</p>
               </div>
             </div>
           </div>
