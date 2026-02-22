@@ -3,6 +3,7 @@ backend:
   repo: VeridianNote/Poly-Convergence
   branch: main
   base_url: https://poly-convergence-auth.veridiannote.workers.dev
+  open_authoring: true
 
 publish_mode: editorial_workflow
 
