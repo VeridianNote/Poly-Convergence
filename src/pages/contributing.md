@@ -5,15 +5,9 @@ description: How to contribute content to this site
 
 # Contributor Guide
 
-## Easiest Way: Use the Editor
+## How to Contribute
 
-The fastest way to contribute is through our **[online editor](pathname:///contribute/)**. Log in with your GitHub account, pick what you want to write, and submit. We'll review it and publish.
-
-No Git knowledge required.
-
-## Alternative: Pull Requests
-
-If you prefer working with Git directly, you can submit content via pull requests:
+Currently, contributions are submitted via pull requests on GitHub:
 
 1. Fork the [repository](https://github.com/VeridianNote/Poly-Convergence) on GitHub
 2. Create a new branch for your contribution

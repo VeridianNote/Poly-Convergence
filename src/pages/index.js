@@ -24,11 +24,11 @@ function HomepageHeader() {
             to="/docs/intro">
             Browse the Wiki
           </Link>
-          <a
+          <Link
             className="button button--secondary button--lg"
-            href="/contribute/">
+            to="/contributing">
             Contribute
-          </a>
+          </Link>
         </div>
       </div>
     </header>

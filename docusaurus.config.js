@@ -82,7 +82,7 @@ const config = {
             label: 'Wiki',
           },
           {to: '/about', label: 'About', position: 'left'},
-          {href: 'pathname:///contribute/', label: 'Contribute', position: 'left'},
+          {to: '/contributing', label: 'Contribute', position: 'left'},
           {
             href: 'https://github.com/VeridianNote/Poly-Convergence',
             label: 'GitHub',
@@ -115,7 +115,7 @@ const config = {
               },
               {
                 label: 'Contribute',
-                href: 'pathname:///contribute/',
+                to: '/contributing',
               },
               {
                 label: 'Contributor Guide',
