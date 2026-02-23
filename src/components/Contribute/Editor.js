@@ -199,7 +199,8 @@ export default function Editor({
   };
 
   const saveDisabled = saving || throttleCountdown > 0 || !title.trim() || !body.trim();
-  const submitDisabled = submitting || !branch || (prInfo && prInfo.state === 'open');
+  const hasOpenPR = prInfo && prInfo.state === 'open';
+  const submitDisabled = submitting || !branch || hasOpenPR;
 
   return (
     <div className="editor-container">
@@ -433,27 +434,30 @@ export default function Editor({
           disabled={saveDisabled}
         >
           {saving
-            ? 'Saving...'
+            ? (hasOpenPR ? 'Updating...' : 'Saving...')
             : throttleCountdown > 0
-              ? `Save Draft (${formatCountdown(throttleCountdown)})`
-              : 'Save Draft'
+              ? `${hasOpenPR ? 'Update' : 'Save Draft'} (${formatCountdown(throttleCountdown)})`
+              : (hasOpenPR ? 'Update Submission' : 'Save Draft')
           }
         </button>
 
-        <button
-          className="button button--success"
-          onClick={() => setShowSubmitConfirm(true)}
-          disabled={submitDisabled}
-        >
-          {submitting ? 'Submitting...' : 'Submit for Review'}
-        </button>
+        {/* Only show Submit button when no PR exists yet */}
+        {!hasOpenPR && (
+          <button
+            className="button button--success"
+            onClick={() => setShowSubmitConfirm(true)}
+            disabled={submitDisabled}
+          >
+            {submitting ? 'Submitting...' : 'Submit for Review'}
+          </button>
+        )}
 
         {branch && (
           <button
             className="button button--outline button--danger"
             onClick={() => setShowAbandonConfirm(true)}
           >
-            Abandon
+            {hasOpenPR ? 'Withdraw' : 'Abandon'}
           </button>
         )}
       </div>

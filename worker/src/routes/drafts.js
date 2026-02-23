@@ -47,11 +47,18 @@ export async function handleListDrafts(request, env) {
   const prefix = `users/${user.username}/`;
   const branches = await listBranches(env, token, prefix);
 
-  // For each branch, check if there's an open PR
+  // For each branch, check if there's an open PR.
+  // Use per-branch try/catch so a transient GitHub error on one branch
+  // doesn't crash the entire draft list.
   const drafts = await Promise.all(
     branches.map(async (branch) => {
       const slug = branch.name.replace(prefix, '');
-      const pr = await getPRForBranch(env, token, branch.name);
+      let pr = null;
+      try {
+        pr = await getPRForBranch(env, token, branch.name);
+      } catch {
+        // Transient GitHub error — show branch without PR info
+      }
 
       return {
         slug,
@@ -417,10 +424,15 @@ export async function handleAbandonDraft(request, env) {
     return Response.json({ error: 'Access denied' }, { status: 403 });
   }
 
-  // Close any open PR first
-  const pr = await getPRForBranch(env, token, branch);
-  if (pr) {
-    await closePR(env, token, pr.number);
+  // Close any open PR first (best-effort — don't block branch deletion)
+  try {
+    const pr = await getPRForBranch(env, token, branch);
+    if (pr) {
+      await closePR(env, token, pr.number);
+    }
+  } catch {
+    // Transient GitHub error — proceed with branch deletion anyway.
+    // Orphaned PRs pointing to deleted branches auto-close or are harmless.
   }
 
   // Delete the branch

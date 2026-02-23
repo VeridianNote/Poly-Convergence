@@ -224,6 +224,9 @@ export async function abandonDraft(branch) {
  */
 export async function getStatus(branch) {
   const res = await apiFetch(`/api/status?branch=${encodeURIComponent(branch)}`);
+  if (!res.ok) {
+    throw new Error('Failed to check status');
+  }
   return res.json();
 }
 

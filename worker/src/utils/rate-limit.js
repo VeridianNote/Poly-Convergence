@@ -62,6 +62,11 @@ let _configCache = null;
 let _configCachedAt = 0;
 const CONFIG_CACHE_TTL_MS = 60_000; // 1 minute
 
+export function invalidateConfigCache() {
+  _configCache = null;
+  _configCachedAt = 0;
+}
+
 export async function loadConfig(kv) {
   // Return cached config if still fresh
   const now = Date.now();

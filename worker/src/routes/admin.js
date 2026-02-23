@@ -9,6 +9,7 @@
 
 import { requireAuth, requireMod } from '../middleware/auth.js';
 import { getInstallationToken } from '../github/app-token.js';
+import { invalidateConfigCache } from '../utils/rate-limit.js';
 import {
   listBranches,
   deleteBranch,
@@ -54,11 +55,18 @@ export async function handleAdminListUsers(request, env) {
     const data = JSON.parse(record);
     const userBranches = userMap[data.username] || [];
 
-    // Get last activity for each branch
+    // Get last activity for each branch.
+    // Per-branch try/catch so one GitHub error doesn't crash the list.
     const branchDetails = await Promise.all(
       userBranches.map(async (branchName) => {
-        const lastCommit = await getLastCommitDate(env, token, branchName);
-        const pr = await getPRForBranch(env, token, branchName);
+        let lastCommit = null;
+        let pr = null;
+        try {
+          lastCommit = await getLastCommitDate(env, token, branchName);
+          pr = await getPRForBranch(env, token, branchName);
+        } catch {
+          // Transient GitHub error — show branch with partial info
+        }
         return {
           branch: branchName,
           lastActivity: lastCommit?.toISOString() || null,
@@ -187,6 +195,9 @@ export async function handleAdminConfig(request, env) {
 
   await env.SUBMISSIONS_KV.put(`config:${key}`, String(value));
 
+  // Invalidate in-memory cache so this isolate sees the new value immediately
+  invalidateConfigCache();
+
   return Response.json({ ok: true, key, value });
 }
 
@@ -213,14 +224,20 @@ export async function handleAdminDeleteBranch(request, env) {
 
   const token = await getInstallationToken(env);
 
-  // Close any open PR
-  const pr = await getPRForBranch(env, token, branch);
-  if (pr) {
-    await closePR(env, token, pr.number);
+  // Close any open PR (best-effort — don't block branch deletion)
+  let prNumber = null;
+  try {
+    const pr = await getPRForBranch(env, token, branch);
+    if (pr) {
+      prNumber = pr.number;
+      await closePR(env, token, pr.number);
+    }
+  } catch {
+    // Transient GitHub error — proceed with branch deletion
   }
 
   // Delete the branch
   await deleteBranch(env, token, branch);
 
-  return Response.json({ ok: true, deleted: branch, prClosed: pr?.number || null });
+  return Response.json({ ok: true, deleted: branch, prClosed: prNumber });
 }
