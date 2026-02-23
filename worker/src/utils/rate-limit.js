@@ -54,7 +54,21 @@ export function getUserTier(userRecord, isMod, config) {
  * @param {Object} kv - KV namespace binding
  * @returns {Promise<Object>} Config values
  */
+// In-memory config cache — persists for the life of the Worker isolate.
+// Cloudflare Workers recycle isolates periodically, so this acts as a
+// short-lived cache (typically seconds to minutes). Reduces KV reads from
+// 6 per request to 6 per isolate lifecycle.
+let _configCache = null;
+let _configCachedAt = 0;
+const CONFIG_CACHE_TTL_MS = 60_000; // 1 minute
+
 export async function loadConfig(kv) {
+  // Return cached config if still fresh
+  const now = Date.now();
+  if (_configCache && (now - _configCachedAt) < CONFIG_CACHE_TTL_MS) {
+    return _configCache;
+  }
+
   const defaults = {
     submissions_enabled: true,
     draft_save_interval: 60,
@@ -77,6 +91,10 @@ export async function loadConfig(kv) {
       config[key] = defaultValue;
     }
   }
+
+  // Cache the result
+  _configCache = config;
+  _configCachedAt = now;
 
   return config;
 }
@@ -122,7 +140,13 @@ export async function getOrCreateUser(kv, githubId, username) {
   const existing = await kv.get(key);
 
   if (existing) {
-    return JSON.parse(existing);
+    const record = JSON.parse(existing);
+    // Update username if the user renamed their GitHub account
+    if (record.username !== username) {
+      record.username = username;
+      await kv.put(key, JSON.stringify(record));
+    }
+    return record;
   }
 
   // First visit — create the record (1 KV write)

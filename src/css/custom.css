@@ -41,18 +41,169 @@
   outline: none;
 }
 
-/* Ensure MDXEditor toolbar matches site theme */
+/* MDXEditor dark mode — comprehensive theme overrides */
 [data-theme='dark'] .mdxeditor {
+  /* Radix color tokens used by MDXEditor */
   --accentBase: var(--ifm-color-primary);
-  --accentBgSubtle: var(--ifm-color-emphasis-100);
+  --accentBgSubtle: #1a2a23;
   --accentLine: var(--ifm-color-primary);
   --accentSolid: var(--ifm-color-primary);
-  --accentText: var(--ifm-color-primary);
-  --baseBase: var(--ifm-background-color);
-  --baseBgSubtle: var(--ifm-color-emphasis-100);
-  --baseLine: var(--ifm-color-emphasis-300);
-  --baseText: var(--ifm-font-color-base);
-  --baseTextHighContrast: var(--ifm-font-color-base);
+  --accentText: var(--ifm-color-primary-lighter);
+  --accentTextContrast: #ffffff;
+
+  --baseBase: #1b1b1d;
+  --baseBgSubtle: #242526;
+  --baseBgActive: #2a2a2d;
+  --baseLine: #3e3e42;
+  --baseBorder: #3e3e42;
+  --baseSolid: #606065;
+  --baseText: #e3e3e3;
+  --baseTextLoContrast: #a0a0a5;
+  --baseTextHighContrast: #ffffff;
+  --basePageBg: #1b1b1d;
+
+  color-scheme: dark;
+}
+
+/* Editor content area — dark background with light text */
+[data-theme='dark'] .editor-content-area {
+  background-color: #1b1b1d;
+  color: #e3e3e3;
+  caret-color: #e3e3e3;
+}
+
+/* Toolbar — dark background */
+[data-theme='dark'] .mdxeditor [role="toolbar"] {
+  background-color: #242526;
+  border-bottom-color: #3e3e42;
+}
+
+/* Toolbar buttons */
+[data-theme='dark'] .mdxeditor [role="toolbar"] button {
+  color: #c8c8cc;
+}
+
+[data-theme='dark'] .mdxeditor [role="toolbar"] button:hover {
+  background-color: #3e3e42;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .mdxeditor [role="toolbar"] button[data-state="on"] {
+  background-color: #2a4a3a;
+  color: var(--ifm-color-primary-lighter);
+}
+
+/* Toolbar select/dropdown */
+[data-theme='dark'] .mdxeditor [role="toolbar"] select,
+[data-theme='dark'] .mdxeditor [role="toolbar"] [role="combobox"] {
+  background-color: #242526;
+  color: #c8c8cc;
+  border-color: #3e3e42;
+}
+
+/* Dropdown menus / popovers */
+[data-theme='dark'] .mdxeditor [role="menu"],
+[data-theme='dark'] .mdxeditor [role="listbox"],
+[data-theme='dark'] .mdxeditor [data-radix-popper-content-wrapper] {
+  background-color: #242526;
+  border-color: #3e3e42;
+  color: #e3e3e3;
+}
+
+[data-theme='dark'] .mdxeditor [role="menuitem"]:hover,
+[data-theme='dark'] .mdxeditor [role="option"]:hover,
+[data-theme='dark'] .mdxeditor [role="option"][data-highlighted] {
+  background-color: #3e3e42;
+}
+
+/* Code blocks inside editor */
+[data-theme='dark'] .editor-content-area pre {
+  background-color: #2a2a2d;
+  color: #e3e3e3;
+}
+
+[data-theme='dark'] .editor-content-area code {
+  background-color: #2a2a2d;
+  color: #e3e3e3;
+}
+
+/* Blockquotes */
+[data-theme='dark'] .editor-content-area blockquote {
+  border-left-color: #3e3e42;
+  color: #a0a0a5;
+}
+
+/* Links in editor */
+[data-theme='dark'] .editor-content-area a {
+  color: var(--ifm-color-primary-lighter);
+}
+
+/* Table borders */
+[data-theme='dark'] .editor-content-area table,
+[data-theme='dark'] .editor-content-area th,
+[data-theme='dark'] .editor-content-area td {
+  border-color: #3e3e42;
+}
+
+[data-theme='dark'] .editor-content-area th {
+  background-color: #242526;
+}
+
+/* Horizontal rule */
+[data-theme='dark'] .editor-content-area hr {
+  border-color: #3e3e42;
+}
+
+/* Placeholder text */
+[data-theme='dark'] .editor-content-area [data-placeholder]::before {
+  color: #606065;
+}
+
+/* Source mode / diff view code mirror */
+[data-theme='dark'] .mdxeditor .cm-editor {
+  background-color: #1b1b1d;
+  color: #e3e3e3;
+}
+
+[data-theme='dark'] .mdxeditor .cm-gutters {
+  background-color: #242526;
+  color: #606065;
+  border-right-color: #3e3e42;
+}
+
+[data-theme='dark'] .mdxeditor .cm-activeLine {
+  background-color: #242526;
+}
+
+[data-theme='dark'] .mdxeditor .cm-activeLineGutter {
+  background-color: #2a2a2d;
+}
+
+/* Dialog overlays (link dialog, etc.) */
+[data-theme='dark'] .mdxeditor [role="dialog"] {
+  background-color: #242526;
+  color: #e3e3e3;
+  border-color: #3e3e42;
+}
+
+[data-theme='dark'] .mdxeditor [role="dialog"] input {
+  background-color: #1b1b1d;
+  color: #e3e3e3;
+  border-color: #3e3e42;
+}
+
+/* Diff source view tab buttons */
+[data-theme='dark'] .mdxeditor [role="tablist"] {
+  background-color: #242526;
+}
+
+[data-theme='dark'] .mdxeditor [role="tab"] {
+  color: #a0a0a5;
+}
+
+[data-theme='dark'] .mdxeditor [role="tab"][data-state="active"] {
+  color: #ffffff;
+  background-color: #1b1b1d;
 }
 
 /* Confirmation dialog backdrop */

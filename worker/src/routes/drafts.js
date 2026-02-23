@@ -24,6 +24,7 @@ import {
   buildMarkdownFile,
   computeFilePath,
   validateCategory,
+  validateBranch,
 } from '../utils/validation.js';
 import {
   getOrCreateUser,
@@ -77,8 +78,9 @@ export async function handleLoadDraft(request, env) {
 
   const url = new URL(request.url);
   const branch = url.searchParams.get('branch');
-  if (!branch) {
-    return Response.json({ error: 'Missing branch parameter' }, { status: 400 });
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
   }
 
   // Security: users can only load their own branches (mods can load any)
@@ -206,10 +208,9 @@ export async function handleSaveDraft(request, env) {
 
   // SECURITY: Validate existingBranch format and ownership
   if (existingBranch) {
-    // Must match users/<username>/<slug> format — no path traversal, no extra slashes
-    const branchPattern = /^users\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/;
-    if (!branchPattern.test(existingBranch)) {
-      return Response.json({ error: 'Invalid branch name format' }, { status: 400 });
+    const branchCheck = validateBranch(existingBranch);
+    if (!branchCheck.valid) {
+      return Response.json({ error: branchCheck.error }, { status: 400 });
     }
     if (!isMod && !existingBranch.startsWith(`users/${user.username}/`)) {
       return Response.json({ error: 'Access denied' }, { status: 403 });
@@ -402,8 +403,9 @@ export async function handleAbandonDraft(request, env) {
 
   const url = new URL(request.url);
   const branch = url.searchParams.get('branch');
-  if (!branch) {
-    return Response.json({ error: 'Missing branch parameter' }, { status: 400 });
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
   }
 
   // Security: users can only delete their own branches

@@ -13,6 +13,7 @@ import {
   getCollaboratorPermission,
 } from '../github/api.js';
 import { getOrCreateUser, getUserTier, loadConfig } from '../utils/rate-limit.js';
+import { validateBranch } from '../utils/validation.js';
 
 /**
  * POST /api/submit
@@ -29,8 +30,9 @@ export async function handleSubmit(request, env) {
     return Response.json({ error: 'Invalid JSON in request body' }, { status: 400 });
   }
   const { branch } = requestBody;
-  if (!branch) {
-    return Response.json({ error: 'Missing branch parameter' }, { status: 400 });
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
   }
 
   const token = await getInstallationToken(env);
@@ -157,8 +159,9 @@ export async function handleStatus(request, env) {
 
   const url = new URL(request.url);
   const branch = url.searchParams.get('branch');
-  if (!branch) {
-    return Response.json({ error: 'Missing branch parameter' }, { status: 400 });
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
   }
 
   const token = await getInstallationToken(env);

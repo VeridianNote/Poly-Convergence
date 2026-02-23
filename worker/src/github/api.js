@@ -260,7 +260,9 @@ export async function getPRForBranch(env, token, branchName) {
     token
   );
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    throw new Error(`Failed to check PR for branch ${branchName}: ${res.status}`);
+  }
   const data = await res.json();
   return data.length > 0 ? data[0] : null;
 }

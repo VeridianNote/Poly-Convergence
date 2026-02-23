@@ -26,7 +26,7 @@ crons = ["0 4 * * *", "0 5 * * *"]
 [vars]
 GITHUB_OWNER = "VeridianNote"
 GITHUB_REPO = "Poly-Convergence"
-OAUTH_CLIENT_ID = "Ov23li4yWFgT8U7uvFM6"
+OAUTH_CLIENT_ID = "Ov23liAzu0OSAsrCwh8z"
 SITE_URL = "https://polyconvergence.com"
 API_URL = "https://api.polyconvergence.com"
 COOKIE_DOMAIN = ".polyconvergence.com"

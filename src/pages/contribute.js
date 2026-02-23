@@ -267,6 +267,7 @@ function ContributeApp() {
           <UserBadge user={user} onLogout={handleLogout} />
         </div>
         <EditorComponent
+          key={activeDraft.branch || 'new-draft'}
           user={user}
           initialTitle={activeDraft.title}
           initialBody={activeDraft.body}

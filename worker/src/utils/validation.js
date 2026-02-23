@@ -113,6 +113,24 @@ export function validateCategory(category) {
 }
 
 /**
+ * Validate a branch name parameter.
+ * Must match users/<username>/<slug> format — no path traversal.
+ *
+ * @param {string} branch
+ * @returns {{ valid: boolean, error?: string }}
+ */
+export function validateBranch(branch) {
+  if (!branch || typeof branch !== 'string') {
+    return { valid: false, error: 'Missing branch parameter' };
+  }
+  // Must be exactly: users/<alphanumeric-hyphen-underscore>/<alphanumeric-hyphen-underscore>
+  if (!/^users\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/.test(branch)) {
+    return { valid: false, error: 'Invalid branch name format' };
+  }
+  return { valid: true };
+}
+
+/**
  * Build the markdown file content with frontmatter.
  *
  * @param {Object} options

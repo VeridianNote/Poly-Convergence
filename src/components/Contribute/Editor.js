@@ -123,7 +123,7 @@ export default function Editor({
         title,
         body,
         type,
-        category: showNewSubcategory ? category : category,
+        category,
         subcategory: showNewSubcategory ? slugifyCategory(newSubcategory) : undefined,
         existingBranch: branch || undefined,
       });
@@ -240,6 +240,25 @@ export default function Editor({
           }}
         />
       </div>
+
+      {/* Location breadcrumb (shows where this page will live) */}
+      {branch && (
+        <div style={{
+          marginBottom: '1rem',
+          padding: '0.5rem 0.75rem',
+          fontSize: '0.85rem',
+          color: 'var(--ifm-color-emphasis-600)',
+          backgroundColor: 'var(--ifm-color-emphasis-100)',
+          borderRadius: '4px',
+          fontFamily: 'var(--ifm-font-family-monospace)',
+        }}>
+          {type === 'blog' ? '📝 Blog Post' : `📄 Wiki → ${formatCategoryLabel(category)}`}
+          {' · '}
+          <span style={{ color: 'var(--ifm-color-emphasis-500)' }}>
+            {branch.split('/').pop()}
+          </span>
+        </div>
+      )}
 
       {/* Category selector (wiki only, new drafts only) */}
       {type === 'wiki' && !branch && (
@@ -515,13 +534,25 @@ function formatCountdown(seconds) {
 }
 
 /**
+ * Format a category slug into a human-readable label.
+ * e.g., "foundational-concepts" → "Foundational Concepts"
+ */
+function formatCategoryLabel(cat) {
+  if (!cat) return 'Uncategorized';
+  return cat
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+/**
  * Slugify a subcategory name.
  */
 function slugifyCategory(name) {
   return name
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');

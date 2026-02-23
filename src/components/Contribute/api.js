@@ -115,6 +115,10 @@ export function checkEditorRecovery() {
  */
 export async function getUser() {
   const res = await apiFetch('/api/user');
+  if (!res.ok) {
+    // Non-auth errors (auth is handled by apiFetch's 401 handler)
+    return null;
+  }
   const data = await res.json();
   return data.user;
 }
@@ -124,6 +128,9 @@ export async function getUser() {
  */
 export async function getConfig() {
   const res = await apiFetch('/api/config');
+  if (!res.ok) {
+    throw new Error('Failed to load configuration');
+  }
   return res.json();
 }
 
@@ -132,6 +139,9 @@ export async function getConfig() {
  */
 export async function getCategories() {
   const res = await apiFetch('/api/categories');
+  if (!res.ok) {
+    throw new Error('Failed to load categories');
+  }
   const data = await res.json();
   return data.categories;
 }
@@ -141,6 +151,9 @@ export async function getCategories() {
  */
 export async function listDrafts() {
   const res = await apiFetch('/api/drafts');
+  if (!res.ok) {
+    throw new Error('Failed to load drafts');
+  }
   const data = await res.json();
   return data.drafts;
 }
