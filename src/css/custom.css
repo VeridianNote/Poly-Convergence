@@ -28,3 +28,34 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* MDXEditor overrides for the /contribute page */
+.editor-content-area {
+  min-height: 350px;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.editor-content-area:focus {
+  outline: none;
+}
+
+/* Ensure MDXEditor toolbar matches site theme */
+[data-theme='dark'] .mdxeditor {
+  --accentBase: var(--ifm-color-primary);
+  --accentBgSubtle: var(--ifm-color-emphasis-100);
+  --accentLine: var(--ifm-color-primary);
+  --accentSolid: var(--ifm-color-primary);
+  --accentText: var(--ifm-color-primary);
+  --baseBase: var(--ifm-background-color);
+  --baseBgSubtle: var(--ifm-color-emphasis-100);
+  --baseLine: var(--ifm-color-emphasis-300);
+  --baseText: var(--ifm-font-color-base);
+  --baseTextHighContrast: var(--ifm-font-color-base);
+}
+
+/* Confirmation dialog backdrop */
+.editor-container {
+  position: relative;
+}

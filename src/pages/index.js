@@ -26,7 +26,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            to="/contributing">
+            to="/contribute">
             Contribute
           </Link>
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
               </div>
               <div className="col col--4" style={{marginBottom: '2rem'}}>
                 <Heading as="h3">Community-Driven</Heading>
-                <p>Anyone can contribute through our online editor or via GitHub. Content is reviewed before publishing to maintain quality and accuracy.</p>
+                <p>Anyone can contribute via GitHub. All content is reviewed before publishing to maintain quality and accuracy.</p>
               </div>
               <div className="col col--4" style={{marginBottom: '2rem'}}>
                 <Heading as="h3">Privacy-First</Heading>

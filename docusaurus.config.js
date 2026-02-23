@@ -20,6 +20,11 @@ const config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
+  // API URL for the Cloudflare Worker backend
+  customFields: {
+    apiUrl: process.env.API_URL || 'https://api.polyconvergence.com',
+  },
+
   onBrokenLinks: 'throw',
 
   markdown: {
@@ -82,7 +87,7 @@ const config = {
             label: 'Wiki',
           },
           {to: '/about', label: 'About', position: 'left'},
-          {to: '/contributing', label: 'Contribute', position: 'left'},
+          {to: '/contribute', label: 'Contribute', position: 'left'},
           {
             href: 'https://github.com/VeridianNote/Poly-Convergence',
             label: 'GitHub',
@@ -115,7 +120,7 @@ const config = {
               },
               {
                 label: 'Contribute',
-                to: '/contributing',
+                to: '/contribute',
               },
               {
                 label: 'Contributor Guide',

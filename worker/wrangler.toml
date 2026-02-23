@@ -1,0 +1,46 @@
+name = "poly-convergence-api"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+# Custom domain — requires CNAME: api.polyconvergence.com -> poly-convergence-api.<account>.workers.dev
+# See .planning/SETUP.md for DNS configuration instructions.
+# Uncomment after configuring your Cloudflare zone:
+# routes = [
+#   { pattern = "api.polyconvergence.com/*", zone_name = "polyconvergence.com" }
+# ]
+
+# KV Namespace — UNCOMMENT and fill in IDs after creating:
+#   npx wrangler kv namespace create "SUBMISSIONS_KV"
+#   npx wrangler kv namespace create "SUBMISSIONS_KV" --preview
+#
+[[kv_namespaces]]
+binding = "SUBMISSIONS_KV"
+id = "ac612d649a9b42b6ba9aaa2ca521f086"
+preview_id = "213a59a1a15846fa82ff1478d07b2b0e"
+
+# Cron triggers — branch cleanup + merge count sync
+[triggers]
+crons = ["0 4 * * *", "0 5 * * *"]
+
+# Environment variables (non-secret)
+[vars]
+GITHUB_OWNER = "VeridianNote"
+GITHUB_REPO = "Poly-Convergence"
+OAUTH_CLIENT_ID = "Ov23li4yWFgT8U7uvFM6"
+SITE_URL = "https://polyconvergence.com"
+API_URL = "https://api.polyconvergence.com"
+COOKIE_DOMAIN = ".polyconvergence.com"
+
+# Secrets (set via: wrangler secret put <NAME>)
+# Required secrets:
+#   OAUTH_CLIENT_SECRET   — GitHub OAuth App client secret
+#   JWT_SECRET            — random 256-bit string for signing JWTs
+#   GITHUB_APP_ID         — GitHub App ID (numeric)
+#   GITHUB_APP_PRIVATE_KEY — GitHub App private key (PKCS#8 PEM format)
+#   GITHUB_APP_INSTALLATION_ID — GitHub App installation ID (numeric)
+
+# Dev overrides — for local development with wrangler dev
+# [env.dev.vars]
+# SITE_URL = "http://localhost:3000"
+# API_URL = "http://localhost:8787"
+# COOKIE_DOMAIN = "localhost"
