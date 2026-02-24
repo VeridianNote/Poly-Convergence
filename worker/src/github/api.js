@@ -87,6 +87,13 @@ export async function createBranch(env, token, branchName) {
  * Create or update a file on a branch.
  */
 export async function commitFile(env, token, branch, path, content, message) {
+  return commitFileBase64(env, token, branch, path, utf8ToBase64(content), message);
+}
+
+/**
+ * Create or update a binary file on a branch (content already base64-encoded).
+ */
+export async function commitFileBase64(env, token, branch, path, base64Content, message) {
   // Check if file already exists (to get its SHA for updates)
   const existingRes = await githubFetch(
     `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${path}?ref=${branch}`,
@@ -95,7 +102,7 @@ export async function commitFile(env, token, branch, path, content, message) {
 
   const body = {
     message,
-    content: utf8ToBase64(content),
+    content: base64Content,
     branch,
   };
 
@@ -326,6 +333,47 @@ export async function addComment(env, token, issueNumber, body) {
     }
   );
   return res.ok;
+}
+
+/**
+ * Merge main into a user branch (fast-forward or merge commit).
+ * Returns { merged: true } on success, { conflict: true } on conflict,
+ * or throws on unexpected errors.
+ */
+export async function mergeBranch(env, token, branch) {
+  const res = await githubFetch(
+    `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/merges`,
+    token,
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        base: branch,
+        head: 'main',
+        commit_message: `Merge main into ${branch}`,
+      }),
+    }
+  );
+
+  if (res.status === 204) {
+    // Already up to date (no merge needed)
+    return { merged: true, noChange: true };
+  }
+
+  if (res.ok) {
+    return { merged: true };
+  }
+
+  if (res.status === 404) {
+    throw new Error('Branch not found. It may have been deleted or already merged.');
+  }
+
+  if (res.status === 409) {
+    // Merge conflict
+    return { conflict: true };
+  }
+
+  const text = await res.text();
+  throw new Error(`Failed to merge main into branch: ${res.status} ${text}`);
 }
 
 /**

@@ -7,6 +7,7 @@
 
 const MIN_TITLE_LENGTH = 5;
 const MIN_BODY_LENGTH = 50;
+const MAX_BODY_LENGTH = 100_000; // ~100KB — generous for markdown, prevents abuse
 
 /**
  * Validate content before saving/submitting.
@@ -34,6 +35,8 @@ export function validateContent(title, body) {
   // Body checks
   if (!body || typeof body !== 'string') {
     errors.push('Content body is required.');
+  } else if (body.length > MAX_BODY_LENGTH) {
+    errors.push(`Content must be ${MAX_BODY_LENGTH.toLocaleString()} characters or fewer.`);
   } else {
     // Strip frontmatter, HTML comments, and excessive whitespace for length check
     const strippedBody = body
@@ -51,12 +54,49 @@ export function validateContent(title, body) {
     if (!/[.?!]/.test(strippedBody)) {
       errors.push('Content must contain at least one complete sentence (ending with a period, question mark, or exclamation mark).');
     }
+
+    // Abuse detection heuristics
+    const abuseCheck = detectAbuse(title, strippedBody);
+    if (abuseCheck) {
+      errors.push(abuseCheck);
+    }
   }
 
   return {
     valid: errors.length === 0,
     errors,
   };
+}
+
+/**
+ * Basic abuse detection heuristics.
+ * Returns an error message if abuse is detected, or null if clean.
+ */
+function detectAbuse(title, body) {
+  const combined = `${title} ${body}`.toLowerCase();
+
+  // Excessive character repetition — "aaaaaa" or "!!!!!!" (5+ repeats)
+  if (/(.)\1{9,}/.test(combined)) {
+    return 'Content contains excessive character repetition.';
+  }
+
+  // Very low word diversity — many repeated words indicates copy-paste spam
+  const words = combined.match(/\b[a-z]{3,}\b/g) || [];
+  if (words.length >= 20) {
+    const unique = new Set(words);
+    const diversityRatio = unique.size / words.length;
+    if (diversityRatio < 0.15) {
+      return 'Content appears to contain repetitive or duplicated text.';
+    }
+  }
+
+  // Excessive external links — more than 10 links in body suggests spam
+  const linkCount = (body.match(/https?:\/\//g) || []).length;
+  if (linkCount > 10) {
+    return 'Content contains too many external links.';
+  }
+
+  return null;
 }
 
 /**
@@ -123,9 +163,34 @@ export function validateBranch(branch) {
   if (!branch || typeof branch !== 'string') {
     return { valid: false, error: 'Missing branch parameter' };
   }
-  // Must be exactly: users/<alphanumeric-hyphen-underscore>/<alphanumeric-hyphen-underscore>
-  if (!/^users\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/.test(branch)) {
+  // Path traversal defense
+  if (branch.includes('..')) {
     return { valid: false, error: 'Invalid branch name format' };
+  }
+  // Must be exactly: users/<username>/<slug>
+  // Username allows dots (valid in GitHub usernames), slug does not.
+  if (!/^users\/[a-zA-Z0-9._-]+\/[a-zA-Z0-9_-]+$/.test(branch)) {
+    return { valid: false, error: 'Invalid branch name format' };
+  }
+  return { valid: true };
+}
+
+/**
+ * Validate a content file path (for editing existing pages).
+ * Must be a docs/ or blog/ path with no traversal.
+ *
+ * @param {string} path
+ * @returns {{ valid: boolean, error?: string }}
+ */
+export function validateContentPath(path) {
+  if (!path || typeof path !== 'string') {
+    return { valid: false, error: 'Path is required.' };
+  }
+  if (!/^(docs|blog)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(path)) {
+    return { valid: false, error: 'Invalid path format.' };
+  }
+  if (path.includes('..')) {
+    return { valid: false, error: 'Invalid path.' };
   }
   return { valid: true };
 }
@@ -144,7 +209,10 @@ export function validateBranch(branch) {
  */
 export function buildMarkdownFile({ type, title, body, category, author, tags }) {
   const frontmatter = ['---'];
-  const safeTitle = title.replace(/"/g, '\\"').replace(/\n/g, ' ');
+  // Escape backslashes first (before other escapes add more backslashes),
+  // then double quotes, then collapse newlines. This prevents YAML injection
+  // via backslash escape sequences in double-quoted YAML strings.
+  const safeTitle = title.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ');
 
   if (type === 'wiki') {
     frontmatter.push(`title: "${safeTitle}"`);

@@ -210,3 +210,56 @@
 .editor-container {
   position: relative;
 }
+
+/* ============================================= */
+/* Mobile responsiveness for the /contribute page */
+/* ============================================= */
+
+@media (max-width: 768px) {
+  /* Stack type selector buttons vertically */
+  .editor-type-selector {
+    flex-direction: column !important;
+  }
+
+  /* Make title input slightly smaller on mobile */
+  .editor-container input[data-editor-title] {
+    font-size: 1.1rem !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Toolbar: allow wrapping for smaller screens */
+  .mdxeditor [role="toolbar"] {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  /* Reduce toolbar button padding */
+  .mdxeditor [role="toolbar"] button {
+    padding: 4px 6px;
+    min-width: 28px;
+  }
+
+  /* Block type selector — narrower on mobile */
+  .mdxeditor [role="toolbar"] select,
+  .mdxeditor [role="toolbar"] [role="combobox"] {
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
+
+  /* Editor area — shorter min-height on mobile */
+  .editor-content-area {
+    min-height: 250px;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  /* Action buttons — stack when cramped */
+  .editor-container > div:last-of-type {
+    flex-direction: column !important;
+  }
+
+  .editor-container > div:last-of-type .button {
+    width: 100%;
+    text-align: center;
+  }
+}

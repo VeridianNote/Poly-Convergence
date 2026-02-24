@@ -45,8 +45,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/VeridianNote/Poly-Convergence/edit/main/',
+          editUrl: ({docPath}) => `/contribute?edit=docs/${docPath}`,
         },
         blog: {
           showReadingTime: true,
@@ -54,8 +53,7 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl:
-            'https://github.com/VeridianNote/Poly-Convergence/edit/main/',
+          editUrl: ({blogPath}) => `/contribute?edit=blog/${blogPath}`,
           blogTitle: 'Blog',
           blogDescription: 'Articles examining relationship advice claims with evidence and community experiences.',
           onInlineTags: 'warn',

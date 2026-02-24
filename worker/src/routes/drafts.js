@@ -2,9 +2,11 @@
  * Draft route handlers.
  *
  * GET  /api/drafts        → List user's drafts (branches)
- * GET  /api/draft/:slug   → Load a draft's content
+ * GET  /api/draft         → Load a draft's content
  * POST /api/draft         → Save a draft (create branch + commit)
- * DELETE /api/draft/:slug → Abandon a draft (delete branch, close PR)
+ * DELETE /api/draft       → Abandon a draft (delete branch, close PR)
+ * GET  /api/content       → Load published content from main (for editing)
+ * POST /api/merge         → Merge main into a user's draft branch
  */
 
 import { requireAuth } from '../middleware/auth.js';
@@ -17,6 +19,8 @@ import {
   deleteBranch,
   getPRForBranch,
   closePR,
+  mergeBranch,
+  getCollaboratorPermission,
 } from '../github/api.js';
 import {
   validateContent,
@@ -25,6 +29,7 @@ import {
   computeFilePath,
   validateCategory,
   validateBranch,
+  validateContentPath,
 } from '../utils/validation.js';
 import {
   getOrCreateUser,
@@ -32,7 +37,6 @@ import {
   loadConfig,
   checkSaveThrottle,
 } from '../utils/rate-limit.js';
-import { getCollaboratorPermission } from '../github/api.js';
 import { createJWT, createSessionCookie } from '../utils/jwt.js';
 
 /**
@@ -68,6 +72,7 @@ export async function handleListDrafts(request, env) {
         prState: pr?.state || null,
         prUrl: pr?.html_url || null,
         prLabels: pr?.labels?.map(l => l.name) || [],
+        prUpdatedAt: pr?.updated_at || null,
       };
     })
   );
@@ -164,6 +169,66 @@ export async function handleLoadDraft(request, env) {
 }
 
 /**
+ * GET /api/content?path=docs/category/page.md
+ * Load published content from the main branch for editing.
+ * For blog posts, enforces authorship check (only author or mod can edit).
+ */
+export async function handleLoadContent(request, env) {
+  const { user, response } = await requireAuth(request, env);
+  if (response) return response;
+
+  const url = new URL(request.url);
+  const path = url.searchParams.get('path');
+  const pathCheck = validateContentPath(path);
+  if (!pathCheck.valid) {
+    return Response.json({ error: pathCheck.error }, { status: 400 });
+  }
+
+  const token = await getInstallationToken(env);
+
+  // Load file from main branch
+  const fileData = await getFileContent(env, token, 'main', path);
+  if (!fileData) {
+    return Response.json({ error: 'File not found' }, { status: 404 });
+  }
+
+  const { frontmatter, body } = parseFrontmatter(fileData.content);
+  const type = path.startsWith('blog/') ? 'blog' : 'wiki';
+  const category = type === 'wiki' ? extractCategory(path) : null;
+
+  // Blog authorship check — only the author or a mod can edit blog posts
+  if (type === 'blog') {
+    const permission = await getCollaboratorPermission(env, token, user.username);
+    const isMod = permission === 'admin' || permission === 'write';
+
+    if (!isMod) {
+      const authorsRaw = frontmatter.authors || '';
+      const authorList = authorsRaw
+        .replace(/[\[\]]/g, '')
+        .split(',')
+        .map(a => a.trim())
+        .filter(Boolean);
+
+      // Block if authors field is missing (can't verify ownership) or user isn't listed
+      if (authorList.length === 0 || !authorList.includes(user.username)) {
+        return Response.json(
+          { error: 'You can only edit your own blog posts.' },
+          { status: 403 }
+        );
+      }
+    }
+  }
+
+  return Response.json({
+    path,
+    title: frontmatter.title || '',
+    body,
+    type,
+    category,
+  });
+}
+
+/**
  * POST /api/draft
  * Save a draft — creates branch + commits file.
  * If branch already exists, commits an update.
@@ -194,7 +259,7 @@ export async function handleSaveDraft(request, env) {
   } catch {
     return Response.json({ error: 'Invalid JSON in request body' }, { status: 400 });
   }
-  const { title, body, type, category, subcategory, existingBranch } = requestBody;
+  const { title, body, type, category, subcategory, existingBranch, editPath } = requestBody;
 
   // Validate content type
   if (type !== 'wiki' && type !== 'blog') {
@@ -224,8 +289,40 @@ export async function handleSaveDraft(request, env) {
     }
   }
 
-  // Validate category for wiki pages
-  if (type === 'wiki' && !existingBranch) {
+  // Validate editPath if provided (editing an existing published page)
+  if (editPath) {
+    const pathCheck = validateContentPath(editPath);
+    if (!pathCheck.valid) {
+      return Response.json({ error: pathCheck.error }, { status: 400 });
+    }
+
+    // Blog authorship check — only the author or a mod can edit blog posts.
+    // Without this, a user could POST directly to /api/draft with another user's
+    // blog editPath, bypassing the check in handleLoadContent.
+    if (editPath.startsWith('blog/') && !isMod) {
+      const existingFile = await getFileContent(env, token, 'main', editPath);
+      if (!existingFile) {
+        return Response.json({ error: 'Original blog post not found.' }, { status: 404 });
+      }
+      const { frontmatter } = parseFrontmatter(existingFile.content);
+      const authorsRaw = frontmatter.authors || '';
+      const authorList = authorsRaw
+        .replace(/[\[\]]/g, '')
+        .split(',')
+        .map(a => a.trim())
+        .filter(Boolean);
+
+      if (authorList.length === 0 || !authorList.includes(user.username)) {
+        return Response.json(
+          { error: 'You can only edit your own blog posts.' },
+          { status: 403 }
+        );
+      }
+    }
+  }
+
+  // Validate category for wiki pages (skip when editing existing page — path is fixed)
+  if (type === 'wiki' && !existingBranch && !editPath) {
     const catValidation = validateCategory(category);
     if (!catValidation.valid) {
       return Response.json(
@@ -312,9 +409,12 @@ export async function handleSaveDraft(request, env) {
   }
 
   // Build the file content
+  // editPath = editing an existing published page (use original path)
+  // existingBranch = updating a draft branch (find path from branch diff)
+  // otherwise = new draft (compute path from type/slug/category)
   const filePath = existingBranch
     ? await findContentFilePath(env, token, branchName)
-    : computeFilePath(type, slug, category, subcategory);
+    : (editPath || computeFilePath(type, slug, category, subcategory));
 
   if (!filePath) {
     // Clean up orphaned branch if we just created it
@@ -324,8 +424,9 @@ export async function handleSaveDraft(request, env) {
     return Response.json({ error: 'Could not determine file path' }, { status: 500 });
   }
 
-  // For existing branches, derive content type from file path (don't trust client)
-  const effectiveType = existingBranch
+  // Derive content type from file path when editing (don't trust client).
+  // Only trust client type for brand-new drafts (no existingBranch and no editPath).
+  const effectiveType = (existingBranch || editPath)
     ? (filePath.startsWith('blog/') ? 'blog' : 'wiki')
     : type;
 
@@ -464,6 +565,77 @@ export async function handleAbandonDraft(request, env) {
   await deleteBranch(env, token, branch);
 
   return Response.json({ ok: true, deleted: branch });
+}
+
+/**
+ * POST /api/merge
+ * Merge main into a user's draft branch to bring it up to date.
+ * Returns the published version of the content file on conflict
+ * so the frontend can display it alongside the user's draft.
+ */
+export async function handleMergeBranch(request, env) {
+  const { user, response } = await requireAuth(request, env);
+  if (response) return response;
+
+  let requestBody;
+  try {
+    requestBody = await request.json();
+  } catch {
+    return Response.json({ error: 'Invalid JSON in request body' }, { status: 400 });
+  }
+  const { branch } = requestBody;
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
+  }
+
+  const token = await getInstallationToken(env);
+
+  // Security: users can only merge into their own branches
+  const permission = await getCollaboratorPermission(env, token, user.username);
+  const isMod = permission === 'admin' || permission === 'write';
+
+  if (!isMod && !branch.startsWith(`users/${user.username}/`)) {
+    return Response.json({ error: 'Access denied' }, { status: 403 });
+  }
+
+  // Attempt the merge
+  const result = await mergeBranch(env, token, branch);
+
+  if (result.merged) {
+    return Response.json({ ok: true, merged: true, noChange: result.noChange || false });
+  }
+
+  if (result.conflict) {
+    // Load the published (main) version of the content file so the user
+    // can see what changed and manually reconcile.
+    let publishedContent = null;
+
+    try {
+      const filePath = await findContentFilePath(env, token, branch);
+      if (filePath) {
+        const mainFile = await getFileContent(env, token, 'main', filePath);
+        if (mainFile) {
+          const { frontmatter, body } = parseFrontmatter(mainFile.content);
+          publishedContent = {
+            title: frontmatter.title || '',
+            body,
+          };
+        }
+      }
+    } catch {
+      // Couldn't load published content — still report the conflict
+    }
+
+    return Response.json({
+      ok: false,
+      conflict: true,
+      publishedContent,
+      message: 'Merge conflict detected. Review the published version and update your draft manually.',
+    });
+  }
+
+  return Response.json({ error: 'Unexpected merge result' }, { status: 500 });
 }
 
 /**

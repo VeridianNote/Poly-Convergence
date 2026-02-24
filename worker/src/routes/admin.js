@@ -141,7 +141,12 @@ export async function handleAdminApproveImages(request, env) {
     return Response.json({ error: 'User not found' }, { status: 404 });
   }
 
-  const data = JSON.parse(existing);
+  let data;
+  try {
+    data = JSON.parse(existing);
+  } catch {
+    return Response.json({ error: 'Corrupted user record' }, { status: 500 });
+  }
   data.image_approved = approved;
   await env.SUBMISSIONS_KV.put(key, JSON.stringify(data));
 

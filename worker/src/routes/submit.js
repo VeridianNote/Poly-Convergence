@@ -215,6 +215,8 @@ export async function handleStatus(request, env) {
       labels: pr.labels?.map(l => l.name) || [],
       mergeable: pr.mergeable,
       reviewComments: pr.review_comments,
+      comments: pr.comments,
+      updatedAt: pr.updated_at,
       changesRequested: pr.labels?.some(l => l.name === 'needs-revision') || false,
     } : null,
     behindMain,

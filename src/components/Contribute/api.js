@@ -108,6 +108,18 @@ export function checkEditorRecovery() {
   }
 }
 
+/**
+ * Safely parse JSON from a response, returning null if the body is not valid JSON.
+ * Prevents confusing parse errors from non-JSON responses (e.g., Cloudflare 502 pages).
+ */
+async function safeJson(res) {
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 // --- API Methods ---
 
 /**
@@ -164,8 +176,20 @@ export async function listDrafts() {
 export async function loadDraft(branch) {
   const res = await apiFetch(`/api/draft?branch=${encodeURIComponent(branch)}`);
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.error || 'Failed to load draft');
+    const err = await safeJson(res);
+    throw new Error(err?.error || 'Failed to load draft');
+  }
+  return res.json();
+}
+
+/**
+ * Load published content from main branch (for "Edit this page" flow).
+ */
+export async function loadContent(path) {
+  const res = await apiFetch(`/api/content?path=${encodeURIComponent(path)}`);
+  if (!res.ok) {
+    const err = await safeJson(res);
+    throw new Error(err?.error || 'Failed to load content');
   }
   return res.json();
 }
@@ -173,19 +197,19 @@ export async function loadDraft(branch) {
 /**
  * Save a draft (create or update).
  */
-export async function saveDraft({ title, body, type, category, subcategory, existingBranch }) {
+export async function saveDraft({ title, body, type, category, subcategory, existingBranch, editPath }) {
   const res = await apiFetch('/api/draft', {
     method: 'POST',
-    body: JSON.stringify({ title, body, type, category, subcategory, existingBranch }),
+    body: JSON.stringify({ title, body, type, category, subcategory, existingBranch, editPath }),
   });
 
-  const data = await res.json();
+  const data = await safeJson(res);
 
   if (!res.ok) {
-    return { ok: false, ...data };
+    return { ok: false, ...(data || { error: 'Server error' }) };
   }
 
-  return { ok: true, ...data };
+  return { ok: true, ...(data || {}) };
 }
 
 /**
@@ -197,11 +221,11 @@ export async function submitForReview(branch) {
     body: JSON.stringify({ branch }),
   });
 
-  const data = await res.json();
+  const data = await safeJson(res);
   if (!res.ok) {
-    return { ok: false, ...data };
+    return { ok: false, ...(data || { error: 'Server error' }) };
   }
-  return { ok: true, ...data };
+  return { ok: true, ...(data || {}) };
 }
 
 /**
@@ -212,11 +236,11 @@ export async function abandonDraft(branch) {
     method: 'DELETE',
   });
 
-  const data = await res.json();
+  const data = await safeJson(res);
   if (!res.ok) {
-    throw new Error(data.error || 'Failed to abandon draft');
+    throw new Error(data?.error || 'Failed to abandon draft');
   }
-  return data;
+  return data || {};
 }
 
 /**
@@ -228,6 +252,56 @@ export async function getStatus(branch) {
     throw new Error('Failed to check status');
   }
   return res.json();
+}
+
+/**
+ * Merge main into a user's draft branch.
+ * Returns { ok, merged, conflict, publishedContent, message }.
+ */
+export async function mergeBranch(branch) {
+  const res = await apiFetch('/api/merge', {
+    method: 'POST',
+    body: JSON.stringify({ branch }),
+  });
+
+  const data = await safeJson(res);
+  if (!data) {
+    throw new Error('Invalid response from server');
+  }
+  if (!res.ok && !data.conflict) {
+    throw new Error(data.error || 'Failed to merge branch');
+  }
+  return data;
+}
+
+/**
+ * Upload an image to the user's draft branch.
+ * Uses FormData instead of JSON (multipart/form-data).
+ */
+export async function uploadImage(branch, file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('branch', branch);
+
+  const url = `${getApiUrl()}/api/upload`;
+  const res = await fetch(url, {
+    method: 'POST',
+    credentials: 'include',
+    body: formData,
+    // Don't set Content-Type — browser sets it with multipart boundary
+  });
+
+  if (res.status === 401) {
+    handleExpiredSession();
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    throw new Error('Session expired');
+  }
+
+  const data = await safeJson(res);
+  if (!res.ok) {
+    throw new Error(data?.error || 'Failed to upload image');
+  }
+  return data;
 }
 
 /**

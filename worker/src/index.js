@@ -10,6 +10,7 @@
  *   /api/user          → Current user info + trust tier
  *   /api/config        → Public config (submissions enabled?)
  *   /api/categories    → List wiki categories
+ *   /api/content       → Load published content from main (for editing)
  *   /api/drafts        → List user's drafts
  *   /api/draft         → Save/load/delete a draft
  *   /api/submit        → Submit draft for review (create PR)
@@ -23,9 +24,10 @@
 
 import { handlePreflight, withCors } from './middleware/cors.js';
 import { handleLogin, handleCallback, handleLogout } from './routes/auth.js';
-import { handleListDrafts, handleLoadDraft, handleSaveDraft, handleAbandonDraft } from './routes/drafts.js';
+import { handleListDrafts, handleLoadDraft, handleSaveDraft, handleAbandonDraft, handleLoadContent, handleMergeBranch } from './routes/drafts.js';
 import { handleSubmit, handleStatus } from './routes/submit.js';
 import { handleGetUser, handleGetConfig, handleGetCategories } from './routes/user.js';
+import { handleUploadImage } from './routes/upload.js';
 import {
   handleAdminListUsers,
   handleAdminApproveImages,
@@ -76,6 +78,11 @@ export default {
         response = await handleGetCategories(request, env);
       }
 
+      // Content (load from main for editing)
+      else if (path === '/api/content' && method === 'GET') {
+        response = await handleLoadContent(request, env);
+      }
+
       // Drafts
       else if (path === '/api/drafts' && method === 'GET') {
         response = await handleListDrafts(request, env);
@@ -88,6 +95,16 @@ export default {
       }
       else if (path === '/api/draft' && method === 'DELETE') {
         response = await handleAbandonDraft(request, env);
+      }
+
+      // Branch merge (update from main)
+      else if (path === '/api/merge' && method === 'POST') {
+        response = await handleMergeBranch(request, env);
+      }
+
+      // Image upload
+      else if (path === '/api/upload' && method === 'POST') {
+        response = await handleUploadImage(request, env);
       }
 
       // Submissions

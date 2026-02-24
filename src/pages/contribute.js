@@ -55,7 +55,6 @@ function ContributeApp() {
   const [view, setView] = useState('list'); // 'list' | 'editor'
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [editorType, setEditorType] = useState('wiki');
 
   // Lazy import the API and Editor (they use browser-only APIs)
   const apiRef = React.useRef(null);
@@ -114,18 +113,25 @@ function ContributeApp() {
             setView('editor');
           }
 
-          // Check for ?edit= parameter (editing existing page)
+          // Check for ?edit= parameter (editing existing published page)
           const editPath = params.get('edit');
           if (editPath && /^(docs|blog)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(editPath) && !editPath.includes('..')) {
-            setActiveDraft({
-              editPath,
-              title: '',
-              body: '',
-              type: editPath.startsWith('blog/') ? 'blog' : 'wiki',
-              category: '',
-              branch: null,
-            });
-            setView('editor');
+            try {
+              const content = await api.loadContent(editPath);
+              setActiveDraft({
+                editPath,
+                title: content.title,
+                body: content.body,
+                type: content.type,
+                category: content.category || '',
+                branch: null,
+              });
+              setView('editor');
+              // Clean the URL only on success so refresh retries on failure
+              window.history.replaceState({}, '', window.location.pathname);
+            } catch (editErr) {
+              setError(editErr.message);
+            }
           }
         }
       } catch (err) {
@@ -159,6 +165,7 @@ function ContributeApp() {
         category: data.category || '',
         branch: draft.branch,
         pr: data.pr,
+        prImagesApproved: data.pr?.labels?.includes('images-approved') || false,
       });
       setView('editor');
     } catch (err) {
@@ -167,7 +174,6 @@ function ContributeApp() {
   };
 
   const handleNewDraft = (type) => {
-    setEditorType(type);
     setActiveDraft({
       title: '',
       body: '',
@@ -266,13 +272,15 @@ function ContributeApp() {
           <UserBadge user={user} onLogout={handleLogout} />
         </div>
         <EditorComponent
-          key={activeDraft.branch || 'new-draft'}
+          key={activeDraft.branch || activeDraft.editPath || 'new-draft'}
           user={user}
           initialTitle={activeDraft.title}
           initialBody={activeDraft.body}
           initialType={activeDraft.type}
           initialCategory={activeDraft.category}
           initialBranch={activeDraft.branch}
+          initialEditPath={activeDraft.editPath || null}
+          initialPrImagesApproved={activeDraft.prImagesApproved || false}
           categories={categories}
           config={config}
           onDraftSaved={handleDraftSaved}
@@ -392,16 +400,31 @@ function DraftCard({ draft, onOpen }) {
   const slug = draft.slug || draft.branch.split('/').pop();
   const title = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
+  // Check if the PR has new activity since the user last viewed it
+  let hasNewActivity = false;
+  if (draft.hasPR && draft.prUpdatedAt) {
+    const lastSeen = localStorage.getItem(`poly_pr_seen_${draft.branch}`);
+    if (lastSeen) {
+      const prUpdated = new Date(draft.prUpdatedAt).getTime();
+      hasNewActivity = prUpdated > Number(lastSeen);
+    } else {
+      // First time seeing this PR in the list — record baseline so future
+      // mod actions will be detected even if the user never opens the editor.
+      localStorage.setItem(`poly_pr_seen_${draft.branch}`, String(Date.now()));
+    }
+  }
+
   return (
     <div
       style={{
         padding: '1rem',
-        border: '1px solid var(--ifm-color-emphasis-300)',
+        border: `1px solid ${hasNewActivity ? 'var(--ifm-color-success)' : 'var(--ifm-color-emphasis-300)'}`,
         borderRadius: '6px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         cursor: 'pointer',
+        backgroundColor: hasNewActivity ? 'var(--ifm-color-success-contrast-background)' : undefined,
       }}
       onClick={onOpen}
       role="button"
@@ -410,6 +433,20 @@ function DraftCard({ draft, onOpen }) {
     >
       <div>
         <strong>{title}</strong>
+        {hasNewActivity && (
+          <span style={{
+            marginLeft: '0.5rem',
+            display: 'inline-block',
+            padding: '0.1rem 0.4rem',
+            fontSize: '0.7rem',
+            fontWeight: 600,
+            borderRadius: '3px',
+            backgroundColor: 'var(--ifm-color-success)',
+            color: '#fff',
+          }}>
+            NEW ACTIVITY
+          </span>
+        )}
         <div style={{ fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)', marginTop: '0.25rem' }}>
           {draft.hasPR ? (
             <>

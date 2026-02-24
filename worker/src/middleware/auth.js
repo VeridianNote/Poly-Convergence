@@ -6,6 +6,7 @@
  */
 
 import { verifyJWT, getSessionToken } from '../utils/jwt.js';
+import { getCollaboratorPermission } from '../github/api.js';
 
 /**
  * Verify the JWT and return the user payload.
@@ -54,18 +55,9 @@ export async function requireAuth(request, env) {
  */
 export async function requireMod(user, env, getInstallationToken) {
   const token = await getInstallationToken(env);
-  const res = await fetch(
-    `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/collaborators/${user.username}/permission`,
-    {
-      headers: {
-        Authorization: `token ${token}`,
-        Accept: 'application/vnd.github+json',
-        'User-Agent': 'poly-convergence-bot',
-      },
-    }
-  );
+  const permission = await getCollaboratorPermission(env, token, user.username);
 
-  if (!res.ok) {
+  if (permission === null) {
     return {
       isMod: false,
       response: Response.json(
@@ -75,9 +67,7 @@ export async function requireMod(user, env, getInstallationToken) {
     };
   }
 
-  const data = await res.json();
-  // "admin" or "write" (push) permission = mod
-  const isMod = data.permission === 'admin' || data.permission === 'write';
+  const isMod = permission === 'admin' || permission === 'write';
 
   if (!isMod) {
     return {
