@@ -17,6 +17,7 @@ import {
   getFileContent,
   listBranches,
   deleteBranch,
+  deleteFile,
   getPRForBranch,
   closePR,
   mergeBranch,
@@ -132,8 +133,10 @@ export async function handleLoadDraft(request, env) {
   }
 
   const compareData = await compareRes.json();
+  // Filter out removed files — after a rename, old file is deleted and new is added.
   const contentFiles = compareData.files?.filter(
-    f => f.filename.startsWith('docs/') || f.filename.startsWith('blog/')
+    f => f.status !== 'removed' &&
+         (f.filename.startsWith('docs/') || f.filename.startsWith('blog/'))
   ) || [];
 
   if (contentFiles.length === 0) {
@@ -409,12 +412,28 @@ export async function handleSaveDraft(request, env) {
   }
 
   // Build the file content
-  // editPath = editing an existing published page (use original path)
   // existingBranch = updating a draft branch (find path from branch diff)
+  // editPath = editing an existing published page (compute new path from slug + original directory)
   // otherwise = new draft (compute path from type/slug/category)
-  const filePath = existingBranch
-    ? await findContentFilePath(env, token, branchName)
-    : (editPath || computeFilePath(type, slug, category, subcategory));
+  let filePath;
+  let oldFileToDelete = null; // Set when editPath rename is needed
+
+  if (existingBranch) {
+    filePath = await findContentFilePath(env, token, branchName);
+  } else if (editPath) {
+    // Compute the new path by replacing the filename with the new slug,
+    // preserving the directory structure. This enables renaming pages.
+    const dir = editPath.substring(0, editPath.lastIndexOf('/') + 1);
+    const newPath = `${dir}${slug}.md`;
+    filePath = newPath;
+    // If the path changed (title was renamed), we need to delete the old file
+    // after committing the new one.
+    if (newPath !== editPath) {
+      oldFileToDelete = editPath;
+    }
+  } else {
+    filePath = computeFilePath(type, slug, category, subcategory);
+  }
 
   if (!filePath) {
     // Clean up orphaned branch if we just created it
@@ -488,6 +507,12 @@ export async function handleSaveDraft(request, env) {
       : `Add draft: ${title}`;
 
     await commitFile(env, token, branchName, filePath, fileContent, commitMessage);
+
+    // If this is a rename (editPath differs from new filePath), delete the old file.
+    // This must happen AFTER the new file is committed so the branch is never empty.
+    if (oldFileToDelete) {
+      await deleteFile(env, token, branchName, oldFileToDelete, `Rename: ${oldFileToDelete} → ${filePath}`);
+    }
   } catch (err) {
     // Clean up orphaned branch if we just created it and commit failed
     if (!existingBranch) {
@@ -656,8 +681,11 @@ async function findContentFilePath(env, token, branch) {
   if (!compareRes.ok) return null;
 
   const data = await compareRes.json();
+  // Filter out removed files — after a rename, the old file is deleted and
+  // the new file is added. We want the added/modified file, not the removed one.
   const contentFile = data.files?.find(
-    f => f.filename.startsWith('docs/') || f.filename.startsWith('blog/')
+    f => f.status !== 'removed' &&
+         (f.filename.startsWith('docs/') || f.filename.startsWith('blog/'))
   );
 
   return contentFile?.filename || null;

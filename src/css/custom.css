@@ -62,14 +62,21 @@
   --baseTextHighContrast: #ffffff;
   --basePageBg: #1b1b1d;
 
+  background-color: #1b1b1d;
   color-scheme: dark;
 }
 
-/* Editor content area — dark background with light text */
+/* Editor content area — dark background with light text + visible caret */
 [data-theme='dark'] .editor-content-area {
   background-color: #1b1b1d;
   color: #e3e3e3;
-  caret-color: #e3e3e3;
+  caret-color: #ffffff;
+}
+
+/* Ensure caret + text color reach the actual contenteditable element */
+[data-theme='dark'] .mdxeditor [contenteditable] {
+  caret-color: #ffffff;
+  color: #e3e3e3;
 }
 
 /* Toolbar — dark background */
@@ -123,9 +130,11 @@
   color: #c8c8cc;
 }
 
-/* Toolbar select/dropdown */
+/* Toolbar select/dropdown (covers native selects, Radix combobox, and trigger buttons) */
 [data-theme='dark'] .mdxeditor [role="toolbar"] select,
-[data-theme='dark'] .mdxeditor [role="toolbar"] [role="combobox"] {
+[data-theme='dark'] .mdxeditor [role="toolbar"] [role="combobox"],
+[data-theme='dark'] .mdxeditor [role="toolbar"] [data-radix-collection-item],
+[data-theme='dark'] .mdxeditor select {
   background-color: #242526;
   color: #c8c8cc;
   border-color: #3e3e42;

@@ -104,6 +104,7 @@ function ContributeApp() {
           const recovery = api.checkEditorRecovery();
           if (recovery) {
             setActiveDraft({
+              stableKey: `recovery-${Date.now()}`,
               title: recovery.title,
               body: recovery.body,
               type: recovery.type,
@@ -119,6 +120,7 @@ function ContributeApp() {
             try {
               const content = await api.loadContent(editPath);
               setActiveDraft({
+                stableKey: `edit-${editPath}`,
                 editPath,
                 title: content.title,
                 body: content.body,
@@ -159,6 +161,7 @@ function ContributeApp() {
     try {
       const data = await apiRef.current.loadDraft(draft.branch);
       setActiveDraft({
+        stableKey: `draft-${draft.branch}`,
         title: data.title,
         body: data.body,
         type: data.type,
@@ -175,6 +178,7 @@ function ContributeApp() {
 
   const handleNewDraft = (type) => {
     setActiveDraft({
+      stableKey: `new-${Date.now()}`,
       title: '',
       body: '',
       type,
@@ -202,6 +206,8 @@ function ContributeApp() {
   // without navigating away from the editor.
   const handleDraftSaved = (result) => {
     if (result.branch) {
+      // Preserve the stableKey so the Editor component's React key doesn't change,
+      // which would remount it and wipe the user's in-progress edits.
       setActiveDraft(prev => prev ? { ...prev, branch: result.branch } : prev);
     }
   };
@@ -272,7 +278,7 @@ function ContributeApp() {
           <UserBadge user={user} onLogout={handleLogout} />
         </div>
         <EditorComponent
-          key={activeDraft.branch || activeDraft.editPath || 'new-draft'}
+          key={activeDraft.stableKey}
           user={user}
           initialTitle={activeDraft.title}
           initialBody={activeDraft.body}

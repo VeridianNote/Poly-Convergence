@@ -200,6 +200,43 @@ export async function deleteBranch(env, token, branchName) {
 }
 
 /**
+ * Delete a file from a branch (used for renames: commit new file + delete old).
+ * Requires the file's SHA, which we fetch first.
+ */
+export async function deleteFile(env, token, branch, path, message) {
+  // Get the file SHA (required by the Contents API for deletion)
+  const fileRes = await githubFetch(
+    `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${path}?ref=${branch}`,
+    token
+  );
+
+  if (!fileRes.ok) {
+    if (fileRes.status === 404) return; // Already gone, nothing to delete
+    throw new Error(`Failed to get file for deletion: ${fileRes.status}`);
+  }
+
+  const fileData = await fileRes.json();
+
+  const res = await githubFetch(
+    `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${path}`,
+    token,
+    {
+      method: 'DELETE',
+      body: JSON.stringify({
+        message,
+        sha: fileData.sha,
+        branch,
+      }),
+    }
+  );
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to delete file: ${res.status} ${text}`);
+  }
+}
+
+/**
  * Create a pull request.
  */
 export async function createPullRequest(env, token, { title, body, head, base = 'main', labels = [] }) {
