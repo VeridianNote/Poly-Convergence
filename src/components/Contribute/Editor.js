@@ -142,8 +142,12 @@ export default function Editor({
       }
 
       setBranch(result.branch);
-      setThrottleCountdown(throttleSeconds);
-      setStatusMessage(`Draft saved at ${new Date().toLocaleTimeString()}`);
+      if (result.noChange) {
+        setStatusMessage('No changes to save.');
+      } else {
+        setThrottleCountdown(throttleSeconds);
+        setStatusMessage(`Draft saved at ${new Date().toLocaleTimeString()}`);
+      }
 
       if (onDraftSaved) onDraftSaved(result);
     } catch (err) {

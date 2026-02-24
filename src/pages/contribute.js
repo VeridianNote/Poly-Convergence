@@ -115,9 +115,8 @@ function ContributeApp() {
           }
 
           // Check for ?edit= parameter (editing existing page)
-          const params = new URLSearchParams(window.location.search);
           const editPath = params.get('edit');
-          if (editPath) {
+          if (editPath && /^(docs|blog)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(editPath) && !editPath.includes('..')) {
             setActiveDraft({
               editPath,
               title: '',

@@ -118,6 +118,9 @@ export function checkSaveThrottle(lastDraftSave, throttleSeconds) {
   }
 
   const lastSave = new Date(lastDraftSave).getTime();
+  if (isNaN(lastSave)) {
+    return { allowed: true, waitSeconds: 0 }; // Invalid date — allow save
+  }
   const now = Date.now();
   const elapsed = (now - lastSave) / 1000;
 
@@ -145,7 +148,15 @@ export async function getOrCreateUser(kv, githubId, username) {
   const existing = await kv.get(key);
 
   if (existing) {
-    const record = JSON.parse(existing);
+    let record;
+    try {
+      record = JSON.parse(existing);
+    } catch {
+      // Corrupted record — recreate it
+      record = { username, merged_count: 0, image_approved: false, created_at: new Date().toISOString() };
+      await kv.put(key, JSON.stringify(record));
+      return record;
+    }
     // Update username if the user renamed their GitHub account
     if (record.username !== username) {
       record.username = username;

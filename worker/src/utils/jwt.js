@@ -97,6 +97,11 @@ export async function verifyJWT(token, secret) {
     if (parts.length !== 3) return null;
 
     const [headerB64, payloadB64, signatureB64] = parts;
+
+    // Validate algorithm — reject tokens with unexpected alg
+    const header = JSON.parse(base64urlDecode(headerB64));
+    if (header.alg !== 'HS256') return null;
+
     const key = await getSigningKey(secret);
 
     // Verify signature
@@ -126,6 +131,9 @@ export async function verifyJWT(token, secret) {
     // Check expiration
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp && payload.exp < now) return null;
+
+    // Validate required claims
+    if (!payload.sub || !payload.username) return null;
 
     return payload;
   } catch {

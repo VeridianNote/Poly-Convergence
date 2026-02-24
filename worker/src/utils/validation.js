@@ -151,8 +151,8 @@ export function buildMarkdownFile({ type, title, body, category, author, tags })
     frontmatter.push('sidebar_position: 99');
   } else if (type === 'blog') {
     frontmatter.push(`title: "${safeTitle}"`);
-    // Sanitize author — only allow alphanumeric + hyphens (GitHub username format)
-    if (author && /^[a-zA-Z0-9-]+$/.test(author)) {
+    // Sanitize author — only allow alphanumeric, hyphens, underscores (GitHub username format)
+    if (author && /^[a-zA-Z0-9_-]+$/.test(author)) {
       frontmatter.push(`authors: [${author}]`);
     }
     // Sanitize tags — only allow alphanumeric + hyphens per tag

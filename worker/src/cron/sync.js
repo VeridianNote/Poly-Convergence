@@ -66,7 +66,11 @@ export async function runMergeSync(env) {
     for (const key of kvList.keys) {
       const record = await env.SUBMISSIONS_KV.get(key.name);
       if (record) {
-        allUserRecords.push({ key: key.name, data: JSON.parse(record) });
+        try {
+          allUserRecords.push({ key: key.name, data: JSON.parse(record) });
+        } catch {
+          // Skip corrupted KV entries
+        }
       }
     }
     cursor = kvList.list_complete ? undefined : kvList.cursor;

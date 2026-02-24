@@ -10,6 +10,7 @@
 import { requireAuth, requireMod } from '../middleware/auth.js';
 import { getInstallationToken } from '../github/app-token.js';
 import { invalidateConfigCache } from '../utils/rate-limit.js';
+import { validateBranch } from '../utils/validation.js';
 import {
   listBranches,
   deleteBranch,
@@ -44,15 +45,26 @@ export async function handleAdminListUsers(request, env) {
     userMap[username].push(branch.name);
   }
 
-  // Get KV records for each user
+  // Get KV records for each user (paginate — KV.list returns max 1000 keys)
   const users = [];
-  const kvList = await env.SUBMISSIONS_KV.list({ prefix: 'user:' });
+  let cursor = undefined;
+  const allKeys = [];
+  do {
+    const kvList = await env.SUBMISSIONS_KV.list({ prefix: 'user:', cursor });
+    allKeys.push(...kvList.keys);
+    cursor = kvList.list_complete ? undefined : kvList.cursor;
+  } while (cursor);
 
-  for (const key of kvList.keys) {
+  for (const key of allKeys) {
     const record = await env.SUBMISSIONS_KV.get(key.name);
     if (!record) continue;
 
-    const data = JSON.parse(record);
+    let data;
+    try {
+      data = JSON.parse(record);
+    } catch {
+      continue; // Skip corrupted KV entries
+    }
     const userBranches = userMap[data.username] || [];
 
     // Get last activity for each branch.
@@ -112,6 +124,13 @@ export async function handleAdminApproveImages(request, env) {
   if (!githubId || typeof approved !== 'boolean') {
     return Response.json(
       { error: 'Missing githubId or approved parameter' },
+      { status: 400 }
+    );
+  }
+  // githubId must be a numeric string (GitHub user IDs are integers)
+  if (typeof githubId !== 'string' || !/^\d+$/.test(githubId)) {
+    return Response.json(
+      { error: 'githubId must be a numeric string' },
       { status: 400 }
     );
   }
@@ -215,11 +234,9 @@ export async function handleAdminDeleteBranch(request, env) {
 
   const url = new URL(request.url);
   const branch = url.searchParams.get('branch');
-  if (!branch || !branch.startsWith('users/')) {
-    return Response.json(
-      { error: 'Invalid branch — must start with users/' },
-      { status: 400 }
-    );
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
   }
 
   const token = await getInstallationToken(env);

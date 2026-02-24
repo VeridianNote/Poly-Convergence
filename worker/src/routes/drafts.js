@@ -337,6 +337,31 @@ export async function handleSaveDraft(request, env) {
     author: effectiveType === 'blog' ? user.username : undefined,
   });
 
+  // For existing branches, check if content actually changed before committing.
+  // The GitHub Contents API always creates a commit even if content is identical,
+  // which clutters the history with empty "Update draft" commits.
+  // Normalize line endings before comparing (GitHub stores LF, local may use CRLF).
+  if (existingBranch) {
+    const existingFile = await getFileContent(env, token, branchName, filePath);
+    const normalize = s => s.replace(/\r\n/g, '\n');
+    if (existingFile && normalize(existingFile.content) === normalize(fileContent)) {
+      // No changes — return success without committing
+      return new Response(
+        JSON.stringify({
+          ok: true,
+          branch: branchName,
+          filePath,
+          slug,
+          noChange: true,
+        }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+  }
+
   // Commit file(s) to the branch — clean up orphaned branch on failure
   try {
     // Handle new subcategory creation
