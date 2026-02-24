@@ -78,8 +78,14 @@
   border-bottom-color: #3e3e42;
 }
 
-/* Toolbar buttons */
+/* Toolbar buttons — color + SVG icon fill/stroke */
 [data-theme='dark'] .mdxeditor [role="toolbar"] button {
+  color: #c8c8cc;
+}
+
+[data-theme='dark'] .mdxeditor [role="toolbar"] button svg {
+  fill: #c8c8cc;
+  stroke: #c8c8cc;
   color: #c8c8cc;
 }
 
@@ -88,9 +94,33 @@
   color: #ffffff;
 }
 
+[data-theme='dark'] .mdxeditor [role="toolbar"] button:hover svg {
+  fill: #ffffff;
+  stroke: #ffffff;
+  color: #ffffff;
+}
+
 [data-theme='dark'] .mdxeditor [role="toolbar"] button[data-state="on"] {
   background-color: #2a4a3a;
   color: var(--ifm-color-primary-lighter);
+}
+
+[data-theme='dark'] .mdxeditor [role="toolbar"] button[data-state="on"] svg {
+  fill: var(--ifm-color-primary-lighter);
+  stroke: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-primary-lighter);
+}
+
+/* Toolbar separators and misc SVG icons */
+[data-theme='dark'] .mdxeditor [role="toolbar"] [role="separator"] {
+  border-color: #3e3e42;
+  background-color: #3e3e42;
+}
+
+[data-theme='dark'] .mdxeditor [role="toolbar"] svg {
+  fill: #c8c8cc;
+  stroke: #c8c8cc;
+  color: #c8c8cc;
 }
 
 /* Toolbar select/dropdown */
