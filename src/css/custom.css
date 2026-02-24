@@ -136,8 +136,17 @@
 [data-theme='dark'] .mdxeditor [role="toolbar"] [data-radix-collection-item],
 [data-theme='dark'] .mdxeditor select {
   background-color: #242526;
-  color: #c8c8cc;
+  color: #c8c8cc !important;
   border-color: #3e3e42;
+}
+
+/* Block type dropdown — prevent text disappearing on hover */
+[data-theme='dark'] .mdxeditor [role="toolbar"] select:hover,
+[data-theme='dark'] .mdxeditor [role="toolbar"] [role="combobox"]:hover,
+[data-theme='dark'] .mdxeditor [role="toolbar"] select:focus,
+[data-theme='dark'] .mdxeditor [role="toolbar"] [role="combobox"]:focus {
+  background-color: #3e3e42;
+  color: #ffffff !important;
 }
 
 /* Dropdown menus / popovers */
