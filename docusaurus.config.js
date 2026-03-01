@@ -40,6 +40,42 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    // Expose recent blog posts as global data for the homepage
+    function blogGlobalDataPlugin(context) {
+      const fs = require('fs');
+      const path = require('path');
+      return {
+        name: 'blog-global-data',
+        async loadContent() {
+          const blogDir = path.join(context.siteDir, 'blog');
+          const files = fs.readdirSync(blogDir)
+            .filter(f => f.endsWith('.md') || f.endsWith('.mdx'))
+            .sort().reverse();
+          return files.slice(0, 3).map(file => {
+            const raw = fs.readFileSync(path.join(blogDir, file), 'utf8');
+            const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+            if (!fmMatch) return null;
+            const fm = {};
+            fmMatch[1].split('\n').forEach(line => {
+              const idx = line.indexOf(':');
+              if (idx > 0) fm[line.slice(0, idx).trim()] = line.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
+            });
+            const body = raw.slice(fmMatch[0].length).trim();
+            const truncIdx = body.indexOf('<!-- truncate -->');
+            const excerpt = truncIdx > 0 ? body.slice(0, truncIdx).trim() : body.slice(0, 200).trim();
+            const slug = fm.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx?$/, '');
+            const dateMatch = file.match(/^(\d{4}-\d{2}-\d{2})/);
+            return {title: fm.title || slug, permalink: '/blog/' + slug, date: dateMatch?.[1] || '', description: excerpt};
+          }).filter(Boolean);
+        },
+        async contentLoaded({content, actions}) {
+          actions.setGlobalData({recentPosts: content});
+        },
+      };
+    },
+  ],
+
   presets: [
     [
       'classic',

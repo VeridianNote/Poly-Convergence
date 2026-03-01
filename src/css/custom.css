@@ -228,6 +228,54 @@ h1[id], h2[id], h3[id], h4[id] {
   font-size: 0.95rem;
 }
 
+/* Wiki card header (emoji + title) */
+.homepage-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.homepage-card__header .homepage-card__title {
+  margin-bottom: 0;
+}
+
+.homepage-card__emoji {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.homepage-card__count {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Blog preview cards */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card__meta {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.5rem;
+}
+
+.blog-card .homepage-card__desc {
+  flex: 1;
+  margin-bottom: 0.75rem;
+}
+
+.blog-card__link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
 /* ============================================= */
 /* Homepage hero — force consistent text colors  */
 /* ============================================= */

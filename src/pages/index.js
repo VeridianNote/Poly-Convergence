@@ -1,29 +1,38 @@
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {usePluginData} from '@docusaurus/useGlobalData';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
 const wikiCategories = [
   {
     title: 'Foundational Concepts',
+    emoji: '\u{1F9ED}',
     description: 'Core ideas and frameworks for understanding ethical non-monogamy.',
     link: '/docs/category/foundational-concepts',
+    folder: 'foundational-concepts',
   },
   {
     title: 'Common Myths',
+    emoji: '\u{1F50D}',
     description: 'Misconceptions about polyamory and non-monogamy, examined honestly.',
     link: '/docs/category/common-myths',
+    folder: 'common-myths',
   },
   {
     title: 'Community Stories',
+    emoji: '\u{1F4AC}',
     description: 'Real experiences from real people navigating non-traditional relationships.',
     link: '/docs/category/community-stories',
+    folder: 'community-stories',
   },
   {
     title: 'Research & Sources',
+    emoji: '\u{1F4DA}',
     description: 'Studies, articles, and references for deeper understanding.',
     link: '/docs/category/research--sources',
+    folder: 'research-and-sources',
   },
 ];
 
@@ -53,6 +62,22 @@ function HomepageHeader() {
 }
 
 function WikiCategories() {
+  // Try to get doc counts per category from global data
+  let docCounts = {};
+  try {
+    const docsData = usePluginData('docusaurus-plugin-content-docs');
+    if (docsData?.versions?.[0]?.docs) {
+      docsData.versions[0].docs.forEach((doc) => {
+        const folder = doc.id.split('/')[0];
+        if (folder && folder !== doc.id) {
+          docCounts[folder] = (docCounts[folder] || 0) + 1;
+        }
+      });
+    }
+  } catch {
+    // Graceful fallback — just don't show counts
+  }
+
   return (
     <section className="homepage-section">
       <div className="container">
@@ -62,8 +87,16 @@ function WikiCategories() {
             <div key={cat.title} className="col col--6" style={{marginBottom: '1rem'}}>
               <Link to={cat.link} className="card-link">
                 <div className="homepage-card">
-                  <Heading as="h3" className="homepage-card__title">{cat.title}</Heading>
+                  <div className="homepage-card__header">
+                    <span className="homepage-card__emoji">{cat.emoji}</span>
+                    <Heading as="h3" className="homepage-card__title">{cat.title}</Heading>
+                  </div>
                   <p className="homepage-card__desc">{cat.description}</p>
+                  {docCounts[cat.folder] > 0 && (
+                    <span className="homepage-card__count">
+                      {docCounts[cat.folder]} {docCounts[cat.folder] === 1 ? 'article' : 'articles'}
+                    </span>
+                  )}
                 </div>
               </Link>
             </div>
@@ -75,16 +108,69 @@ function WikiCategories() {
 }
 
 function FromTheBlog() {
+  let recentPosts = [];
+  try {
+    const blogData = usePluginData('blog-global-data');
+    if (blogData?.recentPosts) {
+      recentPosts = blogData.recentPosts;
+    }
+  } catch {
+    // Graceful fallback
+  }
+
   return (
     <section className="homepage-section homepage-section--alt">
-      <div className="container" style={{textAlign: 'center'}}>
-        <Heading as="h2" className="homepage-section__title">From the Blog</Heading>
-        <p style={{maxWidth: '600px', margin: '0 auto 1.5rem'}}>
-          Articles, perspectives, and analysis from community contributors.
-        </p>
-        <Link className="button button--primary button--lg" to="/blog">
-          Read the Blog
-        </Link>
+      <div className="container">
+        <Heading as="h2" className="homepage-section__title" style={{textAlign: 'center'}}>
+          From the Blog
+        </Heading>
+        {recentPosts.length > 0 ? (
+          <>
+            <div className="row">
+              {recentPosts.map((post) => (
+                <div key={post.permalink} className={clsx('col', recentPosts.length === 2 ? 'col--6' : 'col--4')} style={{marginBottom: '1rem'}}>
+                  <Link to={post.permalink} className="card-link">
+                    <div className="homepage-card blog-card">
+                      <Heading as="h3" className="homepage-card__title">
+                        {post.title}
+                      </Heading>
+                      <div className="blog-card__meta">
+                        <time dateTime={post.date}>
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </time>
+                        {post.readingTime != null && (
+                          <span> &middot; {Math.ceil(post.readingTime)} min read</span>
+                        )}
+                      </div>
+                      {post.description && (
+                        <p className="homepage-card__desc">{post.description}</p>
+                      )}
+                      <span className="blog-card__link">Read article &#8594;</span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div style={{textAlign: 'center', marginTop: '1rem'}}>
+              <Link className="button button--primary button--lg" to="/blog">
+                View All Posts
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div style={{textAlign: 'center'}}>
+            <p style={{maxWidth: '600px', margin: '0 auto 1.5rem'}}>
+              Articles, perspectives, and analysis from community contributors.
+            </p>
+            <Link className="button button--primary button--lg" to="/blog">
+              Read the Blog
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -110,7 +196,7 @@ function ContributeCTA() {
 export default function Home() {
   return (
     <Layout
-      title="Home"
+      title=""
       description="Community-built resources for healthier relationships">
       <HomepageHeader />
       <main>
