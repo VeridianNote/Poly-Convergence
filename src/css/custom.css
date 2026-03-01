@@ -50,6 +50,26 @@ h1[id], h2[id], h3[id], h4[id] {
   padding: 0.25rem 0;
 }
 
+/* Animate open: slide down */
+.mobile-toc[open] > ul {
+  animation: tocSlideDown 250ms ease-out;
+}
+
+/* Animate close: slide up (class added by JS before removing open) */
+.mobile-toc.closing > ul {
+  animation: tocSlideUp 200ms ease-in forwards;
+}
+
+@keyframes tocSlideDown {
+  from { opacity: 0; max-height: 0; overflow: hidden; }
+  to   { opacity: 1; max-height: 80vh; overflow: hidden; }
+}
+
+@keyframes tocSlideUp {
+  from { opacity: 1; max-height: 80vh; overflow: hidden; }
+  to   { opacity: 0; max-height: 0; overflow: hidden; }
+}
+
 .mobile-toc ul {
   margin: 0.5rem 0 0.25rem;
   padding-left: 1.25rem;
@@ -72,12 +92,19 @@ h1[id], h2[id], h3[id], h4[id] {
   }
 }
 
-/* Sidebar TOC: fixed width, don't let it get squeezed */
+/* Sidebar TOC: fixed width, never resizes.
+   Content column becomes flexible to absorb remaining space. */
 @media (min-width: 997px) {
   .col:has(> [class*='tableOfContents']) {
-    flex-shrink: 0;
-    flex-basis: 250px !important;
-    max-width: 250px !important;
+    flex: 0 0 190px !important;
+    max-width: 190px !important;
+  }
+
+  /* Blog content (col--7 with article) and doc content: flex to fill */
+  .col.col--7:has(article),
+  [class*='docItemCol'] {
+    flex: 1 1 0% !important;
+    max-width: none !important;
   }
 }
 
