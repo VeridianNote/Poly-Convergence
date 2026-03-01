@@ -4,32 +4,251 @@
  * work well for content-centric websites.
  */
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Clear navbar + collapsed TOC when scrolling to anchors */
+h1[id], h2[id], h3[id], h4[id] {
+  scroll-margin-top: calc(var(--ifm-navbar-height, 60px) + 3rem);
+}
+
+/* Reading progress bar */
+#reading-progress {
+  position: fixed;
+  top: var(--ifm-navbar-height, 60px);
+  left: 0;
+  height: 3px;
+  background: var(--ifm-color-primary);
+  z-index: 999;
+  width: 0;
+  pointer-events: none;
+}
+
+/* Mobile table of contents — sticky below navbar */
+.mobile-toc {
+  position: sticky;
+  top: var(--ifm-navbar-height, 60px);
+  z-index: 100;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 0 0 6px 6px;
+  border-top: none;
+  padding: 0.5rem 1rem;
+  margin: 0 -1rem 1.5rem;
+  background: #eef0fd;
+}
+
+[data-theme='dark'] .mobile-toc {
+  border-color: rgba(129, 140, 248, 0.3);
+  background: #1a1a2e;
+}
+
+.mobile-toc summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+}
+
+.mobile-toc ul {
+  margin: 0.5rem 0 0.25rem;
+  padding-left: 1.25rem;
+}
+
+.mobile-toc li {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.mobile-toc ul ul {
+  margin-top: 0.3rem;
+  padding-left: 1rem;
+}
+
+/* Hide mobile TOC on desktop where sidebar TOC is visible */
+@media (min-width: 997px) {
+  .mobile-toc {
+    display: none;
+  }
+}
+
+/* Sidebar TOC: fixed width, don't let it get squeezed */
+@media (min-width: 997px) {
+  .col:has(> [class*='tableOfContents']) {
+    flex-shrink: 0;
+    flex-basis: 250px !important;
+    max-width: 250px !important;
+  }
+}
+
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #6366f1;
+  --ifm-color-primary-dark: #4649ef;
+  --ifm-color-primary-darker: #383bee;
+  --ifm-color-primary-darkest: #1d20c4;
+  --ifm-color-primary-light: #8082f4;
+  --ifm-color-primary-lighter: #8e90f5;
+  --ifm-color-primary-lightest: #b9baf9;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-footer-background-color: #1a1a1a;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #818cf8;
+  --ifm-color-primary-dark: #6171f6;
+  --ifm-color-primary-darker: #5163f5;
+  --ifm-color-primary-darkest: #2136f2;
+  --ifm-color-primary-light: #a1a7fa;
+  --ifm-color-primary-lighter: #b1b6fb;
+  --ifm-color-primary-lightest: #d1d3fd;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-navbar-background-color: #111111;
+  --ifm-footer-background-color: #111111;
 }
 
-/* MDXEditor overrides for the /contribute page */
+/* ============================================= */
+/* Navbar — dark chrome styling                  */
+/* ============================================= */
+
+.navbar {
+  color: #e0e0e0;
+}
+
+.navbar__title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff !important;
+}
+
+.navbar__link {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+  color: #e0e0e0 !important;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem !important;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.navbar__link--active {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.navbar__toggle {
+  color: #e0e0e0;
+}
+
+/* ============================================= */
+/* Homepage sections + cards                     */
+/* ============================================= */
+
+.homepage-section {
+  padding: 2.5rem 0;
+}
+
+.homepage-section--alt {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.homepage-section__title {
+  margin-bottom: 1.25rem;
+}
+
+.card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  height: 100%;
+}
+
+.homepage-card {
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  height: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homepage-card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .homepage-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.homepage-card__title {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.homepage-card__desc {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.95rem;
+}
+
+/* ============================================= */
+/* Homepage hero — force consistent text colors  */
+/* ============================================= */
+
+.hero--primary {
+  --ifm-hero-text-color: #ffffff;
+}
+
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: #3730a3;
+  --ifm-hero-text-color: #e0e0e8;
+}
+
+[data-theme='dark'] .hero__subtitle {
+  color: #c0c0cc;
+}
+
+/* ============================================= */
+/* Homepage hero buttons                         */
+/* ============================================= */
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  background: transparent !important;
+  border: 2px solid var(--ifm-color-primary-light) !important;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.hero-button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* ============================================= */
+/* MDXEditor overrides for the /contribute page  */
+/* ============================================= */
+
 .editor-content-area {
   min-height: 350px;
   padding: 1rem;
@@ -45,7 +264,7 @@
 [data-theme='dark'] .mdxeditor {
   /* Radix color tokens used by MDXEditor */
   --accentBase: var(--ifm-color-primary);
-  --accentBgSubtle: #1a2a23;
+  --accentBgSubtle: #1a1a2e;
   --accentLine: var(--ifm-color-primary);
   --accentSolid: var(--ifm-color-primary);
   --accentText: var(--ifm-color-primary-lighter);
@@ -108,7 +327,7 @@
 }
 
 [data-theme='dark'] .mdxeditor [role="toolbar"] button[data-state="on"] {
-  background-color: #2a4a3a;
+  background-color: #2a2a4a;
   color: var(--ifm-color-primary-lighter);
 }
 
@@ -254,14 +473,85 @@
   background-color: #1b1b1d;
 }
 
+/* ============================================= */
+/* Footer — compact single-row layout            */
+/* ============================================= */
+
+.footer {
+  padding: 0.75rem 0 !important;
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Hide column titles */
+.footer__title {
+  display: none;
+}
+
+/* Flatten link columns into inline flow */
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 1.5rem;
+  margin: 0 !important;
+}
+
+.footer__col {
+  flex: none !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer__items {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer__item {
+  margin-bottom: 0 !important;
+}
+
+.footer__link-item {
+  font-size: 0.85rem;
+}
+
+.footer__bottom {
+  margin-top: 0.15rem;
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
 /* Confirmation dialog backdrop */
 .editor-container {
   position: relative;
 }
 
 /* ============================================= */
-/* Mobile responsiveness for the /contribute page */
+/* Mobile responsiveness                         */
 /* ============================================= */
+
+@media (max-width: 576px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-button {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
 
 @media (max-width: 768px) {
   /* Stack type selector buttons vertically */

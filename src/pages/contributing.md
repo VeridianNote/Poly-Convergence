@@ -5,31 +5,24 @@ description: How to contribute content to this site
 
 # Contributor Guide
 
-## How to Contribute
+## Getting Started
 
-Currently, contributions are submitted via pull requests on GitHub:
-
-1. Fork the [repository](https://github.com/VeridianNote/Poly-Convergence) on GitHub
-2. Create a new branch for your contribution
-3. Add or edit content in the `docs/` or `blog/` directories
-4. Submit a pull request
-
-For detailed instructions — including markdown formatting, image handling, and privacy guidelines — see [CONTRIBUTING.md](https://github.com/VeridianNote/Poly-Convergence/blob/main/CONTRIBUTING.md) on GitHub.
+The easiest way to contribute is through our [web editor](/contribute). Sign in with GitHub and you can start writing immediately — no Git knowledge needed.
 
 ## Content Types
 
-- **Blog posts** — Articles examining specific claims, providing analysis, or discussing current topics
 - **Wiki pages** — Educational reference content organized by category
+- **Blog posts** — Articles, analysis, or perspectives on relationship topics
 - **Community stories** — First-hand accounts from community members
 
 ## Guidelines
 
-- All claims should be sourced where possible
-- Do not include personally identifying information — yours or anyone else's
-- Be factual. No personal attacks.
-- Images: EXIF data is stripped automatically, but keep file sizes reasonable (under 2MB)
+- Be honest and constructive
+- Source claims where possible
+- Don't include personally identifying information — yours or anyone else's
+- Keep images under 2MB (EXIF data is stripped automatically)
 - By contributing, you agree to license your work under [CC BY-NC-SA 4.0](/content-license)
 
-## Privacy Note
+## Advanced: Contributing via GitHub
 
-Your safety matters. You can contribute using a pseudonymous GitHub account. Consider whether any details in your content could identify you or others.
+If you prefer working with Git directly, you can also contribute by opening a pull request on the [repository](https://github.com/VeridianNote/Poly-Convergence). See [CONTRIBUTING.md](https://github.com/VeridianNote/Poly-Convergence/blob/main/CONTRIBUTING.md) for technical details.

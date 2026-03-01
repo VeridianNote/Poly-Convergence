@@ -5,27 +5,24 @@ description: What this site is and why it exists
 
 # About Poly Convergence
 
-Poly Convergence is a community-driven education and accountability project focused on relationship advice.
+Poly Convergence is a community-built resource for people navigating non-monogamous relationships.
 
-## Why This Site Exists
+## Why This Exists
 
-Misinformation in the relationship advice space can cause real harm. When influential voices make claims that contradict evidence, research, or the lived experiences of the people they affect, there needs to be a place where those claims can be examined openly.
+There's a lot of bad advice in the relationship space. Our [sister site](https://unicorns-r-us-is-bullshit.com/) calls it out — this site is about building something better.
 
-This site exists to:
+Poly Convergence is where the community comes together to create the resources we wish existed: clear explanations of core concepts, honest discussions about common myths, and real stories from real people.
 
-- **Document and examine** specific claims made by relationship advice sources
-- **Provide educational resources** grounded in evidence and research
-- **Amplify community voices** by giving people a place to share their experiences
-- **Maintain accountability** by creating a public, sourced record
+## What You'll Find Here
 
-## What This Site Is Not
-
-- This is **not** a harassment campaign. Content focuses on documented claims and patterns, not personal attacks.
-- This is **not** professional advice. We are community members, not licensed therapists or counselors.
-- This is **not** a definitive authority. We present evidence and experiences and encourage readers to think critically.
+- **Wiki** — A growing knowledge base of relationship concepts, written and maintained by community members
+- **Blog** — Articles and perspectives from contributors
+- **Community Stories** — First-hand experiences shared by real people
 
 ## How It Works
 
-All content on this site is contributed by community members through GitHub pull requests. Every contribution is reviewed before it goes live. The site is built with open-source tools and hosted publicly so that the process is transparent.
+Anyone can contribute through our [web editor](/contribute). All content is reviewed before it goes live. The entire site is [open source](https://github.com/VeridianNote/Poly-Convergence) — code, content, and process.
 
-See the [Contributing guide](/contributing) to learn how to get involved.
+## What This Is Not
+
+This is not professional advice. We're community members sharing knowledge and experiences. If you need professional help, please consult a licensed therapist or counselor.

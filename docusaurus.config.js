@@ -5,7 +5,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Poly Convergence',
-  tagline: 'Community-driven education and accountability in relationship advice',
+  tagline: 'Community-built resources for healthier poly relationships',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -33,6 +33,8 @@ const config = {
     },
   },
 
+  clientModules: ['./src/progress-bar.js'],
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -55,7 +57,7 @@ const config = {
           },
           editUrl: ({blogPath}) => `/contribute?edit=blog/${blogPath}`,
           blogTitle: 'Blog',
-          blogDescription: 'Articles examining relationship advice claims with evidence and community experiences.',
+          blogDescription: 'Articles and perspectives from community contributors.',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -97,54 +99,23 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Content',
+            title: 'Explore',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Wiki',
-                to: '/docs/intro',
-              },
+              {label: 'Blog', to: '/blog'},
+              {label: 'Wiki', to: '/docs/intro'},
+              {label: 'Contribute', to: '/contribute'},
             ],
           },
           {
-            title: 'About',
+            title: 'Info',
             items: [
-              {
-                label: 'About This Site',
-                to: '/about',
-              },
-              {
-                label: 'Contribute',
-                to: '/contribute',
-              },
-              {
-                label: 'Contributor Guide',
-                to: '/contributing',
-              },
-              {
-                label: 'Disclaimer',
-                to: '/disclaimer',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/VeridianNote/Poly-Convergence',
-              },
-              {
-                label: 'Content License',
-                to: '/content-license',
-              },
+              {label: 'About', to: '/about'},
+              {label: 'Disclaimer', to: '/disclaimer'},
+              {label: 'GitHub', href: 'https://github.com/VeridianNote/Poly-Convergence'},
             ],
           },
         ],
-        copyright: `Content licensed under CC BY-NC-SA 4.0. Code licensed under MIT. Built with Docusaurus.`,
+        copyright: `Content: CC BY-NC-SA 4.0 · Code: MIT`,
       },
       prism: {
         theme: prismThemes.github,
