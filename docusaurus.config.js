@@ -118,9 +118,21 @@ const config = {
     ],
   ],
 
+  headTags: [
+    {tagName: 'meta', attributes: {property: 'og:type', content: 'website'}},
+    {tagName: 'meta', attributes: {property: 'og:site_name', content: 'Poly Convergence'}},
+    // Uncomment when OG image is ready:
+    // {tagName: 'meta', attributes: {property: 'og:image', content: 'https://polyconvergence.com/img/og-image.png'}},
+    // {tagName: 'meta', attributes: {name: 'twitter:card', content: 'summary_large_image'}},
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {name: 'description', content: 'Community-built resources for healthier polyamorous relationships. Wiki, blog, and tools grounded in evidence and lived experience.'},
+        {name: 'keywords', content: 'polyamory, ethical non-monogamy, poly relationships, relationship education, poly community'},
+      ],
       colorMode: {
         defaultMode: 'light',
         respectPrefersColorScheme: true,
