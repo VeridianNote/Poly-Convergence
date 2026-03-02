@@ -15,6 +15,8 @@
  *   /api/draft         → Save/load/delete a draft
  *   /api/submit        → Submit draft for review (create PR)
  *   /api/status        → Check PR status for a draft
+ *   /api/reactions      → Get/increment engagement counters (public, no auth)
+ *   /api/reactions/batch → Batch get counters for homepage cards
  *   /api/admin/*       → Admin endpoints (mod-only)
  *
  * Cron triggers:
@@ -34,6 +36,7 @@ import {
   handleAdminConfig,
   handleAdminDeleteBranch,
 } from './routes/admin.js';
+import { handleGetReactions, handleGetReactionsBatch, handlePostReaction } from './routes/reactions.js';
 import { runCleanup } from './cron/cleanup.js';
 import { runMergeSync } from './cron/sync.js';
 
@@ -113,6 +116,17 @@ export default {
       }
       else if (path === '/api/status' && method === 'GET') {
         response = await handleStatus(request, env);
+      }
+
+      // Reactions (public — no auth needed)
+      else if (path === '/api/reactions' && method === 'GET') {
+        response = await handleGetReactions(request, env);
+      }
+      else if (path === '/api/reactions/batch' && method === 'GET') {
+        response = await handleGetReactionsBatch(request, env);
+      }
+      else if (path === '/api/reactions' && method === 'POST') {
+        response = await handlePostReaction(request, env);
       }
 
       // Admin routes

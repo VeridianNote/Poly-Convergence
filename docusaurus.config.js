@@ -35,6 +35,9 @@ const config = {
 
   clientModules: ['./src/progress-bar.js'],
 
+  // Cloudflare Web Analytics — handled automatically at the edge by Cloudflare
+  // (configured via dashboard: "Enable, excluding visitor data in the EU")
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -49,8 +52,10 @@ const config = {
         name: 'blog-global-data',
         async loadContent() {
           const blogDir = path.join(context.siteDir, 'blog');
+          const today = new Date().toISOString().slice(0, 10);
           const files = fs.readdirSync(blogDir)
             .filter(f => f.endsWith('.md') || f.endsWith('.mdx'))
+            .filter(f => { const d = f.match(/^(\d{4}-\d{2}-\d{2})/); return !d || d[1] <= today; })
             .sort().reverse();
           return files.slice(0, 3).map(file => {
             const raw = fs.readFileSync(path.join(blogDir, file), 'utf8');
@@ -64,9 +69,17 @@ const config = {
             const body = raw.slice(fmMatch[0].length).trim();
             const truncIdx = body.indexOf('<!-- truncate -->');
             const excerpt = truncIdx > 0 ? body.slice(0, truncIdx).trim() : body.slice(0, 200).trim();
-            const slug = fm.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx?$/, '');
-            const dateMatch = file.match(/^(\d{4}-\d{2}-\d{2})/);
-            return {title: fm.title || slug, permalink: '/blog/' + slug, date: dateMatch?.[1] || '', description: excerpt};
+            const nameSlug = file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx?$/, '');
+            const dateMatch = file.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            // If frontmatter has explicit slug, use it directly: /blog/{slug}
+            // Otherwise, v4 uses date-based URLs: /blog/YYYY/MM/DD/{slug}
+            const permalink = fm.slug
+              ? '/blog/' + fm.slug
+              : dateMatch
+                ? `/blog/${dateMatch[1]}/${dateMatch[2]}/${dateMatch[3]}/${nameSlug}`
+                : '/blog/' + nameSlug;
+            const date = dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : '';
+            return {title: fm.title || nameSlug, permalink, date, description: excerpt};
           }).filter(Boolean);
         },
         async contentLoaded({content, actions}) {

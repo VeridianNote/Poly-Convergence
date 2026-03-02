@@ -18,6 +18,15 @@ binding = "SUBMISSIONS_KV"
 id = "ac612d649a9b42b6ba9aaa2ca521f086"
 preview_id = "213a59a1a15846fa82ff1478d07b2b0e"
 
+# D1 Database — engagement counters (likes, shares)
+# Create with: npx wrangler d1 create poly-convergence-reactions
+# Then fill in the database_id below.
+[[d1_databases]]
+binding = "REACTIONS_DB"
+database_name = "poly-convergence-reactions"
+database_id = "17367e62-79bb-4fd6-9d4c-2309904e5031"
+migrations_dir = "migrations"
+
 # Cron triggers — branch cleanup + merge count sync
 [triggers]
 crons = ["0 4 * * *", "0 5 * * *"]

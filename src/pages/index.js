@@ -1,9 +1,12 @@
 import clsx from 'clsx';
+import {useState, useEffect} from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+
+const ENGAGEMENT_THRESHOLD = 10;
 
 const wikiCategories = [
   {
@@ -35,6 +38,29 @@ const wikiCategories = [
     folder: 'research-and-sources',
   },
 ];
+
+function getApiUrl() {
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return 'http://localhost:8787';
+  }
+  return 'https://api.polyconvergence.com';
+}
+
+function EngagementBadges({likes, shares}) {
+  if ((!likes || likes < ENGAGEMENT_THRESHOLD) && (!shares || shares < ENGAGEMENT_THRESHOLD)) {
+    return null;
+  }
+  return (
+    <div className="homepage-card__engagement">
+      {likes >= ENGAGEMENT_THRESHOLD && (
+        <span>{'\uD83D\uDC4D'} {likes}</span>
+      )}
+      {shares >= ENGAGEMENT_THRESHOLD && (
+        <span>{'\uD83D\uDD17'} {shares}</span>
+      )}
+    </div>
+  );
+}
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -118,6 +144,19 @@ function FromTheBlog() {
     // Graceful fallback
   }
 
+  // Fetch engagement counts for blog posts
+  const [engagementCounts, setEngagementCounts] = useState({});
+  useEffect(() => {
+    if (recentPosts.length === 0) return;
+    const slugs = recentPosts.map(p => p.permalink).join(',');
+    fetch(getApiUrl() + '/api/reactions/batch?slugs=' + encodeURIComponent(slugs))
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.counts) setEngagementCounts(data.counts);
+      })
+      .catch(() => {});
+  }, [recentPosts.length]);
+
   return (
     <section className="homepage-section homepage-section--alt">
       <div className="container">
@@ -127,33 +166,37 @@ function FromTheBlog() {
         {recentPosts.length > 0 ? (
           <>
             <div className="row">
-              {recentPosts.map((post) => (
-                <div key={post.permalink} className={clsx('col', recentPosts.length === 2 ? 'col--6' : 'col--4')} style={{marginBottom: '1rem'}}>
-                  <Link to={post.permalink} className="card-link">
-                    <div className="homepage-card blog-card">
-                      <Heading as="h3" className="homepage-card__title">
-                        {post.title}
-                      </Heading>
-                      <div className="blog-card__meta">
-                        <time dateTime={post.date}>
-                          {new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })}
-                        </time>
-                        {post.readingTime != null && (
-                          <span> &middot; {Math.ceil(post.readingTime)} min read</span>
+              {recentPosts.map((post) => {
+                const counts = engagementCounts[post.permalink] || {};
+                return (
+                  <div key={post.permalink} className={clsx('col', recentPosts.length === 2 ? 'col--6' : 'col--4')} style={{marginBottom: '1rem'}}>
+                    <Link to={post.permalink} className="card-link">
+                      <div className="homepage-card blog-card">
+                        <Heading as="h3" className="homepage-card__title">
+                          {post.title}
+                        </Heading>
+                        <div className="blog-card__meta">
+                          <time dateTime={post.date}>
+                            {new Date(post.date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            })}
+                          </time>
+                          {post.readingTime != null && (
+                            <span> &middot; {Math.ceil(post.readingTime)} min read</span>
+                          )}
+                        </div>
+                        {post.description && (
+                          <p className="homepage-card__desc">{post.description}</p>
                         )}
+                        <EngagementBadges likes={counts.likes} shares={counts.shares} />
+                        <span className="blog-card__link">Read article &#8594;</span>
                       </div>
-                      {post.description && (
-                        <p className="homepage-card__desc">{post.description}</p>
-                      )}
-                      <span className="blog-card__link">Read article &#8594;</span>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
             <div style={{textAlign: 'center', marginTop: '1rem'}}>
               <Link className="button button--primary button--lg" to="/blog">
