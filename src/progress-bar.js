@@ -49,7 +49,7 @@ if (typeof window !== 'undefined') {
     const shareLink = e.target.closest('.toc-share-link');
     if (shareLink) {
       e.preventDefault();
-      navigator.clipboard.writeText(window.location.href).then(() => {
+      navigator.clipboard.writeText(window.location.origin + window.location.pathname).then(() => {
         const original = shareLink.innerHTML;
         shareLink.innerHTML = '\u2714 Link copied!';
         shareLink.classList.add('toc-share-link--done');
@@ -265,7 +265,7 @@ function createEngagementBar() {
   shareBtn.setAttribute('aria-label', 'Copy link to clipboard');
 
   shareBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    navigator.clipboard.writeText(window.location.origin + window.location.pathname).then(() => {
       const iconEl = shareBtn.querySelector('.engage-btn__icon');
       const textEl = shareBtn.querySelector('.engage-btn__text');
       shareBtn.classList.add('engage-btn--done');
