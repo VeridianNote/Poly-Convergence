@@ -1,0 +1,8 @@
+{
+  "label": "Research & Sources",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "The actual studies, where they exist. We're upfront about what's well-researched, what isn't, and why that gap matters."
+  }
+}
