@@ -44,21 +44,24 @@ const config = {
   },
 
   plugins: [
-    // Expose recent blog posts as global data for the homepage
+    // Expose blog/stories posts as global data for homepage + Featured page
     function blogGlobalDataPlugin(context) {
       const fs = require('fs');
       const path = require('path');
       return {
         name: 'blog-global-data',
+        getPathsToWatch() {
+          return [path.join(context.siteDir, 'stories', '**/*.{md,mdx}')];
+        },
         async loadContent() {
-          const blogDir = path.join(context.siteDir, 'blog');
+          const storiesDir = path.join(context.siteDir, 'stories');
           const today = new Date().toISOString().slice(0, 10);
-          const files = fs.readdirSync(blogDir)
+          const files = fs.readdirSync(storiesDir)
             .filter(f => f.endsWith('.md') || f.endsWith('.mdx'))
             .filter(f => { const d = f.match(/^(\d{4}-\d{2}-\d{2})/); return !d || d[1] <= today; })
             .sort().reverse();
-          return files.slice(0, 3).map(file => {
-            const raw = fs.readFileSync(path.join(blogDir, file), 'utf8');
+          return files.map(file => {
+            const raw = fs.readFileSync(path.join(storiesDir, file), 'utf8');
             const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
             if (!fmMatch) return null;
             const fm = {};
@@ -71,19 +74,22 @@ const config = {
             const excerpt = truncIdx > 0 ? body.slice(0, truncIdx).trim() : body.slice(0, 200).trim();
             const nameSlug = file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx?$/, '');
             const dateMatch = file.match(/^(\d{4})-(\d{2})-(\d{2})/);
-            // If frontmatter has explicit slug, use it directly: /blog/{slug}
-            // Otherwise, v4 uses date-based URLs: /blog/YYYY/MM/DD/{slug}
+            // If frontmatter has explicit slug, use it directly: /stories/{slug}
+            // Otherwise, v4 uses date-based URLs: /stories/YYYY/MM/DD/{slug}
             const permalink = fm.slug
-              ? '/blog/' + fm.slug
+              ? '/stories/' + fm.slug
               : dateMatch
-                ? `/blog/${dateMatch[1]}/${dateMatch[2]}/${dateMatch[3]}/${nameSlug}`
-                : '/blog/' + nameSlug;
+                ? `/stories/${dateMatch[1]}/${dateMatch[2]}/${dateMatch[3]}/${nameSlug}`
+                : '/stories/' + nameSlug;
             const date = dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : '';
-            return {title: fm.title || nameSlug, permalink, date, description: excerpt};
+            const tags = fm.tags
+              ? fm.tags.replace(/[\[\]]/g, '').split(',').map(t => t.trim()).filter(Boolean)
+              : [];
+            return {title: fm.title || nameSlug, permalink, date, description: excerpt, tags};
           }).filter(Boolean);
         },
         async contentLoaded({content, actions}) {
-          actions.setGlobalData({recentPosts: content});
+          actions.setGlobalData({recentPosts: content.slice(0, 3), allPosts: content});
         },
       };
     },
@@ -101,14 +107,18 @@ const config = {
           editUrl: ({docPath}) => `/contribute?edit=wiki/${docPath}`,
         },
         blog: {
+          path: 'stories',
+          routeBasePath: 'stories',
+          blogListComponent: '@site/src/components/StoriesPage',
+          postsPerPage: 'ALL',
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: ({blogPath}) => `/contribute?edit=blog/${blogPath}`,
-          blogTitle: 'Blog',
-          blogDescription: 'Articles and perspectives from community contributors.',
+          editUrl: ({blogPath}) => `/contribute?edit=stories/${blogPath}`,
+          blogTitle: 'Community Stories',
+          blogDescription: 'Stories, perspectives, and lived experience from the community.',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -132,7 +142,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [
-        {name: 'description', content: 'Community-built resources for healthier polyamorous relationships. Wiki, blog, and tools grounded in evidence and lived experience.'},
+        {name: 'description', content: 'Community-built resources for healthier polyamorous relationships. Wiki, stories, and tools grounded in experience and shared knowledge.'},
         {name: 'keywords', content: 'polyamory, ethical non-monogamy, poly relationships, relationship education, poly community'},
       ],
       colorMode: {
@@ -142,7 +152,8 @@ const config = {
       navbar: {
         title: 'Poly Convergence',
         items: [
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/featured', label: 'Featured', position: 'left'},
+          {to: '/stories', label: 'Community Stories', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'wikiSidebar',
@@ -169,16 +180,23 @@ const config = {
           {
             title: 'Explore',
             items: [
-              {label: 'Blog', to: '/blog'},
+              {label: 'Featured', to: '/featured'},
+              {label: 'Community Stories', to: '/stories'},
               {label: 'Wiki', to: '/wiki/intro'},
-              {label: 'Contribute', to: '/contribute'},
             ],
           },
           {
             title: 'Info',
             items: [
               {label: 'About', to: '/about'},
+              {label: 'Contribute', to: '/contribute'},
               {label: 'Disclaimer', to: '/disclaimer'},
+            ],
+          },
+          {
+            title: 'Connect',
+            items: [
+              {label: 'Reddit', href: 'https://www.reddit.com/r/PolyConvergence'},
               {label: 'GitHub', href: 'https://github.com/VeridianNote/Poly-Convergence'},
             ],
           },

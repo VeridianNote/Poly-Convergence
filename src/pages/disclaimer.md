@@ -9,7 +9,7 @@ description: What this site is, what it isn't, and what to expect
 
 Nothing on this site is professional advice -- not legal, not medical, not psychological. We're people who've been in these relationships, done the reading, and want to share what we've learned so others don't have to start from zero.
 
-If you're dealing with something that needs professional support, please find a therapist or counselor -- ideally one who understands non-monogamy. They exist, and they're worth finding. The [Psychology Today therapist directory](https://www.psychologytoday.com/us/therapists) lets you filter for "consensual non-monogamy" as a specialty.
+If you're dealing with something that needs professional support, please find a therapist or counselor -- ideally one who understands non-monogamy. They exist, and they're worth finding. The [Psychology Today therapist directory](https://www.psychologytoday.com/us/therapists?category=open-relationships-non-monogamy) lets you filter for "Open Relationships Non-Monogamy" under Client Focus.
 
 ## Community content is reviewed, not guaranteed
 
@@ -33,7 +33,7 @@ These services are confidential and available 24/7. They serve people in all rel
 
 All written content on this site is shared under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. That means anyone can share and adapt it, as long as they credit the source, keep it non-commercial, and share their version under the same terms.
 
-Site code is licensed under MIT. See the full [content license](/content-license) for details.
+Site code is licensed under MIT. See the full [content license](/content-license) for details. If you find content that shouldn't be here or may violate someone's rights, [please let us know](https://github.com/VeridianNote/Poly-Convergence/issues).
 
 ## The fine print
 

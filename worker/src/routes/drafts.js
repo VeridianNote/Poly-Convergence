@@ -136,7 +136,7 @@ export async function handleLoadDraft(request, env) {
   // Filter out removed files — after a rename, old file is deleted and new is added.
   const contentFiles = compareData.files?.filter(
     f => f.status !== 'removed' &&
-         (f.filename.startsWith('wiki/') || f.filename.startsWith('blog/'))
+         (f.filename.startsWith('wiki/') || f.filename.startsWith('stories/'))
   ) || [];
 
   if (contentFiles.length === 0) {
@@ -159,7 +159,7 @@ export async function handleLoadDraft(request, env) {
     filePath,
     title: frontmatter.title || '',
     body,
-    type: filePath.startsWith('blog/') ? 'blog' : 'wiki',
+    type: filePath.startsWith('stories/') ? 'blog' : 'wiki',
     category: extractCategory(filePath),
     pr: pr ? {
       number: pr.number,
@@ -196,10 +196,10 @@ export async function handleLoadContent(request, env) {
   }
 
   const { frontmatter, body } = parseFrontmatter(fileData.content);
-  const type = path.startsWith('blog/') ? 'blog' : 'wiki';
+  const type = path.startsWith('stories/') ? 'blog' : 'wiki';
   const category = type === 'wiki' ? extractCategory(path) : null;
 
-  // Blog authorship check — only the author or a mod can edit blog posts
+  // Story authorship check — only the author or a mod can edit stories
   if (type === 'blog') {
     const permission = await getCollaboratorPermission(env, token, user.username);
     const isMod = permission === 'admin' || permission === 'write';
@@ -215,7 +215,7 @@ export async function handleLoadContent(request, env) {
       // Block if authors field is missing (can't verify ownership) or user isn't listed
       if (authorList.length === 0 || !authorList.includes(user.username)) {
         return Response.json(
-          { error: 'You can only edit your own blog posts.' },
+          { error: 'You can only edit your own stories.' },
           { status: 403 }
         );
       }
@@ -262,7 +262,7 @@ export async function handleSaveDraft(request, env) {
   } catch {
     return Response.json({ error: 'Invalid JSON in request body' }, { status: 400 });
   }
-  const { title, body, type, category, subcategory, existingBranch, editPath } = requestBody;
+  const { title, body, type, category, subcategory, existingBranch, editPath, tags } = requestBody;
 
   // Validate content type
   if (type !== 'wiki' && type !== 'blog') {
@@ -299,13 +299,13 @@ export async function handleSaveDraft(request, env) {
       return Response.json({ error: pathCheck.error }, { status: 400 });
     }
 
-    // Blog authorship check — only the author or a mod can edit blog posts.
+    // Story authorship check — only the author or a mod can edit stories.
     // Without this, a user could POST directly to /api/draft with another user's
-    // blog editPath, bypassing the check in handleLoadContent.
-    if (editPath.startsWith('blog/') && !isMod) {
+    // story editPath, bypassing the check in handleLoadContent.
+    if (editPath.startsWith('stories/') && !isMod) {
       const existingFile = await getFileContent(env, token, 'main', editPath);
       if (!existingFile) {
-        return Response.json({ error: 'Original blog post not found.' }, { status: 404 });
+        return Response.json({ error: 'Original story not found.' }, { status: 404 });
       }
       const { frontmatter } = parseFrontmatter(existingFile.content);
       const authorsRaw = frontmatter.authors || '';
@@ -317,7 +317,7 @@ export async function handleSaveDraft(request, env) {
 
       if (authorList.length === 0 || !authorList.includes(user.username)) {
         return Response.json(
-          { error: 'You can only edit your own blog posts.' },
+          { error: 'You can only edit your own stories.' },
           { status: 403 }
         );
       }
@@ -446,7 +446,7 @@ export async function handleSaveDraft(request, env) {
   // Derive content type from file path when editing (don't trust client).
   // Only trust client type for brand-new drafts (no existingBranch and no editPath).
   const effectiveType = (existingBranch || editPath)
-    ? (filePath.startsWith('blog/') ? 'blog' : 'wiki')
+    ? (filePath.startsWith('stories/') ? 'blog' : 'wiki')
     : type;
 
   const fileContent = buildMarkdownFile({
@@ -455,6 +455,7 @@ export async function handleSaveDraft(request, env) {
     body,
     category,
     author: effectiveType === 'blog' ? user.username : undefined,
+    tags: effectiveType === 'blog' ? tags : undefined,
   });
 
   // For existing branches, check if content actually changed before committing.
@@ -685,7 +686,7 @@ async function findContentFilePath(env, token, branch) {
   // the new file is added. We want the added/modified file, not the removed one.
   const contentFile = data.files?.find(
     f => f.status !== 'removed' &&
-         (f.filename.startsWith('wiki/') || f.filename.startsWith('blog/'))
+         (f.filename.startsWith('wiki/') || f.filename.startsWith('stories/'))
   );
 
   return contentFile?.filename || null;

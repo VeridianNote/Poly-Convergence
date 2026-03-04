@@ -34,6 +34,46 @@ function ContributePage() {
       <main style={{ padding: '2rem 0' }}>
         <div className="container">
           <Heading as="h1">Contribute</Heading>
+          <p>
+            This site gets better every time someone shares what they know. If you've learned
+            something from navigating non-monogamous relationships — about communication, about
+            what works, about what doesn't — there's a good chance someone else needs to hear it.
+          </p>
+          <p>You don't need to be an expert. You don't need to be a writer. You just need experience and honesty.</p>
+
+          <details className="contribute-guidelines" style={{ marginBottom: '1.5rem' }}>
+            <summary className="contribute-guidelines__summary" style={{ cursor: 'pointer', fontWeight: 600, fontSize: '1rem' }}>
+              What you can contribute &amp; guidelines
+            </summary>
+            <div style={{ paddingTop: '0.75rem' }}>
+              <h3>What you can contribute</h3>
+              <ul>
+                <li><strong>Wiki articles</strong> — Reference content covering relationship concepts, communication tools, research summaries, and practical guidance.</li>
+                <li><strong>Blog posts</strong> — Longer pieces exploring a topic, examining a claim, or sharing a perspective.</li>
+                <li><strong>Community stories</strong> — First-hand accounts from your own experience. These don't need to have a tidy ending — they need to be real.</li>
+                <li><strong>Corrections and improvements</strong> — Spot something wrong or incomplete? Fix it. That's just as valuable as writing something new.</li>
+              </ul>
+
+              <h3>A few ground rules</h3>
+              <ul>
+                <li><strong>Be honest.</strong> Share what you actually know and experienced. If you're speculating, say so.</li>
+                <li><strong>Source your claims.</strong> If you're citing research, link to your sources. It's fine to say "I don't have a source for this, but here's what I've observed" — just be clear about the difference.</li>
+                <li><strong>Respect privacy.</strong> Avoid including real names or identifying details that could out someone without their consent. Posting anonymously is welcome but not required — if you want to sign your work, that's great too. Just be thoughtful about others' identities, especially anyone who isn't a public figure.</li>
+                <li><strong>Keep images under 2MB.</strong> EXIF data (location, device info) is stripped automatically for your privacy.</li>
+              </ul>
+
+              <p><strong>New contributors:</strong> Your first submission is limited to one pending edit at a time. Once your first contribution is reviewed and approved, you'll be upgraded to a trusted contributor with more capacity. If you need an exception, <a href="https://github.com/VeridianNote/Poly-Convergence/issues">reach out to us</a>.</p>
+
+              <p>
+                Everything on this site is shared under a{' '}
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0</a>{' '}
+                license. By submitting, you agree to license your contribution under these terms.
+              </p>
+
+              <p>If you prefer working with Git directly, you can open a pull request on the <a href="https://github.com/VeridianNote/Poly-Convergence">repository</a>.</p>
+            </div>
+          </details>
+
           <BrowserOnly fallback={<div>Loading editor...</div>}>
             {() => <ContributeApp />}
           </BrowserOnly>
@@ -116,7 +156,7 @@ function ContributeApp() {
 
           // Check for ?edit= parameter (editing existing published page)
           const editPath = params.get('edit');
-          if (editPath && /^(docs|blog)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(editPath) && !editPath.includes('..')) {
+          if (editPath && /^(wiki|stories)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(editPath) && !editPath.includes('..')) {
             try {
               const content = await api.loadContent(editPath);
               setActiveDraft({
@@ -243,7 +283,7 @@ function ContributeApp() {
       }}>
         <Heading as="h2">Submissions Temporarily Paused</Heading>
         <p>Community submissions are temporarily paused. Check back soon.</p>
-        <p>In the meantime, you can browse the <a href="/docs/intro">Wiki</a> and <a href="/blog">Blog</a>.</p>
+        <p>In the meantime, you can browse the <a href="/wiki/intro">Wiki</a> and <a href="/stories">Stories</a>.</p>
       </div>
     );
   }

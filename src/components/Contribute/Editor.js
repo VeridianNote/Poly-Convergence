@@ -60,6 +60,7 @@ export default function Editor({
   const [category, setCategory] = useState(initialCategory);
   const [newSubcategory, setNewSubcategory] = useState('');
   const [showNewSubcategory, setShowNewSubcategory] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([]);
   const [branch, setBranch] = useState(initialBranch);
   const [editPath] = useState(initialEditPath);
   const [saving, setSaving] = useState(false);
@@ -182,6 +183,7 @@ export default function Editor({
         subcategory: showNewSubcategory ? slugifyCategory(newSubcategory) : undefined,
         existingBranch: branch || undefined,
         editPath: !branch ? editPath : undefined,
+        tags: type === 'blog' ? selectedTags : undefined,
       });
 
       if (!result.ok) {
@@ -314,7 +316,7 @@ export default function Editor({
             className={`button button--sm ${type === 'blog' ? 'button--primary' : 'button--outline button--primary'}`}
             onClick={() => setType('blog')}
           >
-            New Blog Post
+            New Story
           </button>
         </div>
       )}
@@ -354,7 +356,7 @@ export default function Editor({
             ? `Editing: ${editPath}`
             : (
               <>
-                {type === 'blog' ? 'Blog Post' : `Wiki → ${formatCategoryLabel(category)}`}
+                {type === 'blog' ? 'Story' : `Wiki → ${formatCategoryLabel(category)}`}
                 {' · '}
                 <span style={{ color: 'var(--ifm-color-emphasis-500)' }}>
                   {branch.split('/').pop()}
@@ -410,6 +412,15 @@ export default function Editor({
             />
           )}
         </div>
+      )}
+
+      {/* Tag selector (stories only, new drafts only) */}
+      {type === 'blog' && !branch && !editPath && (
+        <TagSelector
+          selectedTags={selectedTags}
+          onChange={setSelectedTags}
+          isMod={user?.isMod}
+        />
       )}
 
       {/* Image guidance / copyright notice */}
@@ -801,4 +812,89 @@ function slugifyCategory(name) {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+const EDITOR_TAG_CATEGORIES = [
+  {
+    label: 'Topic',
+    required: true,
+    tags: [
+      'jealousy', 'communication', 'boundaries', 'dating', 'family', 'growth',
+      'breakup', 'coming-out', 'happy-memories', 'favorite-moments',
+      'lessons-learned', 'overcoming-challenges',
+    ],
+  },
+  {
+    label: 'Structure',
+    required: false,
+    tags: ['solo-poly', 'couple', 'vee', 'triad', 'quad', 'polycule'],
+  },
+  {
+    label: 'Style',
+    required: false,
+    tags: ['open', 'closed', 'hierarchical', 'non-hierarchical', 'swinging', 'married'],
+  },
+  {
+    label: 'Editorial',
+    required: false,
+    tags: ['community', 'education', 'debunking', 'research'],
+  },
+];
+
+function formatTagLabel(tag) {
+  return tag
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+function TagSelector({ selectedTags, onChange, isMod }) {
+  const toggle = (tag) => {
+    if (selectedTags.includes(tag)) {
+      onChange(selectedTags.filter(t => t !== tag));
+    } else {
+      onChange([...selectedTags, tag]);
+    }
+  };
+
+  const categories = isMod
+    ? [...EDITOR_TAG_CATEGORIES, { label: 'Mod', required: false, tags: ['announcements'] }]
+    : EDITOR_TAG_CATEGORIES;
+
+  const hasTopicTag = selectedTags.some(t =>
+    EDITOR_TAG_CATEGORIES[0].tags.includes(t),
+  );
+
+  return (
+    <div className="editor-tag-selector">
+      <div className="editor-tag-selector__title">
+        Tags — help readers find your story
+      </div>
+      {categories.map(cat => (
+        <div key={cat.label} className="editor-tag-group">
+          <span className="editor-tag-group__label">
+            {cat.label}
+            {cat.required && ' *'}
+          </span>
+          <div className="editor-tag-options">
+            {cat.tags.map(tag => (
+              <button
+                key={tag}
+                type="button"
+                className={`editor-tag-option${selectedTags.includes(tag) ? ' editor-tag-option--selected' : ''}`}
+                onClick={() => toggle(tag)}
+              >
+                {formatTagLabel(tag)}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+      {!hasTopicTag && selectedTags.length > 0 && (
+        <div className="editor-tag-error">
+          Please select at least one Topic tag.
+        </div>
+      )}
+    </div>
+  );
 }

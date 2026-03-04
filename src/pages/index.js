@@ -95,8 +95,8 @@ function HomepageHeader() {
           {tagline || '\u00A0'}
         </p>
         <div className="hero-buttons">
-          <Link className="button button--lg hero-button" to="/blog">
-            Read the Blog
+          <Link className="button button--lg hero-button" to="/stories">
+            Read Stories
           </Link>
           <Link className="button button--lg hero-button" to="/wiki/intro">
             Browse the Wiki
@@ -184,7 +184,7 @@ function FromTheBlog() {
     <section className="homepage-section homepage-section--alt">
       <div className="container">
         <Heading as="h2" className="homepage-section__title" style={{textAlign: 'center'}}>
-          From the Blog
+          Recent Stories
         </Heading>
         {recentPosts.length > 0 ? (
           <>
@@ -222,8 +222,8 @@ function FromTheBlog() {
               })}
             </div>
             <div style={{textAlign: 'center', marginTop: '1rem'}}>
-              <Link className="button button--primary button--lg" to="/blog">
-                View All Posts
+              <Link className="button button--primary button--lg" to="/stories">
+                View All Stories
               </Link>
             </div>
           </>
@@ -232,8 +232,8 @@ function FromTheBlog() {
             <p style={{maxWidth: '600px', margin: '0 auto 1.5rem'}}>
               Articles, perspectives, and analysis from community contributors.
             </p>
-            <Link className="button button--primary button--lg" to="/blog">
-              Read the Blog
+            <Link className="button button--primary button--lg" to="/stories">
+              Read Stories
             </Link>
           </div>
         )}

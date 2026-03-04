@@ -90,7 +90,7 @@ export async function handleSubmit(request, env) {
 
   const compareData = await compareRes.json();
   const contentFiles = compareData.files?.filter(
-    f => f.filename.startsWith('wiki/') || f.filename.startsWith('blog/')
+    f => f.filename.startsWith('wiki/') || f.filename.startsWith('stories/')
   ) || [];
 
   if (contentFiles.length === 0) {
@@ -101,8 +101,8 @@ export async function handleSubmit(request, env) {
   }
 
   const isWiki = contentFiles[0].filename.startsWith('wiki/');
-  const isBlog = contentFiles[0].filename.startsWith('blog/');
-  const contentType = isWiki ? 'Wiki' : 'Blog';
+  const isStory = contentFiles[0].filename.startsWith('stories/');
+  const contentType = isWiki ? 'Wiki' : 'Story';
 
   // Get user record for trust tier info
   const userRecord = await getOrCreateUser(env.SUBMISSIONS_KV, user.sub, user.username);
@@ -126,7 +126,7 @@ export async function handleSubmit(request, env) {
   // Auto-labels
   const labels = ['community-submission'];
   if (isWiki) labels.push('wiki');
-  if (isBlog) labels.push('blog');
+  if (isStory) labels.push('story');
   if (userRecord.merged_count === 0) labels.push('new-contributor');
 
   // Create the PR

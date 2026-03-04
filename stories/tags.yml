@@ -1,0 +1,124 @@
+# -- Topic tags --
+jealousy:
+  label: Jealousy
+  description: Navigating jealousy in non-monogamous relationships
+
+communication:
+  label: Communication
+  description: Communication tools and strategies for multiple relationships
+
+boundaries:
+  label: Boundaries
+  description: Setting and maintaining boundaries across relationships
+
+dating:
+  label: Dating
+  description: Dating while non-monogamous
+
+family:
+  label: Family
+  description: Family dynamics, children, and non-monogamy
+
+growth:
+  label: Growth
+  description: Personal growth through relationship experiences
+
+breakup:
+  label: Breakup
+  description: Navigating endings and transitions in poly relationships
+
+coming-out:
+  label: Coming Out
+  description: Disclosing non-monogamy to friends, family, and others
+
+happy-memories:
+  label: Happy Memories
+  description: Celebrating the good moments in non-monogamous life
+
+favorite-moments:
+  label: Favorite Moments
+  description: Memorable experiences worth sharing
+
+lessons-learned:
+  label: Lessons Learned
+  description: Hard-won wisdom from relationship experience
+
+overcoming-challenges:
+  label: Overcoming Challenges
+  description: Stories of working through difficult situations
+
+# -- Structure tags (solo to many) --
+solo-poly:
+  label: Solo Poly
+  description: Solo polyamory perspectives and experiences
+
+couple:
+  label: Couple
+  description: Experiences from dyadic or couple-based perspectives
+
+vee:
+  label: Vee
+  description: V-shaped relationship structures
+
+triad:
+  label: Triad
+  description: Three-person relationship experiences
+
+quad:
+  label: Quad
+  description: Four-person relationship structures
+
+polycule:
+  label: Polycule
+  description: Larger interconnected relationship networks
+
+# -- Style tags --
+open:
+  label: Open
+  description: Open relationship structures
+
+closed:
+  label: Closed
+  description: Closed or polyfidelitous relationship structures
+
+hierarchical:
+  label: Hierarchical
+  description: Hierarchical relationship approaches
+
+non-hierarchical:
+  label: Non-Hierarchical
+  description: Non-hierarchical or egalitarian approaches
+
+swinging:
+  label: Swinging
+  description: Swinging experiences and the overlap with polyamory
+
+married:
+  label: Married
+  description: Non-monogamy within marriage
+
+# -- Editorial tags --
+announcements:
+  label: Announcements
+  description: Site updates and announcements from the team
+
+community:
+  label: Community
+  description: Community-focused content and discussions
+
+education:
+  label: Education
+  description: Educational content on relationship topics
+
+debunking:
+  label: Debunking
+  description: Articles examining specific claims against available evidence
+
+research:
+  label: Research
+  description: Discussion of relevant research and studies
+
+# -- Special tags --
+featured:
+  label: Featured
+  description: Editor-selected stories highlighted on the Featured page

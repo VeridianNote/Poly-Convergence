@@ -177,7 +177,7 @@ export function validateBranch(branch) {
 
 /**
  * Validate a content file path (for editing existing pages).
- * Must be a docs/ or blog/ path with no traversal.
+ * Must be a wiki/ or stories/ path with no traversal.
  *
  * @param {string} path
  * @returns {{ valid: boolean, error?: string }}
@@ -186,7 +186,7 @@ export function validateContentPath(path) {
   if (!path || typeof path !== 'string') {
     return { valid: false, error: 'Path is required.' };
   }
-  if (!/^(docs|blog)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(path)) {
+  if (!/^(wiki|stories)\/[a-zA-Z0-9/_-]+\.mdx?$/.test(path)) {
     return { valid: false, error: 'Invalid path format.' };
   }
   if (path.includes('..')) {
@@ -250,7 +250,7 @@ export function buildMarkdownFile({ type, title, body, category, author, tags })
 export function computeFilePath(type, slug, category, subcategory) {
   if (type === 'blog') {
     const date = new Date().toISOString().split('T')[0];
-    return `blog/${date}-${slug}.md`;
+    return `stories/${date}-${slug}.md`;
   }
 
   // Wiki page
