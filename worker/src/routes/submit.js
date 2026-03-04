@@ -90,7 +90,7 @@ export async function handleSubmit(request, env) {
 
   const compareData = await compareRes.json();
   const contentFiles = compareData.files?.filter(
-    f => f.filename.startsWith('docs/') || f.filename.startsWith('blog/')
+    f => f.filename.startsWith('wiki/') || f.filename.startsWith('blog/')
   ) || [];
 
   if (contentFiles.length === 0) {
@@ -100,7 +100,7 @@ export async function handleSubmit(request, env) {
     );
   }
 
-  const isWiki = contentFiles[0].filename.startsWith('docs/');
+  const isWiki = contentFiles[0].filename.startsWith('wiki/');
   const isBlog = contentFiles[0].filename.startsWith('blog/');
   const contentType = isWiki ? 'Wiki' : 'Blog';
 

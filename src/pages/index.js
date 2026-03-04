@@ -8,33 +8,50 @@ import Heading from '@theme/Heading';
 
 const ENGAGEMENT_THRESHOLD = 10;
 
+const TAGLINES = [
+  'Real guidance for real relationships. Built by the community.',
+  'Where relationship shape doesn\'t determine relationship ethics.',
+  'What the poly community builds when everyone\'s welcome.',
+  'The resource we wish we\'d had when we started.',
+  'For people building relationships the world doesn\'t have a script for.',
+  'Relationship advice that doesn\'t start with \'you\'re doing it wrong.\'',
+  'More nuance than a subreddit. More heart than a textbook.',
+  'Practical. Honest. Built by people who\'ve actually done this.',
+  'Not here to tell you how to love. Here to help you do it well.',
+  'The conversation the poly community should have been having all along.',
+  'Where your relationship structure isn\'t a moral judgment.',
+  'Built by the community. Driven by experience. Open to everyone.',
+  'Community-built. No shame. No gatekeeping.',
+  'The poly resources that should have existed all along. Built by the people living it.',
+];
+
 const wikiCategories = [
   {
     title: 'Foundational Concepts',
     emoji: '\u{1F9ED}',
     description: 'Core ideas and frameworks for understanding ethical non-monogamy.',
-    link: '/docs/category/foundational-concepts',
+    link: '/wiki/category/foundational-concepts',
     folder: 'foundational-concepts',
   },
   {
     title: 'Common Myths',
     emoji: '\u{1F50D}',
     description: 'Misconceptions about polyamory and non-monogamy, examined honestly.',
-    link: '/docs/category/common-myths',
+    link: '/wiki/category/common-myths',
     folder: 'common-myths',
   },
   {
     title: 'Community Stories',
     emoji: '\u{1F4AC}',
     description: 'Real experiences from real people navigating non-traditional relationships.',
-    link: '/docs/category/community-stories',
+    link: '/wiki/category/community-stories',
     folder: 'community-stories',
   },
   {
     title: 'Research & Sources',
     emoji: '\u{1F4DA}',
     description: 'Studies, articles, and references for deeper understanding.',
-    link: '/docs/category/research--sources',
+    link: '/wiki/category/research--sources',
     folder: 'research-and-sources',
   },
 ];
@@ -64,18 +81,24 @@ function EngagementBadges({likes, shares}) {
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const [tagline, setTagline] = useState(null);
+  useEffect(() => {
+    setTagline(TAGLINES[Math.floor(Math.random() * TAGLINES.length)]);
+  }, []);
   return (
     <header className={clsx('hero hero--primary')}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className={clsx('hero__subtitle', tagline && 'hero__subtitle--visible')}>
+          {tagline || '\u00A0'}
+        </p>
         <div className="hero-buttons">
           <Link className="button button--lg hero-button" to="/blog">
             Read the Blog
           </Link>
-          <Link className="button button--lg hero-button" to="/docs/intro">
+          <Link className="button button--lg hero-button" to="/wiki/intro">
             Browse the Wiki
           </Link>
           <Link className="button button--lg hero-button" to="/contribute">

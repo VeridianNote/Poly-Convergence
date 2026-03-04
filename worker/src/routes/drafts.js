@@ -136,7 +136,7 @@ export async function handleLoadDraft(request, env) {
   // Filter out removed files — after a rename, old file is deleted and new is added.
   const contentFiles = compareData.files?.filter(
     f => f.status !== 'removed' &&
-         (f.filename.startsWith('docs/') || f.filename.startsWith('blog/'))
+         (f.filename.startsWith('wiki/') || f.filename.startsWith('blog/'))
   ) || [];
 
   if (contentFiles.length === 0) {
@@ -495,7 +495,7 @@ export async function handleSaveDraft(request, env) {
 
       await commitFile(
         env, token, branchName,
-        `docs/${category}/${subcategory}/_category_.json`,
+        `wiki/${category}/${subcategory}/_category_.json`,
         categoryJson,
         `Add new subcategory: ${subcategory}`
       );
@@ -685,7 +685,7 @@ async function findContentFilePath(env, token, branch) {
   // the new file is added. We want the added/modified file, not the removed one.
   const contentFile = data.files?.find(
     f => f.status !== 'removed' &&
-         (f.filename.startsWith('docs/') || f.filename.startsWith('blog/'))
+         (f.filename.startsWith('wiki/') || f.filename.startsWith('blog/'))
   );
 
   return contentFile?.filename || null;
@@ -726,10 +726,10 @@ function parseFrontmatter(content) {
 
 /**
  * Extract wiki category from a file path.
- * e.g., "docs/foundational-concepts/my-page.md" → "foundational-concepts"
+ * e.g., "wiki/foundational-concepts/my-page.md" → "foundational-concepts"
  */
 function extractCategory(filePath) {
-  if (!filePath.startsWith('docs/')) return null;
-  const parts = filePath.replace('docs/', '').split('/');
+  if (!filePath.startsWith('wiki/')) return null;
+  const parts = filePath.replace('wiki/', '').split('/');
   return parts.length > 1 ? parts[0] : null;
 }

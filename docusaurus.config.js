@@ -95,8 +95,10 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'wiki',
+          routeBasePath: 'wiki',
           sidebarPath: './sidebars.js',
-          editUrl: ({docPath}) => `/contribute?edit=docs/${docPath}`,
+          editUrl: ({docPath}) => `/contribute?edit=wiki/${docPath}`,
         },
         blog: {
           showReadingTime: true,
@@ -150,6 +152,11 @@ const config = {
           {to: '/about', label: 'About', position: 'left'},
           {to: '/contribute', label: 'Contribute', position: 'left'},
           {
+            href: 'https://www.reddit.com/r/PolyConvergence',
+            label: 'Reddit',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/VeridianNote/Poly-Convergence',
             label: 'GitHub',
             position: 'right',
@@ -163,7 +170,7 @@ const config = {
             title: 'Explore',
             items: [
               {label: 'Blog', to: '/blog'},
-              {label: 'Wiki', to: '/docs/intro'},
+              {label: 'Wiki', to: '/wiki/intro'},
               {label: 'Contribute', to: '/contribute'},
             ],
           },

@@ -255,7 +255,7 @@ export function computeFilePath(type, slug, category, subcategory) {
 
   // Wiki page
   if (subcategory) {
-    return `docs/${category}/${subcategory}/${slug}.md`;
+    return `wiki/${category}/${subcategory}/${slug}.md`;
   }
-  return `docs/${category}/${slug}.md`;
+  return `wiki/${category}/${slug}.md`;
 }

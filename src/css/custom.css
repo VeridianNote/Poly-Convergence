@@ -178,6 +178,34 @@ h1[id], h2[id], h3[id], h4[id] {
 }
 
 /* ============================================= */
+/* Blog listing — cleaner separation + sizing    */
+/* ============================================= */
+
+/* Add clear separator between blog posts */
+article.margin-bottom--xl {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding-bottom: 2rem;
+}
+
+article.margin-bottom--xl:last-child {
+  border-bottom: none;
+}
+
+/* Smaller post titles on listing page */
+article.margin-bottom--xl header h2 {
+  font-size: 1.5rem;
+}
+
+article.margin-bottom--xl header h2 a {
+  color: var(--ifm-heading-color);
+}
+
+/* Slightly more compact metadata */
+article.margin-bottom--xl footer {
+  margin-top: 0.75rem;
+}
+
+/* ============================================= */
 /* Homepage sections + cards                     */
 /* ============================================= */
 
@@ -291,6 +319,38 @@ h1[id], h2[id], h3[id], h4[id] {
 
 [data-theme='dark'] .hero__subtitle {
   color: #c0c0cc;
+}
+
+.hero__subtitle {
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+
+.hero__subtitle--visible {
+  opacity: 1;
+}
+
+/* ============================================= */
+/* Blockquote highlights — callout style         */
+/* ============================================= */
+
+blockquote {
+  background: rgba(99, 102, 241, 0.06);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
+[data-theme='dark'] blockquote {
+  background: rgba(129, 140, 248, 0.08);
 }
 
 /* ============================================= */

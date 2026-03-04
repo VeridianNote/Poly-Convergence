@@ -147,7 +147,8 @@ function ContributeApp() {
 
   const handleLogin = () => {
     if (apiRef.current) {
-      window.location.href = apiRef.current.getLoginUrl();
+      const returnTo = window.location.pathname + window.location.search;
+      window.location.href = apiRef.current.getLoginUrl(returnTo);
     }
   };
 
