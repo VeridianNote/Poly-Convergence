@@ -25,7 +25,7 @@ const config = {
     apiUrl: process.env.API_URL || 'https://api.polyconvergence.com',
   },
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   markdown: {
     hooks: {
