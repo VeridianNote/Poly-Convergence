@@ -26,8 +26,6 @@ These are signs that the people you're dating are approaching this thoughtfully:
 - **They want to build agreements together, not hand them to you.** A couple who says "let's talk about what works for everyone" -- who asks what matters to you and looks for ways to accommodate it -- is showing you they're ready for this. That's different from a couple who's already decided how things work and needs you to agree. Bring the same openness. Know what your dealbreakers are -- "I don't want to be around young children" is a personal limit for instance, and that's fine. For everything else, be ready to discuss and compromise.
 - **They're nervous about getting it wrong.** People who worry about treating you well usually do. It shows up as checking in, asking questions, and being willing to adjust when something isn't working -- instead of assuming everything is fine because nobody's complained yet. The ones who should be worried almost never are. The same applies to you: if you're not at least a little thoughtful about how your presence affects their existing relationship -- what changes for them, what insecurities it might surface, what adjustments they're making -- you might not be seeing the full picture.
 
-<!-- AUTHOR INPUT NEEDED: What green flags have you seen in practice? The sister site mentions
-"couples who've done the work" -- what does that actually look like from the inside? -->
 
 ## Yellow flags
 
@@ -51,9 +49,6 @@ These are patterns to take seriously. They don't mean the people are bad or mali
 - **They assume their existing relationship is immune to change.** The obvious version: they won't discuss what happens if things don't work out. But the deeper issue is a couple who walks into this assuming that if anything goes wrong, the newest relationship is the only one at risk. Feelings change. People change. A couple with a healthy mindset knows this going in -- they've thought about what could shift, they're not rushing to the bedroom before anyone's had a real conversation, and they're prepared to deal honestly with whatever comes up. That kind of awareness usually means they've done their homework, and you'll benefit from better communication because of it. If they can't even have the conversation, that tells you everything about how they'd handle the reality.
 - **Emotional punishment for honesty.** When you raise a concern, the mood shifts. Withdrawal, cold shoulders, guilt trips, or "maybe this isn't for you" in response to honest feedback. This is one of the hardest red flags to spot because it doesn't look like conflict -- it looks like peace being disrupted, and you end up wondering if you should have just kept quiet. If raising a legitimate concern makes you feel like the problem, that's not a relationship where honesty is safe. And if honesty isn't safe, nothing else works.
 
-<!-- AUTHOR INPUT NEEDED: What red flags have you seen that should be added here?
-The sister site's analysis of harmful patterns is strong -- can you validate these from
-experience or add patterns that are missing? -->
 
 ## Questions to ask yourself
 

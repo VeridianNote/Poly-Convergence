@@ -35,7 +35,7 @@ The line is at whose behavior the rule is about. A dealbreaker is something you 
 
 You share a home, a history, maybe finances and legal ties. You also probably have some baggage -- unresolved patterns, habits from previous relationships, things you haven't fully worked through. A new partner walks into that with their own history, their own baggage, and their own needs.
 
-Adding someone to the mix amplifies what's already there. If your existing relationship has unresolved friction, a new partner doesn't dilute it -- they add new pressure points, and old ones tend to get louder. But the same is true in the other direction. Couples who already communicate well, handle conflict honestly, and treat each other with respect often find that those habits carry into the new connection and get reinforced by it. What you're bringing into this matters more than most people expect.
+Bringing someone new into the mix amplifies what's already there. If your existing relationship has unresolved friction, a new partner doesn't dilute it -- they add new pressure points, and old ones tend to get louder. But the same is true in the other direction. Couples who already communicate well, handle conflict honestly, and treat each other with respect often find that those habits carry into the new connection and get reinforced by it. What you're bringing into this matters more than most people expect.
 
 The structural power imbalance is real: you have a built-in support system, an established routine, and each other to debrief with after every conversation. But structural power isn't the only kind. Income, emotional stability, relationship experience, social connections, the ability to walk away without consequence -- power comes from a lot of places. Sometimes a newer partner holds more actual leverage than the couple does. The point isn't to assume who's on top. It's to be honest about where the imbalances actually are and to make sure everyone has genuine standing, genuine input, and a genuine ability to say "this isn't working" without losing everything.
 
@@ -120,4 +120,4 @@ Nobody gets it right immediately. The goal is to be honest, fair, and willing to
 - [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) -- What structural power looks like and how to address it
 - [What healthy looks like](/wiki/foundational-concepts/green-flags) -- Positive patterns to build toward
 - [Relationship broken, add more people](/wiki/unhealthy-behaviors/relationship-broken-add-more-people) -- Why opening up to fix an existing problem almost always makes things worse
-- [Evaluation toolkit for people joining a couple](/wiki/foundational-concepts/evaluation-toolkit) -- The other side of this conversation
+- [Evaluation toolkit for individuals dating a couple](/wiki/foundational-concepts/evaluation-toolkit) -- The other side of this conversation

@@ -54,7 +54,7 @@ The first treats conflict as something you solve together. The second is a threa
 
 Nobody gets to end someone else's relationship for them. Full stop. What you can do is share information honestly -- if a partner is being dishonest, if there's a safety concern, if something doesn't add up. You bring it to the table and trust the other person to make their own decision with that information. A veto isn't a safety net. You can't control how someone feels, and trying to breeds resentment. The relationships that actually last work because of trust, honesty, and clear communication -- not because someone had the power to shut things down. Give people the information they need and the space to reach their own conclusions.
 
-For a deeper look at how veto power gets framed as protection but often functions as control, see [Veto power](/wiki/foundational-concepts/veto-power).
+For a deeper look at how veto power gets framed as protection but often functions as control, see [Veto power: what it is and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead).
 
 ### On physical intimacy
 
@@ -145,5 +145,5 @@ If an agreement can never change, it's not an agreement. It's a rule. And if one
 
 - [Consent beyond "yes"](/wiki/foundational-concepts/consent) -- What real consent looks like in practice vs. technical consent under pressure
 - [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) -- How structural power shows up and what to do about it
-- [Veto power](/wiki/foundational-concepts/veto-power) -- When "safety net" becomes someone else making your decisions
+- [Veto power: what it is and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) -- When "safety net" becomes someone else making your decisions
 - [What harmful looks like](/wiki/foundational-concepts/red-flags) -- Specific behaviors to watch for
