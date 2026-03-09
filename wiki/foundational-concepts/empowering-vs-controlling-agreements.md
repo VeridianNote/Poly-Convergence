@@ -52,7 +52,7 @@ The first treats conflict as something you solve together. The second is a threa
 |-----------|------------|
 | "I found out something about our partner that worries me. I think we need to talk." | "Either of us can veto the relationship at any time. That's our safety net." |
 
-Nobody gets to end someone else's relationship for them. Full stop. What you can do is share information honestly: if a partner is being dishonest, if there's a safety concern, if something doesn't add up. You bring it to the table and trust the other person to make their own decision with that information. A veto isn't a safety net. You can't control how someone feels, and trying to breeds resentment. The relationships that actually last work because of trust, honesty, and clear communication, not because someone had the power to shut things down. Give people the information they need and the space to reach their own conclusions.
+Nobody gets to end someone else's relationship for them. What you can do is share information honestly: if a partner is being dishonest, if there's a safety concern, if something doesn't add up. Bring it to the table and trust the other person to make their own decision. A veto isn't a safety net — it's someone else making your choices for you.
 
 For a deeper look at how veto power gets framed as protection but often functions as control, see [Veto power: what it is and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead).
 
@@ -86,7 +86,7 @@ Feelings don't develop on a schedule. Someone might click faster with one partne
 |-----------|------------|
 | "Each relationship gets its own time and space to develop." | "You two can't spend time together without me there." |
 
-Every pair within a multi-person relationship is its own relationship. Those connections need room to grow on their own terms, not just as extensions of the group.
+Every pair within a multi-person relationship is its own relationship. Group time is natural and practical early on — it lets everyone see if the dynamic works. The sign to watch for is whether individual connections are welcomed as comfort grows, or treated as a threat.
 
 ## Boundaries vs. disguised control
 
@@ -104,18 +104,20 @@ Controlling agreements don't always sound controlling. They often sound reasonab
 - **Rules that flow in one direction.** One partner has freedoms or protections the others don't. If someone can end another person's relationship but the reverse isn't true, that's not a mutual agreement. It's one-directional control.
 - **Agreements made before someone joined.** Rules that were already in place before a new partner entered the picture, presented as non-negotiable. The person most affected by them had no say in creating them and no real path to changing them.
 - **Emotional punishment for disagreement.** Nobody yells. Nobody threatens. But when someone expresses discomfort with an agreement, the mood shifts. Cold shoulders. Withdrawal. Subtle signals that raising concerns is unwelcome.
-- **"Package deal."** "If you leave one of us, you leave both of us." This treats a person's individual relationships as conditional on staying in all of them, and removes their ability to make decisions about each connection on its own terms.
+- **"Package deal."** "If you leave one of us, you leave both of us." There's nothing wrong with wanting to stay together. But when it's a rule, it changes how people behave. If feelings develop unevenly — which is normal — someone who can't be honest about that without losing everything simply won't be. They'll stay in connections they'd otherwise end and swallow concerns because the stakes feel too high. Talk about this early: how would you handle it if feelings shifted with one person? Nobody's relationship is immune to that, and the hypothetical conversation is a lot easier than the real one. This can be navigated.
 - **"We discussed this."** Used to shut down revisiting an agreement, as if a past conversation permanently closes the topic.
 
 ## Privilege vs. control
 
-Not all imbalance is unfair. Existing relationships naturally carry privilege: shared history, established routines, financial entanglement, maybe kids. **That's not a problem to fix. It's how relationships work.**
+When two people start dating, they each bring different advantages. One owns a home, the other rents. One has a bigger friend group. One earns more. One has more relationship experience. Nobody looks at that and says the relationship is suspect — it's just two different people with different lives.
 
-Think about it in monogamous terms — when you start dating someone new, they don't walk in with automatic access to your house, your finances, or your family relationships. Those things develop with time, trust, and shared experience. The same applies in any non-monogamous configuration. A newer partner doesn't start on equal footing with people who've been building a life together, and expecting otherwise isn't fairness, it's a fantasy.
+When one of them moves into the other's place, the person whose name is on the lease has a structural advantage. That's not exploitation. It becomes a problem if they say "my house, my rules — don't like it, leave." The advantage existing isn't the issue. Using it as leverage is.
 
-That's normal. Maybe the house is full of pictures of the existing partners. The answer isn't to take them down. It's to lean in, have fun together, and make new memories. Over time, the walls get new pictures.
+Add a third person where two already know each other, and the same principle holds with more moving parts. The couple has shared history, established routines, maybe shared housing and finances. The new person brings their own advantages — income, social connections, relationship experience, the ability to walk away without untangling a shared life. Privilege comes from a lot of places, and it doesn't always sit where the structure suggests.
 
-The line to watch is between privilege and control. Privilege is "we have a shared history, and that comes with some practical realities." Control is "our history means we set the rules and you follow them." One acknowledges that **relationships grow at different speeds**. The other uses that difference as leverage to keep power where it already sits.
+The "unicorn hunter" stereotype says the new person moves into the couple's home and is trapped by their rules. But someone moving into a partner's space happens in every relationship — a woman who moves into her boyfriend's apartment is in the same structural position, and nobody calls that predatory. The question was never about the living arrangement. It's about whether anyone uses "this is our space" to shut down someone else's voice. And the person who moved in chose to be there. They can choose to leave. Treating them as trapped by default strips them of an agency they never lost.
+
+The line is the same regardless of how many people are involved. "I was here first, so my needs come first." "This is our house, so we set the terms." "We've been together longer, so our relationship takes priority." Any time someone converts an advantage into leverage over someone else's choices, that's control. Not the advantage itself.
 
 ## How to check your own agreements
 
@@ -124,7 +126,7 @@ If you're currently in a relationship with agreements in place, run through thes
 - Did every person have real input, or did the agreement come pre-formed?
 - Could anyone say "this isn't working for me" without fear of consequences?
 - When was the last time you revisited the agreement? Is revisiting welcome or treated as a problem?
-- Are the agreements fair to everyone involved, given where each relationship actually is? Perfect equality doesn't exist, especially in arrangements involving shared finances, children, or years of history. But fairness means everyone's needs get accounted for, everyone had a real say, and everyone gets a chance to compromise.
+- Are the agreements fair to everyone involved? Not equal — perfect equality doesn't exist when relationships are at different stages. Fair means everyone's needs get accounted for, everyone had a real say, and everyone gets a chance to compromise.
 - If someone new joined today, would they see these agreements as reasonable, or as a box they're expected to accept without input?
 
 **If the answers make you uncomfortable, that doesn't mean your relationship is broken. It means there's a conversation worth having.**
