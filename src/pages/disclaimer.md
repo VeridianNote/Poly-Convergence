@@ -7,9 +7,9 @@ description: What this site is, what it isn't, and what to expect
 
 ## We're not therapists
 
-Nothing on this site is professional advice -- not legal, not medical, not psychological. We're people who've been in these relationships, done the reading, and want to share what we've learned so others don't have to start from zero.
+Nothing on this site is professional advice — not legal, not medical, not psychological. We're people who've been in these relationships, done the reading, and want to share what we've learned so others don't have to start from zero.
 
-If you're dealing with something that needs professional support, please find a therapist or counselor -- ideally one who understands non-monogamy. They exist, and they're worth finding. The [Psychology Today therapist directory](https://www.psychologytoday.com/us/therapists?category=open-relationships-non-monogamy) lets you filter for "Open Relationships Non-Monogamy" under Client Focus.
+If you're dealing with something that needs professional support, please find a therapist or counselor, ideally one who understands non-monogamy. They exist, and they're worth finding. The [Psychology Today therapist directory](https://www.psychologytoday.com/us/therapists?category=open-relationships-non-monogamy) lets you filter for "Open Relationships Non-Monogamy" under Client Focus.
 
 ## Community content is reviewed, not guaranteed
 
@@ -17,7 +17,7 @@ Every contribution goes through editorial review before it's published. We check
 
 ## Experience is valuable, but it's not universal
 
-The community stories and personal perspectives on this site come from real people sharing real experiences. That makes them valuable -- and also limited. What worked for one person in one situation might not apply to yours. Take what's useful, leave what isn't, and trust your own judgment about your own life.
+The community stories and personal perspectives on this site come from real people sharing real experiences. That makes them valuable, and also limited. What worked for one person in one situation might not apply to yours. Take what's useful, leave what isn't, and trust your own judgment about your own life.
 
 ## If you're in crisis
 
@@ -37,4 +37,4 @@ Site code is licensed under MIT. See the full [content license](/content-license
 
 ## The fine print
 
-This site is provided as-is. We do our best to keep things accurate and useful, but the contributors and maintainers accept no liability for consequences arising from the use of information found here. Use your own judgment -- that's what we're trying to help you build.
+This site is provided as-is. We do our best to keep things accurate and useful, but the contributors and maintainers accept no liability for consequences arising from the use of information found here. Use your own judgment — that's what we're trying to help you build.

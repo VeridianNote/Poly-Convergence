@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: "How to submit your story"
-description: "Share your experience with the community -- what to include, how it works, and why it matters"
+description: "Share your experience with the community: what to include, how it works, and why it matters"
 ---
 
 # How to submit your story
 
-If you've been there -- real relationships, real mistakes, real lessons -- your story might be exactly what someone else needs to hear.
+If you've been there—real relationships, real mistakes, real lessons—your story might be exactly what someone else needs to hear.
 
 The most valuable content on this site doesn't come from research papers or reference articles. It comes from people like you.
 
@@ -36,7 +36,7 @@ The stories that help people most tend to share a few qualities:
 3. Write your story (or paste it in from somewhere else)
 4. Submit it for review
 
-Every submission is reviewed by the editorial team before it goes live. We check for privacy issues, readability, and tone -- but we don't rewrite your voice or judge your choices. The review is about making sure the story is safe to publish, not about deciding whether your experience was "correct."
+Every submission is reviewed by the editorial team before it goes live. We check for privacy issues, readability, and tone, but we don't rewrite your voice or judge your choices. The review is about making sure the story is safe to publish, not about deciding whether your experience was "correct."
 
 If we need to suggest changes, we'll explain why. You always get the final say on your own story.
 
@@ -48,5 +48,5 @@ Check the [story prompts](/wiki/community-stories/story-prompts) page for option
 
 ## Related reading
 
-- [Story prompts](/wiki/community-stories/story-prompts) -- Optional questions to help you get started
-- [Contributing guide](/contribute) -- General contribution guidelines for all content types
+- [Story prompts](/wiki/community-stories/story-prompts) — Optional questions to help you get started
+- [Contributing guide](/contribute) — General contribution guidelines for all content types

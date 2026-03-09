@@ -1,12 +1,12 @@
 ---
 sidebar_position: 2
 title: "Story prompts"
-description: "Optional starting points for writing your community story -- pick one or use them as inspiration"
+description: "Optional starting points for writing your community story, pick one or use them as inspiration"
 ---
 
 # Story prompts
 
-These are optional. Use them if you want a starting point, ignore them if you already know what you want to write about. There's no required format -- just honesty.
+These are optional. Use them if you want a starting point, ignore them if you already know what you want to write about. There's no required format: just honesty.
 
 Pick whatever resonates. You don't need to answer every question in a prompt. Use them as a jumping-off point, not a form to fill out.
 
@@ -30,7 +30,7 @@ Pick whatever resonates. You don't need to answer every question in a prompt. Us
 
 ## The outside world
 
-- What's it been like dealing with other people's reactions -- family, friends, coworkers, online spaces?
+- What's it been like dealing with other people's reactions: family, friends, coworkers, online spaces?
 - Have you ever been on the receiving end of assumptions about your relationship? What happened?
 - What do people get wrong about your relationship structure that you wish they understood?
 
