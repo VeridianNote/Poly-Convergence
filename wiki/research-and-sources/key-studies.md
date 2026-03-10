@@ -42,7 +42,7 @@ Below are the major studies referenced across this site: what each one found, wh
 
 ## Community dynamics: who gets pushed out
 
-**Johnston (2022/2024)** conducted a discourse analysis of the r/polyamory subreddit, examining how people interested in "unicorn dynamics" (a person joining an existing couple) are treated within polyamorous online spaces.
+**Johnston (2022/2024)** conducted a discourse analysis of the r/polyamory subreddit, examining how people interested in "unicorn dynamics" (a person dating an existing couple) are treated within polyamorous online spaces.
 
 **What she found:**
 - People interested in unicorn dynamics are treated as an **out-group** in polyamorous communities
