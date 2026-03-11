@@ -158,6 +158,11 @@ export default function Editor({
       throw new Error('Save your draft before uploading images.');
     }
     const result = await uploadImage(currentBranch, file);
+    if (result.imageNumber) {
+      setStatusMessage(
+        `Image uploaded! In source view, you can also reference it as {{image:${result.imageNumber}}}`
+      );
+    }
     return result.path;
   }, []);
 
@@ -437,6 +442,9 @@ export default function Editor({
           Do not upload images from other websites or search engines.
           All uploads are licensed under CC BY-NC-SA 4.0.
           {!branch && ' Save your draft before uploading images.'}
+          {branch && <><br /><strong>Tip:</strong> In source view, use{' '}
+          <code style={{ fontSize: '0.75rem' }}>{'{{image:1 | caption}}'}</code>{' '}
+          to place uploaded images (number shown after each upload).</>}
         </div>
       ) : (
         <div style={{

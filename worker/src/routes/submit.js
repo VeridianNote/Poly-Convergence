@@ -112,15 +112,23 @@ export async function handleSubmit(request, env) {
   const slug = branch.split('/').pop();
   const prTitle = `[${contentType}] ${slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}`;
 
+  // Check for unresolved {{image:N}} placeholders and image comment placeholders
+  const hasImageComments = contentFiles.some(f =>
+    f.patch?.includes('<!-- image:')
+  );
+  const hasUnresolvedImageTags = contentFiles.some(f =>
+    f.patch && /\{\{image:\d+/i.test(f.patch)
+  );
+
   const prBody = buildPRBody({
     username: user.username,
     contentType,
     tier: tier.tier,
     mergedCount: userRecord.merged_count,
     files: contentFiles.map(f => f.filename),
-    hasImagePlaceholders: contentFiles.some(f =>
-      f.patch?.includes('<!-- image:')
-    ),
+    hasImagePlaceholders: hasImageComments,
+    hasUnresolvedImageTags,
+    isMod,
   });
 
   // Auto-labels
@@ -227,7 +235,7 @@ export async function handleStatus(request, env) {
 /**
  * Build the PR description body.
  */
-function buildPRBody({ username, contentType, tier, mergedCount, files, hasImagePlaceholders }) {
+function buildPRBody({ username, contentType, tier, mergedCount, files, hasImagePlaceholders, hasUnresolvedImageTags, isMod }) {
   const lines = [
     `## Community Submission`,
     '',
@@ -245,6 +253,26 @@ function buildPRBody({ username, contentType, tier, mergedCount, files, hasImage
       '### Image Placeholders',
       'This submission contains image placeholder comments (`<!-- image: ... -->`). '
       + 'To allow the contributor to upload images, apply the `images-approved` label.',
+      ''
+    );
+  }
+
+  if (hasUnresolvedImageTags) {
+    lines.push(
+      '### Unresolved Image References',
+      'This submission contains `{{image:N}}` placeholders that were not resolved to uploaded images. '
+      + 'The contributor may need to upload images and re-save their draft.',
+      ''
+    );
+  }
+
+  // Security review checklist for non-mod submissions
+  if (!isMod) {
+    lines.push(
+      '### Review Checklist',
+      '- [ ] Content is appropriate and follows community guidelines',
+      '- [ ] No suspicious HTML or external resource references',
+      '- [ ] Image sources are internal (`/img/` paths only)',
       ''
     );
   }

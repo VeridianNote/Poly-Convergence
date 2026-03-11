@@ -3,6 +3,7 @@
  *
  * Validates draft content before any branch/commit is created.
  * This prevents junk branches from empty or garbage submissions.
+ * Includes markdown sanitization to prevent XSS and HTML injection.
  */
 
 const MIN_TITLE_LENGTH = 5;
@@ -258,4 +259,288 @@ export function computeFilePath(type, slug, category, subcategory) {
     return `wiki/${category}/${subcategory}/${slug}.md`;
   }
   return `wiki/${category}/${slug}.md`;
+}
+
+// ---------------------------------------------------------------------------
+// Markdown sanitization — prevents XSS / HTML injection from untrusted users
+// ---------------------------------------------------------------------------
+
+/**
+ * HTML tags that have no legitimate use in user-submitted articles.
+ * These are stripped entirely (opening, closing, and self-closing forms).
+ */
+const DANGEROUS_TAGS = [
+  'script', 'iframe', 'svg', 'style', 'meta', 'link',
+  'object', 'embed', 'form', 'input', 'button', 'textarea',
+  'select', 'base', 'applet', 'noscript', 'frame', 'frameset',
+  'video', 'audio', 'source', 'picture', 'math',
+].join('|');
+
+const DANGEROUS_TAGS_RE = new RegExp(
+  `<\\/?(?:${DANGEROUS_TAGS})\\b[^>]*>`, 'gi'
+);
+
+/** Protocols that are dangerous in href/src attributes. */
+const DANGEROUS_PROTOCOL_RE = /^(javascript|data|vbscript):/i;
+
+/**
+ * Decode HTML entities commonly used in XSS bypass attempts.
+ * Browsers decode entities in attribute values before resolving URLs,
+ * so we must decode before testing against protocol/path checks.
+ * The ;? makes semicolons optional (some browsers accept &#106avascript).
+ */
+function decodeHTMLEntities(str) {
+  // Decode &amp; FIRST so double-encoding like &amp;#106; → &#106; → j
+  // Without this ordering, &#x and &#dec replacements run on the raw string
+  // and miss the entity hidden behind &amp;
+  let result = str.replace(/&amp;/gi, '&');
+  // Now decode numeric/hex entities (with optional semicolons — browsers accept both)
+  result = result
+    .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&#(\d+);?/gi, (_, dec) => String.fromCharCode(parseInt(dec)));
+  // Decode remaining named entities
+  result = result
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&apos;/gi, "'")
+    .replace(/&tab;/gi, '\t')
+    .replace(/&newline;/gi, '\n')
+    .replace(/&nbsp;/gi, ' ');
+  return result;
+}
+
+/**
+ * Sanitize user-submitted markdown to prevent XSS and HTML injection.
+ *
+ * Mods bypass all sanitization. For untrusted users, this function:
+ *  1. Preserves code blocks (fenced and inline) from false-positive stripping
+ *  2. Resolves {{image:N}} placeholders to safe markdown image syntax
+ *     (alt text sanitized to prevent markdown syntax breakout)
+ *  3. Strips dangerous HTML tags (<script>, <iframe>, <svg>, <video>, etc.)
+ *  4. Strips on* event handler attributes from all remaining HTML tags
+ *  5. Strips style attributes (can contain url() for tracking)
+ *  6. Strips dangerous resource-loading attrs (srcset, background, ping, etc.)
+ *  7. Validates <img> src — only internal /img/ paths, entity-decoded
+ *  8. Validates <a> href — strips dangerous protocols (handles unclosed tags)
+ *  9. Validates markdown image URLs — entity-decoded, internal /img/ only
+ * 10. Validates markdown link URLs — entity-decoded protocol checking
+ * 11. Strips dangerous autolinks — entity-decoded protocol checking
+ * 12. Strips dangerous reference-style link definitions — entity-decoded
+ *
+ * Entity decoding: All URL/protocol checks decode HTML entities first because
+ * both browsers and CommonMark parsers decode entities before resolution.
+ * Double-encoding (e.g., &amp;#106;) is handled by decoding &amp; first.
+ *
+ * @param {string} body - The markdown body to sanitize
+ * @param {Object} [options]
+ * @param {boolean} [options.isMod=false] - If true, skip all sanitization
+ * @param {Object<number, string>} [options.imageMap=null] - Map of image
+ *   number → path for resolving {{image:N}} placeholders
+ * @returns {string} Sanitized markdown body
+ */
+export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) {
+  if (isMod) return body;
+
+  let result = body;
+
+  // Strip null bytes — prevents injection of our placeholder pattern
+  result = result.replace(/\x00/g, '');
+
+  // --- Preserve code blocks (must happen before any other processing) ------
+
+  const preserved = [];
+
+  // Fenced code blocks (``` or ~~~, with optional language identifier).
+  // Closing fence must be at the start of a line with the same delimiter.
+  result = result.replace(/^(`{3,}).*\n([\s\S]*?)^\1\s*$/gm, (match) => {
+    preserved.push(match);
+    return `\x00PRESERVED_${preserved.length - 1}\x00`;
+  });
+  result = result.replace(/^(~{3,}).*\n([\s\S]*?)^\1\s*$/gm, (match) => {
+    preserved.push(match);
+    return `\x00PRESERVED_${preserved.length - 1}\x00`;
+  });
+
+  // Inline code (single or multi-backtick delimited).
+  result = result.replace(/(`+)([\s\S]*?)\1/g, (match) => {
+    preserved.push(match);
+    return `\x00PRESERVED_${preserved.length - 1}\x00`;
+  });
+
+  // --- Resolve {{image:N}} placeholders ------------------------------------
+
+  if (imageMap) {
+    result = result.replace(
+      /\{\{image:(\d+)(?:\s*\|\s*([^}]*))?\}\}/gi,
+      (match, num, alt) => {
+        const path = imageMap[parseInt(num)];
+        if (!path) return match; // Leave unresolved — harmless literal text
+        // Sanitize alt text — strip characters that could break out of
+        // the ![alt](url) markdown syntax and inject arbitrary markdown.
+        // []() are the breakout chars; {} could interfere with other placeholders.
+        const safeAlt = (alt || '').trim()
+          .replace(/[\[\]\(\)\{\}]/g, '')
+          .substring(0, 200) || 'User image';
+        return `![${safeAlt}](${path})`;
+      }
+    );
+  }
+
+  // --- Strip dangerous HTML tags -------------------------------------------
+
+  result = result.replace(DANGEROUS_TAGS_RE, '');
+
+  // --- Strip on* event handler attributes from all remaining tags ----------
+  // Use [\s/]+ to also match solidus (`/`) between tag name and attributes.
+  // HTML5 parsers treat `/` as whitespace in this context, so attackers can
+  // use <img/onerror="alert(1)"> to bypass \s+ matching.
+
+  result = result.replace(
+    /<([a-zA-Z][a-zA-Z0-9]*)[\s/]+([^>]*?)\s*(\/?)\s*>/g,
+    (match, tag, attrs, selfClose) => {
+      // Only process tags that actually have attributes
+      const cleaned = attrs
+        .replace(/[\s/]*on\w+\s*=\s*"[^"]*"/gi, '')
+        .replace(/[\s/]*on\w+\s*=\s*'[^']*'/gi, '')
+        .replace(/[\s/]*on\w+\s*=\s*[^\s>"']+/gi, '');
+      if (cleaned === attrs) return match; // No change — avoid unnecessary churn
+      const trimmed = cleaned.trim();
+      return `<${tag}${trimmed ? ' ' + trimmed : ''}${selfClose ? ' /' : ''}>`;
+    }
+  );
+
+  // --- Strip style attributes (can contain url() for tracking pixels) ------
+
+  result = result.replace(
+    /(<[a-zA-Z][^>]*?)\s+style\s*=\s*"[^"]*"/gi, '$1'
+  );
+  result = result.replace(
+    /(<[a-zA-Z][^>]*?)\s+style\s*=\s*'[^']*'/gi, '$1'
+  );
+  result = result.replace(
+    /(<[a-zA-Z][^>]*?)\s+style\s*=\s*[^\s>"']+/gi, '$1'
+  );
+
+  // --- Strip dangerous non-event attributes --------------------------------
+  // These attributes can load external resources or exfiltrate data even
+  // without JavaScript: srcset (loads images), background (deprecated but
+  // functional), ping (sends POST on click), formaction (overrides form target).
+  // Using attribute whitelist approach would be ideal but is too heavy —
+  // stripping specific dangerous attrs is a good middle ground.
+
+  const DANGEROUS_ATTRS = ['srcset', 'background', 'ping', 'formaction', 'poster', 'dynsrc', 'lowsrc'];
+  for (const attr of DANGEROUS_ATTRS) {
+    // Double-quoted
+    result = result.replace(
+      new RegExp(`(<[a-zA-Z][^>]*?)\\s+${attr}\\s*=\\s*"[^"]*"`, 'gi'), '$1'
+    );
+    // Single-quoted
+    result = result.replace(
+      new RegExp(`(<[a-zA-Z][^>]*?)\\s+${attr}\\s*=\\s*'[^']*'`, 'gi'), '$1'
+    );
+    // Unquoted
+    result = result.replace(
+      new RegExp(`(<[a-zA-Z][^>]*?)\\s+${attr}\\s*=\\s*[^\\s>"']+`, 'gi'), '$1'
+    );
+  }
+
+  // --- Validate <img> src — only allow internal /img/ paths ----------------
+  // Decode HTML entities before checking — browsers decode entities in
+  // attribute values before resolving URLs (e.g. &#46;&#46; → ..)
+
+  result = result.replace(/<img\b([^>]*)>/gi, (match, attrs) => {
+    const srcMatch =
+      attrs.match(/src\s*=\s*"([^"]*)"/i) ||
+      attrs.match(/src\s*=\s*'([^']*)'/i) ||
+      attrs.match(/src\s*=\s*([^\s>"']+)/i);
+    if (!srcMatch) return ''; // No src attribute — strip the tag
+    const src = decodeHTMLEntities(srcMatch[1]).trim();
+    if (src.includes('..')) return ''; // Path traversal — strip
+    if (src.startsWith('/img/')) return match; // Internal path — safe
+    return ''; // External or suspicious — strip entire tag
+  });
+
+  // --- Validate <a> href — strip dangerous protocols -----------------------
+  // Decode HTML entities before checking — &#106;avascript: decodes to javascript:
+  //
+  // Two passes: first strip dangerous opening tags (catches unclosed tags too),
+  // then clean up any orphaned </a> closing tags left behind.
+
+  result = result.replace(
+    /<a\b([^>]*)>/gi,
+    (match, attrs) => {
+      const hrefMatch =
+        attrs.match(/href\s*=\s*"([^"]*)"/i) ||
+        attrs.match(/href\s*=\s*'([^']*)'/i) ||
+        attrs.match(/href\s*=\s*([^\s>"']+)/i);
+      if (!hrefMatch) return match; // No href — keep as-is (named anchor)
+      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(hrefMatch[1]).trim())) {
+        return ''; // Strip the opening tag (content preserved naturally)
+      }
+      return match;
+    }
+  );
+  // Clean up orphaned </a> tags left after stripping dangerous opening tags.
+  // This isn't strictly needed (</a> is harmless) but keeps output clean.
+  // Only remove </a> tags that don't have a preceding <a> on the same line.
+  // (Simple approach: just leave them — they're harmless in HTML.)
+
+  // --- Sanitize markdown image syntax ![alt](url) -------------------------
+
+  result = result.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, url) => {
+    // Decode entities — CommonMark resolves entities in image destinations
+    const decoded = decodeHTMLEntities(url).trim();
+    if (decoded.includes('..')) return ''; // Path traversal — strip
+    if (decoded.startsWith('/img/')) return match; // Internal — safe
+    if (decoded.startsWith('#')) return match; // Anchor — safe
+    return ''; // External URL — strip entirely
+  });
+
+  // --- Sanitize markdown link syntax [text](url) ---------------------------
+  // Negative lookbehind (?<!!) ensures we don't re-process images.
+
+  result = result.replace(
+    /(?<!!)\[([^\]]*)\]\(([^)]+)\)/g,
+    (match, text, url) => {
+      // Decode HTML entities before checking — CommonMark spec decodes
+      // entities in link destinations, so &#106;avascript: → javascript:
+      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(url).trim())) {
+        return text; // Strip the link, keep the text
+      }
+      return match; // Normal external URL — keep
+    }
+  );
+
+  // --- Strip dangerous autolinks <javascript:...> -------------------------
+
+  // Also catch entity-encoded protocols in autolinks
+  result = result.replace(/<([^>]+)>/g, (match, inner) => {
+    if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(inner).trim())) {
+      return ''; // Strip the autolink
+    }
+    return match;
+  });
+
+  // --- Strip dangerous reference-style link definitions --------------------
+
+  result = result.replace(
+    /^\[([^\]]+)\]:\s*(.+)$/gim,
+    (match, _label, url) => {
+      // Decode entities — CommonMark resolves them in link definitions
+      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(url).trim())) {
+        return ''; // Strip the entire definition
+      }
+      return match;
+    }
+  );
+
+  // --- Restore preserved code blocks --------------------------------------
+
+  result = result.replace(
+    /\x00PRESERVED_(\d+)\x00/g,
+    (_, idx) => preserved[parseInt(idx)]
+  );
+
+  return result;
 }

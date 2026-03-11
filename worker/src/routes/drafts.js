@@ -25,6 +25,7 @@ import {
 } from '../github/api.js';
 import {
   validateContent,
+  sanitizeMarkdown,
   slugify,
   buildMarkdownFile,
   computeFilePath,
@@ -411,6 +412,45 @@ export async function handleSaveDraft(request, env) {
     }
   }
 
+  // --- Content sanitization (non-mods only) --------------------------------
+  // Build an image map for {{image:N}} placeholder resolution if the body
+  // contains any such placeholders and the user has a branch with uploads.
+  let imageMap = null;
+  const hasImagePlaceholders = /\{\{image:\d+/i.test(body);
+
+  if (!isMod && hasImagePlaceholders && (existingBranch || branchName)) {
+    const targetBranch = existingBranch || branchName;
+    try {
+      const compareRes = await fetch(
+        `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/compare/main...${targetBranch}`,
+        {
+          headers: {
+            Authorization: `token ${token}`,
+            Accept: 'application/vnd.github+json',
+            'User-Agent': 'poly-convergence-bot',
+          },
+        }
+      );
+      if (compareRes.ok) {
+        const compareData = await compareRes.json();
+        const uploadedImages = (compareData.files || [])
+          .filter(f => f.filename.startsWith('static/img/user-uploads/'))
+          .sort((a, b) => a.filename.localeCompare(b.filename));
+        if (uploadedImages.length > 0) {
+          imageMap = {};
+          uploadedImages.forEach((img, i) => {
+            // Convert static/img/... → /img/... for markdown reference
+            imageMap[i + 1] = '/' + img.filename.replace(/^static\//, '');
+          });
+        }
+      }
+    } catch {
+      // Non-critical — image placeholders will stay unresolved (harmless literal text)
+    }
+  }
+
+  const sanitizedBody = sanitizeMarkdown(body, { isMod, imageMap });
+
   // Build the file content
   // existingBranch = updating a draft branch (find path from branch diff)
   // editPath = editing an existing published page (compute new path from slug + original directory)
@@ -452,7 +492,7 @@ export async function handleSaveDraft(request, env) {
   const fileContent = buildMarkdownFile({
     type: effectiveType,
     title,
-    body,
+    body: sanitizedBody,
     category,
     author: effectiveType === 'blog' ? user.username : undefined,
     tags: effectiveType === 'blog' ? tags : undefined,

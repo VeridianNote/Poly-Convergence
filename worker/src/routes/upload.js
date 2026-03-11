@@ -175,6 +175,7 @@ export async function handleUploadImage(request, env) {
     ok: true,
     path: `/img/user-uploads/${user.username}/${filename}`,
     filename,
+    imageNumber: imageFiles.length + 1,
   });
 }
 
