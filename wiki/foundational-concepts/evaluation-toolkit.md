@@ -1,7 +1,7 @@
 ---
 sidebar_position: 11
 title: "Evaluation toolkit for individuals dating a couple"
-description: "Green flags, yellow flags, red flags, and questions to ask yourself when you're dating or considering joining an existing relationship"
+description: "Green flags, yellow flags, red flags, and questions to ask yourself when you're considering dating a couple"
 ---
 
 # Evaluation toolkit for individuals dating a couple
@@ -9,6 +9,8 @@ description: "Green flags, yellow flags, red flags, and questions to ask yoursel
 You're dating a couple, or thinking about it. Maybe you sought this out. Maybe it found you. Either way, you're in a position where you need to evaluate a situation with more variables than a typical relationship, and the internet is probably giving you conflicting advice about whether you should even be here.
 
 You should be here. You're a whole person with your own judgment, and this page is designed to sharpen it, not to tell you what to decide.
+
+Here's what you actually need: practical skills, honest self-reflection, and a willingness to course-correct when you get it wrong. Nobody does this perfectly from day one. The goal isn't perfection. It's treating people well while you figure things out. This site calls that process **[poly convergence](/wiki/foundational-concepts/terminology#poly-convergence)** — and this page is about doing it well.
 
 ## Before you read the flags: what's already there gets louder
 
@@ -98,3 +100,4 @@ You're not naive for being interested in this. You're not powerless because they
 - [What harmful looks like](/wiki/foundational-concepts/red-flags) — Behavior-based red flags, named precisely
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to evaluate the agreements in your relationship
 - [Guide for couples](/wiki/foundational-concepts/guide-for-couples) — The other side of this conversation
+- [Terminology and language guide](/wiki/foundational-concepts/terminology) — The words used in these discussions, which ones are loaded, and why precision matters

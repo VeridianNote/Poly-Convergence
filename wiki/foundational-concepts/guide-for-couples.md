@@ -8,7 +8,7 @@ description: "Practical starting points for couples who want to date together: s
 
 You're a couple, and you're interested in exploring a relationship with someone new, maybe together, maybe individually, maybe you're not sure yet. You've probably heard a lot of opinions about whether this is a good idea. Some of them contradict each other. Some of them are hostile.
 
-Here's what you actually need: practical skills, honest self-reflection, and a willingness to course-correct when you get it wrong. Nobody does this perfectly from day one. The goal isn't perfection. It's treating people well while you figure things out.
+Here's what you actually need: practical skills, honest self-reflection, and a willingness to course-correct when you get it wrong. Nobody does this perfectly from day one. The goal isn't perfection. It's treating people well while you figure things out. This site calls that process **[poly convergence](/wiki/foundational-concepts/terminology#poly-convergence)** — and this page is about doing it well.
 
 ## Before you start looking
 
@@ -121,3 +121,4 @@ Nobody gets it right immediately. The goal is to be honest, fair, and willing to
 - [What healthy looks like](/wiki/foundational-concepts/green-flags) — Positive patterns to build toward
 - [Relationship broken, add more people](/wiki/unhealthy-behaviors/relationship-broken-add-more-people) — Why opening up to fix an existing problem almost always makes things worse
 - [Evaluation toolkit for individuals dating a couple](/wiki/foundational-concepts/evaluation-toolkit) — The other side of this conversation
+- [Terminology and language guide](/wiki/foundational-concepts/terminology) — The words used in these discussions, which ones are loaded, and why precision matters
