@@ -97,6 +97,18 @@ That gap isn't an accident. It's the direct result of collapsing three unrelated
 
 **On this site:** We use **triad** as the default term. "Throuple" appears in parentheticals ("triad (sometimes called a 'throuple')") or when referencing its pop culture usage.
 
+## When language becomes a gate
+
+Terminology matters. Using precise words helps people communicate clearly and avoids the kind of collapsing this page is built to prevent. But there's a difference between caring about language and using it as a filter.
+
+In many online poly spaces, newcomers get their posts dissected for vocabulary before anyone addresses what they're actually asking. Someone in an accidental triad who says "throuple" instead of "triad," or calls their partner "the third," can find their question buried under corrections. The message, whether anyone means to send it or not: you don't belong here until you speak like us.
+
+That's not education. That's gatekeeping. People interested in multi-person relationships are consistently treated as an out-group in poly communities, often before anyone asks how they're actually treating each other. The research literally backs this up.[^1]
+
+**Language should be a bridge, not a loyalty test.** Someone using the "wrong" word while genuinely trying to build a healthy relationship is not the problem. Someone using all the "right" words while treating a partner as disposable — that's the problem.
+
+[^1]: Johnston, 2022 — community members interested in couple-based dating structures reported significantly higher experiences of exclusion and hostility in polyamorous spaces.
+
 ## Glossary
 
 Quick reference for common terms. See [relationship structures explained](/wiki/foundational-concepts/relationship-structures) for detailed descriptions of specific configurations.
