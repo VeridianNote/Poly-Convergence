@@ -373,7 +373,12 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
 
   // Fenced code blocks (``` or ~~~, with optional language identifier).
   // Closing fence must be at the start of a line with the same delimiter.
-  result = result.replace(/^(`{3,}).*\n([\s\S]*?)^\1\s*$/gm, (match) => {
+  // SECURITY: For backtick fences, the info string must NOT contain backticks
+  // (CommonMark spec §4.5). Using [^`\n]* instead of .* prevents an attacker
+  // from crafting a "code block" that the sanitizer preserves (skipping all
+  // sanitization) but CommonMark rejects (rendering content as live HTML).
+  // Tilde fences DO allow backticks in info strings per spec — no change needed.
+  result = result.replace(/^(`{3,})[^`\n]*\n([\s\S]*?)^\1\s*$/gm, (match) => {
     preserved.push(match);
     return `\x00PRESERVED_${preserved.length - 1}\x00`;
   });
