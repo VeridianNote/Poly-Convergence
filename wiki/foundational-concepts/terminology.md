@@ -83,9 +83,11 @@ That gap isn't an accident. It's the direct result of collapsing three unrelated
 
 ### Third
 
-**The problem:** Calling someone "the third" positions them as an addition to something that already exists rather than an equal participant in something new. It implies a ranking: there were two, and then this person was added. Even when no hierarchy is intended, the word carries it.
+**The concern:** "The third" can position someone as an addition to something that already exists — there were two, then this person was added. That framing implies a ranking, even when none is intended.
 
-**On this site:** We use "new partner," "the person dating a couple," or just the person's role in context. We use "third" only when discussing why the term is problematic.
+**The other side:** In triad and throuple communities, "third" gets used all the time with the opposite meaning. People hear "one-third" — an equal part of a whole, not a ranking. It's the same instinct as a monogamous partner saying "my other half." Nobody reads that as reducing someone to a fraction; it means "we're a unit, and you're an equal part of it." Same math, one more person. That usage is natural and common, especially among people who fell into their relationships without a plan. The word isn't inherently harmful. What matters is whether someone is being treated fairly, not what label they use.
+
+**On this site:** We default to "new partner" or "person dating a couple" because those terms carry less baggage in mixed company. But someone using "third" to describe their place in a relationship isn't a red flag — it's just a word.
 
 ### Throuple
 
@@ -128,7 +130,7 @@ Quick reference for common terms. See [relationship structures explained](/wiki/
 |------|-----|-------------------|
 | Toxic | Overused to meaninglessness | Name the specific harmful behavior |
 | Problematic | Vague, says nothing useful | Name what the actual problem is |
-| Third | Implies hierarchy | New partner, person dating a couple |
+| Third | Can imply hierarchy in some contexts | New partner, person dating a couple |
 | Evidence-based | Sounds institutional, creates false expectations | Grounded in real experience, informed by research |
 
 ## The principle
