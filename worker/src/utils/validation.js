@@ -281,7 +281,19 @@ const DANGEROUS_TAGS_RE = new RegExp(
 );
 
 /** Protocols that are dangerous in href/src attributes. */
-const DANGEROUS_PROTOCOL_RE = /^(javascript|data|vbscript):/i;
+const DANGEROUS_PROTOCOL_RE = /^(javascript|data|vbscript|blob|filesystem):/i;
+
+/**
+ * Check if a URL uses a dangerous protocol, after normalizing it the way
+ * browsers do: decode HTML entities, strip ASCII whitespace from the scheme
+ * portion (browsers ignore tabs, newlines, CR in URL schemes), and trim.
+ */
+function hasDangerousProtocol(rawUrl) {
+  const decoded = decodeHTMLEntities(rawUrl).trim();
+  // Strip ASCII whitespace that browsers ignore in URL schemes (tab, LF, CR)
+  const normalized = decoded.replace(/[\t\n\r]/g, '');
+  return DANGEROUS_PROTOCOL_RE.test(normalized);
+}
 
 /**
  * Decode HTML entities commonly used in XSS bypass attempts.
@@ -290,23 +302,29 @@ const DANGEROUS_PROTOCOL_RE = /^(javascript|data|vbscript):/i;
  * The ;? makes semicolons optional (some browsers accept &#106avascript).
  */
 function decodeHTMLEntities(str) {
-  // Decode &amp; FIRST so double-encoding like &amp;#106; → &#106; → j
-  // Without this ordering, &#x and &#dec replacements run on the raw string
-  // and miss the entity hidden behind &amp;
-  let result = str.replace(/&amp;/gi, '&');
-  // Now decode numeric/hex entities (with optional semicolons — browsers accept both)
-  result = result
-    .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
-    .replace(/&#(\d+);?/gi, (_, dec) => String.fromCharCode(parseInt(dec)));
-  // Decode remaining named entities
-  result = result
-    .replace(/&lt;/gi, '<')
-    .replace(/&gt;/gi, '>')
-    .replace(/&quot;/gi, '"')
-    .replace(/&apos;/gi, "'")
-    .replace(/&tab;/gi, '\t')
-    .replace(/&newline;/gi, '\n')
-    .replace(/&nbsp;/gi, ' ');
+  // Loop until output stabilizes — handles triple+ encoding like
+  // &amp;amp;#106; → &amp;#106; → &#106; → j
+  // Cap at 5 iterations to prevent infinite loops on adversarial input.
+  let result = str;
+  for (let i = 0; i < 5; i++) {
+    const prev = result;
+    // Decode &amp; FIRST so &amp;#106; → &#106; before numeric decode
+    result = result.replace(/&amp;/gi, '&');
+    // Decode numeric/hex entities (optional semicolons — browsers accept both)
+    result = result
+      .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+      .replace(/&#(\d+);?/gi, (_, dec) => String.fromCharCode(parseInt(dec)));
+    // Decode named entities
+    result = result
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&quot;/gi, '"')
+      .replace(/&apos;/gi, "'")
+      .replace(/&tab;/gi, '\t')
+      .replace(/&newline;/gi, '\n')
+      .replace(/&nbsp;/gi, ' ');
+    if (result === prev) break; // Stable — no more entities to decode
+  }
   return result;
 }
 
@@ -317,20 +335,22 @@ function decodeHTMLEntities(str) {
  *  1. Preserves code blocks (fenced and inline) from false-positive stripping
  *  2. Resolves {{image:N}} placeholders to safe markdown image syntax
  *     (alt text sanitized to prevent markdown syntax breakout)
- *  3. Strips dangerous HTML tags (<script>, <iframe>, <svg>, <video>, etc.)
- *  4. Strips on* event handler attributes from all remaining HTML tags
- *  5. Strips style attributes (can contain url() for tracking)
- *  6. Strips dangerous resource-loading attrs (srcset, background, ping, etc.)
- *  7. Validates <img> src — only internal /img/ paths, entity-decoded
- *  8. Validates <a> href — strips dangerous protocols (handles unclosed tags)
- *  9. Validates markdown image URLs — entity-decoded, internal /img/ only
- * 10. Validates markdown link URLs — entity-decoded protocol checking
- * 11. Strips dangerous autolinks — entity-decoded protocol checking
- * 12. Strips dangerous reference-style link definitions — entity-decoded
+ *  3. Strips MDX constructs (import/export/expressions) — prevents JS execution
+ *  4. Strips dangerous HTML tags iteratively (catches mutation XSS)
+ *  5. Strips on* event handler attributes from all remaining HTML tags
+ *  6. Strips style attributes (can contain url() for tracking)
+ *  7. Strips dangerous resource-loading attrs (srcset, background, ping, etc.)
+ *  8. Validates <img> src — only internal /img/ paths, entity-decoded
+ *  9. Validates <a> href — strips dangerous protocols (handles unclosed tags)
+ * 10. Validates markdown image URLs — entity-decoded, internal /img/ only
+ * 11. Validates markdown link URLs — entity-decoded protocol checking
+ * 12. Strips dangerous autolinks — entity-decoded protocol checking
+ * 13. Strips dangerous reference-style link definitions — entity-decoded
  *
- * Entity decoding: All URL/protocol checks decode HTML entities first because
- * both browsers and CommonMark parsers decode entities before resolution.
- * Double-encoding (e.g., &amp;#106;) is handled by decoding &amp; first.
+ * Entity decoding: All URL/protocol checks use hasDangerousProtocol() which
+ * decodes entities (looping to handle triple+ encoding), strips ASCII
+ * whitespace from protocol names (browsers ignore tabs/newlines in schemes),
+ * and checks against DANGEROUS_PROTOCOL_RE.
  *
  * @param {string} body - The markdown body to sanitize
  * @param {Object} [options]
@@ -387,9 +407,33 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
     );
   }
 
-  // --- Strip dangerous HTML tags -------------------------------------------
+  // --- Strip MDX constructs ------------------------------------------------
+  // Docusaurus processes .md files as MDX by default. MDX allows:
+  //   import Foo from './bar'     → imports JavaScript modules
+  //   export const x = ...        → exports values/components
+  //   {expression}                → evaluates JavaScript inline
+  // All three are full XSS vectors. Strip import/export at start-of-line,
+  // and escape { to \{ so MDX treats braces as literal text.
 
-  result = result.replace(DANGEROUS_TAGS_RE, '');
+  // Strip import/export statements at start of line (outside code blocks,
+  // which are already preserved as \x00PRESERVED_N\x00 tokens)
+  result = result.replace(/^import\s+.+$/gm, '');
+  result = result.replace(/^export\s+.+$/gm, '');
+
+  // Escape { so MDX doesn't evaluate expressions. \{ renders as literal {.
+  // Skip our preserved code block tokens (they don't contain real braces).
+  // Also skip {{image:N}} placeholders — those were already resolved above.
+  result = result.replace(/\{/g, '\\{');
+
+  // --- Strip dangerous HTML tags -------------------------------------------
+  // Run iteratively — stripping a tag nested inside another (e.g.,
+  // <s<iframe>tyle>) can create a new dangerous tag from the leftovers.
+  // Loop until no more matches are found (typically 1-2 passes).
+
+  while (DANGEROUS_TAGS_RE.test(result)) {
+    DANGEROUS_TAGS_RE.lastIndex = 0; // Reset stateful regex
+    result = result.replace(DANGEROUS_TAGS_RE, '');
+  }
 
   // --- Strip on* event handler attributes from all remaining tags ----------
   // Use [\s/]+ to also match solidus (`/`) between tag name and attributes.
@@ -475,7 +519,7 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
         attrs.match(/href\s*=\s*'([^']*)'/i) ||
         attrs.match(/href\s*=\s*([^\s>"']+)/i);
       if (!hrefMatch) return match; // No href — keep as-is (named anchor)
-      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(hrefMatch[1]).trim())) {
+      if (hasDangerousProtocol(hrefMatch[1])) {
         return ''; // Strip the opening tag (content preserved naturally)
       }
       return match;
@@ -503,9 +547,9 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
   result = result.replace(
     /(?<!!)\[([^\]]*)\]\(([^)]+)\)/g,
     (match, text, url) => {
-      // Decode HTML entities before checking — CommonMark spec decodes
-      // entities in link destinations, so &#106;avascript: → javascript:
-      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(url).trim())) {
+      // Decode + normalize — CommonMark spec decodes entities in link
+      // destinations, browsers strip whitespace from protocol names
+      if (hasDangerousProtocol(url)) {
         return text; // Strip the link, keep the text
       }
       return match; // Normal external URL — keep
@@ -514,9 +558,9 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
 
   // --- Strip dangerous autolinks <javascript:...> -------------------------
 
-  // Also catch entity-encoded protocols in autolinks
+  // Also catch entity-encoded protocols and whitespace-obfuscated protocols
   result = result.replace(/<([^>]+)>/g, (match, inner) => {
-    if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(inner).trim())) {
+    if (hasDangerousProtocol(inner)) {
       return ''; // Strip the autolink
     }
     return match;
@@ -527,8 +571,8 @@ export function sanitizeMarkdown(body, { isMod = false, imageMap = null } = {}) 
   result = result.replace(
     /^\[([^\]]+)\]:\s*(.+)$/gim,
     (match, _label, url) => {
-      // Decode entities — CommonMark resolves them in link definitions
-      if (DANGEROUS_PROTOCOL_RE.test(decodeHTMLEntities(url).trim())) {
+      // Decode + normalize — CommonMark resolves entities in link definitions
+      if (hasDangerousProtocol(url)) {
         return ''; // Strip the entire definition
       }
       return match;
