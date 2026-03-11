@@ -23,7 +23,7 @@ If you've been through this (coming back to non-monogamy after stepping away), y
 - **How the community treated you** — did people respond differently because you'd "been mono for a while"?
 - **What you'd tell someone in the same situation** — practical advice, not generic poly talking points
 
-You can submit through the [web editor](/contribute) or open a pull request on [GitHub](https://github.com/VeridianNote/Poly-Convergence). Even a rough draft or a personal story would be a starting point.
+You can submit through the [web editor](/contribute), open a pull request on [GitHub](https://github.com/VeridianNote/Poly-Convergence), or start a discussion at [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/). Even a rough draft or a personal story would be a starting point.
 
 :::
 
@@ -34,3 +34,4 @@ If you're in this situation right now, the resources on this site that are most 
 - [Getting started with non-monogamy](/wiki/foundational-concepts/getting-started) — even if you're not starting from scratch, this covers the current landscape
 - [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — tools for the conversations you'll need to have
 - [Guide for couples](/wiki/foundational-concepts/guide-for-couples) — if you're re-opening as an existing couple
+- [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/) — our community, a good place to ask questions and hear from people who've been through it
