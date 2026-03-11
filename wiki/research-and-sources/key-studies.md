@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: "Key studies on non-monogamy"
-description: "Plain-language summaries of the major research on consensual non-monogamy, what the studies found, and what they didn't"
+description: "Plain-language summaries of the major research on consensual non-monogamy, what the studies found, where the gaps are, and why it matters"
 ---
 
 # Key studies on non-monogamy
@@ -76,13 +76,50 @@ Below are the major studies referenced across this site: what each one found, wh
 
 **What this means:** Hierarchy creates measurable differences in how much investment and security each partner receives. This doesn't automatically make hierarchy wrong, some people prefer it and choose it freely. But it does mean the structural inequality is real, not imagined, and worth being honest about.
 
-## What's missing
+## Where the research stops
 
-The biggest gap in the research is **triad-specific data**. Most studies examine CNM as a broad category or compare "primary" vs. "secondary" dynamics. Very few focus specifically on closed triads, polyfidelitous arrangements, or the unique dynamics of three-person relationships.
+### Triad-specific outcomes
 
-**Polyfidelity** (closed multi-partner relationships) is recognized in peer-reviewed literature as a valid relationship configuration. But it remains significantly under-researched. There isn't enough data to make confident claims about triad longevity, success rates, or how closed triads compare to other configurations.
+This is the biggest gap. Almost no research focuses specifically on triads. Most studies examine CNM as a broad category or compare "primary" vs. "secondary" dynamics. The questions people actually care about (how do triads form, what predicts whether they last, how do closed triads compare to open ones) are largely unstudied.
 
-This site is honest about that gap. When we say "here's what the research shows," we mean it. When the research doesn't exist yet, we say that too.
+**Polyfidelity** (closed multi-partner relationships) is recognized in peer-reviewed literature as a valid relationship configuration. But recognition isn't study. There isn't enough data to make confident claims about triad longevity, success rates, or how closed triads compare to other configurations.
+
+When someone says "triads statistically never work" or "closed triads are impossible," they're not citing research. That research doesn't exist. They're generalizing from anecdotes and personal experience, which is a normal human thing to do, but it's not the same as evidence.
+
+### Long-term outcomes
+
+The satisfaction data (Anderson et al.) is cross-sectional: a snapshot in time. At any given moment, people in CNM relationships report similar satisfaction to people in monogamous ones. What we don't have is longitudinal data tracking people over 5, 10, or 20 years to see how different configurations evolve.
+
+This gap isn't unique to non-monogamy. Long-term longitudinal studies are expensive and hard to run in any relationship context. Most monogamous relationship research has the same limitation. The absence of long-term data isn't evidence that something doesn't work. It's evidence of a question nobody has answered yet.
+
+### What predicts success
+
+We have good descriptions of harmful patterns (one-sided rules, disposable treatment, leveraging power imbalances) and healthy ones (transparency, autonomy, fair negotiation). What we don't have is large-scale data on which specific practices or skills predict success across different configurations.
+
+Community knowledge fills some of this gap. Experienced practitioners share what works and what doesn't, and that practical wisdom is real and valuable. But it's worth recognizing it as accumulated experience, not controlled evidence. Both matter. They're not interchangeable.
+
+### Why these gaps exist
+
+Non-monogamy research is a young field. For decades, relationship science treated monogamy as the default and non-monogamy as either pathology or not worth studying. That's changed significantly in the last 10–15 years, but the research is catching up from a late start.
+
+Three obstacles slow it down:
+
+- **Recruitment.** Finding large, representative samples of people in specific CNM configurations (like closed triads) is hard, especially when stigma makes people reluctant to disclose.
+- **Definition.** "Polyamory" covers so many configurations that lumping them together in studies obscures real differences. A solo poly person and a person in a closed triad have very different relationship contexts, but they'd land in the same research bucket.
+- **Funding.** Relationship research funding has historically favored monogamous dynamics. CNM research often runs on smaller grants, online convenience samples, and individual researcher initiative.
+
+## What this means for you
+
+If you're looking for certainty ("research proves this works" or "research proves it doesn't"), you won't find it. What the research does say:
+
+- Non-monogamy, by itself, doesn't predict lower satisfaction
+- Stigma does more damage to wellbeing than structure does
+- Specific configurations like triads are under-studied, which means confident claims about them, in either direction, are premature
+- Community knowledge and practical wisdom fill gaps the research hasn't reached yet
+
+**Take the research seriously where it exists. Take community experience seriously where research hasn't caught up. Be skeptical of anyone, on any side, who claims more certainty than the data supports.**
+
+This site is honest about both. When we say "here's what the research shows," we mean it. When the research doesn't exist yet, we say that too.
 
 ---
 
@@ -114,6 +151,6 @@ Schechinger, H. A., Sakaluk, J. K., & Moors, A. C. (2018). Harmful and helpful t
 
 ## Related reading
 
-- [What's well-studied and what isn't](/wiki/research-and-sources/research-landscape): An honest map of where the research is strong and where the gaps are
 - [Recommended reading and resources](/wiki/research-and-sources/recommended-reading): Books, podcasts, and communities
 - [Terminology and language guide](/wiki/foundational-concepts/terminology): The words used in these discussions and why they matter
+- [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics): How power works from every direction, and what to do about it
