@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <defs>
+    <radialGradient id="glow-d" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- connection line -->
+  <line x1="60" y1="60" x2="140" y2="60" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- glow behind nodes -->
+  <circle cx="60" cy="60" r="24" fill="url(#glow-d)"/>
+  <circle cx="140" cy="60" r="24" fill="url(#glow-d)"/>
+  <!-- nodes -->
+  <circle cx="60" cy="60" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <circle cx="140" cy="60" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <!-- labels -->
+  <text x="60" y="96" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">A</text>
+  <text x="140" y="96" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">B</text>
+</svg>

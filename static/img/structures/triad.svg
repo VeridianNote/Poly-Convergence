@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="200" height="180">
+  <defs>
+    <radialGradient id="glow-t" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- connection lines (triangle) -->
+  <line x1="100" y1="36" x2="36" y2="140" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="100" y1="36" x2="164" y2="140" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="36" y1="140" x2="164" y2="140" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- glow -->
+  <circle cx="100" cy="36" r="24" fill="url(#glow-t)"/>
+  <circle cx="36" cy="140" r="24" fill="url(#glow-t)"/>
+  <circle cx="164" cy="140" r="24" fill="url(#glow-t)"/>
+  <!-- nodes -->
+  <circle cx="100" cy="36" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <circle cx="36" cy="140" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <circle cx="164" cy="140" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <!-- labels -->
+  <text x="100" y="18" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">A</text>
+  <text x="20" y="158" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">B</text>
+  <text x="180" y="158" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">C</text>
+</svg>

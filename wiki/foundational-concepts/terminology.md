@@ -120,6 +120,7 @@ Quick reference for common terms. See [relationship structures explained](/wiki/
 | **Consensual non-monogamy (CNM)** | Any relationship arrangement where all parties have openly agreed that the relationship may include connections with other people. The umbrella term covering polyamory, swinging, open relationships, and other configurations. |
 | **Constellation** | The broader network of interconnected relationships, including metamours, metamours' partners, and chosen family. Similar to polycule but sometimes used more expansively. |
 | **[Couple privilege](/wiki/foundational-concepts/power-dynamics)** | The structural advantages an established couple may carry: shared history, housing, finances, social recognition, routines. Real, but incomplete as a lens — power also comes from income, experience, connections, and the ability to walk away. See [power dynamics](/wiki/foundational-concepts/power-dynamics) for the full picture. |
+| **[Dyad](/wiki/foundational-concepts/relationship-structures#dyad)** | Two people in a romantic and/or sexual relationship. The building block — every multi-person relationship is made up of dyads. A triad has three, a quad has up to six. |
 | **Ethical non-monogamy (ENM)** | Another term for consensual non-monogamy. Some people prefer "ethical" to emphasize the intentional framework; others argue it's redundant — if everyone has genuinely consented, the ethics are already built in. Both terms describe the same umbrella. This site uses **CNM** (consensual non-monogamy) as the default because consent is the defining feature. |
 | **Hinge / Pivot** | The shared partner in a V configuration, the person connected to both others. |
 | **Kitchen table polyamory** | A style where all partners and metamours are comfortable socializing together. |
@@ -129,11 +130,13 @@ Quick reference for common terms. See [relationship structures explained](/wiki/
 | **NRE (New Relationship Energy)** | The excited, infatuated feeling in the early phase of a new relationship. Intense and wonderful, but temporary, and worth being aware of when making big decisions. |
 | **Parallel polyamory** | A style where partners know about each other but don't interact directly. |
 | **Poly convergence** | The process of multiple people coming together to explore building a committed relationship. Distinct from casual "unicorn" dynamics (swinging) and from "unicorn hunting" (the specific harmful pattern). See [loaded terms](#poly-convergence) above. |
+| **[Quad](/wiki/foundational-concepts/relationship-structures#quad)** | Four people who are intimately connected. Can take many forms: two couples where everyone is involved with everyone, a square where each person is connected to two others, or various other configurations. |
 | **Polycule** | The full network of interconnected relationships. |
 | **Polyfidelity** | A closed multi-partner relationship where all members agree to be exclusive to the group. |
 | **Relationship anarchy** | An approach that rejects ranking relationships by type (romantic above friendship, etc.) and lets each relationship define itself. |
 | **Relationship escalator** | The expected sequence of milestones in traditional relationships: dating, exclusivity, moving in, marriage, kids. People who "step off the escalator" build relationships that don't follow this script. |
 | **Solo polyamory** | Maintaining multiple relationships without pursuing traditional milestones (cohabitation, merged finances) with any partner. |
+| **[Vee (V)](/wiki/foundational-concepts/relationship-structures#vee-v)** | Three people where one person (the hinge) is romantically involved with two others, but those two aren't involved with each other. The two non-connected people are metamours. |
 | **[Veto power](/wiki/foundational-concepts/veto-power-what-to-do-instead)** | The ability of one partner (usually a "primary") to end or limit another partner's relationship. Controversial because it gives one person control over a relationship they're not in. |
 
 ## Words we avoid on this site

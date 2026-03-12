@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <defs>
+    <radialGradient id="glow-v" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- connection lines from hinge -->
+  <line x1="100" y1="40" x2="40" y2="120" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <line x1="100" y1="40" x2="160" y2="120" stroke="#818cf8" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- no line between metamours -->
+  <!-- glow -->
+  <circle cx="100" cy="40" r="24" fill="url(#glow-v)"/>
+  <circle cx="40" cy="120" r="24" fill="url(#glow-v)"/>
+  <circle cx="160" cy="120" r="24" fill="url(#glow-v)"/>
+  <!-- nodes -->
+  <circle cx="100" cy="40" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <circle cx="40" cy="120" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <circle cx="160" cy="120" r="10" fill="#818cf8" fill-opacity="0.8"/>
+  <!-- labels -->
+  <text x="100" y="22" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="11" font-weight="500">hinge</text>
+  <text x="40" y="148" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">A</text>
+  <text x="160" y="148" text-anchor="middle" fill="#818cf8" font-family="system-ui, sans-serif" font-size="12" font-weight="500">B</text>
+</svg>
