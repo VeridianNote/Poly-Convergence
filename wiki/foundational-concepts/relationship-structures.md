@@ -42,7 +42,7 @@ These describe who is connected to whom — the geometry of the relationship.
   <a href="/img/structures/dyad.svg" target="_blank"><img src="/img/structures/dyad.svg" alt="Dyad: two people connected by a single line" width="200" /></a>
 </div>
 
-Two people in a romantic and/or sexual relationship. This is the building block. Every multi-person relationship is made up of dyads: a triad has three of them, a quad has up to six. Understanding the dyad matters because when people talk about "the relationship," they often mean the group — but the individual connections between each pair of people are where the actual relating happens. A triad doesn't feel like one thing. It feels like three relationships that share a context.
+Two people in a romantic and/or sexual relationship. This is the simplest unit. Multi-person relationships contain dyads — a triad has up to three, a quad has up to six — but that doesn't mean the dyads are the whole story. Some triads function primarily as a group, some develop strong individual connections between each pair, and most are a mix. The dyad matters as a concept because it helps people think about the different connections within a larger dynamic, but it's a lens, not a formula.
 
 ### Vee (V)
 
@@ -60,7 +60,7 @@ The two people who aren't dating each other are called **metamours**. How metamo
   <a href="/img/structures/triad.svg" target="_blank"><img src="/img/structures/triad.svg" alt="Triad: three people all connected in a triangle" width="200" /></a>
 </div>
 
-Three people who are all romantically and/or sexually involved with each other. Sometimes called a **throuple** in casual use. A triad contains three separate dyads (A-B, B-C, and A-C) plus the group dynamic — four relationships in total.
+Three people who are all romantically and/or sexually involved with each other. Sometimes called a **throuple** in casual use. A triad can contain individual connections between each pair (A-B, B-C, A-C), a group dynamic, or both — but the group dynamic is usually the reason people want a triad in the first place. Some triads develop strong one-on-one connections alongside the group. Others function primarily as a unit. What matters is that everyone's needs are met, not that the internal structure matches a specific model.
 
 Triads can be **open** (members may also have partners outside the triad) or **closed** (all three agree to be exclusive to each other). A closed triad is sometimes called **polyfidelity**, a recognized relationship structure in both community practice and academic literature.
 
