@@ -1141,13 +1141,7 @@ blockquote p {
    ============================================= */
 
 .editor-tag-selector {
-  margin: 1rem 0;
-}
-
-.editor-tag-selector__title {
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 0.75rem;
+  margin: 0;
 }
 
 .editor-tag-group {
@@ -1196,6 +1190,99 @@ blockquote p {
   color: var(--ifm-color-danger);
   font-size: 0.85rem;
   margin-top: 0.25rem;
+}
+
+/* =============================================
+   Editor — collapsible sections (tags, author)
+   ============================================= */
+
+.editor-collapsible-section {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  transition: background 0.3s ease;
+}
+
+.editor-collapsible-section[open] {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+[data-theme='dark'] .editor-collapsible-section[open] {
+  background: rgba(129, 140, 248, 0.06);
+}
+
+.editor-collapsible-section__summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.editor-collapsible-section__summary::-webkit-details-marker {
+  display: none;
+}
+
+.editor-collapsible-section__summary::before {
+  content: '▶';
+  font-size: 0.65rem;
+  transition: transform 0.2s ease;
+}
+
+.editor-collapsible-section[open] > .editor-collapsible-section__summary::before {
+  transform: rotate(90deg);
+}
+
+.editor-collapsible-section__badge {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* =============================================
+   Editor — author profile
+   ============================================= */
+
+.author-profile-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.author-profile-field__label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.25rem;
+}
+
+.author-profile-field__input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.author-profile-field__input:focus {
+  border-color: var(--ifm-color-primary);
+  outline: none;
+}
+
+.author-profile-field__static {
+  padding: 0.5rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.9rem;
+}
+
+.author-profile-field__hint {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-500);
 }
 
 /* =============================================

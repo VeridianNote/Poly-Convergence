@@ -15,6 +15,7 @@
  *   /api/draft         → Save/load/delete a draft
  *   /api/submit        → Submit draft for review (create PR)
  *   /api/status        → Check PR status for a draft
+ *   /api/author         → Get/update author profile (D1-backed)
  *   /api/reactions      → Get/increment engagement counters (public, no auth)
  *   /api/reactions/batch → Batch get counters for homepage cards
  *   /api/admin/*       → Admin endpoints (mod-only)
@@ -36,6 +37,7 @@ import {
   handleAdminConfig,
   handleAdminDeleteBranch,
 } from './routes/admin.js';
+import { handleGetAuthorProfile, handleSaveAuthorProfile } from './routes/authors.js';
 import { handleGetReactions, handleGetReactionsBatch, handlePostReaction } from './routes/reactions.js';
 import { runCleanup } from './cron/cleanup.js';
 import { runMergeSync } from './cron/sync.js';
@@ -116,6 +118,14 @@ export default {
       }
       else if (path === '/api/status' && method === 'GET') {
         response = await handleStatus(request, env);
+      }
+
+      // Author profile
+      else if (path === '/api/author' && method === 'GET') {
+        response = await handleGetAuthorProfile(request, env);
+      }
+      else if (path === '/api/author' && method === 'PUT') {
+        response = await handleSaveAuthorProfile(request, env);
       }
 
       // Reactions (public — no auth needed)

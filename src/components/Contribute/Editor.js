@@ -38,7 +38,7 @@ import {
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
 
-import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch } from './api';
+import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch, getAuthorProfile, saveAuthorProfile } from './api';
 
 export default function Editor({
   user,
@@ -76,6 +76,8 @@ export default function Editor({
   const [publishedVersion, setPublishedVersion] = useState(null);
   const [prImagesApproved, setPrImagesApproved] = useState(initialPrImagesApproved);
   const [hasNewActivity, setHasNewActivity] = useState(false);
+  const [authorProfile, setAuthorProfile] = useState(null);
+  const [authorProfileDirty, setAuthorProfileDirty] = useState(false);
 
   const editorRef = useRef(null);
   const countdownRef = useRef(null);
@@ -144,6 +146,30 @@ export default function Editor({
       }).catch(() => {});
     }
   }, [branch]);
+
+  // Load author profile for blog posts
+  useEffect(() => {
+    if (type === 'blog') {
+      getAuthorProfile().then(profile => {
+        if (profile) setAuthorProfile(profile);
+      }).catch(() => {});
+    }
+  }, [type]);
+
+  // Save author profile to D1 (called alongside draft save)
+  const saveAuthorProfileIfDirty = useCallback(async () => {
+    if (!authorProfile || !authorProfileDirty) return;
+    try {
+      await saveAuthorProfile({
+        display_name: authorProfile.display_name,
+        title: authorProfile.title,
+        url: authorProfile.url,
+      });
+      setAuthorProfileDirty(false);
+    } catch (err) {
+      console.error('Failed to save author profile:', err);
+    }
+  }, [authorProfile, authorProfileDirty]);
 
   const handleEditorChange = useCallback((markdown) => {
     setBody(markdown);
@@ -218,6 +244,11 @@ export default function Editor({
       }
 
       if (onDraftSaved) onDraftSaved(result);
+
+      // Save author profile alongside draft (non-blocking)
+      if (type === 'blog') {
+        saveAuthorProfileIfDirty();
+      }
     } catch (err) {
       setErrors([err.message]);
     } finally {
@@ -417,15 +448,6 @@ export default function Editor({
             />
           )}
         </div>
-      )}
-
-      {/* Tag selector (stories only, new drafts only) */}
-      {type === 'blog' && !branch && !editPath && (
-        <TagSelector
-          selectedTags={selectedTags}
-          onChange={setSelectedTags}
-          isMod={user?.isMod}
-        />
       )}
 
       {/* Image guidance / copyright notice */}
@@ -722,6 +744,51 @@ export default function Editor({
         )}
       </div>
 
+      {/* Tags (stories only, new drafts only) */}
+      {type === 'blog' && !branch && !editPath && (
+        <details className="editor-collapsible-section" style={{ marginTop: '1rem' }}>
+          <summary className="editor-collapsible-section__summary">
+            Tags — help readers find your story
+            {selectedTags.length > 0 && (
+              <span className="editor-collapsible-section__badge">
+                {selectedTags.length} selected
+              </span>
+            )}
+          </summary>
+          <div style={{ paddingTop: '0.75rem' }}>
+            <TagSelector
+              selectedTags={selectedTags}
+              onChange={setSelectedTags}
+              isMod={user?.isMod}
+            />
+          </div>
+        </details>
+      )}
+
+      {/* Author profile (stories only) */}
+      {type === 'blog' && authorProfile && (
+        <details className="editor-collapsible-section" style={{ marginTop: '0.75rem' }}>
+          <summary className="editor-collapsible-section__summary">
+            Author Profile
+            {authorProfile.display_name && authorProfile.display_name !== user?.username && (
+              <span className="editor-collapsible-section__badge">
+                {authorProfile.display_name}
+              </span>
+            )}
+          </summary>
+          <div style={{ paddingTop: '0.75rem' }}>
+            <AuthorProfileEditor
+              profile={authorProfile}
+              isMod={user?.isMod}
+              onChange={(updated) => {
+                setAuthorProfile(updated);
+                setAuthorProfileDirty(true);
+              }}
+            />
+          </div>
+        </details>
+      )}
+
       {/* Submit confirmation dialog */}
       {showSubmitConfirm && (
         <ConfirmDialog
@@ -822,6 +889,59 @@ function slugifyCategory(name) {
     .replace(/^-|-$/g, '');
 }
 
+function AuthorProfileEditor({ profile, isMod, onChange }) {
+  const handleChange = (field, value) => {
+    onChange({ ...profile, [field]: value });
+  };
+
+  return (
+    <div className="author-profile-editor">
+      <div className="author-profile-field">
+        <label className="author-profile-field__label">Display Name</label>
+        <input
+          type="text"
+          value={profile.display_name || ''}
+          onChange={e => handleChange('display_name', e.target.value)}
+          placeholder="Your display name"
+          maxLength={100}
+          className="author-profile-field__input"
+        />
+      </div>
+      <div className="author-profile-field">
+        <label className="author-profile-field__label">Title</label>
+        {isMod ? (
+          <input
+            type="text"
+            value={profile.title || ''}
+            onChange={e => handleChange('title', e.target.value)}
+            placeholder="e.g., Site Author"
+            maxLength={100}
+            className="author-profile-field__input"
+          />
+        ) : (
+          <div className="author-profile-field__static">
+            Community Contributor
+          </div>
+        )}
+      </div>
+      <div className="author-profile-field">
+        <label className="author-profile-field__label">URL (optional)</label>
+        <input
+          type="url"
+          value={profile.url || ''}
+          onChange={e => handleChange('url', e.target.value)}
+          placeholder="https://your-website-or-profile.com"
+          maxLength={500}
+          className="author-profile-field__input"
+        />
+      </div>
+      <div className="author-profile-field__hint">
+        Your avatar is automatically pulled from your GitHub profile.
+      </div>
+    </div>
+  );
+}
+
 const EDITOR_TAG_CATEGORIES = [
   {
     label: 'Topic',
@@ -875,9 +995,6 @@ function TagSelector({ selectedTags, onChange, isMod }) {
 
   return (
     <div className="editor-tag-selector">
-      <div className="editor-tag-selector__title">
-        Tags — help readers find your story
-      </div>
       {categories.map(cat => (
         <div key={cat.label} className="editor-tag-group">
           <span className="editor-tag-group__label">

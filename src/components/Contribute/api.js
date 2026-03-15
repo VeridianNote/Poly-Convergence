@@ -305,6 +305,32 @@ export async function uploadImage(branch, file) {
 }
 
 /**
+ * Get the current user's author profile.
+ * Returns the profile object or null if not available.
+ */
+export async function getAuthorProfile() {
+  const res = await apiFetch('/api/author');
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.profile;
+}
+
+/**
+ * Save (create or update) the current user's author profile.
+ */
+export async function saveAuthorProfile({ display_name, title, url }) {
+  const res = await apiFetch('/api/author', {
+    method: 'PUT',
+    body: JSON.stringify({ display_name, title, url }),
+  });
+  const data = await safeJson(res);
+  if (!res.ok) {
+    return { ok: false, ...(data || { error: 'Failed to save profile' }) };
+  }
+  return { ok: true, ...(data || {}) };
+}
+
+/**
  * Logout (clear session).
  */
 export async function logout() {

@@ -11,6 +11,8 @@ import {
   createPullRequest,
   getPRForBranch,
   getCollaboratorPermission,
+  getFileContent,
+  commitFile,
 } from '../github/api.js';
 import { getOrCreateUser, getUserTier, loadConfig } from '../utils/rate-limit.js';
 import { validateBranch } from '../utils/validation.js';
@@ -136,6 +138,17 @@ export async function handleSubmit(request, env) {
   if (isWiki) labels.push('wiki');
   if (isStory) labels.push('story');
   if (userRecord.merged_count === 0) labels.push('new-contributor');
+
+  // For stories: ensure the author has an entry in authors.yml
+  if (isStory) {
+    try {
+      await ensureAuthorInYml(env, token, branch, user.username);
+    } catch (err) {
+      // Non-fatal — the PR can still be created without the authors.yml update.
+      // The mod can add it manually during review if needed.
+      console.error('Failed to update authors.yml:', err.message);
+    }
+  }
 
   // Create the PR
   const pr = await createPullRequest(env, token, {
@@ -283,4 +296,68 @@ function buildPRBody({ username, contentType, tier, mergedCount, files, hasImage
   );
 
   return lines.join('\n');
+}
+
+/**
+ * Ensure the submitting user has an entry in stories/authors.yml.
+ * If they don't, read their D1 profile (or use defaults) and commit
+ * an updated authors.yml to their branch before the PR is created.
+ *
+ * @param {Object} env - Worker env bindings
+ * @param {string} token - GitHub installation token
+ * @param {string} branch - The user's draft branch
+ * @param {string} username - GitHub username
+ */
+async function ensureAuthorInYml(env, token, branch, username) {
+  // Read current authors.yml from main
+  let authorsContent;
+  try {
+    authorsContent = await getFileContent(env, token, 'main', 'stories/authors.yml');
+  } catch {
+    // File doesn't exist yet — start fresh
+    authorsContent = '';
+  }
+
+  // Check if this username already has an entry (top-level YAML key)
+  const keyRegex = new RegExp(`^${username.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}:`, 'mi');
+  if (keyRegex.test(authorsContent)) {
+    return; // Already exists — nothing to do
+  }
+
+  // Read author profile from D1
+  const row = await env.REACTIONS_DB
+    .prepare('SELECT * FROM authors WHERE github_username = ?')
+    .bind(username)
+    .first();
+
+  const displayName = row?.display_name || username;
+  const title = row?.title || 'Community Contributor';
+  const url = row?.url || '';
+  const imageUrl = `https://github.com/${username}.png`;
+
+  // Build the new YAML entry
+  // Escape any quotes in display_name/title for safety
+  const safeName = displayName.replace(/"/g, '\\"');
+  const safeTitle = title.replace(/"/g, '\\"');
+
+  const lines = [
+    '',
+    `${username}:`,
+    `  name: "${safeName}"`,
+    `  title: "${safeTitle}"`,
+  ];
+  if (url) {
+    lines.push(`  url: ${url}`);
+  }
+  lines.push(`  image_url: ${imageUrl}`);
+
+  const updatedContent = authorsContent.trimEnd() + '\n' + lines.join('\n') + '\n';
+
+  // Commit to the user's branch
+  await commitFile(
+    env, token, branch,
+    'stories/authors.yml',
+    updatedContent,
+    `Add author profile for ${username}`
+  );
 }
