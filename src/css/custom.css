@@ -1101,11 +1101,56 @@ blockquote p {
 }
 
 /* =============================================
+   Card author display (shared across pages)
+   ============================================= */
+
+.card-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.card-author__item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.card-author__avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-author__name {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 500;
+}
+
+.featured-hero .card-author__avatar {
+  width: 28px;
+  height: 28px;
+}
+
+.featured-hero .card-author__name {
+  font-size: 0.9rem;
+}
+
+/* =============================================
    Featured page — hero card
    ============================================= */
 
+.featured-hero-wrapper {
+  max-width: 800px;
+}
+
 .featured-hero {
-  padding: 2rem;
+  padding: 1.75rem;
   border-radius: 10px;
   border: 2px solid var(--ifm-color-primary);
   background: rgba(99, 102, 241, 0.04);
@@ -1124,16 +1169,45 @@ blockquote p {
   box-shadow: 0 4px 16px rgba(129, 140, 248, 0.15);
 }
 
+.featured-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.6rem;
+}
+
+[data-theme='dark'] .featured-badge {
+  background: rgba(129, 140, 248, 0.18);
+}
+
 .featured-hero__title {
-  font-size: 1.6rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .featured-hero__desc {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--ifm-color-emphasis-700);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
   max-width: 700px;
+}
+
+.featured-hero .story-card__tags {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .featured-hero {
+    padding: 1.25rem;
+  }
+
+  .featured-hero__title {
+    font-size: 1.3rem;
+  }
 }
 
 /* =============================================

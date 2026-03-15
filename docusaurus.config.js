@@ -56,6 +56,20 @@ const config = {
         async loadContent() {
           const storiesDir = path.join(context.siteDir, 'stories');
           const today = new Date().toISOString().slice(0, 10);
+          // Parse authors.yml
+          const authorsYml = fs.readFileSync(path.join(storiesDir, 'authors.yml'), 'utf8');
+          const authorMap = {};
+          let currentKey = null;
+          authorsYml.split(/\r?\n/).forEach(line => {
+            const topLevel = line.match(/^(\w[\w-]*):\s*$/);
+            if (topLevel) { currentKey = topLevel[1]; authorMap[currentKey] = {}; return; }
+            if (currentKey && line.match(/^\s+\w/)) {
+              const idx = line.indexOf(':');
+              if (idx > 0) {
+                authorMap[currentKey][line.slice(0, idx).trim()] = line.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
+              }
+            }
+          });
           const files = fs.readdirSync(storiesDir)
             .filter(f => f.endsWith('.md') || f.endsWith('.mdx'))
             .filter(f => { const d = f.match(/^(\d{4}-\d{2}-\d{2})/); return !d || d[1] <= today; })
@@ -85,7 +99,18 @@ const config = {
             const tags = fm.tags
               ? fm.tags.replace(/[\[\]]/g, '').split(',').map(t => t.trim()).filter(Boolean)
               : [];
-            return {title: fm.title || nameSlug, permalink, date, description: fm.description || excerpt, tags};
+            const authorKeys = fm.authors
+              ? fm.authors.replace(/[\[\]]/g, '').split(',').map(a => a.trim()).filter(Boolean)
+              : [];
+            const authors = authorKeys.map(key => {
+              const a = authorMap[key] || {};
+              return {
+                name: a.name || key,
+                image_url: a.image_url || null,
+                url: a.url || null,
+              };
+            });
+            return {title: fm.title || nameSlug, permalink, date, description: fm.description || excerpt, tags, authors};
           }).filter(Boolean);
         },
         async contentLoaded({content, actions}) {
@@ -201,7 +226,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Content: CC BY-NC-SA 4.0 · Code: MIT`,
+        copyright: `Content: CC BY-NC-SA 4.0 · Code: MIT · Artwork: All rights reserved`,
       },
       prism: {
         theme: prismThemes.github,

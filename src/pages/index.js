@@ -198,6 +198,18 @@ function FromTheBlog() {
                         <Heading as="h3" className="homepage-card__title">
                           {post.title}
                         </Heading>
+                        {post.authors?.length > 0 && (
+                          <div className="card-author">
+                            {post.authors.map((author, i) => (
+                              <div key={i} className="card-author__item">
+                                {author.image_url && (
+                                  <img className="card-author__avatar" src={author.image_url} alt={author.name} loading="lazy" />
+                                )}
+                                <span className="card-author__name">{author.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                         <div className="blog-card__meta">
                           <time dateTime={post.date}>
                             {new Date(post.date).toLocaleDateString('en-US', {

@@ -2,6 +2,45 @@ import Link from '@docusaurus/Link';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import Layout from '@theme/Layout';
 
+const HIDDEN_TAGS = new Set(['featured']);
+
+function tagLabel(tag) {
+  return tag.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
+function AuthorRow({authors}) {
+  if (!authors || authors.length === 0) return null;
+  return (
+    <div className="card-author">
+      {authors.map((author, i) => (
+        <div key={i} className="card-author__item">
+          {author.image_url && (
+            <img
+              className="card-author__avatar"
+              src={author.image_url}
+              alt={author.name}
+              loading="lazy"
+            />
+          )}
+          <span className="card-author__name">{author.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TagBadges({tags}) {
+  const visible = (tags || []).filter(t => !HIDDEN_TAGS.has(t));
+  if (visible.length === 0) return null;
+  return (
+    <div className="story-card__tags">
+      {visible.map(t => (
+        <span key={t} className="story-card__tag">{tagLabel(t)}</span>
+      ))}
+    </div>
+  );
+}
+
 export default function FeaturedPage() {
   let allPosts = [];
   try {
@@ -21,33 +60,38 @@ export default function FeaturedPage() {
       <div className="container margin-vert--lg">
         <h1>Featured Stories</h1>
         <p className="stories-intro">
-          Hand-picked stories that showcase the best of the community --
+          Hand-picked stories that showcase the best of the community —
           perspectives that resonate, challenge, and inspire.
         </p>
 
         {featured.length > 0 ? (
           <>
             {/* Hero — newest featured post */}
-            <Link to={featured[0].permalink} className="card-link">
-              <article className="featured-hero">
-                <h2 className="featured-hero__title">{featured[0].title}</h2>
-                {featured[0].date && (
-                  <div className="story-card__meta">
-                    <time dateTime={featured[0].date}>
-                      {new Date(featured[0].date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                  </div>
-                )}
-                {featured[0].description && (
-                  <p className="featured-hero__desc">{featured[0].description}</p>
-                )}
-                <span className="blog-card__link">Read story &#8594;</span>
-              </article>
-            </Link>
+            <div className="featured-hero-wrapper">
+              <Link to={featured[0].permalink} className="card-link">
+                <article className="featured-hero">
+                  <span className="featured-badge">⭐ Editor's Pick</span>
+                  <h2 className="featured-hero__title">{featured[0].title}</h2>
+                  <AuthorRow authors={featured[0].authors} />
+                  {featured[0].date && (
+                    <div className="story-card__meta">
+                      <time dateTime={featured[0].date}>
+                        {new Date(featured[0].date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    </div>
+                  )}
+                  {featured[0].description && (
+                    <p className="featured-hero__desc">{featured[0].description}</p>
+                  )}
+                  <TagBadges tags={featured[0].tags} />
+                  <span className="blog-card__link">Read story &#8594;</span>
+                </article>
+              </Link>
+            </div>
 
             {/* Remaining featured posts */}
             {featured.length > 1 && (
@@ -56,6 +100,7 @@ export default function FeaturedPage() {
                   <Link key={post.permalink} to={post.permalink} className="card-link">
                     <article className="story-card">
                       <h3 className="story-card__title">{post.title}</h3>
+                      <AuthorRow authors={post.authors} />
                       {post.date && (
                         <div className="story-card__meta">
                           <time dateTime={post.date}>
@@ -70,6 +115,7 @@ export default function FeaturedPage() {
                       {post.description && (
                         <p className="story-card__desc">{post.description}</p>
                       )}
+                      <TagBadges tags={post.tags} />
                     </article>
                   </Link>
                 ))}

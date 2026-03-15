@@ -50,6 +50,18 @@ function StoryCard({item}) {
     <Link to={permalink} className="card-link">
       <article className="story-card">
         <h3 className="story-card__title">{title}</h3>
+        {metadata.authors?.length > 0 && (
+          <div className="card-author">
+            {metadata.authors.map((author, i) => (
+              <div key={i} className="card-author__item">
+                {author.imageURL && (
+                  <img className="card-author__avatar" src={author.imageURL} alt={author.name} loading="lazy" />
+                )}
+                <span className="card-author__name">{author.name}</span>
+              </div>
+            ))}
+          </div>
+        )}
         <div className="story-card__meta">
           <time dateTime={date}>
             {new Date(date).toLocaleDateString('en-US', {
