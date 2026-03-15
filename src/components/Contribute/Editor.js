@@ -465,7 +465,7 @@ export default function Editor({
         }}>
           <strong>Image guidelines:</strong> Only upload images you created or have permission to use.
           Do not upload images from other websites or search engines.
-          All uploads are licensed under CC BY-NC-SA 4.0.
+          See <a href="/terms-of-contribution" target="_blank" rel="noopener noreferrer">Terms of Contribution</a> for details.
           {!branch && ' Save your draft before uploading images.'}
           {branch && <><br /><strong>Tip:</strong> In source view, use{' '}
           <code style={{ fontSize: '0.75rem' }}>{'{{image:1 | caption}}'}</code>{' '}

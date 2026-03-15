@@ -65,9 +65,11 @@ function ContributePage() {
               <p><strong>New contributors:</strong> Your first submission is limited to one pending edit at a time. Once your first contribution is reviewed and approved, you'll be upgraded to a trusted contributor with more capacity. If you need an exception, <a href="https://github.com/VeridianNote/Poly-Convergence/issues">reach out to us</a>.</p>
 
               <p>
-                Everything on this site is shared under a{' '}
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0</a>{' '}
-                license. By submitting, you agree to license your contribution under these terms.
+                Wiki content is published under{' '}
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+                Blog posts can be CC BY-NC-SA 4.0 or All Rights Reserved — you choose when you submit.
+                Either way, you keep full ownership of your work.
+                See the <a href="/terms-of-contribution">Terms of Contribution</a> for details.
               </p>
 
               <p>If you prefer working with Git directly, you can open a pull request on the <a href="https://github.com/VeridianNote/Poly-Convergence">repository</a>.</p>

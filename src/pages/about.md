@@ -29,7 +29,7 @@ This is an open-source, community-built project. Anyone can [contribute](/contri
 
 We're not trying to be the authority on anything. We're trying to build a space where the community's collective knowledge is organized, accessible, and honest about its limits. The site gets better with every person who shares what they've learned.
 
-The entire project (code, content, and process) is [open on GitHub](https://github.com/VeridianNote/Poly-Convergence). Content is shared under [Creative Commons (CC BY-NC-SA 4.0)](/content-license). Code is MIT licensed.
+The entire project (code, content, and process) is [open on GitHub](https://github.com/VeridianNote/Poly-Convergence). Wiki content is shared under [CC BY-NC-SA 4.0](/content-license). Blog authors can choose CC BY-NC-SA 4.0 or All Rights Reserved. Code is MIT licensed. Artwork is all rights reserved.
 
 That's deliberate. This project is free and open source because the community (not any one author, brand, or book deal) should be the one defining what healthy non-monogamy looks like. The practices, the boundaries, the do's and don'ts, what "ethical" actually means in practice. All of it. When one person owns that conversation, it gets narrow. When the community owns it, it gets real.
 

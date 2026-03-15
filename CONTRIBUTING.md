@@ -133,12 +133,14 @@ Content here.
 
 ## License
 
-By submitting content to this project, you agree to the following:
+By submitting content to this project, you agree to the [Terms of Contribution](https://polyconvergence.com/terms-of-contribution):
 
-- **Content** (articles, wiki pages, stories, images) is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **Wiki content** is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **Blog posts** can be CC BY-NC-SA 4.0 (default) or All Rights Reserved, at the author's choice
 - **Code** (configuration, scripts, templates) is licensed under the [MIT License](LICENSE)
+- **Artwork and branding** are all rights reserved
 - You confirm that you have the right to submit this content under these terms
-- You understand that contributions are public and will be attributed to your GitHub account
+- You understand that submissions are made via public pull requests on GitHub, which are visible and linked to your GitHub account. On the published site, your chosen display name is used instead
 
 ## Code of Conduct
 

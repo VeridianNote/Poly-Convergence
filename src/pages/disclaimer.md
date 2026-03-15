@@ -31,9 +31,9 @@ These services are confidential and available 24/7. They serve people in all rel
 
 ## Licensing
 
-All written content on this site is shared under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. That means anyone can share and adapt it, as long as they credit the source, keep it non-commercial, and share their version under the same terms.
+Wiki content and most community stories are shared under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — shareable and adaptable with attribution, non-commercially. Some blog posts are published as All Rights Reserved at the author's choice. Site code is MIT licensed. Artwork and branding are all rights reserved.
 
-Site code is licensed under MIT. See the full [content license](/content-license) for details. If you find content that shouldn't be here or may violate someone's rights, [please let us know](https://github.com/VeridianNote/Poly-Convergence/issues).
+See the [content license](/content-license) and [terms of contribution](/terms-of-contribution) for details. If you find content that shouldn't be here or may violate someone's rights, [please let us know](https://github.com/VeridianNote/Poly-Convergence/issues).
 
 ## The fine print
 
