@@ -2,7 +2,7 @@
 slug: best-relationship-advice
 title: "The best relationship advice I've ever received"
 authors: [polypocketpal]
-tags: [growth, lessons-learned]
+tags: [growth, lessons-learned, featured]
 description: "A simple truth about relationships that sounds obvious at first — until you realize it changes everything about how you show up."
 ---
 
