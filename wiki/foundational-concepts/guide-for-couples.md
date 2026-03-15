@@ -20,9 +20,6 @@ The most common mistake couples make is not being ready for what this type of re
 - **Do you both have an enthusiastic yes?** If one person is driving this and the other is going along to keep the peace, stop here. You both need to be genuinely excited — not just willing. Reluctant consent isn't real consent, the cracks will show fast, and if you've already brought someone new into your lives, you're not just risking your own relationship. You're pulling another person into something that wasn't solid to begin with.
 - **What are you imagining?** Describe it to each other in detail. You might discover you're imagining very different things. Better to find that out now.
 
-<!-- AUTHOR INPUT NEEDED: What assumptions did you find yourselves checking? What did you
-discover you were wrong about early on? Real examples here would make this concrete. -->
-
 ### Know the difference between dealbreakers and demands
 
 Having preferences is normal and healthy. Wanting a closed relationship, wanting to date together, wanting certain qualities in a partner: these are fine. Dealbreakers are fine too. "I won't date someone with young children" or "I need to live close by" are personal limits. They're about what works for your life, not about controlling someone else's.
@@ -51,9 +48,6 @@ Everyone says communication is important. Fewer people explain what that actuall
 - **Practice hearing things you don't want to hear.** Your new partner will have feelings you didn't anticipate. Your existing partner will have reactions you didn't predict. Your ability to sit with discomfort without making it someone else's problem is the most important skill you'll build.
 - **Say the hard thing early.** Don't let problems sit. Something that bothers you in week one is a conversation. That same thing left unspoken until month six is a crisis — and by then, everyone involved has been building resentment instead of solutions. Keep in mind that problems multiply with each relationship in the mix. An unresolved issue between you and one partner doesn't stay contained — it spills into how you show up with the others. Be proactive about fixing what's in front of you if you want to keep everyone happy, including yourself.
 - **Know how to handle conflict between partners.** What happens when two of your partners have a disagreement with each other (not about you, but between them)? You can't fix it for them, and picking a side makes everything worse. What you can do is make space for them to work it out directly, stay available without inserting yourself, and resist the urge to play mediator unless both of them ask. If you find yourself constantly translating between two people who won't talk to each other, that's a pattern worth calling out, and if it lingers or repeats, consider outside counseling.
-
-<!-- AUTHOR INPUT NEEDED: What communication tools have actually worked for you?
-RADAR check-ins, NVC, something else? What did you try that didn't work? -->
 
 ### Handling jealousy
 
@@ -89,9 +83,6 @@ How you handle that tells you (and them) everything about whether this is going 
 - **Moving too fast because it's exciting.** NRE (new relationship energy) is powerful. It makes everything feel urgent and perfect. Slow down. Check in. Make sure everyone is actually comfortable, not just swept up.
 - **Not being prepared for uneven feelings.** Feelings don't develop on the same schedule. One connection might grow faster than another, and that's not a problem, it's just how people work. Where it gets hard is when the person on the slower side reacts: either by trying to pump the brakes on the faster connection, or by overcompensating and pushing their own connection to move faster than it naturally would. Both come from the same place: insecurity about being left behind. Neither works. Pressuring someone to slow down breeds resentment. Forcing a connection to accelerate feels desperate, not genuine. Name what you're feeling, sit with the discomfort, and give each connection room to develop at its own pace.
 - **Closing ranks when things get uncomfortable.** When tension arises, the instinct is for the couple to pull together and present a united front. The new person reads this as "it's us vs. you." Avoid that. Instead, try to bring the discomfort to the group. Say what you're feeling in front of everyone rather than retreating to hash it out privately and returning with a verdict. If you need to process with your partner first, be transparent about it: "We need to talk about this between us, and then we want to bring it to you — nothing is decided until we all discuss it."
-
-<!-- AUTHOR INPUT NEEDED: What mistakes did you make early on that you'd want others
-to avoid? What would you tell your past self? -->
 
 ## Self-check questions
 

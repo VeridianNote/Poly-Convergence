@@ -140,11 +140,6 @@ Green flags aren't just about what the established people do. The person enterin
 - **Are flexible about how things develop.** Walking in with a rigid picture of what this should look like is as much of a concern as a couple with a rigid script. Willingness to let the relationship find its own shape is what makes it real.
 - **Think about their impact.** "What does my presence change for them?" is a sign of someone who sees the full picture, not just their own experience in it. The best new partners are the ones who've thought about what it means for two people to open up something they've built, and who take that seriously.
 
-<!-- AUTHOR INPUT NEEDED: Can you share any specific examples of green flags you've
-seen or experienced? Even small ones, like a couple who proactively included the new
-partner in a decision, or someone who handled jealousy in a way that strengthened the
-relationship instead of straining it. Real examples make these concrete. -->
-
 ## Self-check
 
 Green flags aren't just things to look for in others. They're things to look for in yourself.
