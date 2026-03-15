@@ -216,6 +216,7 @@ const config = {
               {label: 'About', to: '/about'},
               {label: 'Contribute', to: '/contribute'},
               {label: 'Disclaimer', to: '/disclaimer'},
+              {label: 'Terms of Contribution', to: '/terms-of-contribution'},
             ],
           },
           {
@@ -226,7 +227,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Content: CC BY-NC-SA 4.0 · Code: MIT · Artwork: All rights reserved`,
+        copyright: `<a href="https://github.com/VeridianNote/Poly-Convergence/blob/main/LICENSE.md" target="_blank" rel="noopener noreferrer">Content: CC BY-NC-SA 4.0 · Code: MIT · Artwork: All rights reserved</a>`,
       },
       prism: {
         theme: prismThemes.github,

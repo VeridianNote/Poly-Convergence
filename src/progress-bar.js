@@ -438,10 +438,48 @@ function injectDesktopShareLink() {
   tocUl.appendChild(li);
 }
 
+/**
+ * Add a license indicator at the bottom of blog/stories posts.
+ * Checks for a hidden comment <!-- license: all-rights-reserved --> in the article
+ * to determine the license type. Defaults to CC BY-NC-SA 4.0.
+ */
+function createLicenseIndicator() {
+  if (typeof document === 'undefined') return;
+
+  // Remove any previous indicator
+  document.querySelectorAll('.blog-license-indicator').forEach(el => el.remove());
+
+  // Only on individual story pages (not listing, not other pages)
+  const path = window.location.pathname;
+  if (!path.startsWith('/stories/') || path === '/stories/' || path === '/stories') return;
+
+  const container = document.querySelector('article') || document.querySelector('.markdown');
+  if (!container) return;
+
+  // Check for all-rights-reserved marker in the HTML
+  const html = container.innerHTML;
+  const isAllRights = html.includes('<!-- license: all-rights-reserved -->');
+
+  const indicator = document.createElement('div');
+  indicator.className = 'blog-license-indicator';
+
+  if (isAllRights) {
+    indicator.innerHTML = '\uD83D\uDD12 \u00A9 All Rights Reserved \u00B7 ' +
+      '<a href="/terms-of-contribution">Terms</a>';
+  } else {
+    indicator.innerHTML = '\uD83C\uDF10 Licensed under ' +
+      '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>' +
+      ' \u00B7 <a href="/terms-of-contribution">Terms</a>';
+  }
+
+  container.appendChild(indicator);
+}
+
 // Docusaurus lifecycle hook — fires after every route change
 export function onRouteDidUpdate({location, previousLocation}) {
   // Small delay to let the DOM render
   setTimeout(createMobileTOC, 200);
   setTimeout(createEngagementBar, 300);
   setTimeout(injectDesktopShareLink, 300);
+  setTimeout(createLicenseIndicator, 350);
 }

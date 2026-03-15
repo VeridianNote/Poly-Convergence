@@ -208,7 +208,7 @@ export function validateContentPath(path) {
  * @param {string[]} [options.tags]
  * @returns {string}
  */
-export function buildMarkdownFile({ type, title, body, category, author, tags }) {
+export function buildMarkdownFile({ type, title, body, category, author, tags, license }) {
   const frontmatter = ['---'];
   // Escape backslashes first (before other escapes add more backslashes),
   // then double quotes, then collapse newlines. This prevents YAML injection
@@ -231,12 +231,22 @@ export function buildMarkdownFile({ type, title, body, category, author, tags })
         frontmatter.push(`tags: [${safeTags.join(', ')}]`);
       }
     }
+    // License — only allow known values
+    if (license === 'all-rights-reserved') {
+      frontmatter.push('license: all-rights-reserved');
+    }
+    // cc-by-nc-sa is the default, so we omit it to keep frontmatter clean
   }
 
   frontmatter.push('---');
   frontmatter.push('');
 
-  return frontmatter.join('\n') + body;
+  // Add license marker comment for all-rights-reserved posts (client-side detection)
+  const licenseMarker = license === 'all-rights-reserved'
+    ? '\n\n<!-- license: all-rights-reserved -->\n'
+    : '';
+
+  return frontmatter.join('\n') + body + licenseMarker;
 }
 
 /**

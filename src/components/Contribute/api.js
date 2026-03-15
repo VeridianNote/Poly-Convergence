@@ -197,10 +197,10 @@ export async function loadContent(path) {
 /**
  * Save a draft (create or update).
  */
-export async function saveDraft({ title, body, type, category, subcategory, existingBranch, editPath, tags }) {
+export async function saveDraft({ title, body, type, category, subcategory, existingBranch, editPath, tags, license }) {
   const res = await apiFetch('/api/draft', {
     method: 'POST',
-    body: JSON.stringify({ title, body, type, category, subcategory, existingBranch, editPath, tags }),
+    body: JSON.stringify({ title, body, type, category, subcategory, existingBranch, editPath, tags, license }),
   });
 
   const data = await safeJson(res);

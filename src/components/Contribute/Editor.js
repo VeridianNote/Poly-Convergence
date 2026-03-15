@@ -78,6 +78,8 @@ export default function Editor({
   const [hasNewActivity, setHasNewActivity] = useState(false);
   const [authorProfile, setAuthorProfile] = useState(null);
   const [authorProfileDirty, setAuthorProfileDirty] = useState(false);
+  const [license, setLicense] = useState('cc-by-nc-sa');
+  const [showLicenseHelp, setShowLicenseHelp] = useState(false);
 
   const editorRef = useRef(null);
   const countdownRef = useRef(null);
@@ -215,6 +217,7 @@ export default function Editor({
         existingBranch: branch || undefined,
         editPath: !branch ? editPath : undefined,
         tags: type === 'blog' ? selectedTags : undefined,
+        license: type === 'blog' ? license : undefined,
       });
 
       if (!result.ok) {
@@ -787,6 +790,71 @@ export default function Editor({
             />
           </div>
         </details>
+      )}
+
+      {/* License selector (stories only, new drafts only) */}
+      {type === 'blog' && !branch && !editPath && (
+        <div className="license-selector" style={{ marginTop: '0.75rem' }}>
+          <div className="license-selector__header">
+            <span className="license-selector__label">License for your story</span>
+            <button
+              type="button"
+              className="license-selector__help-btn"
+              onClick={() => setShowLicenseHelp(!showLicenseHelp)}
+              aria-label="Learn about license options"
+            >
+              ?
+            </button>
+          </div>
+          <div className="license-selector__options">
+            <label className={`license-option${license === 'cc-by-nc-sa' ? ' license-option--selected' : ''}`}>
+              <input
+                type="radio"
+                name="license"
+                value="cc-by-nc-sa"
+                checked={license === 'cc-by-nc-sa'}
+                onChange={() => setLicense('cc-by-nc-sa')}
+              />
+              <div className="license-option__content">
+                <span className="license-option__name">CC BY-NC-SA 4.0</span>
+                <span className="license-option__short">Others can share &amp; adapt (non-commercial)</span>
+              </div>
+            </label>
+            <label className={`license-option${license === 'all-rights-reserved' ? ' license-option--selected' : ''}`}>
+              <input
+                type="radio"
+                name="license"
+                value="all-rights-reserved"
+                checked={license === 'all-rights-reserved'}
+                onChange={() => setLicense('all-rights-reserved')}
+              />
+              <div className="license-option__content">
+                <span className="license-option__name">All Rights Reserved</span>
+                <span className="license-option__short">Read-only on this site</span>
+              </div>
+            </label>
+          </div>
+          {showLicenseHelp && (
+            <div className="license-help">
+              <div className="license-help__card">
+                <h4>🌐 CC BY-NC-SA 4.0 <span className="license-help__default">default</span></h4>
+                <p>Others can share and adapt your writing, as long as they credit you, keep it non-commercial, and use the same license. You can still do whatever you want with your own work — these rules only apply to everyone else.</p>
+                <p><strong>Choose this if</strong> you want your story to spread and help as many people as possible. Most community contributions use this.</p>
+              </div>
+              <div className="license-help__card">
+                <h4>🔒 All Rights Reserved</h4>
+                <p>Others can read your piece here, link to it, and quote short excerpts — but they can't repost or redistribute it. Think of it like renting out a room: you set the rules for guests, but they don't apply to you. You can still publish elsewhere, sell it, or license it however you like.</p>
+                <p><strong>Choose this if</strong> you're a professional writer, plan to publish this elsewhere, or just want tighter control over your work.</p>
+              </div>
+              <p className="license-help__footer">
+                Either way, you keep full ownership of your work.{' '}
+                <a href="/terms-of-contribution" target="_blank" rel="noopener noreferrer">
+                  Learn more →
+                </a>
+              </p>
+            </div>
+          )}
+        </div>
       )}
 
       {/* Submit confirmation dialog */}

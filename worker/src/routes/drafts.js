@@ -263,7 +263,7 @@ export async function handleSaveDraft(request, env) {
   } catch {
     return Response.json({ error: 'Invalid JSON in request body' }, { status: 400 });
   }
-  const { title, body, type, category, subcategory, existingBranch, editPath, tags } = requestBody;
+  const { title, body, type, category, subcategory, existingBranch, editPath, tags, license } = requestBody;
 
   // Validate content type
   if (type !== 'wiki' && type !== 'blog') {
@@ -496,6 +496,7 @@ export async function handleSaveDraft(request, env) {
     category,
     author: effectiveType === 'blog' ? user.username : undefined,
     tags: effectiveType === 'blog' ? tags : undefined,
+    license: effectiveType === 'blog' ? license : undefined,
   });
 
   // For existing branches, check if content actually changed before committing.

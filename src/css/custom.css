@@ -1360,6 +1360,189 @@ blockquote p {
 }
 
 /* =============================================
+   License selector (contribute page)
+   ============================================= */
+
+.license-selector {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-background-surface-color);
+}
+
+.license-selector__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.license-selector__label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.license-selector__help-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ifm-color-primary);
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.license-selector__help-btn:hover {
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.license-selector__options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .license-selector__options {
+    flex-direction: column;
+  }
+}
+
+.license-option {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.license-option:hover {
+  border-color: var(--ifm-color-primary-light);
+}
+
+.license-option--selected {
+  border-color: var(--ifm-color-primary);
+  background: rgba(99, 102, 241, 0.06);
+}
+
+[data-theme='dark'] .license-option--selected {
+  background: rgba(129, 140, 248, 0.08);
+}
+
+.license-option input[type="radio"] {
+  margin-top: 0.15rem;
+  accent-color: var(--ifm-color-primary);
+}
+
+.license-option__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.license-option__name {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.license-option__short {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.license-help {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .license-help {
+    grid-template-columns: 1fr;
+  }
+}
+
+.license-help__card {
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-100);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.license-help__card h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.88rem;
+}
+
+.license-help__card p {
+  margin: 0 0 0.4rem;
+}
+
+.license-help__card p:last-child {
+  margin-bottom: 0;
+}
+
+.license-help__default {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: 3px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.license-help__footer {
+  grid-column: 1 / -1;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+}
+
+/* =============================================
+   Blog post license indicator
+   ============================================= */
+
+.blog-license-indicator {
+  margin-top: 2rem;
+  padding: 0.6rem 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog-license-indicator a {
+  color: var(--ifm-color-emphasis-600);
+  text-decoration: underline;
+}
+
+.blog-license-indicator a:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* =============================================
    Contribute page — guidelines pulse
    ============================================= */
 
