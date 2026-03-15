@@ -103,6 +103,12 @@ Before you start dating, and periodically after:
 
 Nobody gets it right immediately. The goal is to be honest, fair, and willing to course-correct. That's enough to start with.
 
+## Read the other side
+
+The [evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit) is written for individuals considering dating a couple. Read it — not because you need to pass someone's test, but because what they're looking for is a pretty good description of what you should be working toward. Their green flags are your goals. Their red flags are your blind spots. And their self-check questions will sound familiar, because the best relationships are the ones where everyone is doing this kind of reflection, not just the person with less structural power.
+
+It works the other way too: what you're working on here (checking assumptions, building skills, treating people as people) is exactly what a thoughtful person dating you should be bringing to the table. The two pages are mirrors of the same conversation.
+
 ---
 
 ## Related reading

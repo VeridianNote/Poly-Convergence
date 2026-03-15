@@ -30,7 +30,7 @@ See the full [CC BY-NC-SA 4.0 license text](https://github.com/VeridianNote/Poly
 
 ## Site Code — MIT License
 
-The source code for this website (configuration, build scripts, templates) is licensed under the [MIT License](https://github.com/VeridianNote/Poly-Convergence/blob/main/LICENSE).
+The source code for this website (configuration, build scripts, templates) is licensed under the [MIT License](https://github.com/VeridianNote/Poly-Convergence/blob/main/LICENSE.md).
 
 ## Contributing
 

@@ -92,6 +92,12 @@ Sometimes you meet genuinely nice people who are polite, say the right things, a
 
 You're not naive for being interested in this. You're not powerless because they were here first. And you're not obligated to stay in something that doesn't feel right just because you agreed to try.
 
+## Read the other side
+
+The [guide for couples](/wiki/foundational-concepts/guide-for-couples) is written for couples exploring non-monogamy. Read it — not to grade them, but because what they're working toward is a pretty good description of how you should be showing up too. Their self-check questions ("would we take this deal?", "are we looking for a person or a role?") are the same questions worth asking about yourself from where you sit. And the skills they're building (hearing hard things, handling jealousy, treating people as people) are skills everyone in the relationship needs, not just the people with more history.
+
+Compatibility is a two-way evaluation. The strongest relationships form when everyone involved is doing this kind of work, not just watching for the other side to get it wrong.
+
 ---
 
 ## Related reading

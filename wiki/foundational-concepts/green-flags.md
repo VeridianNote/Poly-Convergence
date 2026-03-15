@@ -74,6 +74,20 @@ What this looks like:
 - "I'm not okay right now" is met with support, not dismissal or a lecture about why they should be fine
 - Partners outside the immediate situation show support by being flexible and understanding — and when done well, that kind of care gets reciprocated when the roles reverse
 
+### How people respond when you bring something up
+
+The [red flags page](/wiki/foundational-concepts/red-flags#the-key-question-what-happens-when-you-bring-it-up) goes deep on this, but it belongs here too — because a person who gets curious when you call out a pattern, takes responsibility, and follows through with real change isn't just avoiding a red flag. They're showing you one of the strongest green flags there is.
+
+This shows up in small moments more than dramatic ones. You mention that something felt off, and instead of explaining why you're wrong, they ask what you experienced. You bring up a pattern you've noticed, and they sit with it instead of getting defensive. They come back later and say "I've been thinking about what you said." And then something actually changes — not a promise to change, not "I'll work on it" repeated until you stop asking, but a visible shift in how they show up.
+
+It works in the other direction too. When you're the one being called out, your response tells the other person everything they need to know about whether honesty is safe in this relationship. Can you hear it without defending? Can you get curious about how someone else experienced something you didn't intend? That ability to hear hard feedback and actually grow from it is worth more than getting everything right the first time.
+
+What this looks like:
+- "I hadn't thought about it that way" followed by a real conversation, not a deflection
+- Changed behavior after a concern is raised — not just in the moment, but consistently
+- The person who was called out circles back on their own: "I noticed I did that thing again, I'm working on it"
+- Nobody treats bringing something up as a disruption or a personal attack
+
 ## Green flags when dating into an existing dynamic
 
 These are specific to situations where someone enters an established relationship (most often a couple, but these apply to any configuration where one connection has more history than another). Green flags here go both ways. The people with more history are aware of their structural advantages and working to make things fair. The person dating in is approaching with their own foundation and genuine respect for what already exists. The [power dynamics](/wiki/foundational-concepts/power-dynamics) page goes deeper on where power concentrates and what to do about it.
@@ -143,6 +157,8 @@ Green flags aren't just about what the established people do. The person enterin
 ## Self-check
 
 Green flags aren't just things to look for in others. They're things to look for in yourself.
+
+And if you're reading this list and noticing gaps — that's not a verdict. Green flags aren't pass/fail. They're things people build, not just things you observe. A missing green flag is a conversation to have, not a reason to walk away. The couple who hasn't thought about exit planning can start thinking about it. The newer partner who hasn't been asserting their needs can start speaking up. The person who gets defensive when called out can learn to get curious instead. What matters is whether the willingness is there. If someone reads this list and thinks "we're not doing that, but I want to" — that's already a green flag in itself.
 
 - When something bothers me, do I raise it early or let it build?
 - If a partner disagreed with me, would I get curious about why they see it differently? Or would I dig in and defend my position with no interest in understanding theirs?

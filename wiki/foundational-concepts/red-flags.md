@@ -104,6 +104,8 @@ Everything moves very fast. Deep emotional declarations early. Spending every av
 
 There's no objectively right pace for a relationship. Some people move fast and it works. The flag isn't speed itself — it's speed that prevents honest evaluation, or speed that someone else is driving while you hold on.
 
+One version of this that catches people off guard: reading about non-hierarchical polyamory and concluding that anything less than full equal standing from day one is a problem. A ten-year relationship and a three-month relationship don't carry the same weight yet, and pretending they do isn't fairness — it's pressure. Equity is something you build as trust and history grow. Rushing to erase that gap can feel as destabilizing as refusing to close it. The goal is a genuine trajectory toward fair standing, not an artificial leap to instant equality that nobody's actually ready for.
+
 **Why it's yellow, not red:** Intensity isn't inherently bad. But speed can prevent people from seeing incompatibilities, and it can create a sense of commitment before real compatibility has been established. If slowing down is met with resistance or anxiety, that tells you something.
 
 ### Avoiding the "what if it ends" conversation
