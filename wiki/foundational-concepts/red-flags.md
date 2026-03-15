@@ -138,6 +138,8 @@ That yellow flag just turned red.
 
 The distinction between a red and yellow flag often comes down to that: does the person recognize it and work to change, or do they defend it and double down?
 
+That first response — curiosity, responsibility, follow-through — isn't just the absence of a red flag. It's one of the strongest [green flags](/wiki/foundational-concepts/green-flags#how-people-respond-when-you-bring-something-up) there is. If you're seeing it, pay attention to that too.
+
 ## Check yourself too
 
 These patterns can show up in anyone — including you.
