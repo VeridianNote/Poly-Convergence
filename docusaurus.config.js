@@ -85,7 +85,7 @@ const config = {
             const tags = fm.tags
               ? fm.tags.replace(/[\[\]]/g, '').split(',').map(t => t.trim()).filter(Boolean)
               : [];
-            return {title: fm.title || nameSlug, permalink, date, description: excerpt, tags};
+            return {title: fm.title || nameSlug, permalink, date, description: fm.description || excerpt, tags};
           }).filter(Boolean);
         },
         async contentLoaded({content, actions}) {
