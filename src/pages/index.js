@@ -278,8 +278,8 @@ export default function Home() {
       description="Community-built resources for healthier relationships">
       <HomepageHeader />
       <main>
-        <WikiCategories />
         <FromTheBlog />
+        <WikiCategories />
         <ContributeCTA />
       </main>
     </Layout>
