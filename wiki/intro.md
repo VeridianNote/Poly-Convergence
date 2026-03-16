@@ -3,28 +3,64 @@ sidebar_position: 1
 slug: /intro
 ---
 
-# Welcome to the wiki
+# Start here
 
-If you're looking for practical, non-judgmental information about non-monogamous relationships (without the jargon overload or the assumption that everyone already knows the basics), you're in the right place.
+You're here for a reason. Maybe you've been reading about polyamory and nothing quite fit your situation. Maybe the advice you found online was more about shaming people than helping them. Maybe someone you trust pointed you here, or maybe you're just trying to figure out what you actually want.
 
-This wiki is built by the community. Everything here gets added, corrected, and improved by people who are actually living this stuff. Four sections, each doing a different job:
+Whatever brought you, this wiki was built for the questions you're carrying. It's written and maintained by people navigating this stuff in real life — not theorists, gatekeepers, or anyone selling a book. Anyone can [contribute](/contribute), everything gets reviewed before it goes live, and nobody here profits from your confusion. We all benefit from a healthier community.
 
-## What's here
+## Where are you right now?
 
-**[Foundational Concepts](/wiki/category/foundational-concepts)** — New here? Start here. The building blocks: what non-monogamy looks like in practice, how communication works when more people are involved, and what to think about before you start.
+You might see yourself in more than one of these. That's normal.<br/>
+ Pick whichever fits best right now — you can always come back and explore the rest.
 
-**[Common Myths](/wiki/category/common-myths)** — Things you'll hear repeated confidently online that don't hold up when you look at them closely. We dig into them, not to pick fights, but because bad information leads to bad decisions.
+### New to non-monogamy
 
-**[Research & Sources](/wiki/category/research--sources)** — The actual studies, where they exist. We're upfront about what's well-researched, what isn't, and why that gap matters.
+You're curious, maybe a little overwhelmed, and you want honest information without the jargon or the judgment.
 
-**[Community Stories](/wiki/category/community-stories)** — Everything you need to share your own experience with the community: submission guidelines, writing prompts, and how the review process works. The published stories themselves live on the [Community Stories](/stories) page.
+- **[Getting started](/wiki/foundational-concepts/getting-started)** — The full orientation. What non-monogamy is, what it isn't, why people choose it, and what you're actually signing up for. Start here if you start nowhere else.
+- [Relationship structures explained](/wiki/foundational-concepts/relationship-structures) — Triads, Vs, solo poly, multi-partner groups, and everything in between. What they look like in practice.
+- [Terminology and language guide](/wiki/foundational-concepts/terminology) — The words people use in these spaces, which ones help, and which ones carry baggage you should know about.
 
-## How to use this
+### Already in a relationship and want to do it better
 
-Browse the sidebar, or jump into whatever category matches where you are right now. Pages link to each other where it makes sense, and most end with a "Related reading" section pointing you toward the next useful thing.
+You've got the basics. You want to go deeper.
 
-If something is missing or could be better, that's not an oversight, it's an open invitation.
+- [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — Practical tools, not theory. How to check in, raise concerns early, and listen when it's hard.
+- [Consent beyond "yes"](/wiki/foundational-concepts/consent) — How pressure and coercion undermine even technical agreement.
+- [Veto power and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) — When one partner can shut down another's relationship, and why that rarely works the way people think it will.
 
-## Want to help build this?
+### Thinking about dating a couple?
 
-Got knowledge, experience, or a correction worth sharing? The [web editor](/contribute) makes it easy, no Git skills needed.
+You want tools to evaluate your situation, not a list of reasons to run.
+
+- **[Evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit)** — A structured framework for assessing whether a relationship works for you. Goes both ways.
+- [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — Behavior-based warning signs that apply to any configuration, plus how to tell the fixable ones from the dealbreakers.
+- [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) — Where structural power sits and what to do about it.
+
+### Couple ready to start dating together?
+
+You want to do this well. You're tired of being told you can't.
+
+- **[A practical guide for couples](/wiki/foundational-concepts/guide-for-couples)** — Specific tools, common mistakes, and what to think about before you start dating together. No shame, no lectures.
+- [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to build agreements that protect everyone, not just control someone.
+- [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — You need to know what you're building toward, not just what to avoid.
+
+### Been here before
+
+You know what non-monogamy is. You've lived it. But things have changed — maybe you have, maybe the landscape has, maybe both. You're not starting from scratch, but you're not picking up where you left off either.
+
+- **[Re-entering non-monogamy](/wiki/foundational-concepts/re-entering-nonmonogamy)** — Picking it up again after a break, a breakup, or a major life change. What's different now and how to approach it with fresh eyes.
+- [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — A recalibration. You know what went wrong last time. This is what to build toward.
+- [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — Patterns you might recognize from before, and how to spot them earlier this time.
+
+## Go deeper
+
+The paths above pull from across the wiki. If you want to browse by topic instead, four sections organize everything:
+
+- **[Foundational Concepts](/wiki/category/foundational-concepts)** — The ideas that help you make sense of everything else
+- **[Common Myths](/wiki/category/common-myths)** — Things the internet says that don't hold up when you look closely
+- **[Research & Sources](/wiki/category/research--sources)** — The actual studies, where they exist. We're honest about what's well-researched and what isn't
+- **[Community Stories](/wiki/category/community-stories)** — How to share your own experience. The published stories live on the [Community Stories](/stories) page
+
+Pages link to each other where it makes sense, and most end with a "Related reading" section pointing you toward the next useful thing. If something is missing or could be better, that's not an oversight — it's an open invitation. The [web editor](/contribute) makes contributing easy, no Git skills needed.
