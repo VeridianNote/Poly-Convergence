@@ -24,25 +24,30 @@ You're curious, maybe a little overwhelmed, and you want honest information with
 
 ### Already in a relationship and want to do it better
 
-You've got the basics. You want to go deeper.
+You're making it work. These are the things people wish they'd known sooner.
 
+- [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — A check-in. How does your relationship measure up?
+- [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — Revisit the agreements you already have. Are they still working for everyone?
 - [Veto power and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) — When one partner can shut down another's relationship, and why that rarely works the way people think it will.
 
 ### Thinking about dating a couple?
 
-You want tools to evaluate your situation, not a list of reasons to run.
+You've probably been told to run.<br/>
+You'd rather make your own call.<br/>
+These give you tools to evaluate your situation, not a list of reasons to leave.
 
 - **[Evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit)** — A structured framework for assessing whether a relationship works for you. Goes both ways.
-- [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — Behavior-based warning signs that apply to any configuration, plus how to tell the fixable ones from the dealbreakers.
 - [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) — Where structural power sits and what to do about it.
+- [Couples seeking a partner aren't always unicorn hunting](/wiki/stigma-myths-and-criticism/couples-arent-always-hunting) — You've heard the accusation. Here's what it actually gets right and wrong.
 
 ### Couple ready to start dating together?
 
-You want to do this well. You're tired of being told you can't.
+You're tired of being told you can't.<br/>
+You want to do this right, and you're willing to do the work.
 
 - **[A practical guide for couples](/wiki/foundational-concepts/guide-for-couples)** — Specific tools, common mistakes, and what to think about before you start dating together. No shame, no lectures.
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to build agreements that protect everyone, not just control someone.
-- [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — You need to know what you're building toward, not just what to avoid.
+- [Dating separately isn't the only way](/wiki/stigma-myths-and-criticism/dating-separately-isnt-the-only-way) — Where the advice comes from, and where it breaks down.
 
 ### Been here before
 
