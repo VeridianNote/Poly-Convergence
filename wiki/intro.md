@@ -26,7 +26,6 @@ You're curious, maybe a little overwhelmed, and you want honest information with
 
 You've got the basics. You want to go deeper.
 
-- [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — Practical tools, not theory. How to check in, raise concerns early, and listen when it's hard.
 - [Veto power and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) — When one partner can shut down another's relationship, and why that rarely works the way people think it will.
 
 ### Thinking about dating a couple?

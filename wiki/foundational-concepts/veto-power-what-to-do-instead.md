@@ -122,5 +122,4 @@ Veto power used to start an honest conversation isn't the problem. Veto power us
 
 - [Power dynamics](/wiki/foundational-concepts/power-dynamics) — Understanding who holds structural advantage and how to balance it
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — Framework for evaluating any relationship agreement
-- [Communication basics](/wiki/foundational-concepts/communication-basics) — The skills that replace the need for a kill switch
 - [Red flags](/wiki/foundational-concepts/red-flags) — Patterns worth recognizing, from any position

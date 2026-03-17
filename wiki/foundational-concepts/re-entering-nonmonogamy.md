@@ -32,6 +32,5 @@ You can submit through the [web editor](/contribute), open a pull request on [Gi
 If you're in this situation right now, the resources on this site that are most relevant:
 
 - [Getting started with non-monogamy](/wiki/foundational-concepts/getting-started) — even if you're not starting from scratch, this covers the current landscape
-- [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — tools for the conversations you'll need to have
 - [Guide for couples](/wiki/foundational-concepts/guide-for-couples) — if you're re-opening as an existing couple
 - [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/) — our community, a good place to ask questions and hear from people who've been through it

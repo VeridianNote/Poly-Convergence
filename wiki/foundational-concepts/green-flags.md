@@ -180,4 +180,3 @@ Every relationship has friction, miscommunication, and hard days. The question i
 - [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — The other side of this page, patterns that indicate something is wrong
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to tell whether your agreements protect everyone or just control someone
 - [Evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit) — A structured tool for anyone considering dating into an existing relationship
-- [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — Practical tools for the conversations that green flags require

@@ -73,7 +73,7 @@ If you're reading these and thinking "actually, I don't think this is for me" �
 
 Non-monogamy uses the same relationship skills as monogamy, just with more moving parts. Some of these are things most people were never taught. Here's where the real work lives:
 
-**Communication.** Not "we need to talk" communication. Specific tools: how to check in without interrogating, how to raise a concern early instead of letting it fester, how to listen when you'd rather defend. This isn't even a poly thing — every relationship benefits from this. The [communication page](/wiki/foundational-concepts/communication-basics) covers the practical mechanics.
+**Communication.** Not "we need to talk" communication. Specific tools: how to check in without interrogating, how to raise a concern early instead of letting it fester, how to listen when you'd rather defend. This isn't even a poly thing — every relationship benefits from this.
 
 **Agreements.** Every relationship has them, whether spoken or not. Non-monogamous relationships need them to be explicit: what are we comfortable with? What are our dealbreakers? What happens when something changes? The difference between an agreement that protects everyone and one that just controls someone is covered in [empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements).
 
