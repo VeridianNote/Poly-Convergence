@@ -34,11 +34,11 @@ const wikiCategories = [
     folder: 'foundational-concepts',
   },
   {
-    title: 'Common Myths',
+    title: 'Stigma, Myths & Criticism',
     emoji: '\u{1F50D}',
-    description: 'Misconceptions about polyamory and non-monogamy, examined honestly.',
-    link: '/wiki/category/common-myths',
-    folder: 'common-myths',
+    description: 'The claims that get repeated until they feel like facts, examined honestly.',
+    link: '/wiki/category/stigma-myths-and-criticism',
+    folder: 'stigma-myths-and-criticism',
   },
   {
     title: 'Community Stories',

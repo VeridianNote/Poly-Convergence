@@ -27,7 +27,6 @@ You're curious, maybe a little overwhelmed, and you want honest information with
 You've got the basics. You want to go deeper.
 
 - [Communication in multi-person relationships](/wiki/foundational-concepts/communication-basics) — Practical tools, not theory. How to check in, raise concerns early, and listen when it's hard.
-- [Consent beyond "yes"](/wiki/foundational-concepts/consent) — How pressure and coercion undermine even technical agreement.
 - [Veto power and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) — When one partner can shut down another's relationship, and why that rarely works the way people think it will.
 
 ### Thinking about dating a couple?
@@ -59,7 +58,7 @@ You know what non-monogamy is. You've lived it. But things have changed — mayb
 The paths above pull from across the wiki. If you want to browse by topic instead, four sections organize everything:
 
 - **[Foundational Concepts](/wiki/category/foundational-concepts)** — The ideas that help you make sense of everything else
-- **[Common Myths](/wiki/category/common-myths)** — Things the internet says that don't hold up when you look closely
+- **[Stigma, Myths & Criticism](/wiki/category/stigma-myths-and-criticism)** — The claims that get repeated until they feel like facts, examined honestly
 - **[Research & Sources](/wiki/category/research--sources)** — The actual studies, where they exist. We're honest about what's well-researched and what isn't
 - **[Community Stories](/wiki/category/community-stories)** — How to share your own experience. The published stories live on the [Community Stories](/stories) page
 

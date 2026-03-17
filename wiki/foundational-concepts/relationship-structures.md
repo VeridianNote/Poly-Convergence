@@ -146,4 +146,4 @@ What matters isn't the label. It's whether the people involved are being treated
 
 - [Terminology and language guide](/wiki/foundational-concepts/terminology) — Deeper dive into the words used in non-monogamous spaces and why some are loaded
 - [Getting started with non-monogamy](/wiki/foundational-concepts/getting-started) — Orientation for people who are completely new
-- [Common Myths](/wiki/category/common-myths) — Claims about specific structures examined against what we actually know
+- [Stigma, Myths & Criticism](/wiki/category/stigma-myths-and-criticism) — Claims about specific structures examined against what we actually know

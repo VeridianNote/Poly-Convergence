@@ -58,9 +58,11 @@ The subtlety is what makes this hard to name. A partner who comes along to your 
 
 **The most concrete thing to watch for:** Are your independent connections growing or shrinking since this relationship started? Not whether you spend a lot of time together — whether the rest of your life is still intact.
 
+In poly spaces, this same pattern targets other partners. Scheduling conflicts that keep edging someone out. Subtle comments that chip away at the structure without ever stating a preference directly. The behavior is the same whether the person being pushed out is a friend, a family member, or a metamour.
+
 **Watch for:**
-- Discouraging time with friends or family that doesn't include the relationship
-- Someone's pre-existing relationships being treated as less important or threatening
+- Discouraging time with friends, family, or other partners that doesn't include the relationship
+- Someone's pre-existing connections being treated as less important or threatening
 - "You don't need them. You have me." (Or any variation — the point is: replacing your network, not sharing it.)
 
 ### Bait and switch
@@ -164,6 +166,5 @@ Not every problem is a red flag. Sometimes you meet genuinely good people and it
 ## Related reading
 
 - [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — The positive indicators: what it looks like when this is going well
-- [Consent beyond "yes"](/wiki/foundational-concepts/consent) — How coercion and pressure undermine even technical agreement
 - [Evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit) — A structured tool for assessing a relationship you're considering dating into
 - [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) — How structural power shows up in relationships and what to do about it

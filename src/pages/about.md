@@ -17,7 +17,7 @@ Poly Convergence exists because tearing down bad resources isn't enough. People 
 
 ## What you'll find here
 
-- **[Wiki](/wiki/intro):** A growing knowledge base covering foundational concepts, common myths, research summaries, and community stories. Written and maintained by the community, reviewed for quality, and designed to be the reference material that should have existed all along.
+- **[Wiki](/wiki/intro):** A growing knowledge base covering foundational concepts, stigma and myths, research summaries, and community stories. Written and maintained by the community, reviewed for quality, and designed to be the reference material that should have existed all along.
 
 - **[Community Stories](/stories):** First-hand accounts from people navigating non-traditional relationships. Not curated for happy endings. Curated for honesty.
 

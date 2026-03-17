@@ -107,4 +107,3 @@ The couple who says "we don't have any power dynamics" hasn't looked. The new pa
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to tell if agreements protect everyone or just control someone
 - [Guide for couples](/wiki/foundational-concepts/guide-for-couples) — Practical starting points for couples who want to do this well
 - [Evaluation toolkit](/wiki/foundational-concepts/evaluation-toolkit) — Tools for the person considering joining an existing relationship
-- [Consent beyond "yes"](/wiki/foundational-concepts/consent) — What real consent looks like when power isn't distributed evenly

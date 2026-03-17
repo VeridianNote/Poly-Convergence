@@ -72,6 +72,20 @@ The first respects that comfort levels are individual and change over time. The 
 
 Secrecy is different from privacy. Privacy is a boundary everyone chooses. Secrecy is imposed by one party to protect themselves at someone else's expense.
 
+### On information sharing
+
+| Empowering | Controlling |
+|-----------|------------|
+| "I don't need a play-by-play, but if something important comes up, I trust you'll tell me." | "I don't want to know anything. Don't tell me about it. Ever." |
+
+Some people genuinely prefer minimal detail about a partner's other relationships, and that's a valid choice between adults who've talked it through. The test is simple: **could you talk about it if you needed to?** If a scheduling conflict came up, or a safety concern, or unexpected feelings, could you bring it up without detonating the relationship? If yes, you have a privacy preference. If the honest answer is "no, that would blow everything up," the silence isn't protecting trust. It's substituting for it.
+
+"Don't ask, don't tell" arrangements are tempting because they promise freedom without friction. But emotional work doesn't disappear because there's a rule against discussing it. Feelings accumulate. Safety gaps go unaddressed. One partner might be having a wonderful time while the other is silently miserable, and neither knows. When the lid eventually comes off, the explosion is worse because nothing was processed along the way.
+
+There's also the person outside the relationship to consider. Someone dating a person under a strict DADT arrangement exists only as an abstraction in the primary relationship. Their name can't be spoken, their existence can't be acknowledged. Depending on how things unfold, they may not even know that's the situation they're in.
+
+The goal isn't mandatory oversharing. It's making sure silence is something you chose, not something you defaulted to because honesty felt harder.
+
 ### On uneven feelings
 
 | Empowering | Controlling |
@@ -145,7 +159,6 @@ If an agreement can never change, it's not an agreement. It's a rule. And if one
 
 ## Related reading
 
-- [Consent beyond "yes"](/wiki/foundational-concepts/consent) — What real consent looks like in practice vs. technical consent under pressure
 - [Power dynamics and couple privilege](/wiki/foundational-concepts/power-dynamics) — How structural power shows up and what to do about it
 - [Veto power: what it is and what to do instead](/wiki/foundational-concepts/veto-power-what-to-do-instead) — When "safety net" becomes someone else making your decisions
 - [What harmful looks like](/wiki/foundational-concepts/red-flags) — Specific behaviors to watch for
