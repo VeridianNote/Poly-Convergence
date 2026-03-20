@@ -305,6 +305,33 @@ export async function uploadImage(branch, file) {
 }
 
 /**
+ * List images uploaded to a draft branch.
+ * Returns an array of { path, previewUrl, filename } objects.
+ */
+export async function listImages(branch) {
+  const res = await apiFetch(`/api/upload?branch=${encodeURIComponent(branch)}`);
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.images || [];
+}
+
+/**
+ * Delete an image from a draft branch.
+ * path is the site-relative path (e.g. /img/user-uploads/user/file.png).
+ */
+export async function deleteImage(branch, path) {
+  const res = await apiFetch('/api/upload', {
+    method: 'DELETE',
+    body: JSON.stringify({ branch, path }),
+  });
+  if (!res.ok) {
+    const data = await safeJson(res);
+    throw new Error(data?.error || 'Failed to delete image');
+  }
+  return true;
+}
+
+/**
  * Get the current user's author profile.
  * Returns the profile object or null if not available.
  */

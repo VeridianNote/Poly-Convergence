@@ -38,7 +38,7 @@ import {
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
 
-import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch, getAuthorProfile, saveAuthorProfile } from './api';
+import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch, getAuthorProfile, saveAuthorProfile, listImages, deleteImage } from './api';
 
 export default function Editor({
   user,
@@ -80,6 +80,8 @@ export default function Editor({
   const [authorProfileDirty, setAuthorProfileDirty] = useState(false);
   const [license, setLicense] = useState('cc-by-nc-sa');
   const [showLicenseHelp, setShowLicenseHelp] = useState(false);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [deletingImage, setDeletingImage] = useState(null); // path of image being deleted (for confirmation)
 
   const editorRef = useRef(null);
   const countdownRef = useRef(null);
@@ -183,20 +185,44 @@ export default function Editor({
   const handleImageUpload = useCallback(async (file) => {
     const currentBranch = branchRef.current;
     if (!currentBranch) {
-      throw new Error('Save your draft before uploading images.');
+      setStatusMessage('⚠️ Save your draft before uploading images.');
+      throw new Error('Save your draft first');
     }
-    const result = await uploadImage(currentBranch, file);
-    if (result.imageNumber) {
-      setStatusMessage(
-        `Image uploaded! In source view, you can also reference it as {{image:${result.imageNumber}}}`
-      );
+    try {
+      const result = await uploadImage(currentBranch, file);
+      if (result.imageNumber) {
+        setStatusMessage(
+          `Image uploaded! In source view, you can also reference it as {{image:${result.imageNumber}}}`
+        );
+      }
+      // Refresh the uploaded images list
+      listImages(currentBranch).then(setUploadedImages).catch(() => {});
+      return result.previewUrl || result.path;
+    } catch (err) {
+      setStatusMessage(`⚠️ Image upload failed: ${err.message}`);
+      throw err;
     }
-    return result.path;
   }, []);
 
   // Determine if user can upload images.
   // Sources: per-user KV approval, mod status, or per-PR "images-approved" label.
   const canUpload = user?.canUploadImages || user?.isMod || prImagesApproved;
+
+  // Fetch uploaded images whenever branch or upload permission changes
+  useEffect(() => {
+    if (!branch || !canUpload) return;
+    listImages(branch).then(setUploadedImages).catch(() => {});
+  }, [branch, canUpload]);
+
+  // Rewrite raw GitHub preview URLs back to relative site paths for storage.
+  // Preview URLs: https://raw.githubusercontent.com/OWNER/REPO/BRANCH/static/img/user-uploads/...
+  // Stored paths: /img/user-uploads/...
+  const rewritePreviewUrls = (markdown) => {
+    return markdown.replace(
+      /https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/static(\/img\/user-uploads\/[^)\s"]+)/g,
+      '$1'
+    );
+  };
 
   const handleSave = async () => {
     // Synchronous guard: prevents double-click race before React re-renders
@@ -210,7 +236,7 @@ export default function Editor({
     try {
       const result = await saveDraft({
         title,
-        body,
+        body: rewritePreviewUrls(body),
         type,
         category,
         subcategory: showNewSubcategory ? slugifyCategory(newSubcategory) : undefined,
@@ -336,6 +362,18 @@ export default function Editor({
     }
   };
 
+  const handleDeleteImage = async (path) => {
+    try {
+      await deleteImage(branch, path);
+      setUploadedImages(prev => prev.filter(img => img.path !== path));
+      setDeletingImage(null);
+      setStatusMessage('Image deleted.');
+    } catch (err) {
+      setStatusMessage(`⚠️ Failed to delete image: ${err.message}`);
+      setDeletingImage(null);
+    }
+  };
+
   const saveDisabled = saving || throttleCountdown > 0 || !title.trim() || !body.trim();
   const hasOpenPR = prInfo && prInfo.state === 'open';
   const submitDisabled = submitting || !branch || hasOpenPR;
@@ -454,7 +492,7 @@ export default function Editor({
       )}
 
       {/* Image guidance / copyright notice */}
-      {canUpload ? (
+      {canUpload ? (<>
         <div style={{
           padding: '0.5rem 0.75rem',
           marginBottom: '0.5rem',
@@ -465,13 +503,108 @@ export default function Editor({
         }}>
           <strong>Image guidelines:</strong> Only upload images you created or have permission to use.
           Do not upload images from other websites or search engines.
+          You can drag and drop images into the editor, paste from clipboard, or use the toolbar button.
           See <a href="/terms-of-contribution" target="_blank" rel="noopener noreferrer">Terms of Contribution</a> for details.
-          {!branch && ' Save your draft before uploading images.'}
+          {!branch && <> <strong>Save your draft before uploading images.</strong></>}
           {branch && <><br /><strong>Tip:</strong> In source view, use{' '}
           <code style={{ fontSize: '0.75rem' }}>{'{{image:1 | caption}}'}</code>{' '}
           to place uploaded images (number shown after each upload).</>}
         </div>
-      ) : (
+        {uploadedImages.length > 0 && (
+          <div style={{
+            padding: '0.5rem 0.75rem',
+            marginBottom: '0.5rem',
+            fontSize: '0.8rem',
+            backgroundColor: 'var(--ifm-color-emphasis-100)',
+            borderRadius: '4px',
+          }}>
+            <strong>Uploaded images ({uploadedImages.length}):</strong>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+              {uploadedImages.map(img => (
+                <div key={img.path} style={{ position: 'relative', textAlign: 'center' }}>
+                  <img
+                    src={img.previewUrl}
+                    alt={img.filename}
+                    style={{
+                      width: '80px',
+                      height: '80px',
+                      objectFit: 'cover',
+                      borderRadius: '4px',
+                      border: '1px solid var(--ifm-color-emphasis-300)',
+                    }}
+                  />
+                  {deletingImage === img.path ? (
+                    <div style={{ fontSize: '0.7rem', marginTop: '0.25rem' }}>
+                      <span>Delete?</span>{' '}
+                      <button
+                        onClick={() => handleDeleteImage(img.path)}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: 'var(--ifm-color-danger)',
+                          cursor: 'pointer',
+                          padding: '0 0.25rem',
+                          fontSize: '0.7rem',
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        onClick={() => setDeletingImage(null)}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: 'var(--ifm-color-emphasis-600)',
+                          cursor: 'pointer',
+                          padding: '0 0.25rem',
+                          fontSize: '0.7rem',
+                        }}
+                      >
+                        No
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setDeletingImage(img.path)}
+                      title="Delete image"
+                      style={{
+                        position: 'absolute',
+                        top: '-6px',
+                        right: '-6px',
+                        background: 'var(--ifm-color-danger)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '50%',
+                        width: '20px',
+                        height: '20px',
+                        fontSize: '12px',
+                        lineHeight: '20px',
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        padding: 0,
+                      }}
+                    >
+                      ×
+                    </button>
+                  )}
+                  <div style={{
+                    fontSize: '0.65rem',
+                    color: 'var(--ifm-color-emphasis-500)',
+                    maxWidth: '80px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                    marginTop: '0.15rem',
+                  }}>
+                    {img.filename}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </>) : (
         <div style={{
           padding: '0.5rem 0.75rem',
           marginBottom: '0.5rem',

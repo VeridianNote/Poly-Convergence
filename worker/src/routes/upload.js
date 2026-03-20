@@ -1,7 +1,9 @@
 /**
  * Image upload route handler.
  *
- * POST /api/upload → Upload an image to the user's draft branch.
+ * POST /api/upload   → Upload an image to the user's draft branch.
+ * GET  /api/upload   → List uploaded images on a branch.
+ * DELETE /api/upload → Delete an image from a branch.
  *
  * Trust-gated: requires either per-user image approval (KV) or
  * per-PR approval (images-approved label). Mods can always upload.
@@ -13,6 +15,7 @@ import {
   commitFileBase64,
   getPRForBranch,
   getCollaboratorPermission,
+  deleteFile,
 } from '../github/api.js';
 import { validateBranch } from '../utils/validation.js';
 import {
@@ -174,9 +177,116 @@ export async function handleUploadImage(request, env) {
   return Response.json({
     ok: true,
     path: `/img/user-uploads/${user.username}/${filename}`,
+    previewUrl: `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${branch}/${filePath}`,
     filename,
     imageNumber: imageFiles.length + 1,
   });
+}
+
+/**
+ * GET /api/upload?branch=...
+ * List images uploaded to a branch.
+ */
+export async function handleListImages(request, env) {
+  const { user, response } = await requireAuth(request, env);
+  if (response) return response;
+
+  const url = new URL(request.url);
+  const branch = url.searchParams.get('branch');
+
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
+  }
+
+  const token = await getInstallationToken(env);
+
+  // Security: non-mods can only list their own branches
+  const permission = await getCollaboratorPermission(env, token, user.username);
+  const isMod = permission === 'admin' || permission === 'write';
+
+  if (!isMod && !branch.startsWith(`users/${user.username}/`)) {
+    return Response.json({ error: 'Access denied' }, { status: 403 });
+  }
+
+  // Use compare API to find image files on the branch
+  const compareRes = await fetch(
+    `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/compare/main...${branch}`,
+    {
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github+json',
+        'User-Agent': 'poly-convergence-bot',
+      },
+    }
+  );
+
+  if (!compareRes.ok) {
+    return Response.json({ ok: true, images: [] });
+  }
+
+  const compareData = await compareRes.json();
+  const imageFiles = (compareData.files || []).filter(
+    f => f.filename.startsWith('static/img/user-uploads/') && f.status !== 'removed'
+  );
+
+  const images = imageFiles.map(f => {
+    const sitePath = '/' + f.filename.replace(/^static\//, '');
+    const filename = f.filename.split('/').pop();
+    return {
+      path: sitePath,
+      previewUrl: `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${branch}/${f.filename}`,
+      filename,
+    };
+  });
+
+  return Response.json({ ok: true, images });
+}
+
+/**
+ * DELETE /api/upload
+ * Delete an image from a branch.
+ * Body: { branch, path } where path is site-relative (e.g. /img/user-uploads/user/file.png).
+ */
+export async function handleDeleteImage(request, env) {
+  const { user, response } = await requireAuth(request, env);
+  if (response) return response;
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return Response.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+
+  const { branch, path: sitePath } = body;
+
+  const branchCheck = validateBranch(branch);
+  if (!branchCheck.valid) {
+    return Response.json({ error: branchCheck.error }, { status: 400 });
+  }
+
+  // Validate path is within user-uploads (prevent deleting arbitrary files)
+  if (!sitePath || !sitePath.startsWith('/img/user-uploads/')) {
+    return Response.json({ error: 'Invalid image path' }, { status: 400 });
+  }
+
+  const token = await getInstallationToken(env);
+
+  // Security: non-mods can only delete from their own branches
+  const permission = await getCollaboratorPermission(env, token, user.username);
+  const isMod = permission === 'admin' || permission === 'write';
+
+  if (!isMod && !branch.startsWith(`users/${user.username}/`)) {
+    return Response.json({ error: 'Access denied' }, { status: 403 });
+  }
+
+  // Convert site path to repo path
+  const repoPath = `static${sitePath}`;
+
+  await deleteFile(env, token, branch, repoPath, `Delete image: ${repoPath.split('/').pop()}`);
+
+  return Response.json({ ok: true });
 }
 
 /**

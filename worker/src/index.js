@@ -19,6 +19,7 @@
  *   /api/reactions      → Get/increment engagement counters (public, no auth)
  *   /api/reactions/batch → Batch get counters for homepage cards
  *   /api/admin/*       → Admin endpoints (mod-only)
+ *   /api/upload        → Image upload (POST), list (GET), delete (DELETE)
  *
  * Cron triggers:
  *   04:00 UTC daily    → Branch cleanup (stale branches/PRs)
@@ -30,7 +31,7 @@ import { handleLogin, handleCallback, handleLogout } from './routes/auth.js';
 import { handleListDrafts, handleLoadDraft, handleSaveDraft, handleAbandonDraft, handleLoadContent, handleMergeBranch } from './routes/drafts.js';
 import { handleSubmit, handleStatus } from './routes/submit.js';
 import { handleGetUser, handleGetConfig, handleGetCategories } from './routes/user.js';
-import { handleUploadImage } from './routes/upload.js';
+import { handleUploadImage, handleListImages, handleDeleteImage } from './routes/upload.js';
 import {
   handleAdminListUsers,
   handleAdminApproveImages,
@@ -107,9 +108,15 @@ export default {
         response = await handleMergeBranch(request, env);
       }
 
-      // Image upload
+      // Image upload, list, delete
+      else if (path === '/api/upload' && method === 'GET') {
+        response = await handleListImages(request, env);
+      }
       else if (path === '/api/upload' && method === 'POST') {
         response = await handleUploadImage(request, env);
+      }
+      else if (path === '/api/upload' && method === 'DELETE') {
+        response = await handleDeleteImage(request, env);
       }
 
       // Submissions
