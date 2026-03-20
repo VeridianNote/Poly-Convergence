@@ -274,8 +274,8 @@ function ContributeCTA() {
 export default function Home() {
   return (
     <Layout
-      title=""
-      description="Community-built resources for healthier relationships">
+      title="Polyamory Resources & Community Wiki"
+      description="Community-built resources for healthier polyamorous relationships. Wiki articles, community stories, and practical tools — grounded in lived experience, not dogma.">
       <HomepageHeader />
       <main>
         <FromTheBlog />

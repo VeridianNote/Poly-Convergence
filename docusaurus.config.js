@@ -161,6 +161,17 @@ const config = {
     // Uncomment when OG image is ready:
     // {tagName: 'meta', attributes: {property: 'og:image', content: 'https://polyconvergence.com/img/og-image.png'}},
     // {tagName: 'meta', attributes: {name: 'twitter:card', content: 'summary_large_image'}},
+    {
+      tagName: 'script',
+      attributes: {type: 'application/ld+json'},
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Poly Convergence',
+        url: 'https://polyconvergence.com',
+        description: 'Community-built resources for healthier polyamorous relationships. Wiki articles, community stories, and practical tools.',
+      }),
+    },
   ],
 
   themeConfig:
