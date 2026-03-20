@@ -68,6 +68,19 @@ export default function Editor({
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState([]);
   const [statusMessage, setStatusMessage] = useState('');
+  const statusTimerRef = useRef(null);
+
+  // Auto-dismissing status message helper
+  const showStatus = useCallback((msg, seconds = 6) => {
+    if (statusTimerRef.current) clearTimeout(statusTimerRef.current);
+    setStatusMessage(msg);
+    if (seconds > 0) {
+      statusTimerRef.current = setTimeout(() => {
+        setStatusMessage(prev => prev === msg ? '' : prev);
+        statusTimerRef.current = null;
+      }, seconds * 1000);
+    }
+  }, []);
   const [prInfo, setPrInfo] = useState(null);
   const [throttleCountdown, setThrottleCountdown] = useState(0);
   const [showAbandonConfirm, setShowAbandonConfirm] = useState(false);
@@ -193,22 +206,17 @@ export default function Editor({
   const handleImageUpload = useCallback(async (file) => {
     const currentBranch = branchRef.current;
     if (!currentBranch) {
-      setStatusMessage('⚠️ Save your draft before uploading images.');
-      setTimeout(() => setStatusMessage(prev =>
-        prev === '⚠️ Save your draft before uploading images.' ? '' : prev
-      ), 5000);
+      showStatus('⚠️ Save your draft before uploading images.', 5);
       throw new Error('Save your draft first');
     }
     try {
-      setStatusMessage('Uploading image…');
+      showStatus('Uploading image…', 0);
       const result = await uploadImage(currentBranch, file);
       if (result.imageNumber) {
-        setStatusMessage(
-          `Image uploaded! Click the thumbnail above to insert it, or use {{image:${result.imageNumber}}} in source view.`
+        showStatus(
+          `Image uploaded! Click the thumbnail above to insert it, or use {{image:${result.imageNumber}}} in source view.`,
+          8
         );
-        setTimeout(() => setStatusMessage(prev =>
-          prev.startsWith('Image uploaded') ? '' : prev
-        ), 8000);
       }
       // Refresh the uploaded images list after a short delay — the GitHub
       // compare API may not reflect the new commit immediately.
@@ -221,7 +229,7 @@ export default function Editor({
       }, 2000);
       return result.previewUrl || result.path;
     } catch (err) {
-      setStatusMessage(`⚠️ Image upload failed: ${err.message}`);
+      showStatus(`⚠️ Image upload failed: ${err.message}`, 10);
       throw err;
     }
   }, []);
@@ -283,10 +291,10 @@ export default function Editor({
 
       setBranch(result.branch);
       if (result.noChange) {
-        setStatusMessage('No changes to save.');
+        showStatus('No changes to save.', 5);
       } else {
         setThrottleCountdown(throttleSeconds);
-        setStatusMessage(`Draft saved at ${new Date().toLocaleTimeString()}`);
+        showStatus(`Draft saved at ${new Date().toLocaleTimeString()}`, 6);
         // Record seen timestamp — the user's own commit will bump PR updated_at,
         // so we update localStorage to prevent their own save from triggering
         // a false "new activity" indicator on next load.
@@ -343,7 +351,7 @@ export default function Editor({
       }
 
       setPrInfo(result.pr);
-      setStatusMessage('Submitted for review!');
+      showStatus('Submitted for review!', 8);
       // Record seen timestamp for the newly created PR
       if (branch) {
         localStorage.setItem(`poly_pr_seen_${branch}`, String(Date.now()));
@@ -369,7 +377,7 @@ export default function Editor({
       setBody('');
       setPrInfo(null);
       setHasNewActivity(false);
-      setStatusMessage('Draft abandoned.');
+      showStatus('Draft abandoned.', 6);
       if (onDraftAbandoned) onDraftAbandoned();
     } catch (err) {
       setErrors([err.message]);
@@ -387,10 +395,10 @@ export default function Editor({
       if (result.merged) {
         setBehindMain(false);
         setPublishedVersion(null);
-        setStatusMessage(result.noChange ? 'Already up to date.' : 'Branch updated from published version.');
+        showStatus(result.noChange ? 'Already up to date.' : 'Branch updated from published version.', 6);
       } else if (result.conflict) {
         setPublishedVersion(result.publishedContent);
-        setStatusMessage('');
+        showStatus('', 0);
         setErrors([result.message || 'Merge conflict — review the published version and update your draft.']);
       }
     } catch (err) {
@@ -407,10 +415,7 @@ export default function Editor({
       await deleteImage(branch, imgPath);
       setUploadedImages(prev => prev.filter(img => img.path !== imgPath));
       setDeletingImage(null);
-      setStatusMessage('Image deleted.');
-      setTimeout(() => setStatusMessage(prev =>
-        prev === 'Image deleted.' ? '' : prev
-      ), 5000);
+      showStatus('Image deleted.', 5);
 
       // Remove the image from the editor content
       if (editorRef.current) {
@@ -425,7 +430,7 @@ export default function Editor({
         }
       }
     } catch (err) {
-      setStatusMessage(`⚠️ Failed to delete image: ${err.message}`);
+      showStatus(`⚠️ Failed to delete image: ${err.message}`, 10);
       setDeletingImage(null);
     }
   };
@@ -581,6 +586,7 @@ export default function Editor({
       {/* Image guidance / copyright notice */}
       {canUpload ? (<>
         <div
+          className="editor-image-guidelines"
           onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
           onDragLeave={() => setDragOverImages(false)}
           onDrop={handleImageDrop}
@@ -605,6 +611,7 @@ export default function Editor({
         </div>
         {(uploadedImages.length > 0 || imagesRefreshing) && (
           <div
+            className="editor-uploaded-images"
             onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
             onDragLeave={() => setDragOverImages(false)}
             onDrop={handleImageDrop}
@@ -622,7 +629,7 @@ export default function Editor({
             {!imagesRefreshing && uploadedImages.length > 0 && <span style={{ marginLeft: '0.5rem', fontSize: '0.7rem', color: 'var(--ifm-color-emphasis-500)' }}>Click to insert into editor</span>}
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
               {uploadedImages.map(img => (
-                <div key={img.path} style={{ position: 'relative', textAlign: 'center' }}>
+                <div key={img.path} className="editor-image-thumb" style={{ position: 'relative', textAlign: 'center' }}>
                   <img
                     src={img.previewUrl}
                     alt={img.filename}
@@ -641,7 +648,7 @@ export default function Editor({
                     }}
                   />
                   {deletingImage === img.path ? (
-                    <div style={{ fontSize: '0.7rem', marginTop: '0.25rem' }}>
+                    <div className="editor-image-delete-confirm" style={{ fontSize: '0.7rem', marginTop: '0.25rem' }}>
                       <span>Delete?</span>{' '}
                       <button
                         onClick={() => handleDeleteImage(img.path)}
@@ -673,6 +680,7 @@ export default function Editor({
                     </div>
                   ) : (
                     <button
+                      className="editor-image-delete-btn"
                       onClick={() => setDeletingImage(img.path)}
                       title="Delete image"
                       style={{
@@ -980,7 +988,7 @@ export default function Editor({
       )}
 
       {/* Action buttons */}
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+      <div className="editor-action-buttons" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
         <button
           className="button button--primary"
           onClick={handleSave}

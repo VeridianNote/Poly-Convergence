@@ -1002,6 +1002,73 @@ blockquote p {
     width: 100%;
     text-align: center;
   }
+
+  /* Image guidelines — smaller text on mobile */
+  .editor-image-guidelines {
+    font-size: 0.75rem !important;
+  }
+
+  /* Uploaded images panel — smaller text on mobile */
+  .editor-uploaded-images {
+    font-size: 0.75rem !important;
+  }
+
+  /* Thumbnails — slightly larger tap area */
+  .editor-image-thumb img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  /* Delete button — larger tap target on touch */
+  .editor-image-delete-btn {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+    line-height: 28px !important;
+    top: -8px !important;
+    right: -8px !important;
+  }
+
+  /* Delete confirmation — larger tap targets */
+  .editor-image-delete-confirm {
+    font-size: 0.85rem !important;
+  }
+
+  .editor-image-delete-confirm button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.85rem !important;
+    min-height: 32px;
+  }
+
+  /* Action buttons — stack on mobile */
+  .editor-action-buttons {
+    flex-direction: column !important;
+  }
+
+  .editor-action-buttons .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Preview modal — larger close button for touch */
+  .preview-modal__close {
+    font-size: 2rem !important;
+    padding: 0.25rem 0.5rem !important;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Preview article — tighter padding on mobile */
+  .preview-modal__article {
+    padding: 1rem !important;
+  }
+
+  .preview-modal__article-header h1 {
+    font-size: 1.5rem !important;
+  }
 }
 
 /* =============================================
