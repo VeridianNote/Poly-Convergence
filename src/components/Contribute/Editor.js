@@ -89,10 +89,24 @@ export default function Editor({
   const branchRef = useRef(branch);
   const savingRef = useRef(false); // Synchronous guard against double-click race
 
-  const throttleSeconds = user?.isMod ? 0 : (config.draftSaveInterval || 60);
+  const throttleSeconds = user?.isMod ? 0 : (config.draftSaveInterval || 15);
 
   // Keep branchRef in sync so image upload callback always has current value
   useEffect(() => { branchRef.current = branch; }, [branch]);
+
+  // Ctrl+S / Cmd+S to save draft
+  const handleSaveRef = useRef(null);
+  handleSaveRef.current = handleSave;
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        handleSaveRef.current?.();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   // Expose editor state globally for JWT expiry recovery
   useEffect(() => {

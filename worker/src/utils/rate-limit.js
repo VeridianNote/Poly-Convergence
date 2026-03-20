@@ -35,7 +35,7 @@ export function getUserTier(userRecord, isMod, config) {
     return {
       tier: 'trusted',
       maxPending: config.max_pending_trusted || 5,
-      saveThrottleSeconds: config.draft_save_interval || 60,
+      saveThrottleSeconds: config.draft_save_interval || 15,
       canUploadImages: imageApproved,
     };
   }
@@ -43,7 +43,7 @@ export function getUserTier(userRecord, isMod, config) {
   return {
     tier: 'new',
     maxPending: config.max_pending_new || 1,
-    saveThrottleSeconds: config.draft_save_interval || 60,
+    saveThrottleSeconds: config.draft_save_interval || 15,
     canUploadImages: false,
   };
 }
@@ -76,7 +76,7 @@ export async function loadConfig(kv) {
 
   const defaults = {
     submissions_enabled: true,
-    draft_save_interval: 60,
+    draft_save_interval: 15,
     max_pending_new: 1,
     max_pending_trusted: 5,
     max_image_size_kb: 2048,
