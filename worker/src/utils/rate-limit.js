@@ -80,7 +80,7 @@ export async function loadConfig(kv) {
     max_pending_new: 1,
     max_pending_trusted: 5,
     max_image_size_kb: 2048,
-    max_images_per_submission: 3,
+    max_images_per_submission: 5,
   };
 
   const config = {};
