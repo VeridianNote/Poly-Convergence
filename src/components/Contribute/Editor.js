@@ -511,7 +511,7 @@ export default function Editor({
         }}>
           <strong>Image guidelines:</strong> Only upload images you created or have permission to use.
           Do not upload images from other websites or search engines.
-          You can drag and drop images into the editor, paste from clipboard, or use the toolbar button.
+          <br />You can drag and drop images into the editor, paste from clipboard, or use the toolbar button.
           See <a href="/terms-of-contribution" target="_blank" rel="noopener noreferrer">Terms of Contribution</a> for details.
           {!branch && <> <strong>Save your draft before uploading images.</strong></>}
           {branch && <><br /><strong>Tip:</strong> In source view, use{' '}
@@ -528,18 +528,25 @@ export default function Editor({
           }}>
             <strong>Uploaded images ({uploadedImages.length}):</strong>
             {imagesRefreshing && <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--ifm-color-emphasis-500)' }}>Refreshing…</span>}
+            {!imagesRefreshing && uploadedImages.length > 0 && <span style={{ marginLeft: '0.5rem', fontSize: '0.7rem', color: 'var(--ifm-color-emphasis-500)' }}>Click to insert into editor</span>}
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
               {uploadedImages.map(img => (
                 <div key={img.path} style={{ position: 'relative', textAlign: 'center' }}>
                   <img
                     src={img.previewUrl}
                     alt={img.filename}
+                    title="Click to insert into editor"
+                    onClick={() => {
+                      editorRef.current?.insertMarkdown?.(`![${img.filename}](${img.previewUrl})`);
+                      editorRef.current?.focus?.();
+                    }}
                     style={{
                       width: '80px',
                       height: '80px',
                       objectFit: 'cover',
                       borderRadius: '4px',
                       border: '1px solid var(--ifm-color-emphasis-300)',
+                      cursor: 'pointer',
                     }}
                   />
                   {deletingImage === img.path ? (
