@@ -193,6 +193,9 @@ export default function Editor({
     const currentBranch = branchRef.current;
     if (!currentBranch) {
       setStatusMessage('⚠️ Save your draft before uploading images.');
+      setTimeout(() => setStatusMessage(prev =>
+        prev === '⚠️ Save your draft before uploading images.' ? '' : prev
+      ), 5000);
       throw new Error('Save your draft first');
     }
     try {
@@ -404,6 +407,9 @@ export default function Editor({
       setUploadedImages(prev => prev.filter(img => img.path !== imgPath));
       setDeletingImage(null);
       setStatusMessage('Image deleted.');
+      setTimeout(() => setStatusMessage(prev =>
+        prev === 'Image deleted.' ? '' : prev
+      ), 5000);
 
       // Remove the image from the editor content
       if (editorRef.current) {
@@ -979,61 +985,21 @@ export default function Editor({
       {/* Preview modal */}
       {showPreview && (
         <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            zIndex: 1000,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-            padding: '2rem',
-            overflow: 'auto',
-          }}
+          className="preview-backdrop"
           onClick={(e) => { if (e.target === e.currentTarget) setShowPreview(false); }}
         >
-          <div style={{
-            backgroundColor: 'var(--ifm-background-color)',
-            borderRadius: '8px',
-            width: '100%',
-            maxWidth: '800px',
-            maxHeight: '90vh',
-            overflow: 'auto',
-            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)',
-          }}>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '0.75rem 1.25rem',
-              borderBottom: '1px solid var(--ifm-color-emphasis-200)',
-              position: 'sticky',
-              top: 0,
-              backgroundColor: 'var(--ifm-background-color)',
-              zIndex: 1,
-            }}>
+          <div className="preview-modal">
+            <div className="preview-modal__header">
               <strong style={{ fontSize: '1.1rem' }}>Preview: {title || 'Untitled'}</strong>
               <button
                 onClick={() => setShowPreview(false)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  fontSize: '1.5rem',
-                  cursor: 'pointer',
-                  color: 'var(--ifm-color-emphasis-600)',
-                  padding: '0 0.25rem',
-                  lineHeight: 1,
-                }}
+                className="preview-modal__close"
               >
                 ×
               </button>
             </div>
             <div
-              className="markdown"
-              style={{ padding: '1.5rem 1.25rem' }}
+              className="markdown preview-content"
               dangerouslySetInnerHTML={{ __html: previewHtml }}
             />
           </div>
