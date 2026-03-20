@@ -416,6 +416,14 @@ blockquote p {
   height: auto;
 }
 
+@keyframes editor-spin {
+  to { transform: rotate(360deg); }
+}
+
+.editor-spinner {
+  animation: editor-spin 0.8s linear infinite;
+}
+
 .editor-content-area:focus {
   outline: none;
 }

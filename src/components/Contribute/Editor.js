@@ -193,6 +193,7 @@ export default function Editor({
       throw new Error('Save your draft first');
     }
     try {
+      setStatusMessage('Uploading image…');
       const result = await uploadImage(currentBranch, file);
       if (result.imageNumber) {
         setStatusMessage(
@@ -386,12 +387,27 @@ export default function Editor({
     }
   };
 
-  const handleDeleteImage = async (path) => {
+  const handleDeleteImage = async (imgPath) => {
     try {
-      await deleteImage(branch, path);
-      setUploadedImages(prev => prev.filter(img => img.path !== path));
+      // Find the image info before removing from state (need previewUrl for editor cleanup)
+      const imgInfo = uploadedImages.find(img => img.path === imgPath);
+      await deleteImage(branch, imgPath);
+      setUploadedImages(prev => prev.filter(img => img.path !== imgPath));
       setDeletingImage(null);
       setStatusMessage('Image deleted.');
+
+      // Remove the image from the editor content
+      if (editorRef.current) {
+        const currentMarkdown = editorRef.current.getMarkdown();
+        // Remove markdown image references matching either the previewUrl or the site path
+        const cleaned = currentMarkdown
+          .replace(new RegExp(`!\\[[^\\]]*\\]\\(${imgInfo?.previewUrl?.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)\\n?`, 'g'), '')
+          .replace(new RegExp(`!\\[[^\\]]*\\]\\(${imgPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)\\n?`, 'g'), '');
+        if (cleaned !== currentMarkdown) {
+          editorRef.current.setMarkdown(cleaned);
+          setBody(cleaned);
+        }
+      }
     } catch (err) {
       setStatusMessage(`⚠️ Failed to delete image: ${err.message}`);
       setDeletingImage(null);
@@ -650,6 +666,45 @@ export default function Editor({
         </div>
       )}
 
+      {/* Status message — above editor for visibility */}
+      {statusMessage && (() => {
+        const isWarning = statusMessage.startsWith('⚠️');
+        const isUploading = statusMessage === 'Uploading image…';
+        return (
+          <div style={{
+            padding: '0.6rem 0.75rem',
+            marginBottom: '0.5rem',
+            borderRadius: '4px',
+            fontSize: '0.85rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: isWarning
+              ? 'var(--ifm-color-warning-darkest)'
+              : 'var(--ifm-color-success-darkest)',
+            backgroundColor: isWarning
+              ? 'var(--ifm-color-warning-contrast-background)'
+              : 'var(--ifm-color-success-contrast-background)',
+            border: `1px solid ${isWarning
+              ? 'var(--ifm-color-warning-dark)'
+              : 'var(--ifm-color-success-dark)'}`,
+          }}>
+            {isUploading && (
+              <span className="editor-spinner" style={{
+                width: '14px',
+                height: '14px',
+                border: '2px solid var(--ifm-color-emphasis-300)',
+                borderTopColor: 'var(--ifm-color-primary)',
+                borderRadius: '50%',
+                display: 'inline-block',
+                flexShrink: 0,
+              }} />
+            )}
+            {statusMessage}
+          </div>
+        );
+      })()}
+
       {/* MDXEditor */}
       <div style={{
         border: '1px solid var(--ifm-color-emphasis-300)',
@@ -720,17 +775,6 @@ export default function Editor({
         </div>
       )}
 
-      {/* Status message */}
-      {statusMessage && (
-        <div style={{
-          padding: '0.5rem 0.75rem',
-          marginBottom: '1rem',
-          color: 'var(--ifm-color-emphasis-700)',
-          fontSize: '0.9rem',
-        }}>
-          {statusMessage}
-        </div>
-      )}
 
       {/* PR Status */}
       {prInfo && (
