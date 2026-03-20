@@ -200,8 +200,11 @@ export default function Editor({
       const result = await uploadImage(currentBranch, file);
       if (result.imageNumber) {
         setStatusMessage(
-          `Image uploaded! In source view, you can also reference it as {{image:${result.imageNumber}}}`
+          `Image uploaded! Click the thumbnail above to insert it, or use {{image:${result.imageNumber}}} in source view.`
         );
+        setTimeout(() => setStatusMessage(prev =>
+          prev.startsWith('Image uploaded') ? '' : prev
+        ), 8000);
       }
       // Refresh the uploaded images list after a short delay — the GitHub
       // compare API may not reflect the new commit immediately.
