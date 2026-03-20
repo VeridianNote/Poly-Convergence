@@ -1,0 +1,37 @@
+# Poly Convergence
+
+> Community-built resources for healthier polyamorous relationships. Wiki articles, community stories, and practical tools — grounded in lived experience, not dogma.
+
+This site provides educational resources about ethical non-monogamy, with a focus on nuance over ideology. It covers relationship structures, communication, power dynamics, common myths, and practical guides for people at any stage of non-monogamous relationships.
+
+## Wiki
+
+- [Introduction](https://polyconvergence.com/wiki/intro): Welcome and orientation to the wiki
+- [Getting Started](https://polyconvergence.com/wiki/foundational-concepts/getting-started): Orientation for people new to non-monogamy
+- [Terminology](https://polyconvergence.com/wiki/foundational-concepts/terminology): Key terms, definitions, and loaded language in poly spaces
+- [Relationship Structures](https://polyconvergence.com/wiki/foundational-concepts/relationship-structures): Common non-monogamous configurations and how they differ
+- [Guide for Couples](https://polyconvergence.com/wiki/foundational-concepts/guide-for-couples): Practical starting points for couples who want to date together
+- [Evaluation Toolkit](https://polyconvergence.com/wiki/foundational-concepts/evaluation-toolkit): Flags and questions for people considering dating a couple
+- [Power Dynamics](https://polyconvergence.com/wiki/foundational-concepts/power-dynamics): How power operates in multi-person relationships
+- [Red Flags](https://polyconvergence.com/wiki/foundational-concepts/red-flags): Behavior-based warning signs in non-monogamous relationships
+- [Green Flags](https://polyconvergence.com/wiki/foundational-concepts/green-flags): Positive signs that people are doing this well
+- [Empowering vs Controlling Agreements](https://polyconvergence.com/wiki/foundational-concepts/empowering-vs-controlling-agreements): How to tell if agreements protect or control
+- [Veto Power](https://polyconvergence.com/wiki/foundational-concepts/veto-power-what-to-do-instead): When veto is reasonable, when it's control, and alternatives
+- [Re-entering Non-Monogamy](https://polyconvergence.com/wiki/foundational-concepts/re-entering-nonmonogamy): Coming back to non-monogamy after a break
+- [Couples Aren't Always Hunting](https://polyconvergence.com/wiki/stigma-myths-and-criticism/couples-arent-always-hunting): Why the blanket accusation doesn't hold up
+- [Triads: Harder, Not Impossible](https://polyconvergence.com/wiki/stigma-myths-and-criticism/triads-harder-not-impossible): What research and experience say about three-person relationships
+- [Dating Separately Isn't the Only Way](https://polyconvergence.com/wiki/stigma-myths-and-criticism/dating-separately-isnt-the-only-way): When the advice helps and when it doesn't
+- [Poly Under Duress](https://polyconvergence.com/wiki/unhealthy-behaviors/poly-under-duress): Recognizing and addressing pressure to be non-monogamous
+- [Relationship Broken, Add More People](https://polyconvergence.com/wiki/unhealthy-behaviors/relationship-broken-add-more-people): Why opening up to fix problems makes things worse
+- [Key Studies](https://polyconvergence.com/wiki/research-and-sources/key-studies): Major research on consensual non-monogamy in plain language
+- [Recommended Reading](https://polyconvergence.com/wiki/research-and-sources/recommended-reading): Books, articles, and resources we recommend
+
+## Stories
+
+- [Community Stories](https://polyconvergence.com/stories): Lived experiences from people navigating non-traditional relationships
+- [Featured](https://polyconvergence.com/featured): Editor-selected stories
+
+## About
+
+- [About](https://polyconvergence.com/about): What this site is and who built it
+- [Contribute](https://polyconvergence.com/contribute): Submit your own content

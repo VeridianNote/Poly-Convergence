@@ -2,6 +2,7 @@
 sidebar_position: 9
 title: "Empowering vs. controlling agreements"
 description: "How to tell whether a relationship agreement protects everyone or just controls someone, with side-by-side examples"
+keywords: [polyamorous relationship agreements, controlling agreements polyamory, ethical non-monogamy rules, couple privilege agreements, DADT polyamory, healthy poly agreements]
 ---
 
 # Empowering vs. controlling agreements

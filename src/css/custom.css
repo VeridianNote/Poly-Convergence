@@ -189,6 +189,17 @@ h1[id], h2[id], h3[id], h4[id] {
 }
 
 /* ============================================= */
+/* Article images — centered with sensible max   */
+/* ============================================= */
+
+.markdown img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================= */
 /* Blog listing — cleaner separation + sizing    */
 /* ============================================= */
 

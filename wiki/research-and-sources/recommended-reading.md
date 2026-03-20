@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: "Recommended reading and resources"
 description: "Resources for people in non-monogamous relationships — what we recommend, what we're still curating, and what we'd steer you away from"
+keywords: [polyamory books, ethical non-monogamy reading list, non-monogamy resources, poly affirming therapist, polyamorous relationship books, consensual non-monogamy resources]
 ---
 
 # Recommended reading and resources

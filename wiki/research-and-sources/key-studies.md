@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: "Key studies on non-monogamy"
 description: "Plain-language summaries of the major research on consensual non-monogamy, what the studies found, where the gaps are, and why it matters"
+keywords: [polyamory research, consensual non-monogamy studies, ethical non-monogamy science, CNM relationship satisfaction, polyamory psychology, non-monogamy evidence]
 ---
 
 # Key studies on non-monogamy

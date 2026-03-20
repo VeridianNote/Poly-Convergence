@@ -2,6 +2,7 @@
 sidebar_position: 11
 title: "Evaluation toolkit for individuals dating a couple"
 description: "Green flags, yellow flags, red flags, and questions to ask yourself when you're considering dating a couple"
+keywords: [dating a couple polyamory, third partner evaluation, joining a polyamorous couple, ethical non-monogamy assessment, triad relationship red flags, unicorn dating guide]
 ---
 
 # Evaluation toolkit for individuals dating a couple

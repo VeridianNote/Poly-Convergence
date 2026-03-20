@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 slug: /intro
+description: "A welcoming introduction to Poly Convergence — what this wiki covers, who it's for, and how to navigate the resources."
+keywords: [polyamory wiki, ethical non-monogamy guide, non-monogamy resources, polyamorous relationships, poly community, consensual non-monogamy]
 ---
 
 # Start here

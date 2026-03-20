@@ -2,6 +2,7 @@
 sidebar_position: 3
 title: "Terminology and language guide"
 description: "Key terms in non-monogamous spaces, what they mean, which ones are loaded, and why precision matters"
+keywords: [polyamory terminology, non-monogamy glossary, unicorn hunting definition, ethical non-monogamy terms, poly convergence meaning, polyamorous vocabulary]
 ---
 
 # Terminology and language guide

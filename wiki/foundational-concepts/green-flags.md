@@ -2,6 +2,7 @@
 sidebar_position: 7
 title: "What healthy looks like (green flags)"
 description: "Positive signs in non-monogamous relationships: what it looks like when people are doing this well, not just avoiding doing it badly"
+keywords: [healthy polyamorous relationship, green flags polyamory, ethical non-monogamy signs, good communication non-monogamy, what healthy polyamory looks like, triad relationship health]
 ---
 
 # What healthy looks like (green flags)

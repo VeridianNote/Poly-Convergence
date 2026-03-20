@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: "Getting started with non-monogamy"
 description: "An honest orientation for people who are new to non-monogamy: what it is, what it isn't, why people do it, what to watch for, and where to go from here"
+keywords: [getting started with polyamory, new to non-monogamy, ethical non-monogamy beginners, consensual non-monogamy guide, open relationship basics, polyamory for beginners]
 ---
 
 # Getting started with non-monogamy

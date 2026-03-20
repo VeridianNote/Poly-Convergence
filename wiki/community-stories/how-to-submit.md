@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: "How to submit your story"
 description: "Share your experience with the community: what to include, how it works, and why it matters"
+keywords: [polyamory community stories, submit polyamorous experience, ethical non-monogamy stories, poly relationship writing, share relationship story]
 ---
 
 # How to submit your story

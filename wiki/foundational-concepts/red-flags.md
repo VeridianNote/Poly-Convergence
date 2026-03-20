@@ -2,6 +2,7 @@
 sidebar_position: 8
 title: "What harmful looks like (red flags)"
 description: "Behavior-based warning signs in non-monogamous relationships: what to watch for, what's fixable, and what should make you leave"
+keywords: [red flags polyamory, warning signs non-monogamy, toxic polyamorous behavior, ethical non-monogamy problems, abusive poly relationship, controlling non-monogamy]
 ---
 
 # What harmful looks like (red flags)

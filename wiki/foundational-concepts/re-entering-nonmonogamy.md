@@ -2,6 +2,7 @@
 sidebar_position: 12
 title: "Re-entering non-monogamy"
 description: "For people coming back to non-monogamy after a break, you're not starting over, and you're not a unicorn hunter"
+keywords: [re-entering polyamory, returning to non-monogamy, opening relationship again, ethical non-monogamy after break, resuming polyamorous relationship, polyamory after pause]
 ---
 
 # Re-entering non-monogamy

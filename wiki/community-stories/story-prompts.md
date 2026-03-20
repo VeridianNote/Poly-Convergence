@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: "Story prompts"
 description: "Optional starting points for writing your community story, pick one or use them as inspiration"
+keywords: [polyamory writing prompts, non-monogamy story ideas, polyamorous relationship writing, ethical non-monogamy experiences, poly community writing]
 ---
 
 # Story prompts

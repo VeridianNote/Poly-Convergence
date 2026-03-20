@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: "Relationship structures explained"
 description: "Common non-monogamous relationship configurations, what they are, how they differ, and why the distinctions matter"
+keywords: [polyamorous relationship structures, triad relationships, polycule explained, solo polyamory, relationship anarchy, ethical non-monogamy configurations]
 ---
 
 # Relationship structures explained

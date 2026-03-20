@@ -2,6 +2,7 @@
 sidebar_position: 5
 title: "Power dynamics and couple privilege"
 description: "How power works in multi-person relationships — where it comes from, how it operates from every direction, and what to do about it"
+keywords: [couple privilege polyamory, power dynamics non-monogamy, polyamorous relationship power, ethical non-monogamy imbalance, triad relationship dynamics, established couple advantage]
 ---
 
 # Power dynamics and couple privilege

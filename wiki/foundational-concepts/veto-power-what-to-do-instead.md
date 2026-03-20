@@ -2,6 +2,7 @@
 sidebar_position: 14
 title: "Veto power: what it is and what to do instead"
 description: "A nuanced look at veto power in polyamorous relationships, when a safety net is reasonable, when it becomes control, and what to use instead."
+keywords: [veto power polyamory, polyamorous relationship veto, couple privilege veto, ethical non-monogamy agreements, ending outside relationship, poly veto alternatives]
 ---
 
 # Veto power: what it is and what to do instead

@@ -2,6 +2,7 @@
 sidebar_position: 10
 title: "Guide for couples exploring non-monogamy"
 description: "Practical starting points for couples who want to date together: skills, assumptions to check, and what 'doing it well' actually looks like"
+keywords: [couples opening relationship, polyamory guide for couples, dating together ethically, ethical non-monogamy couples, opening up relationship advice, couples exploring non-monogamy]
 ---
 
 # Guide for couples exploring non-monogamy
