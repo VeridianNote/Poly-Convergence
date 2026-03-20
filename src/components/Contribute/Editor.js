@@ -84,6 +84,7 @@ export default function Editor({
   const [uploadedImages, setUploadedImages] = useState([]);
   const [deletingImage, setDeletingImage] = useState(null); // path of image being deleted (for confirmation)
   const [imagesRefreshing, setImagesRefreshing] = useState(false);
+  const [dragOverImages, setDragOverImages] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [previewHtml, setPreviewHtml] = useState('');
 
@@ -429,6 +430,18 @@ export default function Editor({
     }
   };
 
+  // Handle image drop on the uploaded images area
+  const handleImageDrop = (e) => {
+    e.preventDefault();
+    setDragOverImages(false);
+    const files = [...(e.dataTransfer?.files || [])].filter(f => f.type.startsWith('image/'));
+    if (files.length === 0) return;
+    // Upload each dropped file using the same handler as the editor
+    files.forEach(file => {
+      handleImageUpload(file).catch(() => {});
+    });
+  };
+
   const saveDisabled = saving || throttleCountdown > 0 || !title.trim() || !body.trim();
   const hasOpenPR = prInfo && prInfo.state === 'open';
   const submitDisabled = submitting || !branch || hasOpenPR;
@@ -567,14 +580,20 @@ export default function Editor({
 
       {/* Image guidance / copyright notice */}
       {canUpload ? (<>
-        <div style={{
-          padding: '0.5rem 0.75rem',
-          marginBottom: '0.5rem',
-          fontSize: '0.8rem',
-          color: 'var(--ifm-color-emphasis-600)',
-          backgroundColor: 'var(--ifm-color-emphasis-100)',
-          borderRadius: '4px',
-        }}>
+        <div
+          onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
+          onDragLeave={() => setDragOverImages(false)}
+          onDrop={handleImageDrop}
+          style={{
+            padding: '0.5rem 0.75rem',
+            marginBottom: '0.5rem',
+            fontSize: '0.8rem',
+            color: 'var(--ifm-color-emphasis-600)',
+            backgroundColor: dragOverImages ? 'var(--ifm-color-primary-contrast-background)' : 'var(--ifm-color-emphasis-100)',
+            borderRadius: '4px',
+            border: dragOverImages ? '2px dashed var(--ifm-color-primary)' : '2px dashed transparent',
+            transition: 'background-color 0.15s, border-color 0.15s',
+          }}>
           <strong>Image guidelines:</strong> Only upload images you created or have permission to use.
           Do not upload images from other websites or search engines.
           <br />You can drag and drop images into the editor, paste from clipboard, or use the toolbar button.
@@ -585,11 +604,17 @@ export default function Editor({
           to place uploaded images (number shown after each upload).</>}
         </div>
         {(uploadedImages.length > 0 || imagesRefreshing) && (
-          <div style={{
+          <div
+            onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
+            onDragLeave={() => setDragOverImages(false)}
+            onDrop={handleImageDrop}
+            style={{
             padding: '0.5rem 0.75rem',
             marginBottom: '0.5rem',
             fontSize: '0.8rem',
-            backgroundColor: 'var(--ifm-color-emphasis-100)',
+            backgroundColor: dragOverImages ? 'var(--ifm-color-primary-contrast-background)' : 'var(--ifm-color-emphasis-100)',
+            border: dragOverImages ? '2px dashed var(--ifm-color-primary)' : '2px dashed transparent',
+            transition: 'background-color 0.15s, border-color 0.15s',
             borderRadius: '4px',
           }}>
             <strong>Uploaded images ({uploadedImages.length}):</strong>
