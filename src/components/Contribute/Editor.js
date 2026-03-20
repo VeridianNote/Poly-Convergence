@@ -772,11 +772,11 @@ export default function Editor({
                 python: 'Python',
               },
             }),
-            diffSourcePlugin({ viewMode: 'rich-text' }),
+            diffSourcePlugin({ viewMode: 'rich-text', diffMarkdown: initialBody || '' }),
             markdownShortcutPlugin(),
             toolbarPlugin({
               toolbarContents: () => (
-                <DiffSourceToggleWrapper>
+                <DiffSourceToggleWrapper options={initialBody ? ['rich-text', 'source', 'diff'] : ['rich-text', 'source']}>
                   <UndoRedo />
                   <BlockTypeSelect />
                   <BoldItalicUnderlineToggles />
