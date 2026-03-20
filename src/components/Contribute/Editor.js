@@ -791,14 +791,14 @@ export default function Editor({
           borderRadius: '4px',
           color: 'var(--ifm-color-warning-darkest)',
         }}>
-          <strong>Note:</strong> The published version has been updated since you started editing.{' '}
+          <strong>Note:</strong> The site has been updated since you started this draft. Update your branch to get the latest content and features.{' '}
           <button
             className="button button--sm button--warning"
             onClick={handleMergeMain}
             disabled={merging}
             style={{ marginLeft: '0.5rem' }}
           >
-            {merging ? 'Updating...' : 'Update your branch'}
+            {merging ? 'Updating...' : 'Update now'}
           </button>
         </div>
       )}

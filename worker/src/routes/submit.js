@@ -216,7 +216,20 @@ export async function handleStatus(request, env) {
 
     if (compareRes.ok) {
       const data = await compareRes.json();
-      behindMain = data.ahead_by > 0; // main is "ahead" of the branch
+      if (data.ahead_by > 0) {
+        // Only flag if the specific page being edited was modified on main.
+        // Branch format: users/{username}/{slug} → the slug comes from slugify()
+        // (max 60 chars) and is used identically for both the branch name and
+        // the content filename, so exact match is safe.
+        const slug = branch.split('/').pop();
+        const changedFiles = (data.files || []).map(f => f.filename);
+        behindMain = changedFiles.some(f => {
+          const basename = f.split('/').pop().replace(/\.md$/, '');
+          // Strip date prefix for stories (YYYY-MM-DD-)
+          const withoutDate = basename.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+          return basename === slug || withoutDate === slug;
+        });
+      }
     }
   } catch {
     // Non-critical, just can't determine merge status
