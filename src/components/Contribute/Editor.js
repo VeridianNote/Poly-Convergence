@@ -433,6 +433,25 @@ export default function Editor({
   const hasOpenPR = prInfo && prInfo.state === 'open';
   const submitDisabled = submitting || !branch || hasOpenPR;
 
+  // Generate TOC from preview HTML headings
+  const getPreviewToc = (html) => {
+    const matches = [...html.matchAll(/<h([2-3])\s*[^>]*id="([^"]*)"[^>]*>(.*?)<\/h[2-3]>/gi)];
+    if (matches.length === 0) {
+      // marked doesn't add IDs by default - parse heading text instead
+      const headingMatches = [...html.matchAll(/<h([2-3])[^>]*>(.*?)<\/h[2-3]>/gi)];
+      return headingMatches.map(m => ({
+        level: parseInt(m[1]),
+        text: m[2].replace(/<[^>]*>/g, ''),
+        id: m[2].replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-'),
+      }));
+    }
+    return matches.map(m => ({
+      level: parseInt(m[1]),
+      text: m[3].replace(/<[^>]*>/g, ''),
+      id: m[2],
+    }));
+  };
+
   return (
     <div className="editor-container">
       {/* Content type selector (only for new drafts, not when editing existing page) */}
@@ -965,7 +984,12 @@ export default function Editor({
           className="button button--outline button--secondary"
           onClick={() => {
             const md = editorRef.current?.getMarkdown?.() || body;
-            setPreviewHtml(marked.parse(rewritePreviewUrls(md)));
+            const renderer = new marked.Renderer();
+            renderer.heading = ({ text, depth }) => {
+              const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+              return `<h${depth} id="${id}">${text}</h${depth}>`;
+            };
+            setPreviewHtml(marked.parse(rewritePreviewUrls(md), { renderer }));
             setShowPreview(true);
           }}
         >
@@ -983,28 +1007,62 @@ export default function Editor({
       </div>
 
       {/* Preview modal */}
-      {showPreview && (
-        <div
-          className="preview-backdrop"
-          onClick={(e) => { if (e.target === e.currentTarget) setShowPreview(false); }}
-        >
-          <div className="preview-modal">
-            <div className="preview-modal__header">
-              <strong style={{ fontSize: '1.1rem' }}>Preview: {title || 'Untitled'}</strong>
-              <button
-                onClick={() => setShowPreview(false)}
-                className="preview-modal__close"
-              >
-                ×
-              </button>
+      {showPreview && (() => {
+        const toc = getPreviewToc(previewHtml);
+        return (
+          <div className="preview-backdrop" onClick={(e) => { if (e.target === e.currentTarget) setShowPreview(false); }}>
+            <div className="preview-modal">
+              {/* Top bar with close */}
+              <div className="preview-modal__topbar">
+                <span>Preview — this is how your article will appear on the site</span>
+                <button onClick={() => setShowPreview(false)} className="preview-modal__close">×</button>
+              </div>
+
+              <div className="preview-modal__layout">
+                {/* Main content area */}
+                <article className="preview-modal__article">
+                  {/* Article header */}
+                  <header className="preview-modal__article-header">
+                    <h1>{title || 'Untitled'}</h1>
+                    {type === 'blog' && (
+                      <div className="preview-modal__meta">
+                        <time>{new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                        {user?.username && <span> · {user.username}</span>}
+                      </div>
+                    )}
+                    {type === 'wiki' && category && (
+                      <nav className="preview-modal__breadcrumb">
+                        <span>Wiki</span> › <span>{category.replace(/-/g, ' ')}</span> › <span>{title}</span>
+                      </nav>
+                    )}
+                  </header>
+
+                  {/* Content */}
+                  <div className="markdown preview-content" dangerouslySetInnerHTML={{ __html: previewHtml }} />
+                </article>
+
+                {/* Sidebar TOC - only show if there are headings */}
+                {toc.length > 0 && (
+                  <nav className="preview-modal__toc">
+                    <h4>On this page</h4>
+                    <ul>
+                      {toc.map((item, i) => (
+                        <li key={i} style={{ paddingLeft: item.level === 3 ? '0.75rem' : 0 }}>
+                          <a href={`#${item.id}`} onClick={(e) => {
+                            e.preventDefault();
+                            const el = document.querySelector(`.preview-modal__article #${CSS.escape(item.id)}`);
+                            el?.scrollIntoView({ behavior: 'smooth' });
+                          }}>{item.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                )}
+              </div>
             </div>
-            <div
-              className="markdown preview-content"
-              dangerouslySetInnerHTML={{ __html: previewHtml }}
-            />
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Tags (stories only, new drafts only) */}
       {type === 'blog' && !branch && !editPath && (
