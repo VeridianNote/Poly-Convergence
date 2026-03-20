@@ -82,6 +82,7 @@ export default function Editor({
   const [showLicenseHelp, setShowLicenseHelp] = useState(false);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [deletingImage, setDeletingImage] = useState(null); // path of image being deleted (for confirmation)
+  const [imagesRefreshing, setImagesRefreshing] = useState(false);
 
   const editorRef = useRef(null);
   const countdownRef = useRef(null);
@@ -195,8 +196,15 @@ export default function Editor({
           `Image uploaded! In source view, you can also reference it as {{image:${result.imageNumber}}}`
         );
       }
-      // Refresh the uploaded images list
-      listImages(currentBranch).then(setUploadedImages).catch(() => {});
+      // Refresh the uploaded images list after a short delay — the GitHub
+      // compare API may not reflect the new commit immediately.
+      setImagesRefreshing(true);
+      setTimeout(() => {
+        listImages(currentBranch)
+          .then(setUploadedImages)
+          .catch(() => {})
+          .finally(() => setImagesRefreshing(false));
+      }, 2000);
       return result.previewUrl || result.path;
     } catch (err) {
       setStatusMessage(`⚠️ Image upload failed: ${err.message}`);
@@ -510,7 +518,7 @@ export default function Editor({
           <code style={{ fontSize: '0.75rem' }}>{'{{image:1 | caption}}'}</code>{' '}
           to place uploaded images (number shown after each upload).</>}
         </div>
-        {uploadedImages.length > 0 && (
+        {(uploadedImages.length > 0 || imagesRefreshing) && (
           <div style={{
             padding: '0.5rem 0.75rem',
             marginBottom: '0.5rem',
@@ -519,6 +527,7 @@ export default function Editor({
             borderRadius: '4px',
           }}>
             <strong>Uploaded images ({uploadedImages.length}):</strong>
+            {imagesRefreshing && <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--ifm-color-emphasis-500)' }}>Refreshing…</span>}
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
               {uploadedImages.map(img => (
                 <div key={img.path} style={{ position: 'relative', textAlign: 'center' }}>

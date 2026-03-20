@@ -409,6 +409,13 @@ blockquote p {
   line-height: 1.6;
 }
 
+.editor-content-area img {
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+}
+
 .editor-content-area:focus {
   outline: none;
 }
