@@ -94,19 +94,8 @@ export default function Editor({
   // Keep branchRef in sync so image upload callback always has current value
   useEffect(() => { branchRef.current = branch; }, [branch]);
 
-  // Ctrl+S / Cmd+S to save draft
+  // Ctrl+S / Cmd+S to save draft (ref assigned after handleSave is defined below)
   const handleSaveRef = useRef(null);
-  handleSaveRef.current = handleSave;
-  useEffect(() => {
-    const onKeyDown = (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-        e.preventDefault();
-        handleSaveRef.current?.();
-      }
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, []);
 
   // Expose editor state globally for JWT expiry recovery
   useEffect(() => {
@@ -307,6 +296,19 @@ export default function Editor({
       savingRef.current = false;
     }
   };
+
+  // Ctrl+S / Cmd+S to save draft
+  handleSaveRef.current = handleSave;
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        handleSaveRef.current?.();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   const handleSubmit = async () => {
     if (!branch) {
