@@ -41,6 +41,30 @@ import '@mdxeditor/editor/style.css';
 import { marked } from 'marked';
 import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch, getAuthorProfile, saveAuthorProfile, listImages, deleteImage } from './api';
 
+/**
+ * Rewrite raw GitHub preview URLs back to relative site paths for storage.
+ * Preview URLs: https://raw.githubusercontent.com/OWNER/REPO/BRANCH/static/img/user-uploads/...
+ * Stored paths: /img/user-uploads/...
+ */
+function rewritePreviewUrls(markdown) {
+  return markdown.replace(
+    /https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/static(\/img\/user-uploads\/[^)\s"]+)/g,
+    '$1'
+  );
+}
+
+/**
+ * Slug → Title Case (used for categories and tags).
+ * e.g., "foundational-concepts" → "Foundational Concepts"
+ */
+function formatLabel(slug) {
+  if (!slug) return 'Uncategorized';
+  return slug
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 export default function Editor({
   user,
   initialTitle = '',
@@ -244,16 +268,6 @@ export default function Editor({
     listImages(branch).then(setUploadedImages).catch(() => {});
   }, [branch, canUpload]);
 
-  // Rewrite raw GitHub preview URLs back to relative site paths for storage.
-  // Preview URLs: https://raw.githubusercontent.com/OWNER/REPO/BRANCH/static/img/user-uploads/...
-  // Stored paths: /img/user-uploads/...
-  const rewritePreviewUrls = (markdown) => {
-    return markdown.replace(
-      /https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+\/static(\/img\/user-uploads\/[^)\s"]+)/g,
-      '$1'
-    );
-  };
-
   const handleSave = async () => {
     // Synchronous guard: prevents double-click race before React re-renders
     // and disables the button. Without this, two rapid clicks could both
@@ -398,7 +412,7 @@ export default function Editor({
         showStatus(result.noChange ? 'Already up to date.' : 'Branch updated from published version.', 6);
       } else if (result.conflict) {
         setPublishedVersion(result.publishedContent);
-        showStatus('', 0);
+        setStatusMessage('');
         setErrors([result.message || 'Merge conflict — review the published version and update your draft.']);
       }
     } catch (err) {
@@ -447,27 +461,26 @@ export default function Editor({
     });
   };
 
+  // Shared drag-and-drop props for image drop zones
+  const imageDragProps = {
+    onDragOver: (e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } },
+    onDragLeave: () => setDragOverImages(false),
+    onDrop: handleImageDrop,
+  };
+
   const saveDisabled = saving || throttleCountdown > 0 || !title.trim() || !body.trim();
   const hasOpenPR = prInfo && prInfo.state === 'open';
   const submitDisabled = submitting || !branch || hasOpenPR;
 
-  // Generate TOC from preview HTML headings
+  // Generate TOC from preview HTML headings.
+  // Our custom marked renderer adds IDs, so match on those.
   const getPreviewToc = (html) => {
-    const matches = [...html.matchAll(/<h([2-3])\s*[^>]*id="([^"]*)"[^>]*>(.*?)<\/h[2-3]>/gi)];
-    if (matches.length === 0) {
-      // marked doesn't add IDs by default - parse heading text instead
-      const headingMatches = [...html.matchAll(/<h([2-3])[^>]*>(.*?)<\/h[2-3]>/gi)];
-      return headingMatches.map(m => ({
+    return [...html.matchAll(/<h([2-3])\s*[^>]*id="([^"]*)"[^>]*>(.*?)<\/h[2-3]>/gi)]
+      .map(m => ({
         level: parseInt(m[1]),
-        text: m[2].replace(/<[^>]*>/g, ''),
-        id: m[2].replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-'),
+        text: m[3].replace(/<[^>]*>/g, ''),
+        id: m[2],
       }));
-    }
-    return matches.map(m => ({
-      level: parseInt(m[1]),
-      text: m[3].replace(/<[^>]*>/g, ''),
-      id: m[2],
-    }));
   };
 
   return (
@@ -525,7 +538,7 @@ export default function Editor({
             ? `Editing: ${editPath}`
             : (
               <>
-                {type === 'blog' ? 'Story' : `Wiki → ${formatCategoryLabel(category)}`}
+                {type === 'blog' ? 'Story' : `Wiki → ${formatLabel(category)}`}
                 {' · '}
                 <span style={{ color: 'var(--ifm-color-emphasis-500)' }}>
                   {branch.split('/').pop()}
@@ -587,9 +600,7 @@ export default function Editor({
       {canUpload ? (<>
         <div
           className="editor-image-guidelines"
-          onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
-          onDragLeave={() => setDragOverImages(false)}
-          onDrop={handleImageDrop}
+          {...imageDragProps}
           style={{
             padding: '0.5rem 0.75rem',
             marginBottom: '0.5rem',
@@ -612,9 +623,7 @@ export default function Editor({
         {(uploadedImages.length > 0 || imagesRefreshing) && (
           <div
             className="editor-uploaded-images"
-            onDragOver={(e) => { if (branch) { e.preventDefault(); setDragOverImages(true); } }}
-            onDragLeave={() => setDragOverImages(false)}
-            onDrop={handleImageDrop}
+            {...imageDragProps}
             style={{
             padding: '0.5rem 0.75rem',
             marginBottom: '0.5rem',
@@ -1283,18 +1292,6 @@ function formatCountdown(seconds) {
 }
 
 /**
- * Format a category slug into a human-readable label.
- * e.g., "foundational-concepts" → "Foundational Concepts"
- */
-function formatCategoryLabel(cat) {
-  if (!cat) return 'Uncategorized';
-  return cat
-    .split('-')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
-/**
  * Slugify a subcategory name.
  */
 function slugifyCategory(name) {
@@ -1387,13 +1384,6 @@ const EDITOR_TAG_CATEGORIES = [
   },
 ];
 
-function formatTagLabel(tag) {
-  return tag
-    .split('-')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
 function TagSelector({ selectedTags, onChange, isMod }) {
   const toggle = (tag) => {
     if (selectedTags.includes(tag)) {
@@ -1427,7 +1417,7 @@ function TagSelector({ selectedTags, onChange, isMod }) {
                 className={`editor-tag-option${selectedTags.includes(tag) ? ' editor-tag-option--selected' : ''}`}
                 onClick={() => toggle(tag)}
               >
-                {formatTagLabel(tag)}
+                {formatLabel(tag)}
               </button>
             ))}
           </div>
