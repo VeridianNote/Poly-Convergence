@@ -38,6 +38,7 @@ import {
 } from '@mdxeditor/editor';
 import '@mdxeditor/editor/style.css';
 
+import { marked } from 'marked';
 import { saveDraft, submitForReview, abandonDraft, getStatus, uploadImage, mergeBranch, getAuthorProfile, saveAuthorProfile, listImages, deleteImage } from './api';
 
 export default function Editor({
@@ -83,6 +84,8 @@ export default function Editor({
   const [uploadedImages, setUploadedImages] = useState([]);
   const [deletingImage, setDeletingImage] = useState(null); // path of image being deleted (for confirmation)
   const [imagesRefreshing, setImagesRefreshing] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
+  const [previewHtml, setPreviewHtml] = useState('');
 
   const editorRef = useRef(null);
   const countdownRef = useRef(null);
@@ -305,6 +308,9 @@ export default function Editor({
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
         handleSaveRef.current?.();
+      }
+      if (e.key === 'Escape') {
+        setShowPreview(false);
       }
     };
     document.addEventListener('keydown', onKeyDown);
@@ -946,6 +952,17 @@ export default function Editor({
           </button>
         )}
 
+        <button
+          className="button button--outline button--secondary"
+          onClick={() => {
+            const md = editorRef.current?.getMarkdown?.() || body;
+            setPreviewHtml(marked.parse(rewritePreviewUrls(md)));
+            setShowPreview(true);
+          }}
+        >
+          Preview
+        </button>
+
         {branch && (
           <button
             className="button button--outline button--danger"
@@ -955,6 +972,70 @@ export default function Editor({
           </button>
         )}
       </div>
+
+      {/* Preview modal */}
+      {showPreview && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            zIndex: 1000,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            padding: '2rem',
+            overflow: 'auto',
+          }}
+          onClick={(e) => { if (e.target === e.currentTarget) setShowPreview(false); }}
+        >
+          <div style={{
+            backgroundColor: 'var(--ifm-background-color)',
+            borderRadius: '8px',
+            width: '100%',
+            maxWidth: '800px',
+            maxHeight: '90vh',
+            overflow: 'auto',
+            boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)',
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '0.75rem 1.25rem',
+              borderBottom: '1px solid var(--ifm-color-emphasis-200)',
+              position: 'sticky',
+              top: 0,
+              backgroundColor: 'var(--ifm-background-color)',
+              zIndex: 1,
+            }}>
+              <strong style={{ fontSize: '1.1rem' }}>Preview: {title || 'Untitled'}</strong>
+              <button
+                onClick={() => setShowPreview(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  color: 'var(--ifm-color-emphasis-600)',
+                  padding: '0 0.25rem',
+                  lineHeight: 1,
+                }}
+              >
+                ×
+              </button>
+            </div>
+            <div
+              className="markdown"
+              style={{ padding: '1.5rem 1.25rem' }}
+              dangerouslySetInnerHTML={{ __html: previewHtml }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Tags (stories only, new drafts only) */}
       {type === 'blog' && !branch && !editPath && (
