@@ -156,6 +156,10 @@ const config = {
   ],
 
   headTags: [
+    {tagName: 'link', attributes: {rel: 'manifest', href: '/img/site.webmanifest'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/svg+xml', href: '/img/favicon.svg'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/png', sizes: '96x96', href: '/img/favicon-96x96.png'}},
+    {tagName: 'link', attributes: {rel: 'apple-touch-icon', sizes: '180x180', href: '/img/apple-touch-icon.png'}},
     {tagName: 'meta', attributes: {property: 'og:type', content: 'website'}},
     {tagName: 'meta', attributes: {property: 'og:site_name', content: 'Poly Convergence'}},
     {tagName: 'meta', attributes: {property: 'og:image', content: 'https://polyconvergence.com/img/og-image.jpg'}},
