@@ -158,9 +158,8 @@ const config = {
   headTags: [
     {tagName: 'meta', attributes: {property: 'og:type', content: 'website'}},
     {tagName: 'meta', attributes: {property: 'og:site_name', content: 'Poly Convergence'}},
-    // Uncomment when OG image is ready:
-    // {tagName: 'meta', attributes: {property: 'og:image', content: 'https://polyconvergence.com/img/og-image.png'}},
-    // {tagName: 'meta', attributes: {name: 'twitter:card', content: 'summary_large_image'}},
+    {tagName: 'meta', attributes: {property: 'og:image', content: 'https://polyconvergence.com/img/og-image.jpg'}},
+    {tagName: 'meta', attributes: {name: 'twitter:card', content: 'summary_large_image'}},
     {
       tagName: 'script',
       attributes: {type: 'application/ld+json'},
@@ -186,7 +185,12 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Poly Convergence',
+        title: '',
+        logo: {
+          alt: 'Poly Convergence',
+          src: 'img/PolyConvergence_Words.webp',
+          height: '32px',
+        },
         items: [
           {to: '/featured', label: 'Featured', position: 'left'},
           {to: '/stories', label: 'Community Stories', position: 'left'},
@@ -198,6 +202,11 @@ const config = {
           },
           {to: '/about', label: 'About', position: 'left'},
           {to: '/contribute', label: 'Contribute', position: 'left'},
+          {
+            href: 'https://unicorns-r-us-is-bullshit.com',
+            label: 'Sister Site',
+            position: 'right',
+          },
           {
             href: 'https://www.reddit.com/r/PolyConvergence',
             label: 'Reddit',
@@ -233,6 +242,7 @@ const config = {
           {
             title: 'Connect',
             items: [
+              {label: 'Sister Site', href: 'https://unicorns-r-us-is-bullshit.com'},
               {label: 'Reddit', href: 'https://www.reddit.com/r/PolyConvergence'},
               {label: 'GitHub', href: 'https://github.com/VeridianNote/Poly-Convergence'},
             ],

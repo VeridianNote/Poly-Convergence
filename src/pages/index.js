@@ -87,25 +87,40 @@ function HomepageHeader() {
   }, []);
   return (
     <header className={clsx('hero hero--primary')}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className={clsx('hero__subtitle', tagline && 'hero__subtitle--visible')}>
-          {tagline || '\u00A0'}
-        </p>
-        <div className="hero-buttons">
-          <Link className="button button--lg hero-button" to="/stories">
-            Read Stories
-          </Link>
-          <Link className="button button--lg hero-button" to="/wiki/intro">
-            Browse the Wiki
-          </Link>
-          <Link className="button button--lg hero-button" to="/contribute">
-            Contribute
-          </Link>
+      <div className="container hero-container">
+        <div className="hero-text">
+          <Heading as="h1" className="hero__title">
+            <img
+              src="/img/PolyConvergence_Words.webp"
+              alt={siteConfig.title}
+              className="hero__title-img"
+            />
+          </Heading>
+          <p className={clsx('hero__subtitle', tagline && 'hero__subtitle--visible')}>
+            {tagline || '\u00A0'}
+          </p>
+          <div className="hero-buttons">
+            <Link className="button button--lg hero-button" to="/stories">
+              Read Stories
+            </Link>
+            <Link className="button button--lg hero-button" to="/wiki/intro">
+              Browse the Wiki
+            </Link>
+            <Link className="button button--lg hero-button" to="/contribute">
+              Contribute
+            </Link>
+          </div>
         </div>
       </div>
+      <div className="hero-artwork">
+        <img
+          src="/img/PolyConvergence-hero-banner.webp"
+          alt="A dragon, unicorn, and fox — the three characters of Poly Convergence"
+          width="800"
+          height="600"
+        />
+      </div>
+      <div className="hero-gradient" />
     </header>
   );
 }
