@@ -542,7 +542,7 @@ article.margin-bottom--xl footer {
 /* ============================================= */
 
 blockquote {
-  border-left: 4px solid var(--ifm-color-primary);
+  border-left: 4px solid var(--pc-accent-warm);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
   font-size: 1.25rem;
@@ -550,6 +550,10 @@ blockquote {
   font-weight: 600;
   background: transparent;
   color: inherit;
+}
+
+[data-theme='dark'] blockquote {
+  border-left-color: var(--ifm-color-primary);
 }
 
 blockquote p {

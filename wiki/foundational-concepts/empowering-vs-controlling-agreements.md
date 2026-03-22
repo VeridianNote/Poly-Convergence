@@ -85,7 +85,11 @@ Some people genuinely prefer minimal detail about a partner's other relationship
 
 There's also the person outside the relationship to consider. Someone dating a person under a strict DADT arrangement exists only as an abstraction in the primary relationship. Their name can't be spoken, their existence can't be acknowledged. Depending on how things unfold, they may not even know that's the situation they're in.
 
+Research backs this up. In the largest international study of CNM relationship practices to date, hiding relationships from others was the only practice consistently linked to *worse* outcomes across the board: less commitment, less intimacy, less trust, and lower investment.[^1]
+
 The goal isn't mandatory oversharing. It's making sure silence is something you chose, not something you defaulted to because honesty felt harder.
+
+[^1]: Mogilski et al. (2026), *Archives of Sexual Behavior*. See [Key studies: what actually makes non-monogamy work](/wiki/research-and-sources/key-studies#what-actually-makes-non-monogamy-work) for a full summary.
 
 ### On uneven feelings
 

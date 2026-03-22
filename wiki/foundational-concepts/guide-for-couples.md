@@ -58,7 +58,9 @@ The question isn't "how do I avoid feeling jealous?" It's "when I feel jealous, 
 
 Figure out what need is underneath it: security, attention, fear of being replaced, something else entirely. Address the need, not just the feeling.
 
-What doesn't work: pretending you're not jealous, punishing your partner for triggering jealousy, using jealousy as a reason to impose new restrictions, or expecting it to just go away on its own. If you want structured tools, Kathy Labriola's *The Jealousy Workbook* is a practical resource worth looking at.
+What doesn't work: pretending you're not jealous, punishing your partner for triggering jealousy, using jealousy as a reason to impose new restrictions, or expecting it to just go away on its own. Research confirms this: in a study of over 4,200 people across multiple countries, open communication about jealousy was the single strongest predictor of relationship quality, for both CNM *and* monogamous participants.[^1] If you want structured tools, Kathy Labriola's *The Jealousy Workbook* is a practical resource worth looking at.
+
+[^1]: Mogilski et al. (2026), *Archives of Sexual Behavior*. See [Key studies: what actually makes non-monogamy work](/wiki/research-and-sources/key-studies#what-actually-makes-non-monogamy-work) for details.
 
 And know that compersion (feeling genuinely happy when your partner is happy with someone else) is real, and for some people it's the dominant experience. It can develop over time, but it can't be forced. If you feel it naturally, great. If you don't, that's fine too. Neither version makes you better or worse at this.
 

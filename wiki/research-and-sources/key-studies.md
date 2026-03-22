@@ -77,6 +77,28 @@ Below are the major studies referenced across this site: what each one found, wh
 
 **What this means:** Hierarchy creates measurable differences in how much investment and security each partner receives. This doesn't automatically make hierarchy wrong, some people prefer it and choose it freely. But it does mean the structural inequality is real, not imagined, and worth being honest about.
 
+## What actually makes non-monogamy work
+
+**Mogilski, Miller, Jonason, et al. (2026)** developed the first validated scale for measuring how people in CNM relationships maintain multiple partnerships. Their international sample included over 4,200 participants across North America, South America, and Europe.
+
+**What they did:** First gathered nominations from 429 CNM-experienced people about what practices work (and what doesn't) for managing multiple relationships. Combined those with theory-derived practices to build the Multiple Relationships Maintenance Scale (MRMS), then tested it across three large surveys.
+
+**What they found:**
+
+Nine distinct maintenance practices emerged: disclosing attractions to partners, communicating openly about jealousy, compersion (enjoying a partner's other relationships), willingness to help with childcare, shared sexual experiences, partner hierarchy, sexual health practices, thoughtful resource distribution, and reputation management.
+
+The practices most consistently linked to higher relationship quality were **open communication about jealousy** and **sharing extra-pair experiences with partners**. Disclosure of attractions, willingness to help with childcare, thoughtful resource distribution, and clear hierarchy were all linked to higher satisfaction, commitment, intimacy, trust, and investment.
+
+One practice stood out as harmful: **hiding relationships from others** was the only factor consistently linked to *worse* quality across the board (less commitment, less intimacy, less trust, lower investment).
+
+People who engaged in these practices also reported that their interactions with other people less often felt like infidelity. The researchers' explanation: these practices reduce uncertainty. When partners communicate openly about what's happening and what to expect, extra-pair interactions feel less like betrayal and more like something the relationship has already accounted for.
+
+**The key insight:** Many of these practices predicted higher relationship quality for monogamous participants too, not just CNM ones. Open communication about attraction, jealousy, and resource sharing isn't a "poly thing." It's a relationship thing. The researchers suggest these practices work because they reduce the uncertainty and unpredictability that actually causes relationship distress, regardless of structure.
+
+**What this doesn't tell us:** Correlation, not causation. People in better relationships might find it easier to practice these behaviors, rather than the behaviors creating better relationships. The study also doesn't tell us which practices matter most for specific configurations like triads (the same gap that runs through most CNM research). The authors call for experimental follow-up to test whether adopting these practices actually improves relationship quality.
+
+**Why this matters for this site:** This is one of the first large-scale studies to move past "does CNM work?" and ask "what makes it work?" The answer lines up with what experienced practitioners have been saying for years: it's the practices, not the structure. Transparency, communication about jealousy, fair resource sharing, and honest engagement with the realities of multiple partnerships. The research is starting to validate what the community already knew.
+
 ## Where the research stops
 
 ### Triad-specific outcomes
@@ -95,9 +117,9 @@ This gap isn't unique to non-monogamy. Long-term longitudinal studies are expens
 
 ### What predicts success
 
-We have good descriptions of harmful patterns (one-sided rules, disposable treatment, leveraging power imbalances) and healthy ones (transparency, autonomy, fair negotiation). What we don't have is large-scale data on which specific practices or skills predict success across different configurations.
+This gap is starting to narrow. The Mogilski et al. (2026) study above is the first large-scale attempt to identify and validate specific practices that predict relationship quality in CNM. It found that communication about jealousy, disclosure of attractions, and thoughtful resource sharing all correlate with better outcomes. But it's cross-sectional (a snapshot, not a before-and-after), and it doesn't break results down by specific configurations like triads.
 
-Community knowledge fills some of this gap. Experienced practitioners share what works and what doesn't, and that practical wisdom is real and valuable. But it's worth recognizing it as accumulated experience, not controlled evidence. Both matter. They're not interchangeable.
+We still don't have experimental evidence showing that adopting specific practices *causes* better outcomes, or large-scale data on what works differently across configurations. Community knowledge continues to fill that gap. Experienced practitioners share what works and what doesn't, and that practical wisdom is real and valuable. The research is catching up, but it's worth recognizing the difference between accumulated experience and controlled evidence. Both matter. They're not interchangeable.
 
 ### Why these gaps exist
 
@@ -114,9 +136,11 @@ Three obstacles slow it down:
 If you're looking for certainty ("research proves this works" or "research proves it doesn't"), you won't find it. What the research does say:
 
 - Non-monogamy, by itself, doesn't predict lower satisfaction
+- Specific practices (open communication, jealousy management, fair resource sharing) predict better outcomes regardless of relationship structure
 - Stigma does more damage to wellbeing than structure does
+- Hiding relationships is the one practice consistently linked to worse outcomes
 - Specific configurations like triads are under-studied, which means confident claims about them, in either direction, are premature
-- Community knowledge and practical wisdom fill gaps the research hasn't reached yet
+- Community knowledge and practical wisdom fill gaps the research hasn't reached yet, and the research is starting to validate what practitioners have said for years
 
 **Take the research seriously where it exists. Take community experience seriously where research hasn't caught up. Be skeptical of anyone, on any side, who claims more certainty than the data supports.**
 
@@ -145,6 +169,8 @@ Mahar, E. A., Irving, J. A., et al. (2024). Stigma toward consensual non-monogam
 Moors, A. C., Gesselman, A. N., & Garcia, J. R. (2021). Desire, familiarity, and engagement in polyamory: Results from a national sample of single adults in the United States. *Frontiers in Psychology*, 12, 619640. DOI: 10.3389/fpsyg.2021.619640
 
 Rodrigues, D. L., Brooks, T. R., Balzarini, R. N., Moors, A. C., & Lopes, D. (2024). Examining the role of mononormative beliefs, stigma, and internalized consensual non-monogamy negativity for dehumanization. *Archives of Sexual Behavior*, 53, 889-899.
+
+Mogilski, J. K., Miller, G. F., Jonason, P. K., et al. (2026). How do people maintain consensual non-monogamy? An international development and validation of the Multiple Relationships Maintenance Scale. *Archives of Sexual Behavior*. DOI: 10.1007/s10508-025-03334-9
 
 Schechinger, H. A., Sakaluk, J. K., & Moors, A. C. (2018). Harmful and helpful therapy practices with consensually non-monogamous clients. *Journal of Consulting and Clinical Psychology*, 86(11), 879-891.
 
