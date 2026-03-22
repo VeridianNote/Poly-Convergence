@@ -172,7 +172,7 @@ const config = {
         '@type': 'WebSite',
         name: 'Poly Convergence',
         url: 'https://polyconvergence.com',
-        description: 'Community-built resources for healthier polyamorous relationships. Wiki articles, community stories, and practical tools.',
+        description: 'Community-built polyamory resources: wiki articles, real stories, and practical guides for couples, triads, and anyone exploring ethical non-monogamy.',
       }),
     },
   ],
@@ -181,8 +181,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [
-        {name: 'description', content: 'Community-built resources for healthier polyamorous relationships. Wiki, stories, and tools grounded in experience and shared knowledge.'},
-        {name: 'keywords', content: 'polyamory, ethical non-monogamy, poly relationships, relationship education, poly community'},
+        {name: 'description', content: 'Community-built polyamory resources: wiki articles, real stories, and practical guides for couples, triads, and anyone exploring ethical non-monogamy.'},
+        {name: 'keywords', content: 'polyamory, ethical non-monogamy, polyamory resources, poly relationship advice, triad relationships, couple privilege, unicorn hunting, polyamory guide, poly community, relationship structures, polycule'},
       ],
       colorMode: {
         defaultMode: 'light',

@@ -41,6 +41,13 @@ const wikiCategories = [
     folder: 'stigma-myths-and-criticism',
   },
   {
+    title: 'Unhealthy Behaviors',
+    emoji: '\u{1F6A9}',
+    description: 'Patterns worth recognizing early — not to shame, but because it can save everyone involved a lot of pain.',
+    link: '/wiki/category/unhealthy-behaviors',
+    folder: 'unhealthy-behaviors',
+  },
+  {
     title: 'Community Stories',
     emoji: '\u{1F4AC}',
     description: 'Real experiences from real people navigating non-traditional relationships.',
@@ -290,7 +297,7 @@ export default function Home() {
   return (
     <Layout
       title="Polyamory Resources & Community Wiki"
-      description="Community-built resources for healthier polyamorous relationships. Wiki articles, community stories, and practical tools — grounded in lived experience, not dogma.">
+      description="Community-built polyamory resources: wiki articles, real stories, and practical guides for couples, triads, and anyone exploring ethical non-monogamy.">
       <HomepageHeader />
       <main>
         <FromTheBlog />

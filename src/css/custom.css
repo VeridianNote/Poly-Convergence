@@ -108,6 +108,99 @@ h1[id], h2[id], h3[id], h4[id] {
   }
 }
 
+/* Desktop TOC — active/hover heading colors */
+.table-of-contents__link--active,
+.table-of-contents__link--active code {
+  color: var(--pc-accent-warm) !important;
+}
+
+.table-of-contents__link:hover {
+  color: var(--pc-accent-warm) !important;
+}
+
+.table-of-contents__left-border {
+  border-left-color: var(--pc-accent-warm);
+}
+
+[data-theme='dark'] .table-of-contents__link--active,
+[data-theme='dark'] .table-of-contents__link--active code {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .table-of-contents__link:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+[data-theme='dark'] .table-of-contents__left-border {
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* Wiki sidebar nav — visual hierarchy */
+
+/* Light mode: dusty rose categories, indigo active */
+.menu__link--sublist {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--pc-accent-warm) !important;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  color: var(--ifm-color-primary) !important;
+}
+
+.menu__link--sublist.menu__link--active {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* Dark mode: indigo categories, dusty rose active */
+[data-theme='dark'] .menu__link--sublist {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  color: var(--pc-accent-warm) !important;
+}
+
+[data-theme='dark'] .menu__link--sublist.menu__link--active {
+  color: var(--pc-accent-warm) !important;
+}
+
+.theme-doc-sidebar-menu > .menu__list-item + .menu__list-item {
+  margin-top: 0.5rem;
+}
+
+.menu__list .menu__list .menu__link:not(.menu__link--sublist) {
+  font-size: 0.85rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+/* Breadcrumbs — light: dusty rose links, dark: indigo links */
+.breadcrumbs__link {
+  color: var(--pc-accent-warm);
+}
+
+.breadcrumbs__link:hover {
+  color: var(--pc-accent-warm-dark);
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--pc-accent-warm);
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #6366f1;
@@ -117,6 +210,10 @@ h1[id], h2[id], h3[id], h4[id] {
   --ifm-color-primary-light: #8082f4;
   --ifm-color-primary-lighter: #8e90f5;
   --ifm-color-primary-lightest: #b9baf9;
+  --pc-accent-warm: #d47089;
+  --pc-accent-warm-dark: #b8566f;
+  --ifm-link-color: var(--pc-accent-warm);
+  --ifm-link-hover-color: var(--pc-accent-warm-dark);
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-background-color: #1a1a1a;
@@ -125,6 +222,8 @@ h1[id], h2[id], h3[id], h4[id] {
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
+  --pc-accent-warm: #d47089;
+  --pc-accent-warm-dark: #b8566f;
   --ifm-color-primary: #818cf8;
   --ifm-color-primary-dark: #6171f6;
   --ifm-color-primary-darker: #5163f5;
@@ -132,6 +231,8 @@ h1[id], h2[id], h3[id], h4[id] {
   --ifm-color-primary-light: #a1a7fa;
   --ifm-color-primary-lighter: #b1b6fb;
   --ifm-color-primary-lightest: #d1d3fd;
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-light);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-navbar-background-color: #111111;
   --ifm-footer-background-color: #111111;
@@ -175,12 +276,21 @@ h1[id], h2[id], h3[id], h4[id] {
 .navbar__link[href="/contribute"]::after { content: " ✏️"; }
 
 .navbar__link:hover {
+  color: var(--pc-accent-warm) !important;
+}
+
+[data-theme='dark'] .navbar__link:hover {
   color: var(--ifm-color-primary-light) !important;
 }
 
 .navbar__link--active {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--pc-accent-warm);
   text-decoration: none;
+  color: var(--pc-accent-warm) !important;
+}
+
+[data-theme='dark'] .navbar__link--active {
+  border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary-light) !important;
 }
 
@@ -241,6 +351,11 @@ article.margin-bottom--xl footer {
 
 .homepage-section__title {
   margin-bottom: 1.25rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .homepage-section__title {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
 }
 
 .card-link {
@@ -270,6 +385,12 @@ article.margin-bottom--xl footer {
 .homepage-card__title {
   margin-bottom: 0.4rem;
   font-size: 1.1rem;
+  color: var(--ifm-color-primary);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .homepage-card__title {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
 }
 
 .homepage-card__desc {
@@ -323,7 +444,6 @@ article.margin-bottom--xl footer {
 .blog-card__link {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--ifm-color-primary);
 }
 
 /* ============================================= */
@@ -705,7 +825,7 @@ blockquote p {
 }
 
 .preview-content a {
-  color: var(--ifm-color-primary);
+  color: var(--ifm-link-color);
 }
 
 .preview-content blockquote {

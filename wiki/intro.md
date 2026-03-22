@@ -61,10 +61,11 @@ You know what non-monogamy is. You've lived it. But things have changed — mayb
 
 ## Go deeper
 
-The paths above pull from across the wiki. If you want to browse by topic instead, four sections organize everything:
+The paths above pull from across the wiki. If you want to browse by topic instead, five sections organize everything:
 
 - **[Foundational Concepts](/wiki/category/foundational-concepts)** — The ideas that help you make sense of everything else
 - **[Stigma, Myths & Criticism](/wiki/category/stigma-myths-and-criticism)** — The claims that get repeated until they feel like facts, examined honestly
+- **[Unhealthy Behaviors](/wiki/category/unhealthy-behaviors)** — Patterns worth recognizing early, not to shame, but because they can save everyone involved a lot of pain
 - **[Research & Sources](/wiki/category/research--sources)** — The actual studies, where they exist. We're honest about what's well-researched and what isn't
 - **[Community Stories](/wiki/category/community-stories)** — How to share your own experience. The published stories live on the [Community Stories](/stories) page
 
