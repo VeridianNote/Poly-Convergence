@@ -538,6 +538,20 @@ article.margin-bottom--xl footer {
 }
 
 /* ============================================= */
+/* Pattern list — grouped entries with left bar  */
+/* ============================================= */
+
+.pattern-list {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+[data-theme='dark'] .pattern-list {
+  border-left-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================= */
 /* Blockquote highlights — callout style         */
 /* ============================================= */
 

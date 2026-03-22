@@ -21,6 +21,8 @@ Either way, there's a name for the pattern you're looking at: "relationship brok
 
 The pattern takes different forms, but they share the same core mistake: solving a relationship problem by adding complexity rather than facing what's actually wrong.
 
+<div className="pattern-list">
+
 **Sexual disconnect.** A couple has a libido mismatch or the physical connection has dried up. Rather than working through it directly (which is hard and uncomfortable), someone suggests opening up. The less-interested partner "doesn't have to" have as much sex, and the more-interested partner can find that connection elsewhere. Problem solved without anyone having to say anything difficult to each other. This often comes with guardrails designed to keep things "safe" — don't ask don't tell policies, "no feelings" rules, "it's just physical." The idea is to contain the solution to the bedroom and keep everything else untouched. Except whatever created the disconnect is still there, feelings don't follow rules, and now there are more relationships to manage while that foundation stays unexamined.
 
 **Emotional void.** One partner has become distant. The other, lonely inside the relationship, starts looking for warmth somewhere new. Sometimes this gets framed as opening the relationship. Sometimes it's just an affair with a paper-thin justification. Sometimes the connection already exists — "just a friend" who's been getting closer — and suggesting non-monogamy is a way to make it okay retroactively. Either way, the new connection papers over the emptiness rather than addressing it.
@@ -30,6 +32,8 @@ The pattern takes different forms, but they share the same core mistake: solving
 **NRE addiction.** New Relationship Energy — that intense, floaty, infatuated feeling from a new connection — is real and temporary. Some people can't stop chasing it. Once the butterflies fade and it's time to actually build something, they're already looking for the next spark. Sometimes this is avoidance — the flatness of an established relationship feels unbearable, so new connections become a distraction from work nobody wants to do. But sometimes it's just a pattern: someone who collects connections with no intention of deepening any of them, who's always in the exciting early phase and never in the part where relationships require actual effort. The people on the other end of this aren't partners. They're entertainment.
 
 **The halfway breakup.** One or both people know the relationship isn't working, but ending it feels enormous — too much shared history, finances, housing, or just the grief of it. Opening up becomes an escape hatch. The person can emotionally exit the relationship while maintaining the structure of it. When the new connection solidifies, the breakup happens anyway, just later, with more people hurt. This isn't even a poly issue — it happens in monogamy all the time. Someone starts spending more time with a "friend," the emotional investment quietly shifts, and by the time the breakup happens the next relationship is already underway. In monogamy everyone recognizes this for what it is. In a poly context the same pattern gets a framework that technically allows it, but the mechanism is identical: building a bridge to the next relationship so you never have to stand in the gap alone.
+
+</div>
 
 If you recognized yourself in any of these, that's the point. Most people don't set out to use someone. They're in pain, they see a door, and they walk through it without thinking about who's on the other side.
 

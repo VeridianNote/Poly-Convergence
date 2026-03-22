@@ -39,6 +39,8 @@ The question was never about the living arrangement. It's about whether anyone u
 
 Power dynamics aren't usually dramatic. They're subtle patterns that shape behavior over time, often without anyone intending harm. These show up between any two people in any relationship. The number of people involved doesn't create them. It just adds more angles.
 
+<div className="pattern-list">
+
 **Decisions without input.** Two people discuss something and present the conclusion to a third. The couple who says "we decided..." to the new partner. But also: a hinge partner who makes scheduling decisions without consulting anyone affected. Or two people who've bonded making agreements about someone who wasn't in the room. The pattern isn't about who does it. It's about someone being affected by a decision they weren't part of making.
 
 **Leveraging an advantage.** Any advantage can become a tool for getting your way. Housing: "my house, my rules." Income: "I contribute more, so I get more say." History: "we were here first." Mobility: "if this doesn't work for me, I'll leave" — said by someone who knows their departure would be devastating. Every one of these shows up in monogamous relationships too. The structure doesn't create the behavior. The person does.
@@ -50,6 +52,8 @@ Power dynamics aren't usually dramatic. They're subtle patterns that shape behav
 **The exit assumption.** The unspoken belief that if things contract, the newest person is the one who goes. It's rarely stated outright. It's just the default everyone operates from (including, often, the new person themselves). But relationships don't follow a script. The original relationship isn't guaranteed to be the one that lasts. Treating the newest connection as automatically disposable devalues it before it has a chance to prove itself, and it lets everyone avoid the harder question: what if the relationship that needs to change isn't the newest one?
 
 **Silence as a signal.** When someone stops pushing back, stops asking for things, stops bringing up concerns — that's not peace. It might mean the cost of speaking up feels higher than the cost of staying quiet. This applies to anyone in any position. If someone who used to have opinions suddenly doesn't, ask what changed.
+
+</div>
 
 ## What amplifies it
 
