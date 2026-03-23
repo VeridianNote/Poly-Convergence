@@ -51,11 +51,11 @@ You want to do this right, and you're willing to do the work.
 - [Empowering vs. controlling agreements](/wiki/foundational-concepts/empowering-vs-controlling-agreements) — How to build agreements that protect everyone, not just control someone.
 - [Dating separately isn't the only way](/wiki/stigma-myths-and-criticism/dating-separately-isnt-the-only-way) — Where the advice comes from, and where it breaks down.
 
-### Been here before
+### Ready to find people
 
-You know what non-monogamy is. You've lived it. But things have changed — maybe you have, maybe the landscape has, maybe both. You're not starting from scratch, but you're not picking up where you left off either.
+You know what non-monogamy is. Now you want to meet people who want the same thing. The dating landscape serves some relationship goals better than others, and knowing what actually works saves a lot of frustration.
 
-- **[Re-entering non-monogamy](/wiki/foundational-concepts/re-entering-nonmonogamy)** — Picking it up again after a break, a breakup, or a major life change. What's different now and how to approach it with fresh eyes.
+- **[Finding your people](/wiki/foundational-concepts/finding-your-people)** — The dating landscape: what works, what doesn't, and what's still missing for people seeking committed multi-partner relationships.
 - [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — A recalibration. You know what went wrong last time. This is what to build toward.
 - [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — Patterns you might recognize from before, and how to spot them earlier this time.
 

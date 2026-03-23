@@ -157,8 +157,8 @@ This page is a starting point. Where you go next depends on where you are right 
 - [What healthy looks like (green flags)](/wiki/foundational-concepts/green-flags) — you need to know what you're building toward, not just what to avoid
 - [What harmful looks like (red flags)](/wiki/foundational-concepts/red-flags) — behavior patterns that cause real damage, and how to tell the fixable ones from the dealbreakers
 
-**If you've done this before:**
-- [Re-entering non-monogamy](/wiki/foundational-concepts/re-entering-nonmonogamy) — you're not starting from scratch, but the landscape may have changed. Resources, community, and a fresh starting point
+**If you're ready to find people:**
+- [Finding your people](/wiki/foundational-concepts/finding-your-people) — an honest look at the dating landscape: what works, what doesn't, and what's still missing
 
 **Have questions?** The [wiki](/wiki/intro) covers a lot more ground, and [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/) is always open if you want to talk through something specific with people who've been where you are.
 
