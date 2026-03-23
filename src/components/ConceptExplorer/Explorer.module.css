@@ -1,0 +1,273 @@
+.explorerContainer {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--ifm-navbar-height, 60px));
+  overflow: hidden;
+  position: relative;
+  /* Override Docusaurus main wrapper padding */
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure Docusaurus wrapper fills height and doesn't scroll horizontally */
+:global(.main-wrapper) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+:global(.main-wrapper > main) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Search */
+.searchContainer {
+  position: relative;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.searchInputWrapper {
+  position: relative;
+  max-width: 320px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+[data-theme='dark'] .searchInput {
+  background: rgba(30, 30, 46, 0.9);
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] .searchInput:focus {
+  border-color: var(--ifm-color-primary);
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  max-width: 320px;
+  width: calc(100% - 2rem);
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+[data-theme='dark'] .searchResults {
+  background: #1e1e2e;
+  border-color: #4b5563;
+}
+
+.searchResultItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.searchResultItem:hover {
+  background: #f3f4f6;
+}
+
+[data-theme='dark'] .searchResultItem {
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] .searchResultItem:hover {
+  background: #2a2a3e;
+}
+
+.searchDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Main layout */
+.mainArea {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.graphArea {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Legend */
+.legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 5;
+}
+
+.legendDetails {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0;
+  font-size: 0.75rem;
+}
+
+[data-theme='dark'] .legendDetails {
+  background: rgba(30, 30, 46, 0.92);
+  border-color: #374151;
+}
+
+.legendSummary {
+  cursor: pointer;
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #6b7280;
+  list-style: none;
+  user-select: none;
+}
+
+.legendSummary::-webkit-details-marker {
+  display: none;
+}
+
+.legendSummary::before {
+  content: '?';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #9ca3af;
+  font-size: 0.65rem;
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.legendContent {
+  padding: 4px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legendSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.legendTitle {
+  font-weight: 600;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 0.72rem;
+}
+
+[data-theme='dark'] .legendItem {
+  color: #9ca3af;
+}
+
+.legendNodeFilled {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+}
+
+.legendNodeOutline {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--ifm-color-primary);
+  background: transparent;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .explorerContainer {
+    height: calc(100vh - var(--ifm-navbar-height, 60px));
+  }
+
+  .searchContainer {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .searchInputWrapper {
+    max-width: 100%;
+  }
+
+  .searchResults {
+    max-width: calc(100% - 1.5rem);
+  }
+
+  .mainArea {
+    flex-direction: column;
+  }
+
+  .graphArea {
+    flex: 1;
+  }
+
+  .legend {
+    bottom: auto;
+    top: 8px;
+    left: 8px;
+  }
+}

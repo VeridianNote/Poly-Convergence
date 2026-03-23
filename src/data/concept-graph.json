@@ -1,0 +1,2046 @@
+{
+  "nodes": [
+    {
+      "id": "poly-convergence",
+      "label": "Poly Convergence",
+      "definition": "The process of multiple people coming together to explore building a committed relationship. Not a person label — it describes the journey, not the destination.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#poly-convergence",
+      "hasPage": true
+    },
+    {
+      "id": "unicorn-hunting",
+      "label": "Unicorn Hunting",
+      "definition": "A harmful pattern where a couple seeks a third partner with rigid rules, treats them as disposable, and prioritizes the couple's needs above all else.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/terminology#unicorn-hunting--unicorn-hunter",
+      "hasPage": true
+    },
+    {
+      "id": "unicorn",
+      "label": "Unicorn",
+      "definition": "Originally a swinger community term for a rare bisexual woman open to joining a couple. Now a loaded term — the site reframes it through three contexts: casual, convergence, and hunting.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#unicorn",
+      "hasPage": true
+    },
+    {
+      "id": "triad",
+      "label": "Triad",
+      "definition": "Three people all romantically or sexually connected to each other. A group dynamic, not three separate relationships.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/relationship-structures",
+      "hasPage": true
+    },
+    {
+      "id": "vee",
+      "label": "Vee (V)",
+      "definition": "Three people where one 'hinge' partner connects two others who aren't romantically involved with each other.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/terminology#vee-v",
+      "hasPage": true
+    },
+    {
+      "id": "quad",
+      "label": "Quad",
+      "definition": "Four people intimately connected, in various possible configurations.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/terminology#quad",
+      "hasPage": true
+    },
+    {
+      "id": "polycule",
+      "label": "Polycule",
+      "definition": "The entire network of interconnected relationships — partners, metamours, and their connections.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/terminology#polycule",
+      "hasPage": true
+    },
+    {
+      "id": "dyad",
+      "label": "Dyad",
+      "definition": "A two-person relationship. The building block most people start from.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/terminology#dyad",
+      "hasPage": true
+    },
+    {
+      "id": "polyfidelity",
+      "label": "Polyfidelity",
+      "definition": "A closed multi-partner relationship where all members are exclusive to the group. One possible destination of poly convergence.",
+      "category": "relationship-styles",
+      "url": "/wiki/foundational-concepts/terminology#polyfidelity",
+      "hasPage": true
+    },
+    {
+      "id": "relationship-structures",
+      "label": "Relationship Structures",
+      "definition": "The different shapes relationships can take — dyads, triads, vees, quads, polycules, and beyond. Shape doesn't determine ethics.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/relationship-structures",
+      "hasPage": true
+    },
+    {
+      "id": "hierarchical-poly",
+      "label": "Hierarchical Polyamory",
+      "definition": "Relationships explicitly ranked: primary, secondary, etc. Can be healthy or harmful depending on how power is handled.",
+      "category": "relationship-styles",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "non-hierarchical-poly",
+      "label": "Non-Hierarchical Polyamory",
+      "definition": "No formal ranking between relationships. Each connection is valued on its own terms rather than by seniority.",
+      "category": "relationship-styles",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "solo-poly",
+      "label": "Solo Polyamory",
+      "definition": "Multiple relationships without traditional milestones like cohabitation or merging lives. Prioritizes individual autonomy.",
+      "category": "relationship-styles",
+      "url": "/wiki/foundational-concepts/terminology#solo-polyamory",
+      "hasPage": true
+    },
+    {
+      "id": "relationship-anarchy",
+      "label": "Relationship Anarchy",
+      "definition": "Rejects ranking relationships by type. Friendships, romantic, and sexual connections are all valued without hierarchy.",
+      "category": "relationship-styles",
+      "url": "/wiki/foundational-concepts/terminology#relationship-anarchy",
+      "hasPage": true
+    },
+    {
+      "id": "kitchen-table-poly",
+      "label": "Kitchen Table Polyamory",
+      "definition": "All partners and metamours are comfortable socializing together — like sitting around the kitchen table.",
+      "category": "relationship-styles",
+      "url": "/wiki/foundational-concepts/terminology#kitchen-table-polyamory",
+      "hasPage": true
+    },
+    {
+      "id": "parallel-poly",
+      "label": "Parallel Polyamory",
+      "definition": "Partners know about each other but interact minimally. Relationships run in parallel rather than intersecting.",
+      "category": "relationship-styles",
+      "url": "/wiki/foundational-concepts/terminology#parallel-polyamory",
+      "hasPage": true
+    },
+    {
+      "id": "compersion",
+      "label": "Compersion",
+      "definition": "Joy or happiness at seeing a partner happy with another partner. Sometimes called 'the opposite of jealousy,' though both can coexist.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#compersion",
+      "hasPage": true
+    },
+    {
+      "id": "jealousy",
+      "label": "Jealousy",
+      "definition": "An emotional response that's natural and manageable — not a sign of failure. What matters is how it's communicated and handled.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "nre",
+      "label": "New Relationship Energy (NRE)",
+      "definition": "The intense, infatuated feeling in the early phase of a relationship. Exciting but can cloud judgment if not recognized.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#nre-new-relationship-energy",
+      "hasPage": true
+    },
+    {
+      "id": "metamour",
+      "label": "Metamour",
+      "definition": "Your partner's other partner. The relationship you have with your metamour varies widely — from close friends to parallel strangers.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#metamour",
+      "hasPage": true
+    },
+    {
+      "id": "hinge",
+      "label": "Hinge / Pivot",
+      "definition": "The person at the center of a vee configuration, connected to two partners who aren't connected to each other.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#hinge--pivot",
+      "hasPage": true
+    },
+    {
+      "id": "comet",
+      "label": "Comet",
+      "definition": "A partner who orbits in and out of your life — intensely present for a time, then distant, then back again.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#comet",
+      "hasPage": true
+    },
+    {
+      "id": "nesting-partner",
+      "label": "Nesting Partner",
+      "definition": "A partner you live with. Describes the living arrangement without implying hierarchy over other relationships.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#nesting-partner",
+      "hasPage": true
+    },
+    {
+      "id": "cnm",
+      "label": "Consensual Non-Monogamy",
+      "definition": "The umbrella term for all relationship styles where everyone involved knows about and agrees to multiple connections.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#consensual-non-monogamy-cnm",
+      "hasPage": true
+    },
+    {
+      "id": "enm",
+      "label": "Ethical Non-Monogamy",
+      "definition": "Similar to CNM but emphasizes the intentional ethical framework. Not just consent — active care for everyone involved.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#ethical-non-monogamy-enm",
+      "hasPage": true
+    },
+    {
+      "id": "couple-privilege",
+      "label": "Couple Privilege",
+      "definition": "The structural advantages that come from being an established couple — shared history, housing, finances, social recognition. Not inherently bad, but must be acknowledged.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/power-dynamics",
+      "hasPage": true
+    },
+    {
+      "id": "power-dynamics",
+      "label": "Power Dynamics",
+      "definition": "How power operates in relationships — who has structural advantages, how decisions get made, and whether that power is acknowledged or weaponized.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/power-dynamics",
+      "hasPage": true
+    },
+    {
+      "id": "couple-dating-together",
+      "label": "Couple Dating Together",
+      "definition": "When an existing couple dates a new person as a unit. A strategy choice, not inherently ethical or unethical — what matters is how they do it.",
+      "category": "core-concepts",
+      "url": "/wiki/stigma-myths-and-criticism/couples-arent-always-hunting",
+      "hasPage": true
+    },
+    {
+      "id": "dating-separately",
+      "label": "Dating Separately",
+      "definition": "Each partner in a couple pursues new connections independently. One valid strategy among several, not a moral requirement.",
+      "category": "core-concepts",
+      "url": "/wiki/stigma-myths-and-criticism/dating-separately-isnt-the-only-way",
+      "hasPage": true
+    },
+    {
+      "id": "third",
+      "label": "Third",
+      "definition": "A person in a triad. The word itself can imply hierarchy (third = less important) or simply mean the third person. Context and behavior determine which.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#third",
+      "hasPage": true
+    },
+    {
+      "id": "throuple",
+      "label": "Throuple",
+      "definition": "Casual/pop-culture term for a three-person relationship. Less precise than 'triad' but more widely recognized outside poly communities.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#throuple",
+      "hasPage": true
+    },
+    {
+      "id": "green-flags",
+      "label": "Green Flags",
+      "definition": "Signs that a relationship dynamic is healthy — voice being heard, genuine standing, curiosity when concerns are raised, behavior that actually changes.",
+      "category": "healthy-patterns",
+      "url": "/wiki/foundational-concepts/green-flags",
+      "hasPage": true
+    },
+    {
+      "id": "red-flags",
+      "label": "Red Flags",
+      "definition": "Warning signs of harmful dynamics — one-sided rules, disposability, punishment for honesty, coercion disguised as freedom.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/red-flags",
+      "hasPage": true
+    },
+    {
+      "id": "empowering-agreements",
+      "label": "Empowering Agreements",
+      "definition": "Relationship agreements where everyone had input, can renegotiate, and can push back without punishment. The healthy alternative to rules imposed by one side.",
+      "category": "healthy-patterns",
+      "url": "/wiki/foundational-concepts/empowering-vs-controlling-agreements",
+      "hasPage": true
+    },
+    {
+      "id": "controlling-agreements",
+      "label": "Controlling Agreements",
+      "definition": "Rules imposed by one partner or couple, non-negotiable, with punishment for dissent. Often disguised as 'boundaries' or 'what we need to feel safe.'",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/empowering-vs-controlling-agreements",
+      "hasPage": true
+    },
+    {
+      "id": "veto-power",
+      "label": "Veto Power",
+      "definition": "The ability to unilaterally end a partner's other relationship. Protects one person's comfort at the cost of another person's autonomy.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/veto-power-what-to-do-instead",
+      "hasPage": true
+    },
+    {
+      "id": "safety-mechanisms",
+      "label": "Safety Mechanisms",
+      "definition": "Agreements to pause, slow down, or check in — alternatives to vetoes that address the underlying fear without giving one person unilateral control.",
+      "category": "healthy-patterns",
+      "url": "/wiki/foundational-concepts/veto-power-what-to-do-instead",
+      "hasPage": true
+    },
+    {
+      "id": "dadt",
+      "label": "Don't Ask, Don't Tell",
+      "definition": "An agreement to not discuss other relationships. Research consistently links it to worse outcomes: less commitment, intimacy, and trust.",
+      "category": "unhealthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-under-duress",
+      "label": "Poly Under Duress",
+      "definition": "When someone agrees to polyamory under pressure — ultimatums, gradual campaigns, fait accompli, moral reframing, or intellectual pressure. Consent under coercion isn't consent.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/unhealthy-behaviors/poly-under-duress",
+      "hasPage": true
+    },
+    {
+      "id": "rbamp",
+      "label": "Relationship Broken, Add More People",
+      "definition": "Opening a struggling relationship hoping a new person will fix existing problems. The new person inherits the dysfunction instead.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/unhealthy-behaviors/relationship-broken-add-more-people",
+      "hasPage": true
+    },
+    {
+      "id": "disposability",
+      "label": "Disposability",
+      "definition": "Treating a person as a replaceable role rather than an individual. When things get complicated, they're the one expected to leave.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/red-flags",
+      "hasPage": true
+    },
+    {
+      "id": "one-penis-policy",
+      "label": "One Penis Policy",
+      "definition": "A rule where one partner (usually a man) restricts their partner from seeing other men, but allows women. Rooted in insecurity and biphobia.",
+      "category": "unhealthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "evaluation-toolkit",
+      "label": "Evaluation Toolkit",
+      "definition": "A framework for assessing a triad situation from any position — green flags, yellow flags, red flags, and questions everyone should ask themselves and each other.",
+      "category": "evaluation-tools",
+      "url": "/wiki/foundational-concepts/evaluation-toolkit",
+      "hasPage": true
+    },
+    {
+      "id": "guide-for-couples",
+      "label": "Guide for Couples",
+      "definition": "A self-assessment guide for couples exploring non-monogamy — what to examine, early pitfalls to avoid, and how to build something that works for everyone involved.",
+      "category": "evaluation-tools",
+      "url": "/wiki/foundational-concepts/guide-for-couples",
+      "hasPage": true
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "definition": "Not just talking — specific agreements, hearing hard things, checking in regularly, and naming fears instead of making rules about them.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "boundaries-vs-rules",
+      "label": "Boundaries vs. Rules",
+      "definition": "Boundaries define your own behavior ('I need alone time'). Rules control others ('You can't see them on weekends'). The distinction matters.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "mononormativity",
+      "label": "Mononormativity",
+      "definition": "The cultural assumption that monogamy is natural, normal, and superior. Shapes everything from legal systems to how people judge non-monogamous relationships.",
+      "category": "community-context",
+      "url": "/wiki/foundational-concepts/terminology#mononormativity",
+      "hasPage": true
+    },
+    {
+      "id": "relationship-escalator",
+      "label": "Relationship Escalator",
+      "definition": "The expected progression: dating → exclusivity → moving in → marriage → kids. Not the only valid path, but stepping off it requires intention.",
+      "category": "core-concepts",
+      "url": "/wiki/foundational-concepts/terminology#relationship-escalator",
+      "hasPage": true
+    },
+    {
+      "id": "constellation",
+      "label": "Constellation",
+      "definition": "The broader network including metamours, chosen family, and interconnected relationships beyond the immediate polycule.",
+      "category": "relationship-structures",
+      "url": "/wiki/foundational-concepts/terminology#constellation",
+      "hasPage": true
+    },
+    {
+      "id": "swinging",
+      "label": "Swinging",
+      "definition": "Recreational sexual experiences, typically as a couple. Focused on sexual variety rather than building romantic relationships.",
+      "category": "relationship-styles",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "open-relationship",
+      "label": "Open Relationship",
+      "definition": "Partners can pursue connections with others. A broad term covering many configurations — what makes it work is the specific agreements.",
+      "category": "relationship-styles",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "key-studies",
+      "label": "Key Studies",
+      "definition": "Research on non-monogamy: 35+ studies, ~24,000 people. Main finding: relationship structure doesn't predict satisfaction — how people treat each other does.",
+      "category": "research",
+      "url": "/wiki/research-and-sources/key-studies",
+      "hasPage": true
+    },
+    {
+      "id": "community-gatekeeping",
+      "label": "Community Gatekeeping",
+      "definition": "When poly communities use terminology as loyalty tests and treat people interested in certain structures (like triads) as outsiders by default.",
+      "category": "community-context",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-police",
+      "label": "The Poly Police",
+      "definition": "People who appoint themselves as authorities on how polyamory should be practiced, shutting down questions and enforcing orthodoxy.",
+      "category": "community-context",
+      "url": "https://unicorns-r-us-is-bullshit.com/poly-police",
+      "hasPage": true,
+      "pageType": "external"
+    },
+    {
+      "id": "couples-arent-always-hunting",
+      "label": "Couples Aren't Always Hunting",
+      "definition": "A couple seeking a partner isn't automatically unicorn hunting. Intent, behavior, and how they treat people determine whether it's harmful.",
+      "category": "community-context",
+      "url": "/wiki/stigma-myths-and-criticism/couples-arent-always-hunting",
+      "hasPage": true
+    },
+    {
+      "id": "triads-harder-not-impossible",
+      "label": "Triads: Harder, Not Impossible",
+      "definition": "Triads require more communication and complexity than dyads. That makes them harder — not doomed. The community often conflates difficulty with impossibility.",
+      "category": "community-context",
+      "url": "/wiki/stigma-myths-and-criticism/triads-harder-not-impossible",
+      "hasPage": true
+    },
+    {
+      "id": "dating-separately-not-only-way",
+      "label": "Dating Separately Isn't the Only Way",
+      "definition": "The community often prescribes 'always date separately' as a rule. It's one valid approach — not the only ethical one.",
+      "category": "community-context",
+      "url": "/wiki/stigma-myths-and-criticism/dating-separately-isnt-the-only-way",
+      "hasPage": true
+    },
+    {
+      "id": "structure-vs-behavior",
+      "label": "Structure vs. Behavior",
+      "definition": "The shape of a relationship doesn't determine its ethics. A triad can be healthy or toxic. A dyad can be healthy or toxic. Name behaviors, not structures.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "consent",
+      "label": "Consent",
+      "definition": "Informed, enthusiastic, ongoing agreement. In polyamory: everyone involved knows about and agrees to the relationship structure. Consent under pressure isn't consent.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "nre-addiction",
+      "label": "NRE Addiction",
+      "definition": "Chasing the high of new relationship energy without building depth. Can drive serial dating or neglect of existing relationships.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/unhealthy-behaviors/relationship-broken-add-more-people",
+      "hasPage": true
+    },
+    {
+      "id": "bait-and-switch",
+      "label": "Bait and Switch",
+      "definition": "Misrepresenting what's on offer — describing something open and genuine, then delivering rigid hierarchy, hidden rules, or a clearly temporary role. Anyone in a dynamic can do it.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/red-flags",
+      "hasPage": true
+    },
+    {
+      "id": "coercion",
+      "label": "Coercion",
+      "definition": "Pressure that makes someone agree to something they wouldn't freely choose. Can be overt (ultimatums) or subtle (gradual campaigns, moral reframing).",
+      "category": "unhealthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "finding-your-people",
+      "label": "Finding Your People",
+      "definition": "Navigating the dating and community landscape as a non-monogamous person — where to look, how to connect, what to watch for.",
+      "category": "evaluation-tools",
+      "url": "/wiki/foundational-concepts/finding-your-people",
+      "hasPage": true
+    },
+    {
+      "id": "getting-started",
+      "label": "Getting Started",
+      "definition": "First steps into non-monogamy — understanding your motivations, doing the internal work, and setting up for success rather than stumbling in.",
+      "category": "evaluation-tools",
+      "url": "/wiki/foundational-concepts/getting-started",
+      "hasPage": true
+    },
+    {
+      "id": "recommended-reading",
+      "label": "Recommended Reading",
+      "definition": "Books, podcasts, and resources for learning about ethical non-monogamy — curated to avoid the usual prescriptive dogma.",
+      "category": "research",
+      "url": "/wiki/research-and-sources/recommended-reading",
+      "hasPage": true
+    },
+    {
+      "id": "unicorns-r-us",
+      "label": "Unicorns R Us Is Bullshit",
+      "definition": "A rebuttal of the widely-shared 'Unicorns-R-Us' infographic that reduces a complex topic to a flowchart and offers only 'dump them' as advice.",
+      "category": "community-context",
+      "url": "https://unicorns-r-us-is-bullshit.com",
+      "hasPage": true,
+      "pageType": "external"
+    },
+    {
+      "id": "accidental-triad",
+      "label": "Accidental Triad",
+      "definition": "When a triad forms organically — friends who catch feelings, metamours who connect — rather than being sought out intentionally.",
+      "category": "relationship-structures",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "united-front",
+      "label": "United Front",
+      "definition": "When two people coordinate a unified position toward a third before the conversation starts, cutting off genuine discussion. Healthy dynamics let people speak for themselves.",
+      "category": "unhealthy-patterns",
+      "url": "/wiki/foundational-concepts/red-flags",
+      "hasPage": true
+    },
+    {
+      "id": "autonomy",
+      "label": "Autonomy",
+      "definition": "The ability to make your own choices about your relationships, time, and body. A fundamental need, not a privilege to be granted or revoked.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "informed-consent",
+      "label": "Informed Consent",
+      "definition": "Knowing what you're actually agreeing to — the full picture, not a curated version. Impossible when information is hidden or misrepresented.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "monogamy",
+      "label": "Monogamy",
+      "definition": "An exclusive relationship between two people. One valid relationship structure — not the default everyone must justify departing from.",
+      "category": "relationship-styles",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "checking-in",
+      "label": "Checking In",
+      "definition": "Regular, structured conversations about how everyone is feeling — not just when something is wrong. The foundation of proactive relationship maintenance.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "time-management",
+      "label": "Time Management",
+      "definition": "Balancing time between multiple partners, solo time, and other commitments. One of the most practical challenges in non-monogamy.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "coming-out",
+      "label": "Coming Out",
+      "definition": "Disclosing your non-monogamous identity to friends, family, or colleagues. A deeply personal decision with real social and professional risks.",
+      "category": "community-context",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "chosen-family",
+      "label": "Chosen Family",
+      "definition": "The intentional network of people you consider family — partners, metamours, close friends — regardless of legal or biological ties.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "deescalation",
+      "label": "De-escalation",
+      "definition": "Intentionally reducing the intensity or structure of a relationship without ending it. Stepping off the relationship escalator mid-ride.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "compersion-myth",
+      "label": "Compersion as Requirement",
+      "definition": "The harmful myth that you must feel compersion to be 'good at poly.' Compersion is a bonus, not a prerequisite — jealousy is normal and manageable.",
+      "category": "community-context",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "cowboy-cowgirl",
+      "label": "Cowboy / Cowgirl",
+      "definition": "Someone who enters a poly relationship with the goal of 'lassoing' one partner away into monogamy. Usually hidden intent rather than open communication.",
+      "category": "unhealthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "processing",
+      "label": "Processing",
+      "definition": "Working through difficult emotions — jealousy, insecurity, fear — rather than suppressing or weaponizing them. The internal work that makes poly sustainable.",
+      "category": "healthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "closed-loop-decisions",
+      "label": "Closed-Loop Decisions",
+      "definition": "When decisions that affect someone are made without their input — they're informed, not consulted. A behavioral red flag in any multi-person dynamic.",
+      "category": "unhealthy-patterns",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "descriptive-vs-prescriptive",
+      "label": "Descriptive vs. Prescriptive",
+      "definition": "Descriptive hierarchy acknowledges existing differences (we live together, we share finances). Prescriptive hierarchy enforces them as rules (new partners can never reach this level).",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "attachment-styles",
+      "label": "Attachment Styles",
+      "definition": "Anxious, avoidant, secure, and disorganized attachment patterns. Understanding yours helps predict how you'll respond to the unique stresses of non-monogamy.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "fluid-bonding",
+      "label": "Fluid Bonding",
+      "definition": "The decision to stop using barrier protection with a specific partner. A trust agreement that affects the entire polycule, not just two people.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "sti-protocols",
+      "label": "STI Protocols",
+      "definition": "Agreements about testing, disclosure, and safer sex practices across a network of partners. Everyone's health is interconnected.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "kink-and-poly",
+      "label": "Kink & Polyamory",
+      "definition": "Overlapping but distinct communities. Many poly people are kinky, many kinky people are poly — but neither requires the other.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "codependency",
+      "label": "Codependency",
+      "definition": "When one person's sense of self becomes enmeshed with another's. Can intensify in poly dynamics where there are more relationships to lose yourself in.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-burnout",
+      "label": "Poly Burnout",
+      "definition": "Emotional exhaustion from managing multiple relationships, constant processing, and the social labor of non-monogamy. Rest is not failure.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-saturation",
+      "label": "Poly Saturation",
+      "definition": "The point where you don't have capacity for another relationship. Recognizing your limit is healthy, not a sign you're doing it wrong.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "limerence",
+      "label": "Limerence",
+      "definition": "An involuntary, obsessive infatuation with another person. Distinct from NRE — limerence is compulsive and often one-sided.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "mono-poly",
+      "label": "Mono-Poly Relationship",
+      "definition": "When one partner is monogamous and the other is polyamorous. Can work with extraordinary communication — but the asymmetry needs constant attention.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "legal-protections",
+      "label": "Legal Protections",
+      "definition": "Wills, medical power of attorney, custody agreements, housing rights — the legal scaffolding that monogamous couples get automatically and poly people must build manually.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-and-parenting",
+      "label": "Poly & Parenting",
+      "definition": "Navigating children in non-monogamous households — disclosure, boundaries, school interactions, custody concerns, and building a stable environment.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "garden-party-poly",
+      "label": "Garden Party Poly",
+      "definition": "Between kitchen table and parallel — metamours interact at events and gatherings but don't hang out independently. Friendly but not intimate.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "dating-apps",
+      "label": "Dating Apps & Poly",
+      "definition": "Navigating Feeld, OKCupid, Hinge, and others as a non-monogamous person. Profile disclosure, couple accounts, and the unique challenges of app-based poly dating.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "queer-and-poly",
+      "label": "Queer & Poly Intersection",
+      "definition": "Non-monogamy has deep roots in queer communities. The intersection brings unique strengths (norm-questioning) and challenges (compounded stigma).",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "poly-representation",
+      "label": "Media Representation",
+      "definition": "How polyamory appears in TV, film, and news — usually sensationalized or played for drama. Accurate representation remains rare.",
+      "category": "adjacent",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "polyamory",
+      "label": "Polyamory",
+      "definition": "The practice of having multiple romantic relationships simultaneously, with the knowledge and consent of everyone involved. The umbrella under which most of this site's content lives.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "non-monogamy",
+      "label": "Non-Monogamy",
+      "definition": "Any relationship structure that isn't exclusive to two people. Includes polyamory, swinging, open relationships, and relationship anarchy — each with different intentions and agreements.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "primary-partner",
+      "label": "Primary Partner",
+      "definition": "In hierarchical polyamory, the partner given highest priority — often a spouse or long-term nesting partner. The label itself isn't harmful; how it's used determines that.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "secondary-partner",
+      "label": "Secondary Partner",
+      "definition": "A partner who is given less structural priority than a primary. Can be a healthy arrangement if genuinely chosen, or a red flag if it means 'your needs always come last.'",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    },
+    {
+      "id": "anchor-partner",
+      "label": "Anchor Partner",
+      "definition": "An alternative to 'primary' that describes function (stability, shared logistics) without implying the other relationships matter less.",
+      "category": "core-concepts",
+      "url": null,
+      "hasPage": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "poly-convergence",
+      "target": "unicorn-hunting",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-convergence",
+      "target": "couple-dating-together",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "poly-convergence",
+      "target": "polyfidelity",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "poly-convergence",
+      "target": "triad",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-convergence",
+      "target": "unicorn",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "couple-dating-together",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "disposability",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "controlling-agreements",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "unicorn",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "couples-arent-always-hunting",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn-hunting",
+      "target": "unicorns-r-us",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn",
+      "target": "third",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "unicorn",
+      "target": "swinging",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "triad",
+      "target": "vee",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "triad",
+      "target": "relationship-structures",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "triad",
+      "target": "throuple",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "triad",
+      "target": "triads-harder-not-impossible",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "triad",
+      "target": "accidental-triad",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "vee",
+      "target": "hinge",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "vee",
+      "target": "relationship-structures",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "vee",
+      "target": "metamour",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "quad",
+      "target": "relationship-structures",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "quad",
+      "target": "polycule",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polycule",
+      "target": "constellation",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polycule",
+      "target": "relationship-structures",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "polycule",
+      "target": "metamour",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "dyad",
+      "target": "relationship-structures",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "dyad",
+      "target": "monogamy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polyfidelity",
+      "target": "triad",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polyfidelity",
+      "target": "open-relationship",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "hierarchical-poly",
+      "target": "non-hierarchical-poly",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "hierarchical-poly",
+      "target": "couple-privilege",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "hierarchical-poly",
+      "target": "nesting-partner",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "non-hierarchical-poly",
+      "target": "relationship-anarchy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "non-hierarchical-poly",
+      "target": "solo-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "solo-poly",
+      "target": "relationship-escalator",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "solo-poly",
+      "target": "autonomy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "relationship-anarchy",
+      "target": "boundaries-vs-rules",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "kitchen-table-poly",
+      "target": "parallel-poly",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "kitchen-table-poly",
+      "target": "metamour",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "kitchen-table-poly",
+      "target": "compersion",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "compersion",
+      "target": "jealousy",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "compersion",
+      "target": "nre",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "jealousy",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "jealousy",
+      "target": "key-studies",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "nre",
+      "target": "nre-addiction",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "nre",
+      "target": "rbamp",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "metamour",
+      "target": "hinge",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "metamour",
+      "target": "kitchen-table-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "comet",
+      "target": "solo-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cnm",
+      "target": "enm",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "cnm",
+      "target": "open-relationship",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cnm",
+      "target": "swinging",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cnm",
+      "target": "monogamy",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "couple-privilege",
+      "target": "power-dynamics",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "couple-privilege",
+      "target": "united-front",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "power-dynamics",
+      "target": "controlling-agreements",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "power-dynamics",
+      "target": "empowering-agreements",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "power-dynamics",
+      "target": "autonomy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "couple-dating-together",
+      "target": "dating-separately",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "couple-dating-together",
+      "target": "couples-arent-always-hunting",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "couple-dating-together",
+      "target": "guide-for-couples",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "couple-dating-together",
+      "target": "dating-separately-not-only-way",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "dating-separately",
+      "target": "dating-separately-not-only-way",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "green-flags",
+      "target": "red-flags",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "green-flags",
+      "target": "empowering-agreements",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "green-flags",
+      "target": "communication",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "red-flags",
+      "target": "disposability",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "red-flags",
+      "target": "bait-and-switch",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "red-flags",
+      "target": "united-front",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "red-flags",
+      "target": "evaluation-toolkit",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "empowering-agreements",
+      "target": "controlling-agreements",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "empowering-agreements",
+      "target": "boundaries-vs-rules",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "controlling-agreements",
+      "target": "veto-power",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "controlling-agreements",
+      "target": "one-penis-policy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "veto-power",
+      "target": "safety-mechanisms",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "veto-power",
+      "target": "autonomy",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "dadt",
+      "target": "informed-consent",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "dadt",
+      "target": "key-studies",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "dadt",
+      "target": "controlling-agreements",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "poly-under-duress",
+      "target": "coercion",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "poly-under-duress",
+      "target": "consent",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-under-duress",
+      "target": "getting-started",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "rbamp",
+      "target": "nre-addiction",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "rbamp",
+      "target": "couple-dating-together",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "one-penis-policy",
+      "target": "couple-privilege",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "evaluation-toolkit",
+      "target": "guide-for-couples",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "evaluation-toolkit",
+      "target": "green-flags",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "guide-for-couples",
+      "target": "getting-started",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "guide-for-couples",
+      "target": "power-dynamics",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "communication",
+      "target": "consent",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "communication",
+      "target": "boundaries-vs-rules",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mononormativity",
+      "target": "relationship-escalator",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mononormativity",
+      "target": "community-gatekeeping",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mononormativity",
+      "target": "cnm",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "community-gatekeeping",
+      "target": "poly-police",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "community-gatekeeping",
+      "target": "unicorns-r-us",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "community-gatekeeping",
+      "target": "couples-arent-always-hunting",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "structure-vs-behavior",
+      "target": "relationship-structures",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "structure-vs-behavior",
+      "target": "green-flags",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "structure-vs-behavior",
+      "target": "red-flags",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "finding-your-people",
+      "target": "getting-started",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "finding-your-people",
+      "target": "couple-dating-together",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "accidental-triad",
+      "target": "couple-dating-together",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "informed-consent",
+      "target": "consent",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "informed-consent",
+      "target": "bait-and-switch",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "open-relationship",
+      "target": "swinging",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "open-relationship",
+      "target": "cnm",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "key-studies",
+      "target": "recommended-reading",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "key-studies",
+      "target": "structure-vs-behavior",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "triads-harder-not-impossible",
+      "target": "dating-separately-not-only-way",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "triads-harder-not-impossible",
+      "target": "couples-arent-always-hunting",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "parallel-poly",
+      "target": "metamour",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "comet",
+      "target": "nre",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "nesting-partner",
+      "target": "hierarchical-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "enm",
+      "target": "cnm",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "enm",
+      "target": "poly-convergence",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "third",
+      "target": "triad",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "third",
+      "target": "disposability",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "throuple",
+      "target": "triad",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "safety-mechanisms",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "constellation",
+      "target": "kitchen-table-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-police",
+      "target": "mononormativity",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "coercion",
+      "target": "controlling-agreements",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "recommended-reading",
+      "target": "getting-started",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "checking-in",
+      "target": "communication",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "checking-in",
+      "target": "green-flags",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "checking-in",
+      "target": "safety-mechanisms",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "time-management",
+      "target": "nesting-partner",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "time-management",
+      "target": "hierarchical-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "time-management",
+      "target": "solo-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "coming-out",
+      "target": "mononormativity",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "coming-out",
+      "target": "finding-your-people",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "coming-out",
+      "target": "getting-started",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "chosen-family",
+      "target": "constellation",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "chosen-family",
+      "target": "kitchen-table-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "chosen-family",
+      "target": "polycule",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "deescalation",
+      "target": "relationship-escalator",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "deescalation",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "compersion-myth",
+      "target": "compersion",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "compersion-myth",
+      "target": "community-gatekeeping",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "compersion-myth",
+      "target": "jealousy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cowboy-cowgirl",
+      "target": "bait-and-switch",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cowboy-cowgirl",
+      "target": "monogamy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "cowboy-cowgirl",
+      "target": "red-flags",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "processing",
+      "target": "jealousy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "processing",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "processing",
+      "target": "compersion",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "closed-loop-decisions",
+      "target": "united-front",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "closed-loop-decisions",
+      "target": "controlling-agreements",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "closed-loop-decisions",
+      "target": "couple-privilege",
+      "type": "can-lead-to",
+      "bidirectional": false
+    },
+    {
+      "source": "descriptive-vs-prescriptive",
+      "target": "hierarchical-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "descriptive-vs-prescriptive",
+      "target": "couple-privilege",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "descriptive-vs-prescriptive",
+      "target": "non-hierarchical-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "attachment-styles",
+      "target": "jealousy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "attachment-styles",
+      "target": "processing",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "attachment-styles",
+      "target": "codependency",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "fluid-bonding",
+      "target": "sti-protocols",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "fluid-bonding",
+      "target": "empowering-agreements",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "sti-protocols",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "sti-protocols",
+      "target": "polycule",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "kink-and-poly",
+      "target": "cnm",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "kink-and-poly",
+      "target": "community-gatekeeping",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "codependency",
+      "target": "autonomy",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "codependency",
+      "target": "poly-under-duress",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-burnout",
+      "target": "poly-saturation",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-burnout",
+      "target": "time-management",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-burnout",
+      "target": "processing",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-saturation",
+      "target": "solo-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-saturation",
+      "target": "time-management",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "limerence",
+      "target": "nre",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "limerence",
+      "target": "nre-addiction",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mono-poly",
+      "target": "poly-under-duress",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mono-poly",
+      "target": "monogamy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "mono-poly",
+      "target": "communication",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "legal-protections",
+      "target": "nesting-partner",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "legal-protections",
+      "target": "mononormativity",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-and-parenting",
+      "target": "coming-out",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-and-parenting",
+      "target": "legal-protections",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-and-parenting",
+      "target": "chosen-family",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "garden-party-poly",
+      "target": "kitchen-table-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "garden-party-poly",
+      "target": "parallel-poly",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "garden-party-poly",
+      "target": "metamour",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "dating-apps",
+      "target": "finding-your-people",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "dating-apps",
+      "target": "couple-dating-together",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "queer-and-poly",
+      "target": "cnm",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "queer-and-poly",
+      "target": "mononormativity",
+      "type": "contrast",
+      "bidirectional": true
+    },
+    {
+      "source": "queer-and-poly",
+      "target": "community-gatekeeping",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-representation",
+      "target": "mononormativity",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "poly-representation",
+      "target": "coming-out",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polyamory",
+      "target": "cnm",
+      "type": "is-type-of",
+      "bidirectional": false
+    },
+    {
+      "source": "polyamory",
+      "target": "non-monogamy",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polyamory",
+      "target": "poly-convergence",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "polyamory",
+      "target": "enm",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "non-monogamy",
+      "target": "cnm",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "non-monogamy",
+      "target": "swinging",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "non-monogamy",
+      "target": "open-relationship",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "primary-partner",
+      "target": "hierarchical-poly",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "primary-partner",
+      "target": "nesting-partner",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "primary-partner",
+      "target": "secondary-partner",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "secondary-partner",
+      "target": "hierarchical-poly",
+      "type": "is-part-of",
+      "bidirectional": false
+    },
+    {
+      "source": "secondary-partner",
+      "target": "descriptive-vs-prescriptive",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "anchor-partner",
+      "target": "primary-partner",
+      "type": "often-confused-with",
+      "bidirectional": true
+    },
+    {
+      "source": "anchor-partner",
+      "target": "nesting-partner",
+      "type": "related",
+      "bidirectional": true
+    },
+    {
+      "source": "anchor-partner",
+      "target": "non-hierarchical-poly",
+      "type": "related",
+      "bidirectional": true
+    }
+  ]
+}

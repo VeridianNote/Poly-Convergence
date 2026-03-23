@@ -272,6 +272,7 @@ h1[id], h2[id], h3[id], h4[id] {
 .navbar__link[href="/featured"]::after { content: " ⭐"; }
 .navbar__link[href="/stories"]::after { content: " 💜"; }
 .navbar__link[href*="/wiki"]::after { content: " 📚"; }
+.navbar__link[href="/discover"]::after { content: " 🧭"; }
 .navbar__link[href="/about"]::after { content: " 💡"; }
 .navbar__link[href="/contribute"]::after { content: " ✏️"; }
 

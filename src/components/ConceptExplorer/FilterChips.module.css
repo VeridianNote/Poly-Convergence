@@ -1,0 +1,66 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25em 0.65em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+
+  /* Outlined default state */
+  background-color: transparent;
+  color: var(--ifm-font-color-base);
+  border: 1.5px solid var(--ifm-color-emphasis-300);
+}
+
+.chip:hover {
+  border-color: var(--chip-color, var(--ifm-color-primary));
+  color: var(--chip-color, var(--ifm-color-primary));
+}
+
+/* Active / filled state */
+.chipActive {
+  background-color: var(--chip-color, var(--ifm-color-primary));
+  border-color: var(--chip-color, var(--ifm-color-primary));
+  color: #fff;
+}
+
+.chipActive:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* Mobile: horizontally scrollable, no wrap */
+@media (max-width: 768px) {
+  .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding-bottom: 0.25rem;
+  }
+
+  .row::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Dark mode */
+[data-theme='dark'] .chip {
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme='dark'] .chip:hover {
+  border-color: var(--chip-color, var(--ifm-color-primary));
+  color: var(--chip-color, var(--ifm-color-primary));
+}

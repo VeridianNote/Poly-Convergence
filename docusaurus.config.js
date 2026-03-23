@@ -204,6 +204,7 @@ const config = {
             position: 'left',
             label: 'Wiki',
           },
+          {to: '/discover', label: 'Discover', position: 'left'},
           {to: '/about', label: 'About', position: 'left'},
           {to: '/contribute', label: 'Contribute', position: 'left'},
           {
