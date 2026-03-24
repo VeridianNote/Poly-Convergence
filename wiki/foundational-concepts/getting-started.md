@@ -13,7 +13,7 @@ That tracks. The internet is full of strong opinions about non-monogamy, and a l
 
 This site exists as a counterpoint. Poly Convergence is community-built — written and maintained by real people with real experience, not theorists pushing agendas or authors promoting book deals. It's [open source](https://github.com/VeridianNote/Poly-Convergence), anyone can [contribute](/contribute), and every submission gets reviewed before it goes live. Our [sister site](https://unicorns-r-us-is-bullshit.com/) tears down the bad arguments. This one helps you build something real.
 
-That doesn't mean you should take our word for everything either. Read widely. Talk to people who've done this. Form your own conclusions based on your own situation. The goal here is to give you honest information and practical tools, not to tell you what your relationship should look like. And if you have questions along the way, [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/) is our community space — real people living this stuff who are happy to talk through whatever you're working on.
+That doesn't mean you should take our word for everything either. Read widely. Talk to people who've done this. Form your own conclusions based on your own situation. The goal here is to give you honest information and practical tools, not to tell you what your relationship should look like. And if you have something to share along the way, the [contribute page](/contribute) is always open.
 
 ## What is non-monogamy?
 
@@ -160,7 +160,7 @@ This page is a starting point. Where you go next depends on where you are right 
 **If you're ready to find people:**
 - [Finding your people](/wiki/foundational-concepts/finding-your-people) — an honest look at the dating landscape: what works, what doesn't, and what's still missing
 
-**Have questions?** The [wiki](/wiki/intro) covers a lot more ground, and [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/) is always open if you want to talk through something specific with people who've been where you are.
+**Have questions?** The [wiki](/wiki/intro) covers a lot more ground, and the [contribute page](/contribute) is always open if you want to share something that could help someone else.
 
 ## The principle
 

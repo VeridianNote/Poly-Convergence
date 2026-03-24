@@ -213,11 +213,6 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://www.reddit.com/r/PolyConvergence',
-            label: 'Reddit',
-            position: 'right',
-          },
-          {
             href: 'https://github.com/VeridianNote/Poly-Convergence',
             label: 'GitHub',
             position: 'right',
@@ -248,7 +243,6 @@ const config = {
             title: 'Connect',
             items: [
               {label: 'Sister Site', href: 'https://unicorns-r-us-is-bullshit.com'},
-              {label: 'Reddit', href: 'https://www.reddit.com/r/PolyConvergence'},
               {label: 'GitHub', href: 'https://github.com/VeridianNote/Poly-Convergence'},
             ],
           },

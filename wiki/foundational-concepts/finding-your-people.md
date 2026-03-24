@@ -13,7 +13,7 @@ The short answer is that it depends entirely on what you're looking for. The dat
 
 :::note This page is a living document
 
-The dating landscape changes fast. If your experience differs from what's described here, or you've found something that works and isn't listed, [contribute](/contribute) or bring it to [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+The dating landscape changes fast. If your experience differs from what's described here, or you've found something that works and isn't listed, [contribute](/contribute) and let us know.
 
 :::
 
@@ -46,7 +46,6 @@ Every app: non-monogamous users are a small percentage, poly/triad profiles get 
 Sometimes the spaces where you talk about non-monogamy are where you meet people doing it.
 
 **Reddit:**
-- **[r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/)** — our community. Focused on committed multi-partner relationships. Small but growing
 - **[r/polyfidelity](https://www.reddit.com/r/polyfidelity/)** — closed multi-partner relationships. One of the few spaces that doesn't treat wanting exclusivity with more than one person as a contradiction
 - **[r/throuples](https://www.reddit.com/r/throuples/)** — people living in and curious about three-person relationships
 - **[r/seekingthrouples](https://www.reddit.com/r/seekingthrouples/)** — one of the few spaces specifically for people looking to form triads. If you're actively seeking, this is a starting point
@@ -81,7 +80,7 @@ This page is more incomplete than most on this site. The dating landscape is too
 
 **What we're looking for:** Priority goes to resources that serve people seeking committed multi-partner relationships (poly convergence, polyfidelity, triads). Resources for open or mixed polyamory are welcome too — this is a poly site and the overlap is real. Swinger-specific platforms (3fun, lifestyle clubs, etc.) are out of scope. There's a whole internet of swinger resources. This page isn't one of them.
 
-[Contribute](/contribute) · [GitHub](https://github.com/VeridianNote/Poly-Convergence) · [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/)
+[Contribute](/contribute) · [GitHub](https://github.com/VeridianNote/Poly-Convergence)
 
 ---
 

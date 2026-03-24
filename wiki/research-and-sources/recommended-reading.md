@@ -9,7 +9,7 @@ keywords: [polyamory books, ethical non-monogamy reading list, non-monogamy reso
 
 Most recommended reading lists in poly spaces point you to the same handful of books and podcasts. Some of those resources are useful. Some of them built the framework this site exists to challenge. This page is honest about both.
 
-Some sections are still being curated. We'd rather leave a gap than recommend something we can't stand behind. If you have suggestions for resources that belong here, bring them to [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+Some sections are still being curated. We'd rather leave a gap than recommend something we can't stand behind. If you have suggestions for resources that belong here, [contribute](/contribute) directly.
 
 ## Finding a therapist
 
@@ -28,12 +28,11 @@ If you want professional support, look for a therapist who understands non-monog
 
 ## Online communities
 
-- **[r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/)**: Our community. Built around the same principles as this site: relationship shape isn't relationship ethics, behavior is what matters, and every configuration deserves honest discussion without gatekeeping.
 - **[r/polyfidelity](https://www.reddit.com/r/polyfidelity/)**: For people in closed multi-partner relationships. Smaller and more focused than general poly subreddits.
 - **[r/throuples](https://www.reddit.com/r/throuples/)**: Community for people in three-person relationships of all kinds.
 
 :::note Know a welcoming space?
-If you know of a Discord server, forum, or other community where people can discuss multi-person relationships without getting lectured about their structure, share it at [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+If you know of a Discord server, forum, or other community where people can discuss multi-person relationships without getting lectured about their structure, [contribute](/contribute) and let us know.
 :::
 
 ## Books
@@ -41,7 +40,7 @@ If you know of a Discord server, forum, or other community where people can disc
 This section is under construction. We want to recommend books we can genuinely stand behind, not just repeat the standard list because everyone else does. For resources we'd actively steer you away from, see [below](#resources-we-dont-recommend).
 
 :::note Recommend a book
-If you've read something that actually helped you build a healthier multi-person relationship, we want to hear about it. Share your recommendations at [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+If you've read something that actually helped you build a healthier multi-person relationship, we want to hear about it. Share your recommendations via [contribute](/contribute).
 :::
 
 ## Podcasts
@@ -49,7 +48,7 @@ If you've read something that actually helped you build a healthier multi-person
 Also under construction.
 
 :::note Recommend a podcast
-If there's a podcast that gave you practical, non-judgmental tools for your relationships rather than lectures about which structures are acceptable, share it at [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+If there's a podcast that gave you practical, non-judgmental tools for your relationships rather than lectures about which structures are acceptable, share it via [contribute](/contribute).
 :::
 
 ## Resources we don't recommend
@@ -87,7 +86,7 @@ This isn't opinion. It's documented in a peer-reviewed journal.
 **r/nonmonogamy** has significant community overlap with r/polyamory and carries the same gatekeeping patterns. Expect similar hostility toward couple-based dating and closed relationship structures.
 
 :::note Know a resource that belongs on this list?
-If you've encountered a book, website, podcast, or community space that pushes the same orthodoxy (structure is ethics, couples are suspect, certain configurations aren't valid), let us know at [r/PolyConvergence](https://www.reddit.com/r/PolyConvergence/).
+If you've encountered a book, website, podcast, or community space that pushes the same orthodoxy (structure is ethics, couples are suspect, certain configurations aren't valid), let us know via [contribute](/contribute).
 :::
 
 [^1]: Johnston, S. W. (2024). "You enjoy being a second class citizen": Unicorn dynamics and identity negotiation on subreddit r/polyamory. *Sexualities*, 27(3), 577-593.
