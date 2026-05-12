@@ -14,7 +14,7 @@ It only takes one of them to end it.
 Sit with it for a second. It's the best relationship advice you'll ever get.<br/>
 It seems simple and obvious on the surface, but there's so much more to unpack past the first glance.
 
-<!-- truncate -->
+{/* truncate */}
 
 At first glance, you might read it as "you can't force anyone to stay in a relationship."<br/>
 That's true — but the wisdom in that little nugget goes so much further.<br/>

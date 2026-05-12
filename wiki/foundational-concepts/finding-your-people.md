@@ -29,7 +29,7 @@ The dating landscape changes fast. If your experience differs from what's descri
 
 Every app: non-monogamous users are a small percentage, poly/triad profiles get filtered out by most people, and couples face extra friction. That said, real connections start on all of these. Expectations are the main thing to calibrate.
 
-<!-- AUTHOR INPUT NEEDED: Community members — if your experience with any of these apps differs (especially across regions or demographics), please contribute. These assessments are based on limited experience and improve with more data points. -->
+{/* AUTHOR INPUT NEEDED: Community members — if your experience with any of these apps differs (especially across regions or demographics), please contribute. These assessments are based on limited experience and improve with more data points. */}
 
 **Feeld** — Built for non-monogamy. Supports couple profiles, has relationship style filters. Skews heavily toward casual connections and exploration. Frustrating signal-to-noise if you want something committed. Better in larger cities, thin in smaller markets.
 
@@ -53,7 +53,7 @@ Sometimes the spaces where you talk about non-monogamy are where you meet people
 
 **Local meetups and events** — Meetup.com, FetLife, and local Facebook groups are starting points. Quality varies enormously. A good one can be the single best way to meet people face-to-face who are already in the space.
 
-<!-- AUTHOR INPUT NEEDED: Community members — what local resources have worked for you? Meetup groups, events, community spaces by city or region would make this section much more useful. -->
+{/* AUTHOR INPUT NEEDED: Community members — what local resources have worked for you? Meetup groups, events, community spaces by city or region would make this section much more useful. */}
 
 **Discord and other platforms** — growing poly communities, though they tend to center open polyamory. If you know of servers that welcome poly convergence or polyfidelity perspectives, [let us know](/contribute).
 

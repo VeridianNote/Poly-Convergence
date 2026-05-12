@@ -10,7 +10,7 @@ I've been wanting to write this for a while now.
 
 If you've spent any time on either of our sites, you know the origin story from our [welcome post](/stories/welcome): my partner and I wanted a triad — and we'd been in several. All short-lived, all ended gracefully, none of them the horror stories the internet would have you expect. We weren't new to this. We certainly weren't hunting anyone. But the poly community told us we were the problem, and we got tired of bad resources pretending to be the only truth. That's the *what*. This is the *why now*.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Taking notes in the dark
 
